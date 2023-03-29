@@ -1,5 +1,9 @@
-import PyQt5 # Import required ones.
-from os import popen
+#!/bin/env python3
+from PyQt5.QtWidgets import QApplication
 from sys import argv, exit
+from MainWin import MainWin
 
-# To be continued.
+app = QApplication(argv)
+app.setApplicationName("Endeavour OS Tweaker")
+main = MainWin()
+exit(app.exec_())
