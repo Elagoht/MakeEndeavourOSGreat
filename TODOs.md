@@ -1,7 +1,7 @@
 # TODOs
 
 - [ ] Create a function to detect installed AUR helper.
-- [ ] Update and upgrade the system.
+- [X] Update and upgrade the system.
 - [ ] Replace `gnome-console` with `gnome-terminal`.
 - [ ] Enable `gnome-terminal-transparency`.
 - [ ] Replace `yay` with `paru`.

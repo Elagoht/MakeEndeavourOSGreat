@@ -36,5 +36,3 @@ class UpdateTab(QWidget):
             lambda: run_command("sudo pacman -Sy", self.resUpdate))
         self.btnUpgrade.clicked.connect(
             lambda: run_command("sudo pacman -Su", self.resUpgrade))
-
-        # Result Widget
