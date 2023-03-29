@@ -7,8 +7,9 @@ class MainWin(QMainWindow):
     def __init__(self):
         super(MainWin, self).__init__()
         self.show()
-        self.setMinimumWidth(400)
+        self.setMinimumWidth(600)
         self.l_status = QStatusBar()
         self.setStatusBar(self.l_status)
         self.central = Central()
         self.setCentralWidget(self.central)
+        self.setBaseSize(self.minimumWidth(), self.minimumHeight())
