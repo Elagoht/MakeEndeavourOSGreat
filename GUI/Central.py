@@ -2,6 +2,7 @@ from PyQt5.QtWidgets import QTabWidget, QScrollArea
 from Gnome import GnomeTab
 from Update import UpdateTab
 from Pamac import PamacTab
+from AurHelper import AurHelperTab
 
 
 class Central(QTabWidget):
@@ -12,6 +13,7 @@ class Central(QTabWidget):
         self.GnomeTab = GnomeTab()
         self.UpdateTab = UpdateTab()
         self.PamacTab = PamacTab()
+        self.AurHelperTab = AurHelperTab()
 
         self.scrollGnome = QScrollArea(self)
         self.scrollGnome.setWidget(self.GnomeTab)
@@ -25,7 +27,12 @@ class Central(QTabWidget):
         self.scrollPamac.setWidget(self.PamacTab)
         self.scrollPamac.setWidgetResizable(True)
 
+        self.scrollAurHelper = QScrollArea(self)
+        self.scrollAurHelper.setWidget(self.AurHelperTab)
+        self.scrollAurHelper.setWidgetResizable(True)
+
         # Insert tab widgets
         self.insertTab(0, self.scrollUpdate, "Update System")
         self.insertTab(1, self.scrollGnome, "Gnome Options")
         self.insertTab(2, self.scrollPamac, "Sofware Manager")
+        self.insertTab(3, self.scrollAurHelper, "AUR Helper")
