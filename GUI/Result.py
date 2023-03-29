@@ -19,7 +19,7 @@ class ResultWidget(QWidget):
         if statusCode == 0:
             self.lblStatus.setText("Operation successfull.")
             self.lblStatusCode.setStyleSheet("color: green")
-        if statusCode == -1:
+        elif statusCode == -1:
             self.lblStatus.setText("Terminal closed by user.")
             self.lblStatusCode.setStyleSheet("color: gray")
         else:
