@@ -13,13 +13,15 @@ class ResultWidget(QWidget):
         self.layout = QHBoxLayout(self)
         self.layout.addWidget(self.lblStatusCode)
         self.layout.addWidget(self.lblStatus, 1)
-        print(self.lblStatus.text())
 
     def setStatus(self, statusCode):
         self.lblStatusCode.setText(f"Exited({statusCode}):")
         if statusCode == 0:
             self.lblStatus.setText("Operation successfull.")
             self.lblStatusCode.setStyleSheet("color: green")
+        if statusCode == -1:
+            self.lblStatus.setText("Terminal closed by user.")
+            self.lblStatusCode.setStyleSheet("color: gray")
         else:
             self.lblStatus.setText("Opeation failed.")
             self.lblStatusCode.setStyleSheet("color: red")
