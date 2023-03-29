@@ -11,4 +11,4 @@ class MainWin(QMainWindow):
         self.setStatusBar(self.l_status)
         self.central = Central()
         self.setCentralWidget(self.central)
-        self.setMinimumSize(600, 400)
+        self.setMinimumSize(800, 500)
