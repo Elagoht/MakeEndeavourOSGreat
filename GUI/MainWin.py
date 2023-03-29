@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QApplication, QFileDialog, QLineEdit, QMainWindow, QSpinBox, QWidget, QGroupBox, QPushButton, QLabel, QGridLayout, QStatusBar
+from PyQt5.QtWidgets import QMainWindow, QStatusBar
 from PyQt5.QtGui import QKeySequence
 from Central import Central
 

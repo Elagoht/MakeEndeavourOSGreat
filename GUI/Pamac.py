@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QLineEdit, QMainWindow, QSpinBox, QWidget, QGroupBox, QPushButton, QLabel, QGridLayout, QStatusBar, QVBoxLayout
+from PyQt5.QtWidgets import QWidget, QGroupBox, QPushButton, QLabel, QVBoxLayout
 from PyQt5.QtGui import QIcon
 from RunCommand import run_command
 from Result import ResultWidget

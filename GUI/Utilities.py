@@ -9,7 +9,7 @@ elif [ -f /bin/yay ]; then
 else
     aurhelper=""
 fi
-echo $aurhelper""").readline().replace("\n", "")
+echo $aurhelper""").readline().strip()
 
 
 def has_aur_helper():

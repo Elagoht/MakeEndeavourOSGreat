@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QLineEdit, QMainWindow, QSpinBox, QWidget, QGroupBox, QPushButton, QLabel, QGridLayout, QStatusBar, QTabWidget
+from PyQt5.QtWidgets import QTabWidget
 from Gnome import GnomeTab
 from Update import UpdateTab
 from Pamac import PamacTab
