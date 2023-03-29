@@ -27,10 +27,10 @@ class GnomeTab(QWidget):
         self.gbxConsole = QGroupBox("Gnome Console", self)
         self.glyConsole = QVBoxLayout(self.gbxConsole)
         self.lblConsole = QLabel(
-            "Gnome terminal is more compatible than console with Gnome desktop environment (open with terminal etc.). But may not be able to adapt dark/light theme.")
+            "Gnome Console is more compatible with dark/light theme but is not compatible with default terminal application configuration.")
         self.lblConsole.setWordWrap(True)
         self.btnConsole = QPushButton(
-            QIcon("GUI/Assets/install.png"), "Install Gnome Terminal", self.gbxConsole)
+            QIcon("GUI/Assets/install.png"), "Install Gnome Console", self.gbxConsole)
         self.resConsole = ResultWidget()
         self.glyConsole.addWidget(self.lblConsole)
         self.glyConsole.addWidget(self.btnConsole)
