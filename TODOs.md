@@ -11,3 +11,5 @@
 - [ ] Install Gnome extensions.
 - [ ] Install `easyeffects` to configure voice channels.
 - [ ] Enable context menu icons.
+- [ ] Install and use a nerd font.
+- [ ] Install and setadw-gtk3 theme.
