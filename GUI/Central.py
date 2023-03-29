@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QTabWidget
+from PyQt5.QtWidgets import QTabWidget, QScrollArea
 from Gnome import GnomeTab
 from Update import UpdateTab
 from Pamac import PamacTab
@@ -6,14 +6,26 @@ from Pamac import PamacTab
 
 class Central(QTabWidget):
     def __init__(self):
-        super(Central, self).__init__()
+        super(QTabWidget, self).__init__()
 
         # Create tab widgets
         self.GnomeTab = GnomeTab()
         self.UpdateTab = UpdateTab()
         self.PamacTab = PamacTab()
 
+        self.scrollGnome = QScrollArea(self)
+        self.scrollGnome.setWidget(self.GnomeTab)
+        self.scrollGnome.setWidgetResizable(True)
+
+        self.scrollUpdate = QScrollArea(self)
+        self.scrollUpdate.setWidget(self.UpdateTab)
+        self.scrollUpdate.setWidgetResizable(True)
+
+        self.scrollPamac = QScrollArea(self)
+        self.scrollPamac.setWidget(self.PamacTab)
+        self.scrollPamac.setWidgetResizable(True)
+
         # Insert tab widgets
-        self.insertTab(0, self.UpdateTab, "Update System")
-        self.insertTab(1, self.GnomeTab, "Gnome Options")
-        self.insertTab(2, self.PamacTab, "Sofware Manager")
+        self.insertTab(0, self.scrollUpdate, "Update System")
+        self.insertTab(1, self.scrollGnome, "Gnome Options")
+        self.insertTab(2, self.scrollPamac, "Sofware Manager")

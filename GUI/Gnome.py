@@ -102,7 +102,7 @@ fi""", self.resConsole))
                     self.check_transparent_terminal()))))
         self.btnTransparencyUninstall.clicked.connect(lambda: (run_command(
             aur_helper()+" -R gnome-terminal-transparency && sudo pacman -S gnome-terminal"
-            if has_aur_helper() else "false", self.resTransparencyInstall),
+            if has_aur_helper() else "false", self.resTransparencyUninstall),
             self.lblTransparencyResult.setText(
                 self.update_transparency_result(
                     self.check_transparent_terminal()))))
