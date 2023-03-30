@@ -6,8 +6,9 @@ class ResultWidget(QWidget):
         super(QWidget, self).__init__()
 
         # Create widgets
-        self.lblStatusCode = QLabel("Hasn't Run.", self)
-        self.lblStatus = QLabel("No Process.", self)
+        self.lblStatusCode = QLabel(self)
+        self.lblStatus = QLabel(self)
+        self.lblStatus.setWordWrap(True)
 
         # Insert widgets to layout
         self.layout = QHBoxLayout(self)

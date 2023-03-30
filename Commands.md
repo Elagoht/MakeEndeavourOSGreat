@@ -220,7 +220,7 @@ Developer Utilities:
   * bpython
   * idle
 * C#
-  * dotnet-sdk-bin
+  * dotnet-sdk
 * Rust
   * rustup
 * R
