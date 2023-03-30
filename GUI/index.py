@@ -1,5 +1,5 @@
 #!/bin/env python3
-from PyQt5.QtWidgets import QApplication, QStyleFactory
+from PyQt5.QtWidgets import QApplication
 from sys import argv, exit
 from MainWin import MainWin
 

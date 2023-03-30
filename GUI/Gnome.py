@@ -11,6 +11,17 @@ class GnomeTab(QWidget):
     def __init__(self):
         super(QWidget, self).__init__()
 
+        # Create context menu section
+        self.gbxContext = QGroupBox("Context Menu", self)
+        self.glyContext = QVBoxLayout(self.gbxContext)
+        self.lblContext = QLabel("Enable context (right click) menu icons.")
+        self.btnContext = QPushButton(
+            QIcon("GUI/Assets/configure.png"), "Enable Icons")
+        self.resContext = ResultWidget()
+        self.glyContext.addWidget(self.lblContext)
+        self.glyContext.addWidget(self.btnContext)
+        self.glyContext.addWidget(self.resContext)
+
         # Create terminal and console section
         self.gbxTerm = QGroupBox("Terminal / Console", self)
         self.glyTerm = QVBoxLayout(self.gbxTerm)
@@ -72,7 +83,10 @@ class GnomeTab(QWidget):
         self.glyTransparency.addWidget(
             self.resTransparencyUninstall, 6, 0, 1, 2)
 
-  # Connect buttons to functions
+        # Connect buttons to functions
+        self.btnContext.clicked.connect(lambda: run_command(
+            "gsettings set org.gnome.settings-daemon.plugins.xsettings overrides \"{\\\"Gtk/ButtonImages\\\": <1>, \\\"Gtk/MenuImages\\\": <1>}\"",
+            self.resContext))
         self.btnTerminal.clicked.connect(lambda: run_command(
             """if [ ! -f /bin/gnome-terminal ]
     then sudo pacman -S gnome-terminal
@@ -109,6 +123,7 @@ fi""", self.resConsole))
 
         # Insert groupboxes into layout
         self.layout = QVBoxLayout(self)
+        self.layout.addWidget(self.gbxContext)
         self.layout.addWidget(self.gbxTerm)
         self.layout.addWidget(self.gbxTransparency)
 

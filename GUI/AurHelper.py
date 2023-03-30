@@ -72,7 +72,9 @@ class AurHelperTab(QWidget):
     rm -rf $workdir
 fi""", self.resParuInstall))  # Installing AUR helper without an AUR helper.
         self.btnParuUninstall.clicked.connect(lambda: run_command(
-            "sudo pacman -R paru-bin || sudo pacman -R paru", self.resParuUninstall))
+            """if [ -f /bin/paru ]
+    then sudo pacman -R paru-bin || sudo pacman -R paru
+fi""", self.resParuUninstall))
         self.btnYayInstall.clicked.connect(lambda: run_command(
             """if [ ! -f /bin/yay ]
     then workdir=$(mktemp -d) &&
@@ -83,7 +85,9 @@ fi""", self.resParuInstall))  # Installing AUR helper without an AUR helper.
     rm -rf $workdir
 fi""", self.resYayInstall))  # Installing AUR helper without an AUR helper.
         self.btnYayUninstall.clicked.connect(lambda: run_command(
-            "sudo pacman -R yay-bin || sudo pacman -R yay", self.resYayUninstall))
+            """if [ -f /bin/yay ]
+    then sudo pacman -R yay-bin || sudo pacman -R yay
+fi""", self.resYayUninstall))
 
         # Insert groupboxes to layout
         self.layout = QVBoxLayout(self)
