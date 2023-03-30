@@ -19,14 +19,20 @@ class DevelopmentTab(QWidget):
         # Common Utilities
         self.gbxCommon = GridBox("Common Apps")
 
-        self.appVSCode = AppBox("VSCode", "visual-studio-code-bin")
-        self.appCode = AppBox("Code", "code")
-        self.appNeovim = AppBox("Neovim", "neovim")
-        self.appEmacs = AppBox("Emacs", "emacs")
-        self.appSqliteBrowser = AppBox(
-            "DB Browser for SQLite", "sqlitebrowser")
-        self.appMongoDB = AppBox("MongoDB", "mongodb-bin")
-        self.appMariaDB = AppBox("MariaDB", "mariadb")
+        self.appVSCode = AppBox("VSCode", "visual-studio-code-bin",
+                                "GUI/Assets/Apps/vscode.png")
+        self.appCode = AppBox("Code", "code",
+                              "GUI/Assets/Apps/code-oss.png")
+        self.appNeovim = AppBox("Neovim", "neovim",
+                                "GUI/Assets/Apps/nvim.png")
+        self.appEmacs = AppBox("Emacs", "emacs",
+                               "GUI/Assets/Apps/emacs.png")
+        self.appSqliteBrowser = AppBox("DB Browser for SQLite", "sqlitebrowser",
+                                       "GUI/Assets/Apps/sqlitebrowser.png")
+        self.appMongoDB = AppBox("MongoDB", "mongodb-bin",
+                                 "GUI/Assets/Apps/mongodb.png")
+        self.appMariaDB = AppBox("MariaDB", "mariadb",
+                                 "GUI/Assets/Apps/mariadb.png")
 
         self.gbxCommon.addWidget(self.appVSCode)
         self.gbxCommon.addWidget(self.appCode, 0, 1)
@@ -38,25 +44,34 @@ class DevelopmentTab(QWidget):
 
         # HTML CSS
         self.gbxHTMLCSS = GridBox("HTML / CSS")
-        self.appBlueFish = AppBox("BlueFish Editor", "bluefish")
+        self.appBlueFish = AppBox("BlueFish Editor", "bluefish",
+                                  "GUI/Assets/Apps/bluefish.png")
         self.gbxHTMLCSS.addWidget(self.appBlueFish)
 
         # JavaScript
         self.gbxJavaScript = GridBox("JavaScript")
-        self.appNodeJs = AppBox("Node.js", "nodejs")
-        self.appNpm = AppBox("Npm", "npm")
-        self.appYarn = AppBox("Yarn", "yarn")
+        self.appNodeJs = AppBox("Node.js", "nodejs",
+                                "GUI/Assets/Apps/nodejs.png")
+        self.appNpm = AppBox("Npm", "npm",
+                             "GUI/Assets/Apps/npm.png")
+        self.appYarn = AppBox("Yarn", "yarn",
+                              "GUI/Assets/Apps/yarn.png")
         self.gbxJavaScript.addWidget(self.appNodeJs)
         self.gbxJavaScript.addWidget(self.appNpm, 0, 1)
         self.gbxJavaScript.addWidgets(self.appYarn)
 
         # Java
         self.gbxJava = GridBox("Java")
-        self.appJDK = AppBox("JDK latest", "jdk-openjdk")
-        self.appJDK17 = AppBox("JDK 17", "jdk17-openjdk")
-        self.appJDK11 = AppBox("JDK 11", "jdk11-openjdk")
-        self.appJDK8 = AppBox("JDK 8", "jdk8-openjdk")
-        self.appEclipseJava = AppBox("Eclipse Java", "eclipse-java")
+        self.appJDK = AppBox("JDK latest", "jdk-openjdk",
+                             "GUI/Assets/Apps/java.png")
+        self.appJDK17 = AppBox("JDK 17", "jdk17-openjdk",
+                               "GUI/Assets/Apps/java.png")
+        self.appJDK11 = AppBox("JDK 11", "jdk11-openjdk",
+                               "GUI/Assets/Apps/java.png")
+        self.appJDK8 = AppBox("JDK 8", "jdk8-openjdk",
+                              "GUI/Assets/Apps/java.png")
+        self.appEclipseJava = AppBox("Eclipse Java", "eclipse-java",
+                                     "GUI/Assets/Apps/eclipse.png")
         self.gbxJava.addWidget(self.appJDK)
         self.gbxJava.addWidget(self.appJDK17, 0, 1)
         self.gbxJava.addWidgets(self.appJDK11,
@@ -65,10 +80,14 @@ class DevelopmentTab(QWidget):
 
         # Python
         self.gbxPython = GridBox("Python")
-        self.appBpython = AppBox("bPython", "bpython")
-        self.appIdle = AppBox("IDLE", "idle")
-        self.appIdlex = AppBox("IDLEX", "idlex")
-        self.appTk = AppBox("TK (for Tkinter)", "tk")
+        self.appBpython = AppBox("bPython", "bpython",
+                                 "GUI/Assets/Apps/bpython.png")
+        self.appIdle = AppBox("IDLE", "idle",
+                              "GUI/Assets/Apps/python.png")
+        self.appIdlex = AppBox("IDLEX", "idlex",
+                               "GUI/Assets/Apps/python.png")
+        self.appTk = AppBox("TK (for Tkinter)", "tk",
+                            "GUI/Assets/Apps/tcltk.png")
         self.gbxPython.addWidget(self.appBpython)
         self.gbxPython.addWidget(self.appIdle, 0, 1)
         self.gbxPython.addWidgets(self.appIdlex,
@@ -76,17 +95,24 @@ class DevelopmentTab(QWidget):
 
         # C#
         self.gbxCSharp = GridBox("C#")
-        self.appDotnet = AppBox("Dotnet SDK", "dotnet-sdk")
+        self.appDotnet = AppBox("Dotnet SDK", "dotnet-sdk",
+                                "GUI/Assets/Apps/dotnet.png")
         self.gbxCSharp.addWidget(self.appDotnet)
 
         # C/C++
         self.gbxCCpp = GridBox("C/C++")
-        self.appCodeBlocks = AppBox("Code::Blocks", "codeblocks")
-        self.appClion = AppBox("Clion", "clion")
-        self.appEclipseCCpp = AppBox("Eclipse C/C++", "eclipse-cpp")
-        self.appHeaders = AppBox("Linux Headers (.h files)", "linux-headers")
-        self.appHeadersLts = AppBox("Linux LTS Headers", "linux-lts-headers")
-        self.appHeadersZen = AppBox("Linux Zen Headers", "linux-zen-headers")
+        self.appCodeBlocks = AppBox("Code::Blocks", "codeblocks",
+                                    "GUI/Assets/Apps/codeblocks.png")
+        self.appClion = AppBox("Clion", "clion",
+                               "GUI/Assets/Apps/clion.png")
+        self.appEclipseCCpp = AppBox("Eclipse C/C++", "eclipse-cpp",
+                                     "GUI/Assets/Apps/eclipse.png")
+        self.appHeaders = AppBox("Linux Headers (.h files)", "linux-headers",
+                                 "GUI/Assets/Apps/header.png")
+        self.appHeadersLts = AppBox("Linux LTS Headers", "linux-lts-headers",
+                                    "GUI/Assets/Apps/header.png")
+        self.appHeadersZen = AppBox("Linux Zen Headers", "linux-zen-headers",
+                                    "GUI/Assets/Apps/header.png")
         self.gbxCCpp.addWidget(self.appCodeBlocks)
         self.gbxCCpp.addWidget(self.appClion, 0, 1)
         self.gbxCCpp.addWidgets(self.appEclipseCCpp,
@@ -96,13 +122,16 @@ class DevelopmentTab(QWidget):
 
         # Rust
         self.gbxRust = GridBox("Rust")
-        self.appRustUp = AppBox("RustUp", "rustup")
+        self.appRustUp = AppBox("RustUp", "rustup",
+                                "GUI/Assets/Apps/rust.png")
         self.gbxRust.addWidget(self.appRustUp)
 
         # R
         self.gbxR = GridBox("R")
-        self.appR = AppBox("R", "r")
-        self.appRStudio = AppBox("RStudio", "rstudio-desktop-bin")
+        self.appR = AppBox("R", "r",
+                           "GUI/Assets/Apps/r.png")
+        self.appRStudio = AppBox("RStudio", "rstudio-desktop-bin",
+                                 "GUI/Assets/Apps/rstudio.png")
         self.gbxR.addWidget(self.appR)
         self.gbxR.addWidget(self.appRStudio, 0, 1)
 

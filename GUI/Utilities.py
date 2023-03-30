@@ -1,7 +1,7 @@
 from os import popen
 from Result import ResultWidget
-from PyQt5.QtWidgets import QGridLayout, QGroupBox, QPushButton, QWidget
-from PyQt5.QtGui import QIcon
+from PyQt5.QtWidgets import QGridLayout, QGroupBox, QPushButton, QWidget, QLabel
+from PyQt5.QtGui import QIcon, QPixmap
 
 
 def run_command(command: str, result_widget: ResultWidget):
@@ -45,22 +45,23 @@ fi""" if has_aur_helper() else "false", result_widget)
 
 
 class AppBox(QGroupBox):
-    def __init__(self, title: str, package: str):
+    def __init__(self, title: str, package: str, image: str):
         super(QGroupBox, self).__init__()
         self.setTitle(title)
         self.glyApp = QGridLayout(self)
-        # self.imgApp = QPixmap(image,"")
+        self.imgApp = QLabel(self)
+        self.imgApp.setPixmap(QPixmap(image))
         self.btnInstall = QPushButton(
             QIcon("GUI/Assets/install.png"), "Install", self)
         self.resInstall = ResultWidget()
         self.btnUninstall = QPushButton(
             QIcon("GUI/Assets/uninstall.png"), "Uninstall", self)
         self.resUninstall = ResultWidget()
-        # self.glyApp.addWidget(self.imgApp, 0, 0, 1, 2)
-        self.glyApp.addWidget(self.btnInstall, 1, 0)
-        self.glyApp.addWidget(self.btnUninstall, 1, 1)
-        self.glyApp.addWidget(self.resInstall, 2, 0)
-        self.glyApp.addWidget(self.resUninstall, 2, 1)
+        self.glyApp.addWidget(self.imgApp, 0, 0, 4, 1)
+        self.glyApp.addWidget(self.btnInstall, 0, 1)
+        self.glyApp.addWidget(self.resInstall, 1, 1)
+        self.glyApp.addWidget(self.btnUninstall, 2, 1)
+        self.glyApp.addWidget(self.resUninstall, 3, 1)
 
         # Connect buttons to functions
         self.btnInstall.clicked.connect(
