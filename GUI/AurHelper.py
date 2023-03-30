@@ -1,10 +1,8 @@
 from PyQt5.QtWidgets import QWidget, QGroupBox, QPushButton, QLabel, QGridLayout, QVBoxLayout
 from PyQt5.QtGui import QIcon
-from PyQt5.QtCore import Qt
-from RunCommand import run_command
 from Result import ResultWidget
 from os import popen
-from Utilities import aur_helper, has_aur_helper
+from Utilities import aur_helper, has_aur_helper, run_command
 
 
 class AurHelperTab(QWidget):
@@ -112,5 +110,6 @@ fi""", self.resYayUninstall))
             helpers.append("paru")
         if self.has_yay():
             helpers.append("yay")
-        return f"Your installed AUR helper{'s' if len(helpers) > 1 else ''}: " + ", ".join(helpers) + "."\
+        return f"Your installed AUR helper{'s' if len(helpers) > 1 else ''}: "\
+            + ", ".join(helpers) + "."\
             if len(helpers) else "You do not have any AUR helper."

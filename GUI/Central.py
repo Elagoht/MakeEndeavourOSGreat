@@ -4,6 +4,7 @@ from Update import UpdateTab
 from Pamac import PamacTab
 from AurHelper import AurHelperTab
 from GnomeExtensions import ExtensionsTab
+from Theming import ThemingTab
 
 
 class Central(QTabWidget):
@@ -16,6 +17,7 @@ class Central(QTabWidget):
         self.PamacTab = PamacTab()
         self.AurHelperTab = AurHelperTab()
         self.ExtensionsTab = ExtensionsTab()
+        self.ThemingTab = ThemingTab()
 
         self.scrollGnome = QScrollArea(self)
         self.scrollGnome.setWidget(self.GnomeTab)
@@ -37,9 +39,14 @@ class Central(QTabWidget):
         self.scrollExtensions.setWidget(self.ExtensionsTab)
         self.scrollExtensions.setWidgetResizable(True)
 
+        self.scrollTheming = QScrollArea(self)
+        self.scrollTheming.setWidget(self.ThemingTab)
+        self.scrollTheming.setWidgetResizable(True)
+
         # Insert tab widgets
         self.insertTab(0, self.scrollUpdate, "Update System")
         self.insertTab(1, self.scrollPamac, "Sofware Manager")
         self.insertTab(2, self.scrollAurHelper, "AUR Helper")
-        self.insertTab(3, self.scrollGnome, "Gnome Options")
-        self.insertTab(4, self.scrollExtensions, "Gnome Extensions")
+        self.insertTab(3, self.scrollTheming, "Theming")
+        self.insertTab(4, self.scrollGnome, "Gnome Options")
+        self.insertTab(5, self.scrollExtensions, "Gnome Extensions")

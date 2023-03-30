@@ -1,10 +1,9 @@
 from PyQt5.QtWidgets import QWidget, QGroupBox, QPushButton, QLabel, QVBoxLayout, QGridLayout
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import Qt
-from RunCommand import run_command
 from Result import ResultWidget
 from os import popen
-from Utilities import aur_helper, has_aur_helper
+from Utilities import aur_helper, has_aur_helper, run_command
 
 
 class GnomeTab(QWidget):

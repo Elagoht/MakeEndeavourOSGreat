@@ -1,10 +1,8 @@
 from PyQt5.QtWidgets import QWidget, QGroupBox, QPushButton, QLabel, QGridLayout, QVBoxLayout
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import Qt
-from RunCommand import run_command
 from Result import ResultWidget
-from os import popen
-from Utilities import aur_helper, has_aur_helper
+from Utilities import aur_helper, has_aur_helper, run_command, install_if_doesnt_have
 
 
 ExtensionList = {
@@ -60,10 +58,8 @@ class ExtensionsTab(QWidget):
         self.glyExtensions.addWidget(self.lblExtensions)
 
         # Connect buttons to functions
-        self.btnConnector.clicked.connect(lambda: run_command(
-            f"""if [ ! "$(pacman -Qqs gnome-browser-connector)" = "gnome-browser-connector" ]
-    then {aur_helper()} -S gnome-browser-connector
-fi""" if has_aur_helper() else "false", self.resConnector))
+        self.btnConnector.clicked.connect(lambda: install_if_doesnt_have(
+            "gnome-browser-connector", self.resConnector))
 
         # Insert groupboxes to layout
         self.layout = QVBoxLayout(self)

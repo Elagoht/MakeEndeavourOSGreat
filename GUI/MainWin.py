@@ -1,5 +1,4 @@
 from PyQt5.QtWidgets import QMainWindow, QStatusBar
-from PyQt5.QtGui import QKeySequence
 from Central import Central
 
 

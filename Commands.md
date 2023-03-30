@@ -151,3 +151,16 @@ Suggested Gnome extensions:
 * <https://extensions.gnome.org/extension/3396/color-picker/>
 * <https://extensions.gnome.org/extension/4257/scroll-panel/>
 * <https://extensions.gnome.org/extension/355/status-area-horizontal-spacing/>
+
+---
+
+Installable nerd fonts:
+
+* ttf-ubuntu-mono-nerd
+* ttf-sourcecodepro-nerd
+* ttf-roboto-mono-nerd
+* ttf-jetbrains-mono-nerd
+* ttf-firacode-nerd
+* otf-droid-nerd
+* ttf-dejavu-nerd
+* ttf-hack-nerd
