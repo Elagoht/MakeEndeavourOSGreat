@@ -1,7 +1,8 @@
 from os import popen
 from Result import ResultWidget
-from PyQt5.QtWidgets import QGridLayout, QGroupBox, QPushButton, QWidget, QLabel
+from PyQt5.QtWidgets import QGridLayout, QHBoxLayout, QGroupBox, QPushButton, QWidget, QLabel
 from PyQt5.QtGui import QIcon, QPixmap
+from PyQt5.QtCore import Qt
 
 
 def run_command(command: str, result_widget: ResultWidget):
@@ -82,3 +83,22 @@ class GridBox(QGroupBox):
     def addWidgets(self, *widgets: QWidget):
         for widget in widgets:
             self.glyField.addWidget(widget)
+
+
+class ExtensionBox(QGroupBox):
+    def __init__(self, title: str, link: str, image: str):
+        super(QGroupBox, self).__init__()
+        self.setTitle(title)
+        self.glyExt = QHBoxLayout(self)
+
+        self.imgExt = QLabel(self)
+        self.imgExt.setPixmap(QPixmap(image))
+        self.imgExt.setFixedWidth(40)
+        self.lblExt = QLabel(f"<a href=\"{link}\">Visit Page</a>")
+        self.lblExt.setWordWrap(True)
+        self.lblExt.setOpenExternalLinks(True)
+        self.lblExt.setTextFormat(Qt.RichText)
+        self.lblExt.setTextInteractionFlags(Qt.TextBrowserInteraction)
+
+        self.glyExt.addWidget(self.imgExt)
+        self.glyExt.addWidget(self.lblExt)

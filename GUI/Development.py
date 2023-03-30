@@ -1,7 +1,5 @@
-from PyQt5.QtWidgets import QWidget, QGroupBox, QPushButton, QLabel, QGridLayout, QVBoxLayout
-from PyQt5.QtGui import QIcon
-from Result import ResultWidget
-from Utilities import run_command, install_if_doesnt_have, AppBox, GridBox
+from PyQt5.QtWidgets import QWidget, QGroupBox, QLabel, QVBoxLayout
+from Utilities import AppBox, GridBox
 
 
 class DevelopmentTab(QWidget):
