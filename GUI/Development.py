@@ -36,8 +36,8 @@ class DevelopmentTab(QWidget):
 
         self.gbxCommon.addWidget(self.appVSCode)
         self.gbxCommon.addWidget(self.appCode, 0, 1)
-        self.gbxCommon.addWidgets(self.appNeovim,
-                                  self.appEmacs,
+        self.gbxCommon.addWidget(self.appNeovim, 0, 2)
+        self.gbxCommon.addWidgets(self.appEmacs,
                                   self.appSqliteBrowser,
                                   self.appMongoDB,
                                   self.appMariaDB)
@@ -58,7 +58,7 @@ class DevelopmentTab(QWidget):
                               "GUI/Assets/Apps/yarn.png")
         self.gbxJavaScript.addWidget(self.appNodeJs)
         self.gbxJavaScript.addWidget(self.appNpm, 0, 1)
-        self.gbxJavaScript.addWidgets(self.appYarn)
+        self.gbxJavaScript.addWidget(self.appYarn, 0, 2)
 
         # Java
         self.gbxJava = GridBox("Java")
@@ -74,8 +74,8 @@ class DevelopmentTab(QWidget):
                                      "GUI/Assets/Apps/eclipse.png")
         self.gbxJava.addWidget(self.appJDK)
         self.gbxJava.addWidget(self.appJDK17, 0, 1)
-        self.gbxJava.addWidgets(self.appJDK11,
-                                self.appJDK8,
+        self.gbxJava.addWidget(self.appJDK11, 0, 2)
+        self.gbxJava.addWidgets(self.appJDK8,
                                 self.appEclipseJava)
 
         # Python
@@ -90,8 +90,8 @@ class DevelopmentTab(QWidget):
                             "GUI/Assets/Apps/tcltk.png")
         self.gbxPython.addWidget(self.appBpython)
         self.gbxPython.addWidget(self.appIdle, 0, 1)
-        self.gbxPython.addWidgets(self.appIdlex,
-                                  self.appTk)
+        self.gbxPython.addWidget(self.appIdlex, 0, 2)
+        self.gbxPython.addWidgets(self.appTk)
 
         # C#
         self.gbxCSharp = GridBox("C#")
@@ -115,8 +115,8 @@ class DevelopmentTab(QWidget):
                                     "GUI/Assets/Apps/header.png")
         self.gbxCCpp.addWidget(self.appCodeBlocks)
         self.gbxCCpp.addWidget(self.appClion, 0, 1)
-        self.gbxCCpp.addWidgets(self.appEclipseCCpp,
-                                self.appHeaders,
+        self.gbxCCpp.addWidget(self.appEclipseCCpp, 0, 2)
+        self.gbxCCpp.addWidgets(self.appHeaders,
                                 self.appHeadersLts,
                                 self.appHeadersZen)
 

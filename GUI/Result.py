@@ -7,22 +7,23 @@ class ResultWidget(QWidget):
 
         # Create widgets
         self.lblStatusCode = QLabel(self)
-        self.lblStatus = QLabel(self)
-        self.lblStatus.setWordWrap(True)
+        self.lblStatusCode.setMargin(0)
+        # self.lblStatus = QLabel(self)
+        # self.lblStatus.setWordWrap(True)
 
         # Insert widgets to layout
         self.layout = QHBoxLayout(self)
         self.layout.addWidget(self.lblStatusCode)
-        self.layout.addWidget(self.lblStatus, 1)
+        # self.layout.addWidget(self.lblStatus, 1)
 
     def setStatus(self, statusCode):
-        self.lblStatusCode.setText(f"Exited({statusCode}):")
+        self.lblStatusCode.setText(f"Exited({statusCode})")
         if statusCode == 0:
-            self.lblStatus.setText("Operation successfull.")
+            # self.lblStatus.setText("Operation successfull.")
             self.lblStatusCode.setStyleSheet("color: green")
         elif statusCode == -1:
-            self.lblStatus.setText("Terminal closed by user.")
+            # self.lblStatus.setText("Terminal closed by user.")
             self.lblStatusCode.setStyleSheet("color: gray")
         else:
-            self.lblStatus.setText("Opeation failed.")
+            # self.lblStatus.setText("Opeation failed.")
             self.lblStatusCode.setStyleSheet("color: red")
