@@ -164,3 +164,72 @@ Installable nerd fonts:
 * otf-droid-nerd
 * ttf-dejavu-nerd
 * ttf-hack-nerd
+
+---
+
+Developer Utilities:
+
+* Common Utilities
+  * code
+  * visual-studio-code-bin
+  * neovim
+  * emacs
+  * sqlitebrowser
+  * mongodb-bin
+  * mariadb
+* HTML/CSS
+  * bluefish
+* Java
+  * jdk-openjdk
+  * jdk17-openjdk
+  * jdk11-openjdk
+  * jdk8-openjdk
+* ttf-roboto-mono-nerd
+* ttf-jetbrains-mono-nerd
+* ttf-firacode-nerd
+* otf-droid-nerd
+* ttf-dejavu-nerd
+* ttf-hack-nerd
+
+---
+
+Developer Utilities:
+
+* Common Utilities
+  * code
+  * visual-studio-code-bin
+  * neovim
+  * emacs
+  * sqlitebrowser
+  * mongodb-bin
+  * mariadb
+* HTML/CSS
+  * bluefish
+* Java
+  * jdk-openjdk
+  * jdk17-openjdk
+  * jdk11-openjdk
+  * jdk8-openjdk
+  * eclipse-java
+* JavaScript
+  * nodejs
+  * npm
+  * yarn
+* Python
+  * tk
+  * bpython
+  * idle
+* C#
+  * dotnet-sdk-bin
+* Rust
+  * rustup
+* R
+  * r
+  * rstudio-desktop-bin
+* C/C++
+  * codeblocks
+  * linux-headers
+  * linux-lts-headers
+  * linux-zen-headers
+  * clion
+  * eclipse-cpp
