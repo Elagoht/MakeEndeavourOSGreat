@@ -93,7 +93,7 @@ class ExtensionBox(QGroupBox):
 
         self.imgExt = QLabel(self)
         self.imgExt.setPixmap(QPixmap(image))
-        self.imgExt.setFixedWidth(40)
+        self.imgExt.setFixedWidth(36)
         self.lblExt = QLabel(f"<a href=\"{link}\">Visit Page</a>")
         self.lblExt.setWordWrap(True)
         self.lblExt.setOpenExternalLinks(True)

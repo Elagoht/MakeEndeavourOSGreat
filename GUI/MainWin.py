@@ -5,7 +5,7 @@ from Central import Central
 class MainWin(QMainWindow):
     def __init__(self):
         super(MainWin, self).__init__()
-        self.show()
         self.central = Central()
         self.setCentralWidget(self.central)
         self.setMinimumSize(900, 500)
+        self.show()
