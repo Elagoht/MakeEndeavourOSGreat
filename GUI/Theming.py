@@ -1,8 +1,9 @@
 from PyQt5.QtWidgets import QWidget, QGroupBox, QLabel, QGridLayout, QVBoxLayout
 from PyQt5.QtGui import QIcon
 from Result import CommandButton
-from Utilities import run_command, install_if_doesnt_have, uninstall_if_have
+from Utilities import run_command, install_if_doesnt_have, uninstall_if_have, GridBox
 from os import popen, system, WEXITSTATUS
+from json import load
 
 
 class ThemingTab(QWidget):
@@ -10,55 +11,52 @@ class ThemingTab(QWidget):
         super(QWidget, self).__init__()
 
         # Create fonts section
-        self.gbxFont = QGroupBox("Nerd Font Configuration")
-        self.glyFont = QGridLayout(self.gbxFont)
+        self.gbxFont = GridBox("Nerd Font Configuration")
         self.lblFont = QLabel("Nerd fonts are font collections formed by combining alphanumerical and symbolic characters. Includes lots of font-icon and have wide use area. To be able to see font-icons instead of empty rectangle, install and use one of the following.", self.gbxFont)
         self.lblFont.setWordWrap(True)
-        self.fntUbuntu = FontBox("UbuntuMono Nerd Font Mono ",
-                                 "ttf-ubuntu-mono-nerd")
-        self.fntSource = FontBox("Source Code Pro",
-                                 "ttf-sourcecodepro-nerd")
-        self.fntRoboto = FontBox("RobotoMono Nerd Font Mono",
-                                 "ttf-roboto-mono-nerd")
-        self.fntJetBrains = FontBox("JetBrainsMono Nerd Font Mono",
-                                    "ttf-jetbrains-mono-nerd")
-        self.fntFiraCode = FontBox("FiraCode Nerd Font Mono",
-                                   "ttf-firacode-nerd")
-        self.fntDroid = FontBox("DroidSansMono Nerd Font Mono",
-                                "otf-droid-nerd")
-        self.fntDejavu = FontBox("DejaVuSansMono Nerd Font Mono",
-                                 "ttf-dejavu-nerd")
-        self.fntHack = FontBox("Hack Nerd Font Mono",
-                               "ttf-hack-nerd")
-        self.glyFont.addWidget(self.lblFont, 0, 0, 1, 2)
-        self.glyFont.addWidget(self.fntUbuntu, 1, 0)
-        self.glyFont.addWidget(self.fntSource, 1, 1)
-        self.glyFont.addWidget(self.fntRoboto)
-        self.glyFont.addWidget(self.fntJetBrains)
-        self.glyFont.addWidget(self.fntFiraCode)
-        self.glyFont.addWidget(self.fntDroid)
-        self.glyFont.addWidget(self.fntDejavu)
-        self.glyFont.addWidget(self.fntHack)
+        self.gbxFont.addWidget(self.lblFont, 0, 0, 1, 3)
 
         # Insert groupboxes to layout
         self.layout = QVBoxLayout(self)
         self.layout.addWidget(self.gbxFont)
+        self.load_fonts()
+
+    def load_fonts(self):
+        with open("GUI/Data/Fonts.json", "r") as fonts_json:
+            fonts: dict = load(fonts_json)
+        for number, font in enumerate(fonts.items()):
+            match number:
+                case 0:
+                    self.gbxFont.addWidget(FontBox(*font), 1, 0)
+                case 1:
+                    self.gbxFont.addWidget(FontBox(*font), 1, 1)
+                case 2:
+                    self.gbxFont.addWidget(FontBox(*font), 1, 2)
+                case _:
+                    self.gbxFont.glyField.addWidget(FontBox(*font))
 
 
 class FontBox(QGroupBox):
     def __init__(self, name: str, package: str):
         super(QGroupBox, self).__init__()
-        self.setTitle(name)
         self.glyFont = QGridLayout(self)
+        self.lblFontTitle = QLabel(name, self)
+        self.lblFontTitle.setWordWrap(True)
         self.btnFontInstall = CommandButton(
             QIcon("GUI/Assets/install.png"), "Install", self)
         self.btnFontUninstall = CommandButton(
             QIcon("GUI/Assets/uninstall.png"), "Uninstall", self)
         self.btnFontSet = CommandButton(
             QIcon("GUI/Assets/enabled.png"), "Select", self)
+        self.glyFont.addWidget(self.lblFontTitle, 0, 0, 1, 2)
         self.glyFont.addWidget(self.btnFontInstall)
-        self.glyFont.addWidget(self.btnFontUninstall, 0, 1)
-        self.glyFont.addWidget(self.btnFontSet, 0, 2)
+        self.glyFont.addWidget(self.btnFontUninstall)
+        self.glyFont.addWidget(self.btnFontSet, 2, 0, 1, 2)
+        self.setStyleSheet("""QGroupBox {
+            background: rgba(0,0,0,.25);
+            border: 1px solid rgba(0,0,0,.5);
+            border-radius: .25em;
+        }""")
 
         # Connect buttons to functions
         self.btnFontInstall.clicked.connect(
