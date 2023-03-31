@@ -14,7 +14,7 @@ class CommandButton(QPushButton):
         match statusCode:
             case 0:
                 self.setStyleSheet("color: green")
-                status_icon = "🗸"
+                status_icon = "✓"
             case -1:
                 self.setStyleSheet("color: gray")
                 status_icon = "☠"
