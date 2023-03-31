@@ -1,6 +1,6 @@
 from os import popen
 from Result import CommandButton
-from PyQt5.QtWidgets import QGridLayout, QHBoxLayout, QGroupBox, QWidget, QLabel
+from PyQt5.QtWidgets import QGridLayout, QHBoxLayout, QGroupBox, QWidget, QLabel, QVBoxLayout
 from PyQt5.QtGui import QIcon, QPixmap
 from PyQt5.QtCore import Qt
 
@@ -48,21 +48,28 @@ fi""" if has_aur_helper() else "false", result_widget)
 class AppBox(QGroupBox):
     def __init__(self, title: str, package: str, image: str, description: str = ""):
         super(QGroupBox, self).__init__()
+        self.glyApp = QVBoxLayout(self)
+        self.layInfo = QHBoxLayout()
+        self.layButtons = QHBoxLayout()
+
         self.lblTitle = QLabel(title)
-        self.glyApp = QGridLayout(self)
         self.imgApp = QLabel(self)
         self.imgApp.setPixmap(QPixmap(image))
+        self.imgApp.setFixedSize(128, 128)
         self.lblDescription = QLabel(description)
         self.lblDescription.setWordWrap(True)
         self.btnInstall = CommandButton(
             QIcon("GUI/Assets/install.png"), "Install", self)
         self.btnUninstall = CommandButton(
             QIcon("GUI/Assets/uninstall.png"), "Uninstall", self)
-        self.glyApp.addWidget(self.lblTitle, 0, 0, 1, 2)
-        self.glyApp.addWidget(self.imgApp, 1, 0)
-        self.glyApp.addWidget(self.lblDescription, 1, 1)
-        self.glyApp.addWidget(self.btnInstall)
-        self.glyApp.addWidget(self.btnUninstall)
+
+        self.layInfo.addWidget(self.imgApp)
+        self.layInfo.addWidget(self.lblDescription)
+        self.layButtons.addWidget(self.btnInstall)
+        self.layButtons.addWidget(self.btnUninstall)
+        self.glyApp.addWidget(self.lblTitle)
+        self.glyApp.addLayout(self.layInfo)
+        self.glyApp.addLayout(self.layButtons)
         self.setStyleSheet("""QGroupBox {
             background: rgba(0,0,0,.25);
             border: 1px solid rgba(0,0,0,.5);

@@ -1,0 +1,200 @@
+{
+    "Common Utilities": [
+        [
+            "Code",
+            "code",
+            "GUI/Assets/Apps/code-oss.png",
+            "Code OSS, is a source-code editor made with the Electron Framework."
+        ],
+        [
+            "VSCode",
+            "visual-studio-code-bin",
+            "GUI/Assets/Apps/vscode.png",
+            "A Code OSS distribution with Microsoft specific customizations."
+        ],
+        [
+            "Neovim",
+            "neovim",
+            "GUI/Assets/Apps/nvim.png",
+            "Vim with lua scripting support and still supports vimscript."
+        ],
+        [
+            "Emacs",
+            "emacs",
+            "GUI/Assets/Apps/emacs.png",
+            "The extensible, customizable, self-documenting, real-time display editor."
+        ],
+        [
+            "Docker",
+            "docker",
+            "GUI/Assets/Apps/docker.png",
+            "Set of platform as a service products use OS-level virtualization in packages called containers."
+        ],
+        [
+            "DB Browser for SQLite",
+            "sqlitebrowser",
+            "GUI/Assets/Apps/sqlitebrowser.png",
+            "High quality visual tool to create, design and edit SQLite database."
+        ],
+        [
+            "MongoDB",
+            "mongodb-bin",
+            "GUI/Assets/Apps/mongodb.png",
+            "Source-available, cross-platform, document-oriented NoSQL database program."
+        ],
+        [
+            "MariaDB",
+            "mariadb",
+            "GUI/Assets/Apps/mariadb.png",
+            "Commercially supported fork of MySQL relational database management system."
+        ]
+    ],
+    "HTML / CSS": [
+        [
+            "BlueFish Editor",
+            "bluefish",
+            "GUI/Assets/Apps/bluefish.png",
+            "Editor targeted for webdevelopers, with many options, scripts and programming code."
+        ]
+    ],
+    "JavaScript": [
+        [
+            "Node.js",
+            "nodejs",
+            "GUI/Assets/Apps/nodejs.png",
+            "Backend JavaScript runtime environment, executes JavaScript outside a web browser."
+        ],
+        [
+            "Npm",
+            "npm",
+            "GUI/Assets/Apps/npm.png",
+            "Package manager for the JavaScript programming language."
+        ],
+        [
+            "Yarn",
+            "yarn",
+            "GUI/Assets/Apps/yarn.png",
+            "Package manager for your code. It allows to use and share (e.g. JavaScript) code."
+        ]
+    ],
+    "Java": [
+        [
+            "JDK latest",
+            "jdk-openjdk",
+            "GUI/Assets/Apps/java.png",
+            "Java Development Kit by Oracle Corporation, latest version."
+        ],
+        [
+            "JDK 17",
+            "jdk17-openjdk",
+            "GUI/Assets/Apps/java.png",
+            "Java Development Kit by Oracle Corporation, version 17."
+        ],
+        [
+            "JDK 11",
+            "jdk11-openjdk",
+            "GUI/Assets/Apps/java.png",
+            "Java Development Kit by Oracle Corporation, version 11."
+        ],
+        [
+            "JDK 8",
+            "jdk8-openjdk",
+            "GUI/Assets/Apps/java.png",
+            "Java Development Kit by Oracle Corporation, latest version 8."
+        ],
+        [
+            "Eclipse Java",
+            "eclipse-java",
+            "GUI/Assets/Apps/eclipse.png",
+            "Most popular integrated development environment for Java development."
+        ]
+    ],
+    "Python": [
+        [
+            "bPython",
+            "bpython",
+            "GUI/Assets/Apps/bpython.png",
+            "Fancy Python interpreter with syntax higlhligter and more."
+        ],
+        [
+            "IDLE",
+            "idle",
+            "GUI/Assets/Apps/python.png",
+            "Integrated Development and Learning Environment for Python"
+        ],
+        [
+            "IDLEX",
+            "idlex",
+            "GUI/Assets/Apps/python.png",
+            "Basically IDLE, extended."
+        ],
+        [
+            "TK",
+            "tk",
+            "GUI/Assets/Apps/tcltk.png",
+            "Graphical user interface toolkit. (Required for Tkinter)"
+        ]
+    ],
+    "C# ": [
+        [
+            "Dotnet SDK",
+            "dotnet-sdk",
+            "GUI/Assets/Apps/dotnet.png",
+            "Software development kit to build and run .NET applications."
+        ]
+    ],
+    "C / C++": [
+        [
+            "Code::Blocks",
+            "codeblocks",
+            "GUI/Assets/Apps/codeblocks.png",
+            "IDE for multiple compilers including GCC, Clang and Visual C++."
+        ],
+        [
+            "Eclipse C/C++",
+            "eclipse-cpp",
+            "GUI/Assets/Apps/eclipse.png",
+            "The Eclipse CDT™ Project provides a fully functional C and C++."
+        ],
+        [
+            ".h files)",
+            "linux-headers",
+            "GUI/Assets/Apps/header.png",
+            "Required header (*.h) files for Linux kernel."
+        ],
+        [
+            "Linux LTS Headers",
+            "linux-lts-headers",
+            "GUI/Assets/Apps/header.png",
+            "Required header (*.h) files for Linux LTS kernel."
+        ],
+        [
+            "Linux Zen Headers",
+            "linux-zen-headers",
+            "GUI/Assets/Apps/header.png",
+            "Required header (*.h) files for Linux ZEN kernel."
+        ]
+    ],
+    "Rust": [
+        [
+            "RustUp",
+            "rustup",
+            "GUI/Assets/Apps/rust.png",
+            "Installs The Rust Programming Language from the official release channels."
+        ]
+    ],
+    "R": [
+        [
+            "R",
+            "r",
+            "GUI/Assets/Apps/r.png",
+            "Programming language for statistical computing and graphics."
+        ],
+        [
+            "RStudio",
+            "rstudio-desktop-bin",
+            "GUI/Assets/Apps/rstudio.png",
+            "Integrated development environment for R."
+        ]
+    ]
+}
