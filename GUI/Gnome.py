@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QWidget, QGroupBox, QPushButton, QLabel, QVBoxLayout, QGridLayout
+from PyQt5.QtWidgets import QWidget, QGroupBox, QLabel, QVBoxLayout, QGridLayout
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import Qt
 from Result import CommandButton
@@ -38,7 +38,7 @@ class GnomeTab(QWidget):
         self.lblConsole = QLabel(
             "Gnome Console is more compatible with dark/light theme but is not compatible with default terminal application configuration.")
         self.lblConsole.setWordWrap(True)
-        self.btnConsole = QPushButton(
+        self.btnConsole = CommandButton(
             QIcon("GUI/Assets/install.png"), "Install Gnome Console", self.gbxConsole)
         self.glyConsole.addWidget(self.lblConsole)
         self.glyConsole.addWidget(self.btnConsole)
@@ -54,7 +54,7 @@ class GnomeTab(QWidget):
         self.lblTransparency.setWordWrap(True)
         self.lblTransparencyCheck = QLabel(
             "Check your terminal", self.gbxTransparency)
-        self.btnTransparencyCheck = QPushButton(
+        self.btnTransparencyCheck = CommandButton(
             QIcon("GUI/Assets/check.png"), "Check", self.gbxTransparency)
         self.lblTransparencyResult = QLabel("Start Test")
         self.lblTransparencyResult.setAlignment(Qt.AlignCenter)
@@ -74,14 +74,14 @@ class GnomeTab(QWidget):
         # Connect buttons to functions
         self.btnContext.clicked.connect(lambda: run_command(
             "gsettings set org.gnome.settings-daemon.plugins.xsettings overrides \"{\\\"Gtk/ButtonImages\\\": <1>, \\\"Gtk/MenuImages\\\": <1>}\"",
-            self))
+            self.btnContext))
         self.btnTerminal.clicked.connect(lambda: run_command(
             """if [ ! -f /bin/gnome-terminal ]
     then sudo pacman -S gnome-terminal
 fi &&
 if [ -f /usr/bin/kgx ]
     then sudo pacman -R gnome-console
-fi""", self))
+fi""", self.btnTerminal))
         self.btnConsole.clicked.connect(lambda: run_command(
             """if [ ! -f /usr/bin/kgx ]
     then sudo pacman -S gnome-console
@@ -90,7 +90,7 @@ if [ "$(pacman -Qqs gnome-terminal)" = "gnome-terminal-transparency" ]
     then sudo pacman -R gnome-terminal-transparency
 elif [ "$(pacman -Qqs gnome-terminal)" = "gnome-terminal" ]
     then sudo pacman -R gnome-terminal
-fi""", self))
+fi""", self.btnContext))
         self.btnTransparencyCheck.clicked.connect(
             lambda: self.lblTransparencyResult.setText(
                 self.update_transparency_result(
@@ -98,13 +98,13 @@ fi""", self))
             ))
         self.btnTransparencyInstall.clicked.connect(lambda: (run_command(
             aur_helper()+" -S gnome-terminal-transparency"
-            if has_aur_helper() else "false", self),
+            if has_aur_helper() else "false", self.btnTransparencyInstall),
             self.lblTransparencyResult.setText(
                 self.update_transparency_result(
                     self.check_transparent_terminal()))))
         self.btnTransparencyUninstall.clicked.connect(lambda: (run_command(
             aur_helper()+" -R gnome-terminal-transparency && sudo pacman -S gnome-terminal"
-            if has_aur_helper() else "false", self),
+            if has_aur_helper() else "false", self.btnTransparencyUninstall),
             self.lblTransparencyResult.setText(
                 self.update_transparency_result(
                     self.check_transparent_terminal()))))

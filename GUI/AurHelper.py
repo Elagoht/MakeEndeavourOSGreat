@@ -2,7 +2,7 @@ from PyQt5.QtWidgets import QWidget, QGroupBox, QPushButton, QLabel, QGridLayout
 from PyQt5.QtGui import QIcon
 from Result import CommandButton
 from os import popen
-from Utilities import aur_helper, has_aur_helper, run_command
+from Utilities import run_command
 
 
 class AurHelperTab(QWidget):
@@ -60,11 +60,11 @@ class AurHelperTab(QWidget):
     cd paru-bin &&
     makepkg -si &&
     rm -rf $workdir
-fi""", self))  # Installing AUR helper without an AUR helper.
+fi""", self.btnParuInstall))  # Installing AUR helper without an AUR helper.
         self.btnParuUninstall.clicked.connect(lambda: run_command(
             """if [ -f /bin/paru ]
     then sudo pacman -R paru-bin || sudo pacman -R paru
-fi""", self))
+fi""", self.btnParuUninstall))
         self.btnYayInstall.clicked.connect(lambda: run_command(
             """if [ ! -f /bin/yay ]
     then workdir=$(mktemp -d) &&
@@ -73,11 +73,11 @@ fi""", self))
     cd yay-bin &&
     makepkg -si &&
     rm -rf $workdir
-fi""", self))  # Installing AUR helper without an AUR helper.
+fi""", self.btnYayInstall))  # Installing AUR helper without an AUR helper.
         self.btnYayUninstall.clicked.connect(lambda: run_command(
             """if [ -f /bin/yay ]
     then sudo pacman -R yay-bin || sudo pacman -R yay
-fi""", self))
+fi""", self.btnYayUninstall))
 
         # Insert groupboxes to layout
         self.layout = QVBoxLayout(self)

@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QMainWindow, QStatusBar
+from PyQt5.QtWidgets import QMainWindow
 from Central import Central
 
 

@@ -1,6 +1,6 @@
 from os import popen
 from Result import CommandButton
-from PyQt5.QtWidgets import QGridLayout, QHBoxLayout, QGroupBox, QPushButton, QWidget, QLabel
+from PyQt5.QtWidgets import QGridLayout, QHBoxLayout, QGroupBox, QWidget, QLabel
 from PyQt5.QtGui import QIcon, QPixmap
 from PyQt5.QtCore import Qt
 
@@ -46,25 +46,34 @@ fi""" if has_aur_helper() else "false", result_widget)
 
 
 class AppBox(QGroupBox):
-    def __init__(self, title: str, package: str, image: str):
+    def __init__(self, title: str, package: str, image: str, description: str = ""):
         super(QGroupBox, self).__init__()
-        self.setTitle(title)
+        self.lblTitle = QLabel(title)
         self.glyApp = QGridLayout(self)
         self.imgApp = QLabel(self)
         self.imgApp.setPixmap(QPixmap(image))
+        self.lblDescription = QLabel(description)
+        self.lblDescription.setWordWrap(True)
         self.btnInstall = CommandButton(
             QIcon("GUI/Assets/install.png"), "Install", self)
         self.btnUninstall = CommandButton(
             QIcon("GUI/Assets/uninstall.png"), "Uninstall", self)
-        self.glyApp.addWidget(self.imgApp, 0, 0, 4, 1)
-        self.glyApp.addWidget(self.btnInstall, 0, 1)
-        self.glyApp.addWidget(self.btnUninstall, 2, 1)
+        self.glyApp.addWidget(self.lblTitle, 0, 0, 1, 2)
+        self.glyApp.addWidget(self.imgApp, 1, 0)
+        self.glyApp.addWidget(self.lblDescription, 1, 1)
+        self.glyApp.addWidget(self.btnInstall)
+        self.glyApp.addWidget(self.btnUninstall)
+        self.setStyleSheet("""QGroupBox {
+            background: rgba(0,0,0,.25);
+            border: 1px solid rgba(0,0,0,.5);
+            border-radius: .25em;
+        }""")
 
         # Connect buttons to functions
         self.btnInstall.clicked.connect(
-            lambda: install_if_doesnt_have(package, self))
+            lambda: install_if_doesnt_have(package, self.btnInstall))
         self.btnUninstall.clicked.connect(
-            lambda: uninstall_if_have(package, self))
+            lambda: uninstall_if_have(package, self.btnUninstall))
 
 
 class GridBox(QGroupBox):

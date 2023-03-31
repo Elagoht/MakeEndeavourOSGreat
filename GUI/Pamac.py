@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QWidget, QGroupBox, QPushButton, QLabel, QVBoxLayout
+from PyQt5.QtWidgets import QWidget, QGroupBox, QLabel, QVBoxLayout
 from PyQt5.QtGui import QIcon
 from Result import CommandButton
 from Utilities import aur_helper, has_aur_helper, run_command
@@ -41,18 +41,18 @@ class PamacTab(QWidget):
             f"""if [ ! "$(pacman -Qq pamac-aur)" = "pamac-aur" ]
     then {aur_helper()} -S pamac-aur
 fi""" if has_aur_helper() else "false",
-            self))
+            self.btnInstall))
         self.btnUninstall.clicked.connect(lambda: run_command(
             f"""if [ "$(pacman -Qq pamac-aur)" = "pamac-aur" ]
     then {aur_helper()} -R pamac-aur
 fi""" if has_aur_helper() else "false",
-            self))
+            self.btnUninstall))
         self.btnEnable.clicked.connect(lambda: run_command(
             "sudo sed -Ei '/EnableAUR/s/^#//' /etc/pamac.conf",
-            self))
+            self.btnEnable))
         self.btnDisable.clicked.connect(lambda: run_command(
             "sudo sed -Ei '/EnableAUR/s/^/#/' /etc/pamac.conf",
-            self))
+            self.btnDisable))
 
         # Insert groupboxes to layout
         self.layout = QVBoxLayout(self)

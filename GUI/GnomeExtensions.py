@@ -1,6 +1,5 @@
-from PyQt5.QtWidgets import QWidget, QGroupBox, QPushButton, QLabel, QGridLayout, QVBoxLayout
+from PyQt5.QtWidgets import QWidget, QGroupBox, QLabel, QGridLayout, QVBoxLayout
 from PyQt5.QtGui import QIcon
-from PyQt5.QtCore import Qt
 from Result import CommandButton
 from Utilities import install_if_doesnt_have, ExtensionBox
 
@@ -77,7 +76,7 @@ class ExtensionsTab(QWidget):
 
         # Connect buttons to functions
         self.btnConnector.clicked.connect(lambda: install_if_doesnt_have(
-            "gnome-browser-connector", self))
+            "gnome-browser-connector", self.btnConnector))
 
         # Insert groupboxes to layout
         self.layout = QVBoxLayout(self)

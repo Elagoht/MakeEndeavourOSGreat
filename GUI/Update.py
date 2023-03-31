@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QWidget, QGroupBox, QPushButton, QVBoxLayout
+from PyQt5.QtWidgets import QWidget, QGroupBox, QVBoxLayout
 from PyQt5.QtGui import QIcon
 from Utilities import run_command
 from Result import CommandButton
