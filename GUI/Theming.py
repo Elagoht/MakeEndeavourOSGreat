@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QWidget, QGroupBox, QPushButton, QLabel, QGridLayout, QVBoxLayout
 from PyQt5.QtGui import QIcon
-from Result import ResultWidget
+from Result import CommandButton
 from Utilities import run_command, install_if_doesnt_have, uninstall_if_have
 from os import popen, system, WEXITSTATUS
 
@@ -30,9 +30,9 @@ class ThemingTab(QWidget):
                                  "ttf-dejavu-nerd")
         self.fntHack = FontBox("Hack Nerd Font Mono",
                                "ttf-hack-nerd")
-        self.glyFont.addWidget(self.lblFont)
-        self.glyFont.addWidget(self.fntUbuntu)
-        self.glyFont.addWidget(self.fntSource)
+        self.glyFont.addWidget(self.lblFont, 0, 0, 1, 2)
+        self.glyFont.addWidget(self.fntUbuntu, 1, 0)
+        self.glyFont.addWidget(self.fntSource, 1, 1)
         self.glyFont.addWidget(self.fntRoboto)
         self.glyFont.addWidget(self.fntJetBrains)
         self.glyFont.addWidget(self.fntFiraCode)
@@ -50,31 +50,25 @@ class FontBox(QGroupBox):
         super(QGroupBox, self).__init__()
         self.setTitle(name)
         self.glyFont = QGridLayout(self)
-        self.btnFontInstall = QPushButton(
+        self.btnFontInstall = CommandButton(
             QIcon("GUI/Assets/install.png"), "Install", self)
-        self.btnFontUninstall = QPushButton(
+        self.btnFontUninstall = CommandButton(
             QIcon("GUI/Assets/uninstall.png"), "Uninstall", self)
-        self.btnFontSet = QPushButton(
+        self.btnFontSet = CommandButton(
             QIcon("GUI/Assets/enabled.png"), "Select", self)
-        self.resFontInstall = ResultWidget()
-        self.resFontUninstall = ResultWidget()
-        self.resFontSet = ResultWidget()
         self.glyFont.addWidget(self.btnFontInstall)
         self.glyFont.addWidget(self.btnFontUninstall, 0, 1)
         self.glyFont.addWidget(self.btnFontSet, 0, 2)
-        self.glyFont.addWidget(self.resFontInstall)
-        self.glyFont.addWidget(self.resFontUninstall)
-        self.glyFont.addWidget(self.resFontSet)
 
         # Connect buttons to functions
         self.btnFontInstall.clicked.connect(
-            lambda: install_if_doesnt_have(package, self.resFontInstall))
+            lambda: install_if_doesnt_have(package, self.btnFontInstall))
         self.btnFontUninstall.clicked.connect(
-            lambda: uninstall_if_have(package, self.resFontUninstall))
+            lambda: uninstall_if_have(package, self.btnFontUninstall))
         self.btnFontSet.clicked.connect(
-            lambda: self.change_font_family(name, package, self.resFontSet))
+            lambda: self.change_font_family(name, package, self.btnFontSet))
 
-    def change_font_family(self, font_family: str, package: str, result_widget: ResultWidget) -> None:
+    def change_font_family(self, font_family: str, package: str, result_widget: CommandButton) -> None:
         if WEXITSTATUS(system(f"[ ! \"$(pacman -Qqs {package} | grep \"^{package}$\")\" = \"{package}\" ]")) == 0:
             result_widget.setStatus(-1)
             return

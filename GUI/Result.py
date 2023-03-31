@@ -1,29 +1,24 @@
-from PyQt5.QtWidgets import QWidget, QLabel, QHBoxLayout
+from PyQt5.QtWidgets import QPushButton, QWidget
+from PyQt5.QtGui import QIcon
 
 
-class ResultWidget(QWidget):
-    def __init__(self):
-        super(QWidget, self).__init__()
-
-        # Create widgets
-        self.lblStatusCode = QLabel(self)
-        self.lblStatusCode.setMargin(0)
-        # self.lblStatus = QLabel(self)
-        # self.lblStatus.setWordWrap(True)
-
-        # Insert widgets to layout
-        self.layout = QHBoxLayout(self)
-        self.layout.addWidget(self.lblStatusCode)
-        # self.layout.addWidget(self.lblStatus, 1)
+class CommandButton(QPushButton):
+    def __init__(self, icon: QIcon, text: str, parent: QWidget):
+        super(QPushButton, self).__init__()
+        self.text = text
+        self.setText(self.text)
+        self.setIcon(icon)
 
     def setStatus(self, statusCode):
-        self.lblStatusCode.setText(f"Exited({statusCode})")
-        if statusCode == 0:
-            # self.lblStatus.setText("Operation successfull.")
-            self.lblStatusCode.setStyleSheet("color: green")
-        elif statusCode == -1:
-            # self.lblStatus.setText("Terminal closed by user.")
-            self.lblStatusCode.setStyleSheet("color: gray")
-        else:
-            # self.lblStatus.setText("Opeation failed.")
-            self.lblStatusCode.setStyleSheet("color: red")
+        status_icon = ""
+        match statusCode:
+            case 0:
+                self.setStyleSheet("color: green")
+                status_icon = "🗸"
+            case -1:
+                self.setStyleSheet("color: gray")
+                status_icon = "☠"
+            case _:
+                self.setStyleSheet("color: red")
+                status_icon = "✗"
+        self.setText(f"{self.text} {status_icon}")

@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QWidget, QGroupBox, QPushButton, QLabel, QGridLayout, QVBoxLayout
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import Qt
-from Result import ResultWidget
+from Result import CommandButton
 from Utilities import install_if_doesnt_have, ExtensionBox
 
 
@@ -58,12 +58,10 @@ class ExtensionsTab(QWidget):
         self.lblConnector = QLabel(
             "You need to install a browser connector to be able to install extensions from your web browser.", self.gbxConnector)
         self.lblConnector.setWordWrap(True)
-        self.btnConnector = QPushButton(
+        self.btnConnector = CommandButton(
             QIcon("GUI/Assets/install.png"), "Install", self.gbxConnector)
-        self.resConnector = ResultWidget()
         self.glyConnector.addWidget(self.lblConnector)
         self.glyConnector.addWidget(self.btnConnector)
-        self.glyConnector.addWidget(self.resConnector)
 
         # Create Extensions section
         self.gbxExtensions = QGroupBox("Suggested Extensions")
@@ -79,7 +77,7 @@ class ExtensionsTab(QWidget):
 
         # Connect buttons to functions
         self.btnConnector.clicked.connect(lambda: install_if_doesnt_have(
-            "gnome-browser-connector", self.resConnector))
+            "gnome-browser-connector", self))
 
         # Insert groupboxes to layout
         self.layout = QVBoxLayout(self)

@@ -1,11 +1,11 @@
 from os import popen
-from Result import ResultWidget
+from Result import CommandButton
 from PyQt5.QtWidgets import QGridLayout, QHBoxLayout, QGroupBox, QPushButton, QWidget, QLabel
 from PyQt5.QtGui import QIcon, QPixmap
 from PyQt5.QtCore import Qt
 
 
-def run_command(command: str, result_widget: ResultWidget):
+def run_command(command: str, result_widget: CommandButton):
     result = popen(f"""statusfile=$(mktemp);
         xterm -bg black -fg green -e sh -c '{command}; echo $? > '$statusfile 2> /dev/null;
         cat $statusfile;
@@ -31,14 +31,14 @@ def has_aur_helper():
     return aur_helper() != ""
 
 
-def install_if_doesnt_have(package: str, result_widget: ResultWidget):
+def install_if_doesnt_have(package: str, result_widget: CommandButton):
     run_command(
         f"""if [ ! "$(pacman -Qqs {package} | grep "^{package}$")" = "{package}" ]
     then {aur_helper()} -S {package}
 fi""" if has_aur_helper() else "false", result_widget)
 
 
-def uninstall_if_have(package: str, result_widget: ResultWidget):
+def uninstall_if_have(package: str, result_widget: CommandButton):
     run_command(
         f"""if [ "$(pacman -Qqs {package} | grep "^{package}$" )" = "{package}" ]
     then {aur_helper()} -R {package}
@@ -52,23 +52,19 @@ class AppBox(QGroupBox):
         self.glyApp = QGridLayout(self)
         self.imgApp = QLabel(self)
         self.imgApp.setPixmap(QPixmap(image))
-        self.btnInstall = QPushButton(
+        self.btnInstall = CommandButton(
             QIcon("GUI/Assets/install.png"), "Install", self)
-        self.resInstall = ResultWidget()
-        self.btnUninstall = QPushButton(
+        self.btnUninstall = CommandButton(
             QIcon("GUI/Assets/uninstall.png"), "Uninstall", self)
-        self.resUninstall = ResultWidget()
         self.glyApp.addWidget(self.imgApp, 0, 0, 4, 1)
         self.glyApp.addWidget(self.btnInstall, 0, 1)
-        self.glyApp.addWidget(self.resInstall, 1, 1)
         self.glyApp.addWidget(self.btnUninstall, 2, 1)
-        self.glyApp.addWidget(self.resUninstall, 3, 1)
 
         # Connect buttons to functions
         self.btnInstall.clicked.connect(
-            lambda: install_if_doesnt_have(package, self.resInstall))
+            lambda: install_if_doesnt_have(package, self))
         self.btnUninstall.clicked.connect(
-            lambda: uninstall_if_have(package, self.resUninstall))
+            lambda: uninstall_if_have(package, self))
 
 
 class GridBox(QGroupBox):
