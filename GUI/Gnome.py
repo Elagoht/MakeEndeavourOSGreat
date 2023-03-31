@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QWidget, QGroupBox, QLabel, QVBoxLayout, QGridLayout
+from PyQt5.QtWidgets import QWidget, QGroupBox, QLabel, QVBoxLayout, QHBoxLayout, QGridLayout
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import Qt
 from Result import CommandButton
@@ -21,7 +21,7 @@ class GnomeTab(QWidget):
 
         # Create terminal and console section
         self.gbxTerm = QGroupBox("Terminal / Console", self)
-        self.glyTerm = QVBoxLayout(self.gbxTerm)
+        self.glyTerm = QHBoxLayout(self.gbxTerm)
         # Chose Gnome Terminal over Console
         self.gbxTerminal = QGroupBox("Gnome Terminal", self)
         self.glyTerminal = QVBoxLayout(self.gbxTerminal)
