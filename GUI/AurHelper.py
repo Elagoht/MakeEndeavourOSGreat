@@ -15,13 +15,15 @@ class AurHelperTab(QWidget):
         self.lblAurDesc.setWordWrap(True)
         self.btnAurCheck = CommandButton(
             QIcon("GUI/Assets/check.png"), "Check AUR Helpers", self.gbxAur)
+        self.btnAurCheck.clicked.connect(
+            lambda: self.lblAurHelper.setText(self.get_aur_helpers()))
         self.lblAurHelper = QLabel(self.gbxAur)
         self.gbxAur.addWidget(self.lblAurDesc)
         self.gbxAur.addWidget(self.btnAurCheck, 1, 0)
         self.gbxAur.addWidget(self.lblAurHelper, 2, 0)
 
         # Create paru section
-        self.appParu = ButtonBox("Paru", "", "Paru is most popular AUR helper written in rust.", (
+        self.appParu = ButtonBox("Paru", "GUI/Assets/Apps/paru.png", "Paru is most popular AUR helper written in Rust.", (
             CommandButton(QIcon("GUI/Assets/install.png"),
                           "Install", self),
             CommandButton(QIcon("GUI/Assets/uninstall.png"),
@@ -41,41 +43,30 @@ class AurHelperTab(QWidget):
         ))
 
         # Create yay section
-        self.gbxYay = QGroupBox("Yay", self)
-        self.glyYay = QGridLayout(self.gbxYay)
-        self.lblYay = QLabel(
-            "Yay is widely used AUR helper written in go.")
-        self.lblYay.setWordWrap(True)
-        self.btnYayInstall = CommandButton(
-            QIcon("GUI/Assets/install.png"), "Install", self.gbxYay)
-        self.btnYayUninstall = CommandButton(
-            QIcon("GUI/Assets/uninstall.png"), "Uninstall", self.gbxYay)
-        self.glyYay.addWidget(self.lblYay, 0, 0, 1, 2)
-        self.glyYay.addWidget(self.btnYayInstall, 1, 0)
-        self.glyYay.addWidget(self.btnYayUninstall, 1, 1)
-
-        # Connect buttons to functions
-        self.btnAurCheck.clicked.connect(
-            lambda: self.lblAurHelper.setText(self.get_aur_helpers()))
-        self.btnYayInstall.clicked.connect(lambda: run_command(
+        self.appYay = ButtonBox("Yay", "GUI/Assets/Apps/yay.png", "Yay is widely used AUR helper written in Go.", (
+            CommandButton(QIcon("GUI/Assets/install.png"),
+                          "Install", self),
+            CommandButton(QIcon("GUI/Assets/uninstall.png"),
+                          "Uninstall", self)
+        ), (
             """if [ ! -f /bin/yay ]
-    then workdir=$(mktemp -d) &&
-    cd $workdir &&
-    git clone https://aur.archlinux.org/yay-bin.git &&
-    cd yay-bin &&
-    makepkg -si &&
-    rm -rf $workdir
-fi""", self.btnYayInstall))  # Installing AUR helper without an AUR helper.
-        self.btnYayUninstall.clicked.connect(lambda: run_command(
+                then workdir=$(mktemp -d) &&
+                cd $workdir &&
+                git clone https://aur.archlinux.org/yay-bin.git &&
+                cd yay-bin &&
+                makepkg -si &&
+                rm -rf $workdir
+            fi""",
             """if [ -f /bin/yay ]
-    then sudo pacman -R yay-bin || sudo pacman -R yay
-fi""", self.btnYayUninstall))
+                then sudo pacman -R yay-bin || sudo pacman -R yay
+            fi"""
+        ))
 
         # Insert groupboxes to layout
-        self.layout = QVBoxLayout(self)
-        self.layout.addWidget(self.gbxAur)
+        self.layout = QGridLayout(self)
+        self.layout.addWidget(self.gbxAur, 0, 0, 1, 2)
         self.layout.addWidget(self.appParu)
-        self.layout.addWidget(self.gbxYay)
+        self.layout.addWidget(self.appYay)
 
         # Initialize
         self.lblAurHelper.setText(self.get_aur_helpers())
