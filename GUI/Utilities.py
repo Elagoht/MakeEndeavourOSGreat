@@ -1,8 +1,9 @@
 from os import popen
 from Result import CommandButton
-from PyQt5.QtWidgets import QGridLayout, QHBoxLayout, QGroupBox, QWidget, QLabel, QVBoxLayout
+from PyQt5.QtWidgets import QGridLayout, QHBoxLayout, QGroupBox, QWidget, QLabel, QVBoxLayout, QPushButton
 from PyQt5.QtGui import QIcon, QPixmap
 from PyQt5.QtCore import Qt
+from typing import Iterable, Callable
 
 
 def run_command(command: str, result_widget: CommandButton):
@@ -81,6 +82,39 @@ class AppBox(QGroupBox):
             lambda: install_if_doesnt_have(package, self.btnInstall))
         self.btnUninstall.clicked.connect(
             lambda: uninstall_if_have(package, self.btnUninstall))
+
+
+class ButtonBox(QGroupBox):
+    def __init__(self, title: str, image: str, description: str, buttons: Iterable[QPushButton], functions: Iterable[str]):
+        super(QGroupBox, self).__init__()
+        self.glyApp = QVBoxLayout(self)
+        self.layInfo = QHBoxLayout()
+        self.layButtons = QHBoxLayout()
+
+        self.lblTitle = QLabel(title)
+        self.imgApp = QLabel(self)
+        self.imgApp.setPixmap(QPixmap(image))
+        self.imgApp.setFixedSize(128, 128)
+        self.lblDescription = QLabel(description)
+        self.lblDescription.setWordWrap(True)
+
+        self.layInfo.addWidget(self.imgApp)
+        self.layInfo.addWidget(self.lblDescription)
+        for button, function in zip(buttons, functions):
+            button.clicked.connect(
+                (lambda _button, _function: (
+                    lambda: run_command(_function, _button))
+                 )(button, function)
+            )
+            self.layButtons.addWidget(button)
+        self.glyApp.addWidget(self.lblTitle)
+        self.glyApp.addLayout(self.layInfo)
+        self.glyApp.addLayout(self.layButtons)
+        self.setStyleSheet("""QGroupBox {
+            background: rgba(0,0,0,.25);
+            border: 1px solid rgba(0,0,0,.5);
+            border-radius: .25em;
+        }""")
 
 
 class GridBox(QGroupBox):
