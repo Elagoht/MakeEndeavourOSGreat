@@ -13,6 +13,24 @@
             "A Code OSS distribution with Microsoft specific customizations."
         ],
         [
+            "Kate",
+            "kate",
+            "GUI/Assets/Apps/kate.png",
+            "The KDE Advanced Text Editor, source code editor developed by the KDE."
+        ],
+        [
+            "Qt Creator",
+            "qt5-tools",
+            "GUI/Assets/Apps/qtcreator.png",
+            "Part of the SDK for the Qt GUI application development framework."
+        ],
+        [
+            "Gnome Builder",
+            "gnome-builder",
+            "GUI/Assets/Apps/gnomebuilder.png",
+            "IDE for the GNOME platform, primarily designed to aid for GNOME-based applications."
+        ],
+        [
             "Neovim",
             "neovim",
             "GUI/Assets/Apps/nvim.png",
@@ -153,7 +171,7 @@
         [
             "Eclipse C/C++",
             "eclipse-cpp",
-            "GUI/Assets/Apps/eclipse.png",
+            "GUI/Assets/Apps/eclipse-cdt.png",
             "The Eclipse CDT™ Project provides a fully functional C and C++."
         ],
         [
