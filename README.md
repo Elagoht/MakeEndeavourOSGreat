@@ -12,3 +12,11 @@ You may want to take a look at [TODOs](TODOs.md)
 and may want to take a look at [Commands](Commands.md).
 
 I'll create a GUI app to make it easier to use for newcomers.
+
+## ScreenShots
+
+![AUR Helper](Screenshots/AurHelper.png)
+![Software Manager](Screenshots/SoftwareManager.png)
+![Theming](Screenshots/Theming.png)
+![Gnome Options](Screenshots/GnomeOptions.png)
+![Development](Screenshots/Development.png)
