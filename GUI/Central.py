@@ -6,6 +6,7 @@ from AurHelper import AurHelperTab
 from GnomeExtensions import ExtensionsTab
 from Theming import ThemingTab
 from Development import DevelopmentTab
+from Lure import LureTab
 
 
 class Central(QTabWidget):
@@ -21,6 +22,7 @@ class Central(QTabWidget):
         self.ExtensionsTab = ExtensionsTab()
         self.ThemingTab = ThemingTab()
         self.DevelopmentTab = DevelopmentTab()
+        self.LureTab = LureTab()
 
         self.scrollGnome = QScrollArea(self)
         self.scrollGnome.setWidget(self.GnomeTab)
@@ -50,11 +52,16 @@ class Central(QTabWidget):
         self.scrollDevelopment.setWidget(self.DevelopmentTab)
         self.scrollDevelopment.setWidgetResizable(True)
 
+        self.scrollLure = QScrollArea(self)
+        self.scrollLure.setWidget(self.LureTab)
+        self.scrollLure.setWidgetResizable(True)
+
         # Insert tab widgets
         self.insertTab(0, self.scrollUpdate, "Update System")
         self.insertTab(1, self.scrollPamac, "Sofware Manager")
         self.insertTab(2, self.scrollAurHelper, "AUR Helper")
-        self.insertTab(3, self.scrollTheming, "Theming")
-        self.insertTab(4, self.scrollGnome, "Gnome Options")
-        self.insertTab(5, self.scrollExtensions, "Gnome Extensions")
-        self.insertTab(6, self.scrollDevelopment, "Development")
+        self.insertTab(3, self.scrollLure, "LURE")
+        self.insertTab(4, self.scrollTheming, "Theming")
+        self.insertTab(5, self.scrollGnome, "Gnome Options")
+        self.insertTab(6, self.scrollExtensions, "Gnome Extensions")
+        self.insertTab(7, self.scrollDevelopment, "Development")

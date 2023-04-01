@@ -1,7 +1,7 @@
 from os import popen, system, WEXITSTATUS
 from Result import CommandButton
-from PyQt5.QtWidgets import QGridLayout, QHBoxLayout, QGroupBox, QWidget, QLabel, QVBoxLayout, QPushButton
-from PyQt5.QtGui import QIcon, QPixmap
+from PyQt5.QtWidgets import QGridLayout, QHBoxLayout, QGroupBox, QWidget, QLabel, QVBoxLayout, QPushButton, QTextEdit
+from PyQt5.QtGui import QIcon, QPixmap, QFont
 from PyQt5.QtCore import Qt
 from typing import Iterable
 
@@ -44,6 +44,10 @@ def uninstall_if_have(package: str, result_widget: CommandButton):
         f"""if [ "$(pacman -Qqs {package} | grep "^{package}$" )" = "{package}" ]
     then {aur_helper()} -R {package}
 fi""" if has_aur_helper() else "false", result_widget)
+
+
+def color(color: str, text: str) -> str:
+    return f"<font color='{color}'>{text}</font>"
 
 
 class AppBox(QGroupBox):
@@ -245,3 +249,19 @@ class FontBox(QGroupBox):
             .readline().strip().split()[-1].replace("'", "")
         run_command(f"gsettings set org.gnome.desktop.interface monospace-font-name \"{font_family} {font_size}\"",
                     result_widget)
+
+
+class MonoFont(QFont):
+    def __init__(self):
+        super(QFont, self).__init__("Monospace")
+        self.setPointSize(12)
+        self.setStyleHint(QFont.Monospace)
+
+
+class CommandLine(QTextEdit):
+    def __init__(self, text, height):
+        super(QTextEdit, self).__init__()
+        self.setText(text)
+        self.setFont(MonoFont())
+        self.setFixedHeight(height)
+        self.setReadOnly(True)
