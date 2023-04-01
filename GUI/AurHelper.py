@@ -23,7 +23,7 @@ class AurHelperTab(QWidget):
         self.gbxAur.addWidget(self.lblAurHelper, 2, 0)
 
         # Create paru section
-        self.appParu = ButtonBox("Paru", "GUI/Assets/Apps/paru.png", "Paru is most popular AUR helper written in Rust.", (
+        self.appParu = ButtonBox("Paru", "GUI/Assets/Apps/paru.png", "Paru is the most popular AUR helper written in Rust.", (
             CommandButton(QIcon("GUI/Assets/install.png"),
                           "Install", self),
             CommandButton(QIcon("GUI/Assets/uninstall.png"),
