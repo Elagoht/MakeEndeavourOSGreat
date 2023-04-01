@@ -134,13 +134,13 @@ class GridBox(QGroupBox):
 class ExtensionBox(QGroupBox):
     def __init__(self, title: str, link: str, image: str):
         super(QGroupBox, self).__init__()
-        self.setTitle(title)
         self.glyExt = QHBoxLayout(self)
 
         self.imgExt = QLabel(self)
         self.imgExt.setPixmap(QPixmap(image))
         self.imgExt.setFixedWidth(36)
-        self.lblExt = QLabel(f"<a href=\"{link}\">Visit Page</a>")
+        self.lblExt = QLabel(
+            f"< a href=\"{link}\" style=\"text-decoration: none; color:cornflowerblue\">{title}</a>")
         self.lblExt.setWordWrap(True)
         self.lblExt.setOpenExternalLinks(True)
         self.lblExt.setTextFormat(Qt.RichText)
@@ -148,13 +148,18 @@ class ExtensionBox(QGroupBox):
 
         self.glyExt.addWidget(self.imgExt)
         self.glyExt.addWidget(self.lblExt)
+        self.setStyleSheet("""QGroupBox {
+            background: rgba(0,0,0,.25);
+            border: 1px solid rgba(0,0,0,.5);
+            border-radius: .25em;
+        }""")
 
 
 class ThemeBox(QGroupBox):
     def __init__(self, name: str, package: str, themes: dict):
         super(QGroupBox, self).__init__()
         self.glyTheme = QGridLayout(self)
-        self.lblThemeTitle = QLabel(name, self)
+        self.lblThemeTitle = QLabel("<b>" + name + "</b>", self)
         self.lblThemeTitle.setWordWrap(True)
         self.btnThemeInstall = CommandButton(
             QIcon("GUI/Assets/install.png"), "Install", self)
@@ -205,7 +210,7 @@ class FontBox(QGroupBox):
     def __init__(self, name: str, package: str):
         super(QGroupBox, self).__init__()
         self.glyFont = QGridLayout(self)
-        self.lblFontTitle = QLabel(name, self)
+        self.lblFontTitle = QLabel("<b>" + name + "</b>", self)
         self.lblFontTitle.setWordWrap(True)
         self.btnFontInstall = CommandButton(
             QIcon("GUI/Assets/install.png"), "Install", self)
