@@ -1,7 +1,7 @@
-from PyQt5.QtWidgets import QWidget, QGroupBox, QLabel, QVBoxLayout
+from PyQt5.QtWidgets import QWidget, QVBoxLayout
 from PyQt5.QtGui import QIcon
 from Result import CommandButton
-from Utilities import run_command, ButtonBox, AppBox
+from Utilities import ButtonBox, AppBox
 
 
 class PamacTab(QWidget):

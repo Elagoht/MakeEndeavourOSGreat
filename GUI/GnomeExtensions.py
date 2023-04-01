@@ -1,6 +1,4 @@
-from PyQt5.QtWidgets import QWidget, QGroupBox, QLabel, QGridLayout, QVBoxLayout
-from PyQt5.QtGui import QIcon
-from Result import CommandButton
+from PyQt5.QtWidgets import QWidget, QLabel, QVBoxLayout
 from Utilities import ExtensionBox, AppBox, GridBox
 from json import load
 
