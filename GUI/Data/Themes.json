@@ -16,5 +16,31 @@
             "Darker": "Arc-Darker",
             "Dark": "Arc-Dark"
         }
+    },
+    {
+        "name": "Qogir Theme",
+        "package": "qogir-gtk-theme",
+        "themes": {
+            "Light": "Qogir-Light",
+            "Default": "Qogir",
+            "Dark": "Qogir-Dark"
+        }
+    },
+    {
+        "name": "WhiteSur Theme",
+        "package": "whitesur-gtk-theme",
+        "themes": {
+            "Dark": "WhiteSur-Dark",
+            "Dark Solid": "WhiteSur-Dark-solid",
+            "Light": "WhiteSur-Light",
+            "Light Solid": "WhiteSur-Light-solid"
+        }
+    },
+    {
+        "name": "Nordic Theme",
+        "package": "nordic-theme",
+        "themes": {
+            "Default": "Nordic"
+        }
     }
 ]

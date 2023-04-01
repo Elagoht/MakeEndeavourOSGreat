@@ -40,7 +40,7 @@ class ThemingTab(QWidget):
                 case 2:
                     self.gbxTheme.addWidget(ThemeBox(*theme.values()), 1, 2)
                 case _:
-                    self.gbxTheme.glyField.addWidget(ThemeBox(*theme))
+                    self.gbxTheme.glyField.addWidget(ThemeBox(*theme.values()))
 
     def load_fonts(self):
         with open("GUI/Data/Fonts.json", "r") as fonts_json:
