@@ -1,0 +1,20 @@
+[
+    {
+        "name": "Adw-gtk3 Theme",
+        "package": "adw-gtk3",
+        "themes": {
+            "Dark": "adw-gtk3-dark",
+            "Light": "adw-gtk3"
+        }
+    },
+    {
+        "name": "Arc Theme",
+        "package": "arc-gtk-theme-eos",
+        "themes": {
+            "Lighter": "Arc-Lighter",
+            "Default": "Arc",
+            "Darker": "Arc-Darker",
+            "Dark": "Arc-Dark"
+        }
+    }
+]

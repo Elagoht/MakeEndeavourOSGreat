@@ -14,3 +14,6 @@
 - [ ] Install and set adw-gtk3 theme.
 - [X] Add developer package section.
 - [ ] Install `easyeffects` to configure voice channels.
+- [ ] Add gaming package section.
+- [ ] Install lure.
+- [ ] Install and set default zsh and oh-my-zsh.

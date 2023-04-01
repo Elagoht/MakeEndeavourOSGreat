@@ -3,7 +3,7 @@ from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import Qt
 from Result import CommandButton
 from os import popen
-from Utilities import aur_helper, has_aur_helper, run_command
+from Utilities import aur_helper, has_aur_helper, run_command, ButtonBox
 
 
 class GnomeTab(QWidget):
@@ -11,13 +11,16 @@ class GnomeTab(QWidget):
         super(QWidget, self).__init__()
 
         # Create context menu section
-        self.gbxContext = QGroupBox("Context Menu", self)
-        self.glyContext = QVBoxLayout(self.gbxContext)
-        self.lblContext = QLabel("Enable context (right click) menu icons.")
-        self.btnContext = CommandButton(
-            QIcon("GUI/Assets/configure.png"), "Enable Icons", self.gbxContext)
-        self.glyContext.addWidget(self.lblContext)
-        self.glyContext.addWidget(self.btnContext)
+        self.gbxContext = ButtonBox(
+            "Context Menu", "GUI/Assets/Tweaks/contextmenu.png", "Enable context (right click) menu icons.", (
+                CommandButton(QIcon("GUI/Assets/enabled.png"),
+                              "Enable Icons", self),
+                CommandButton(QIcon("GUI/Assets/disabled.png"),
+                              "Disable Icons", self)
+            ), (
+                "gsettings set org.gnome.settings-daemon.plugins.xsettings overrides \"{\\\"Gtk/ButtonImages\\\": <1>, \\\"Gtk/MenuImages\\\": <1>}\""
+                "gsettings set org.gnome.settings-daemon.plugins.xsettings overrides \"\""
+            ))
 
         # Create terminal and console section
         self.gbxTerm = QGroupBox("Terminal / Console", self)
@@ -72,9 +75,6 @@ class GnomeTab(QWidget):
             self.btnTransparencyUninstall, 5, 0, 1, 2)
 
         # Connect buttons to functions
-        self.btnContext.clicked.connect(lambda: run_command(
-            "gsettings set org.gnome.settings-daemon.plugins.xsettings overrides \"{\\\"Gtk/ButtonImages\\\": <1>, \\\"Gtk/MenuImages\\\": <1>}\"",
-            self.btnContext))
         self.btnTerminal.clicked.connect(lambda: run_command(
             """if [ ! -f /bin/gnome-terminal ]
     then sudo pacman -S gnome-terminal

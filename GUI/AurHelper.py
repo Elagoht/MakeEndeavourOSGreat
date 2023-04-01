@@ -1,8 +1,8 @@
-from PyQt5.QtWidgets import QWidget, QGroupBox, QPushButton, QLabel, QGridLayout, QVBoxLayout
+from PyQt5.QtWidgets import QWidget, QLabel, QGridLayout
 from PyQt5.QtGui import QIcon
 from Result import CommandButton
 from os import popen
-from Utilities import run_command, GridBox, ButtonBox
+from Utilities import GridBox, ButtonBox
 
 
 class AurHelperTab(QWidget):

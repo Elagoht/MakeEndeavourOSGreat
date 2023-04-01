@@ -1,9 +1,9 @@
-from os import popen
+from os import popen, system, WEXITSTATUS
 from Result import CommandButton
 from PyQt5.QtWidgets import QGridLayout, QHBoxLayout, QGroupBox, QWidget, QLabel, QVBoxLayout, QPushButton
 from PyQt5.QtGui import QIcon, QPixmap
 from PyQt5.QtCore import Qt
-from typing import Iterable, Callable
+from typing import Iterable
 
 
 def run_command(command: str, result_widget: CommandButton):
@@ -53,7 +53,7 @@ class AppBox(QGroupBox):
         self.layInfo = QHBoxLayout()
         self.layButtons = QHBoxLayout()
 
-        self.lblTitle = QLabel(title)
+        self.lblTitle = QLabel("<b>" + title + "<b>")
         self.imgApp = QLabel(self)
         self.imgApp.setPixmap(QPixmap(image))
         self.imgApp.setFixedSize(128, 128)
@@ -91,7 +91,7 @@ class ButtonBox(QGroupBox):
         self.layInfo = QHBoxLayout()
         self.layButtons = QHBoxLayout()
 
-        self.lblTitle = QLabel(title)
+        self.lblTitle = QLabel("<b>" + title + "<b>")
         self.imgApp = QLabel(self)
         self.imgApp.setPixmap(QPixmap(image))
         self.imgApp.setFixedSize(128, 128)
@@ -148,3 +148,95 @@ class ExtensionBox(QGroupBox):
 
         self.glyExt.addWidget(self.imgExt)
         self.glyExt.addWidget(self.lblExt)
+
+
+class ThemeBox(QGroupBox):
+    def __init__(self, name: str, package: str, themes: dict):
+        super(QGroupBox, self).__init__()
+        self.glyTheme = QGridLayout(self)
+        self.lblThemeTitle = QLabel(name, self)
+        self.lblThemeTitle.setWordWrap(True)
+        self.btnThemeInstall = CommandButton(
+            QIcon("GUI/Assets/install.png"), "Install", self)
+        self.btnThemeUninstall = CommandButton(
+            QIcon("GUI/Assets/uninstall.png"), "Uninstall", self)
+        self.glyTheme.addWidget(self.lblThemeTitle, 0, 0, 1, 2)
+        self.glyTheme.addWidget(self.btnThemeInstall, 1, 0, 1, 1)
+        self.glyTheme.addWidget(self.btnThemeUninstall, 1, 1, 1, 1)
+
+        self.buttons = [CommandButton(
+            QIcon("GUI/Assets/configure.png"), name, self)
+            for name in themes.keys()
+        ]
+        self.functions = [
+            f"gsettings set org.gnome.desktop.interface gtk-theme '{theme}'"
+            for theme in themes.values()
+        ]
+
+        for button, function in zip(self.buttons, self.functions):
+            button.clicked.connect(
+                (lambda _button, _function: (
+                    lambda: run_command(_function, _button))
+                 )(button, function)
+            )
+            self.glyTheme.addWidget(button)
+
+        self.setStyleSheet("""QGroupBox {
+            background: rgba(0,0,0,.25);
+            border: 1px solid rgba(0,0,0,.5);
+            border-radius: .25em;
+        }""")
+
+        # Connect buttons to functions
+        self.btnThemeInstall.clicked.connect(
+            lambda: install_if_doesnt_have(package, self.btnThemeInstall))
+        self.btnThemeUninstall.clicked.connect(
+            lambda: uninstall_if_have(package, self.btnThemeUninstall))
+
+    def set_this(self, theme_string: str, package: str, result_widget: CommandButton) -> None:
+        if WEXITSTATUS(system(f"[ ! \"$(pacman -Qqs {package} | grep \"^{package}$\")\" = \"{package}\" ]")) == 0:
+            result_widget.setStatus(-1)
+            return
+        run_command(f"gsettings set org.gnome.desktop.interface \"{theme_string}\"",
+                    result_widget)
+
+
+class FontBox(QGroupBox):
+    def __init__(self, name: str, package: str):
+        super(QGroupBox, self).__init__()
+        self.glyFont = QGridLayout(self)
+        self.lblFontTitle = QLabel(name, self)
+        self.lblFontTitle.setWordWrap(True)
+        self.btnFontInstall = CommandButton(
+            QIcon("GUI/Assets/install.png"), "Install", self)
+        self.btnFontUninstall = CommandButton(
+            QIcon("GUI/Assets/uninstall.png"), "Uninstall", self)
+        self.btnFontSet = CommandButton(
+            QIcon("GUI/Assets/enabled.png"), "Select", self)
+        self.glyFont.addWidget(self.lblFontTitle, 0, 0, 1, 2)
+        self.glyFont.addWidget(self.btnFontInstall, 1, 0, 1, 1)
+        self.glyFont.addWidget(self.btnFontUninstall, 1, 1, 1, 1)
+        self.glyFont.addWidget(self.btnFontSet, 2, 0, 1, 2)
+        self.setStyleSheet("""QGroupBox {
+            background: rgba(0,0,0,.25);
+            border: 1px solid rgba(0,0,0,.5);
+            border-radius: .25em;
+        }""")
+
+        # Connect buttons to functions
+        self.btnFontInstall.clicked.connect(
+            lambda: install_if_doesnt_have(package, self.btnFontInstall))
+        self.btnFontUninstall.clicked.connect(
+            lambda: uninstall_if_have(package, self.btnFontUninstall))
+        self.btnFontSet.clicked.connect(
+            lambda: self.set_this(name, package, self.btnFontSet))
+
+    def set_this(self, font_family: str, package: str, result_widget: CommandButton) -> None:
+        if WEXITSTATUS(system(f"[ ! \"$(pacman -Qqs {package} | grep \"^{package}$\")\" = \"{package}\" ]")) == 0:
+            result_widget.setStatus(-1)
+            return
+        font_size = popen(
+            "gsettings get org.gnome.desktop.interface monospace-font-name")\
+            .readline().strip().split()[-1].replace("'", "")
+        run_command(f"gsettings set org.gnome.desktop.interface monospace-font-name \"{font_family} {font_size}\"",
+                    result_widget)
