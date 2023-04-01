@@ -18,8 +18,8 @@ class GnomeTab(QWidget):
                 CommandButton(QIcon("GUI/Assets/disabled.png"),
                               "Disable Icons", self)
             ), (
-                "gsettings set org.gnome.settings-daemon.plugins.xsettings overrides \"{\\\"Gtk/ButtonImages\\\": <1>, \\\"Gtk/MenuImages\\\": <1>}\""
-                "gsettings set org.gnome.settings-daemon.plugins.xsettings overrides \"\""
+                "gsettings set org.gnome.settings-daemon.plugins.xsettings overrides \"{\\\"Gtk/ButtonImages\\\": <1>, \\\"Gtk/MenuImages\\\": <1>}\"",
+                "gsettings set org.gnome.settings-daemon.plugins.xsettings overrides \"{}\""
             ))
 
         # Create terminal and console section

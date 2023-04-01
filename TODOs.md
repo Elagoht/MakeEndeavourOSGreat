@@ -11,7 +11,7 @@
 - [X] Install Gnome extensions.
 - [X] Enable context menu icons.
 - [X] Install and use a nerd font.
-- [ ] Install and set adw-gtk3 theme.
+- [X] Install and set adw-gtk3 theme.
 - [X] Add developer package section.
 - [ ] Install `easyeffects` to configure voice channels.
 - [ ] Add gaming package section.
