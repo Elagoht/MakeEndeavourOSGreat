@@ -1,0 +1,59 @@
+[
+    {
+        "name": "Papirus",
+        "package": "papirus-icon-theme",
+        "image": "GUI/Assets/Themes/Icons/papirus.png",
+        "themes": {
+            "Light": "Papirus-Light",
+            "Default": "Papirus",
+            "Dark": "Papirus-Dark"
+        }
+    },
+    {
+        "name": "Qogir",
+        "package": "eos-qogir-icons",
+        "image": "GUI/Assets/Themes/Icons/qogir.png",
+        "themes": {
+            "Default": "Qogir",
+            "Dark": "Qogir-dark"
+        }
+    },
+    {
+        "name": "WhiteSur",
+        "package": "whitesur-icon-theme",
+        "image": "GUI/Assets/Themes/Icons/whitesur.png",
+        "themes": {
+            "Default": "WhiteSur",
+            "Dark": "WhiteSur-dark"
+        }
+    },
+    {
+        "name": "Numix Circle",
+        "package": "numix-circle-icon-theme-git",
+        "image": "GUI/Assets/Themes/Icons/numix.png",
+        "themes": {
+            "Default": "Numix-Circle"
+        }
+    },
+    {
+        "name": "We10X",
+        "package": "we10x-icon-theme-git",
+        "image": "GUI/Assets/Themes/Icons/we10x.png",
+        "themes": {
+            "Blue": "We10X-blue",
+            "Blue Dark": "We10X-blue-dark",
+            "Special": "We10X-special",
+            "Special Dark": "We10X-special-dark",
+            "Black": "We10X-black",
+            "Black Dark": "We10X-black-dark"
+        }
+    },
+    {
+        "name": "Arc",
+        "package": "arc-icon-theme",
+        "image": "GUI/Assets/Themes/Icons/arc.png",
+        "themes": {
+            "Default": "Arc"
+        }
+    }
+]
