@@ -293,3 +293,7 @@ class CommandLine(QTextEdit):
         self.setFont(MonoFont())
         self.setFixedHeight(height)
         self.setReadOnly(True)
+        self.setStyleSheet("""QTextEdit {
+                                background: black;
+                           }""")
+
