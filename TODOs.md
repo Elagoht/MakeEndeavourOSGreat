@@ -11,9 +11,11 @@
 - [X] Install Gnome extensions.
 - [X] Enable context menu icons.
 - [X] Install and use a nerd font.
-- [X] Install and set adw-gtk3 theme.
+- [X] Install and set gtk themes.
+- [ ] Install and set cursor themes.
+- [ ] Install and set icon themes.
 - [X] Add developer package section.
 - [ ] Install `easyeffects` to configure voice channels.
 - [ ] Add gaming package section.
-- [ ] Install lure.
+- [X] Install lure.
 - [ ] Install and set default zsh and oh-my-zsh.

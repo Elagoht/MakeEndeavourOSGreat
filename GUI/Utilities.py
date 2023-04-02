@@ -160,7 +160,20 @@ class ExtensionBox(QGroupBox):
 
 
 class ThemeBox(QGroupBox):
-    def __init__(self, name: str, package: str, image: str, themes: dict):
+    def __init__(self, name: str, package: str, image: str, themes: dict, type: int = 0):
+        """
+        type 0 = GTK Theme
+        type 1 = Icon Theme
+        type 2 = Cursor Theme
+        """
+        match type:
+            case 1:
+                self.to_change = "icon-theme"
+            case 2:
+                self.to_change = "cursor-theme"
+            case _:
+                self.to_change = "gtk-theme"
+
         super(QGroupBox, self).__init__()
         self.glyTheme = QVBoxLayout(self)
         self.glyTheme.setAlignment(Qt.AlignTop)
@@ -184,16 +197,13 @@ class ThemeBox(QGroupBox):
         self.glyTheme.addLayout(self.layInfo)
         self.glyTheme.addLayout(self.layButtons)
 
+        # Bundle buttons and functions
         self.buttons = [CommandButton(
             QIcon("GUI/Assets/configure.png"), name, self)
             for name in themes.keys()
         ]
         self.functions = [
-            f"""if [ "$(pacman -Qqs {package} | grep ^{package}$)" = "{package}" ]
-                then gsettings set org.gnome.desktop.interface gtk-theme '{theme}'
-            else
-                false
-            fi"""
+            f"""[ "$(pacman -Qqs {package} | grep ^{package}$)" = "{package}" ] && gsettings set org.gnome.desktop.interface {self.to_change} '{theme}'"""
             for theme in themes.values()
         ]
 
