@@ -129,10 +129,14 @@ class GridBox(QGroupBox):
 
     def addWidget(self, widget: QWidget, row: int = 0, col: int = 0, rSpan: int = 1, cSpan: int = 1):
         self.glyField.addWidget(widget, row, col, rSpan, cSpan)
+        for column in range(self.glyField.columnCount()):
+            self.glyField.setColumnStretch(column, 1)
 
     def addWidgets(self, *widgets: QWidget):
         for widget in widgets:
             self.glyField.addWidget(widget)
+        for column in range(self.glyField.columnCount()):
+            self.glyField.setColumnStretch(column, 1)
 
 
 class ExtensionBox(QGroupBox):
@@ -296,4 +300,3 @@ class CommandLine(QTextEdit):
         self.setStyleSheet("""QTextEdit {
                                 background: black;
                            }""")
-
