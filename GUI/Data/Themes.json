@@ -2,14 +2,25 @@
     {
         "name": "Adw-gtk3 Theme",
         "package": "adw-gtk3",
+        "image": "GUI/Assets/Themes/GTK/adw-gtk3.png",
         "themes": {
             "Dark": "adw-gtk3-dark",
             "Light": "adw-gtk3"
         }
     },
     {
+        "name": "Adwaita Theme",
+        "package": "gnome-themes-extra",
+        "image": "GUI/Assets/Themes/GTK/adwaita.png",
+        "themes": {
+            "Dark": "Adwaita-dark",
+            "Light": "Adwaita"
+        }
+    },
+    {
         "name": "Arc Theme",
         "package": "arc-gtk-theme-eos",
+        "image": "GUI/Assets/Themes/GTK/arc.png",
         "themes": {
             "Lighter": "Arc-Lighter",
             "Default": "Arc",
@@ -20,6 +31,7 @@
     {
         "name": "Qogir Theme",
         "package": "qogir-gtk-theme",
+        "image": "GUI/Assets/Themes/GTK/qogir.png",
         "themes": {
             "Light": "Qogir-Light",
             "Default": "Qogir",
@@ -29,6 +41,7 @@
     {
         "name": "WhiteSur Theme",
         "package": "whitesur-gtk-theme",
+        "image": "GUI/Assets/Themes/GTK/whitesur.png",
         "themes": {
             "Dark": "WhiteSur-Dark",
             "Dark Solid": "WhiteSur-Dark-solid",
@@ -39,6 +52,7 @@
     {
         "name": "Nordic Theme",
         "package": "nordic-theme",
+        "image": "GUI/Assets/Themes/GTK/nordic.png",
         "themes": {
             "Default": "Nordic"
         }

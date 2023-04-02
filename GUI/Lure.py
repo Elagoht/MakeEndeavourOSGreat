@@ -10,7 +10,7 @@ class LureTab(QWidget):
 
         self.gbxUsage = GridBox("Usage of LURE")
         self.lblUsage = QLabel(
-            "You can use LURE by following command:", self.gbxUsage)
+            "You can use LURE by following commands:", self.gbxUsage)
         self.cmdUsage = CommandLine(
             "<div>" +
             color("green", "lure ") +

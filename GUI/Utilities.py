@@ -160,18 +160,29 @@ class ExtensionBox(QGroupBox):
 
 
 class ThemeBox(QGroupBox):
-    def __init__(self, name: str, package: str, themes: dict):
+    def __init__(self, name: str, package: str, image: str, themes: dict):
         super(QGroupBox, self).__init__()
-        self.glyTheme = QGridLayout(self)
+        self.glyTheme = QVBoxLayout(self)
+        self.glyTheme.setAlignment(Qt.AlignTop)
+        self.layInfo = QGridLayout()
+        self.layButtons = QGridLayout()
+
         self.lblThemeTitle = QLabel("<b>" + name + "</b>", self)
         self.lblThemeTitle.setWordWrap(True)
+        self.imgTheme = QLabel(self)
+        self.imgTheme.setPixmap(QPixmap(image))
+        self.imgTheme.setFixedSize(128, 128)
+
         self.btnThemeInstall = CommandButton(
             QIcon("GUI/Assets/install.png"), "Install", self)
         self.btnThemeUninstall = CommandButton(
             QIcon("GUI/Assets/uninstall.png"), "Uninstall", self)
-        self.glyTheme.addWidget(self.lblThemeTitle, 0, 0, 1, 2)
-        self.glyTheme.addWidget(self.btnThemeInstall, 1, 0, 1, 1)
-        self.glyTheme.addWidget(self.btnThemeUninstall, 1, 1, 1, 1)
+        self.layInfo.addWidget(self.imgTheme, 0, 0, 3, 1)
+        self.layInfo.addWidget(self.lblThemeTitle, 0, 1)
+        self.layInfo.addWidget(self.btnThemeInstall, 1, 1)
+        self.layInfo.addWidget(self.btnThemeUninstall, 2, 1)
+        self.glyTheme.addLayout(self.layInfo)
+        self.glyTheme.addLayout(self.layButtons)
 
         self.buttons = [CommandButton(
             QIcon("GUI/Assets/configure.png"), name, self)
@@ -182,13 +193,16 @@ class ThemeBox(QGroupBox):
             for theme in themes.values()
         ]
 
-        for button, function in zip(self.buttons, self.functions):
+        for number, (button, function) in enumerate(zip(self.buttons, self.functions)):
             button.clicked.connect(
                 (lambda _button, _function: (
                     lambda: run_command(_function, _button))
                  )(button, function)
             )
-            self.glyTheme.addWidget(button)
+            if number == 1:
+                self.layButtons.addWidget(button, 0, 1)
+            else:
+                self.layButtons.addWidget(button)
 
         self.setStyleSheet("""QGroupBox {
             background: rgba(0,0,0,.25);
