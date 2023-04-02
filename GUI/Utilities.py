@@ -189,7 +189,11 @@ class ThemeBox(QGroupBox):
             for name in themes.keys()
         ]
         self.functions = [
-            f"gsettings set org.gnome.desktop.interface gtk-theme '{theme}'"
+            f"""if [ "$(pacman -Qqs {package} | grep ^{package}$)" = "{package}" ]
+                then gsettings set org.gnome.desktop.interface gtk-theme '{theme}'
+            else
+                false
+            fi"""
             for theme in themes.values()
         ]
 
