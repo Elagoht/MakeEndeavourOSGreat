@@ -1,0 +1,31 @@
+#/bin/env bash
+cursors=("default"
+  "cross"
+  "draft"
+  "no-drop"
+  "text"
+  "size_all"
+  "zoom-in"
+  "top_left_corner"
+  "move"
+  "copy"
+  "link"
+  "forbidden"
+  "pencil"
+  "question_arrow"
+  "right_ptr"
+  "wait"
+)
+
+tmpdir=$(mktemp -d)
+
+for cursor in "${cursors[@]}"; do 
+  xcur2png "$1/$cursor" -q -d $tmpdir -c /dev/null
+done
+
+for (( i=0; i<16; i+=4 )); do
+  convert -background none -extent 32x32! "$tmpdir/${cursors[((i+0))]}_000.png" "$tmpdir/${cursors[((i+1))]}_000.png" "$tmpdir/${cursors[((i+2))]}_000.png" "$tmpdir/${cursors[((i+3))]}_000.png" +append "$tmpdir/$1-part-$i-$(($i+4)).png"
+done
+
+convert -background none "$tmpdir/$1-part-0-4.png" "$tmpdir/$1-part-4-8.png" "$tmpdir/$1-part-8-12.png" "$tmpdir/$1-part-12-16.png" -append "$2/$1.png"
+rm -rf $tmpdir

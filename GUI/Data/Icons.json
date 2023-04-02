@@ -11,7 +11,7 @@
     },
     {
         "name": "Qogir",
-        "package": "eos-qogir-icons",
+        "package": "qogir-gtk-theme",
         "image": "GUI/Assets/Themes/Icons/qogir.png",
         "themes": {
             "Default": "Qogir",
