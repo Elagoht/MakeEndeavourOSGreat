@@ -56,5 +56,14 @@
         "themes": {
             "Default": "Nordic"
         }
+    },
+    {
+        "name": "Yaru Theme",
+        "package": "yaru-gtk-theme",
+        "image": "GUI/Assets/Themes/GTK/yaru.png",
+        "themes": {
+            "Default": "Yaru",
+            "Dark": "Yaru-dark"
+        }
     }
 ]

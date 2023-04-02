@@ -55,5 +55,14 @@
         "themes": {
             "Default": "Arc"
         }
+    },
+    {
+        "name": "Yaru",
+        "package": "yaru-icon-theme",
+        "image": "GUI/Assets/Themes/Icons/yaru.png",
+        "themes": {
+            "Default": "Yaru",
+            "Dark": "Yaru-dark"
+        }
     }
 ]
