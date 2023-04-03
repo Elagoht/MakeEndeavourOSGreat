@@ -18,7 +18,7 @@
 - [X] Add developer package section.
 - [X] Install and select shell.
 - [ ] Install oh-my-zsh and synthshell (give credits).
-- [ ] Disable/enable Wayland.
+- [X] Disable/enable Wayland.
 - [ ] Set gnome shortcuts.
 - [ ] Install `easyeffects` to configure voice channels.
 - [ ] Add gaming package section.

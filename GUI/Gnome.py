@@ -10,6 +10,22 @@ class GnomeTab(QWidget):
     def __init__(self):
         super(QWidget, self).__init__()
 
+        # Create Wayland section
+        self.gbxWayland = ButtonBox(
+            "Wayland Settings", "GUI/Assets/Tweaks/wayland.png",
+            "<p>Wayland is a new technology to replace Xorg display server. Its may be lighter and faster. Waydroid only works on Wayland but because of it is a new technology, some features are not compatible yet. I.e. global keyboard shourtcuts does not supported right now. Discord cannot share screen on.</p>\
+            <p>Wayland has its own <font color='green'>advantages</font> and <font color='red'>disadvantages</font>. So you may want to change this setting in the future depending on your needs. But for now using Xorg and ditching Wayland is more compatible.</p>\
+            <p><u>Changes require restart.</u></p>", (
+                CommandButton(QIcon("GUI/Assets/configure.png"),
+                              "Use Wayland", self),
+                CommandButton(QIcon("GUI/Assets/configure.png"),
+                              "Use XOrg", self)
+            ), (
+                "sudo sed -i \"s/^WaylandEnable=false/#WaylandEnable=false/\" /etc/gdm/custom.conf",
+                "sudo sed -i \"s/^#WaylandEnable=false/WaylandEnable=false/\" /etc/gdm/custom.conf"
+            )
+        )
+
         # Create context menu section
         self.gbxContext = ButtonBox(
             "Context Menu", "GUI/Assets/Tweaks/contextmenu.png", "Enable context (right click) menu icons.", (
@@ -111,6 +127,7 @@ fi""", self.btnContext))
 
         # Insert groupboxes into layout
         self.layout = QVBoxLayout(self)
+        self.layout.addWidget(self.gbxWayland)
         self.layout.addWidget(self.gbxContext)
         self.layout.addWidget(self.gbxTerm)
         self.layout.addWidget(self.gbxTransparency)
