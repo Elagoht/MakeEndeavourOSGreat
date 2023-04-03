@@ -1,5 +1,6 @@
 # TODOs
 
+- [ ] Make commands run on another thread.
 - [X] Create a function to detect installed AUR helper.
 - [X] Update and upgrade the system.
 - [X] Replace `gnome-console` with `gnome-terminal`.
@@ -12,9 +13,13 @@
 - [X] Enable context menu icons.
 - [X] Install and use a nerd font.
 - [X] Install and set gtk themes.
-- [ ] Install and set cursor themes.
-- [ ] Install and set icon themes.
+- [X] Install and set cursor themes.
+- [X] Install and set icon themes.
 - [X] Add developer package section.
+- [X] Install and select shell.
+- [ ] Install oh-my-zsh and synthshell (give credits).
+- [ ] Disable/enable Wayland.
+- [ ] Set gnome shortcuts.
 - [ ] Install `easyeffects` to configure voice channels.
 - [ ] Add gaming package section.
 - [X] Install lure.

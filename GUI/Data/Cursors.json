@@ -29,7 +29,7 @@
     },
     {
         "name": "Qogir",
-        "package": "qogir-gtk-theme-git",
+        "package": "qogir-gtk-theme",
         "image": "GUI/Assets/Themes/Cursors/qogir.png",
         "themes": {
             "Default": "Qogir",

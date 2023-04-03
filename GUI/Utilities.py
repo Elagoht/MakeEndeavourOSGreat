@@ -283,6 +283,36 @@ class FontBox(QGroupBox):
                     result_widget)
 
 
+class ShellBox(AppBox):
+    def __init__(self, title: str, package: str, image: str, description: str, uninstallable: bool = False):
+        super().__init__(title, package, image, description)
+
+        # If uninstallable remove install buttons
+        if uninstallable:
+            self.glyApp.removeWidget(self.btnInstall)
+            self.glyApp.removeWidget(self.btnUninstall)
+            del self.btnInstall
+            del self.btnUninstall
+
+        # Setter buttons
+        self.btnSet = CommandButton(
+            QIcon("GUI/Assets/configure.png"), "Set Default", self)
+        self.btnSetRoot = CommandButton(
+            QIcon("GUI/Assets/configure.png"), "Set Default for Root", self)
+
+        # Connect buttons to functions
+        self.btnSet.clicked.connect(
+            lambda: run_command(f"echo New shell will be {package}.; [ \"{package}\" = \"sh\" ] || [ \"$(pacman -Qqs {package} | grep ^{package}$)\" = \"{package}\" ] && chsh -s /bin/{package}", self.btnSet))
+        self.btnSetRoot.clicked.connect(
+            lambda: run_command(f"echo New shell will be {package}.; [ \"$(pacman -Qqs {package} | grep ^{package}$)\" = \"{package}\" ] && sudo chsh -s /bin/{package} root", self.btnSetRoot))
+
+        # Add buttons to layout
+        self.laySetButtons = QHBoxLayout()
+        self.laySetButtons.addWidget(self.btnSet)
+        self.laySetButtons.addWidget(self.btnSetRoot)
+        self.glyApp.addLayout(self.laySetButtons)
+
+
 class MonoFont(QFont):
     def __init__(self):
         super(QFont, self).__init__("Monospace")

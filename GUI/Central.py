@@ -7,6 +7,7 @@ from GnomeExtensions import ExtensionsTab
 from Theming import ThemingTab
 from Development import DevelopmentTab
 from Lure import LureTab
+from Shell import ShellTab
 
 
 class Central(QTabWidget):
@@ -23,6 +24,7 @@ class Central(QTabWidget):
         self.ThemingTab = ThemingTab()
         self.DevelopmentTab = DevelopmentTab()
         self.LureTab = LureTab()
+        self.ShellTab = ShellTab()
 
         self.scrollGnome = QScrollArea(self)
         self.scrollGnome.setWidget(self.GnomeTab)
@@ -56,12 +58,17 @@ class Central(QTabWidget):
         self.scrollLure.setWidget(self.LureTab)
         self.scrollLure.setWidgetResizable(True)
 
+        self.scrollShell = QScrollArea(self)
+        self.scrollShell.setWidget(self.ShellTab)
+        self.scrollShell.setWidgetResizable(True)
+
         # Insert tab widgets
         self.insertTab(0, self.scrollUpdate, "Update System")
         self.insertTab(1, self.scrollPamac, "Sofware Manager")
         self.insertTab(2, self.scrollAurHelper, "AUR Helper")
         self.insertTab(3, self.scrollLure, "LURE")
         self.insertTab(4, self.scrollTheming, "Theming")
-        self.insertTab(5, self.scrollGnome, "Gnome Options")
-        self.insertTab(6, self.scrollExtensions, "Gnome Extensions")
-        self.insertTab(7, self.scrollDevelopment, "Development")
+        self.insertTab(5, self.scrollShell, "Shell")
+        self.insertTab(6, self.scrollGnome, "Gnome Options")
+        self.insertTab(7, self.scrollExtensions, "Gnome Extensions")
+        self.insertTab(8, self.scrollDevelopment, "Development")
