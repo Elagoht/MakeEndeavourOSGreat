@@ -161,6 +161,12 @@
             "bluefish",
             "GUI/Assets/Apps/bluefish.png",
             "Editor targeted for webdevelopers, with many options, scripts and programming code."
+        ],
+        [
+            "Google Web Designer",
+            "google-webdesigner",
+            "GUI/Assets/Apps/googlewebdesigner.png",
+            "Drag-and-drop page builder for creating interactive HTML5 ads and other HTML5 content. "
         ]
     ],
     "JavaScript": [
