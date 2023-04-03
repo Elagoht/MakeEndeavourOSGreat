@@ -1,6 +1,6 @@
 from PyQt5.QtWidgets import QWidget, QVBoxLayout
 from PyQt5.QtGui import QIcon
-from Utilities import ButtonBox, GridBox, CommandButton
+from Utilities import ButtonBox, GridBox, CommandButton, aur_helper
 
 
 class GnomeTab(QWidget):
@@ -46,17 +46,23 @@ class GnomeTab(QWidget):
                                              QIcon("GUI/Assets/configure.png"), "Use Transparent Terminal", self),
                                      ), (
                                          """if [ ! "$(pacman -Qqs gnome-terminal | grep ^gnome-terminal$)" = "gnome-terminal" ]
-                                                then sudo pacman -S gnome-terminal
-                                            fi &&
-                                            if [ -f /usr/bin/kgx ]
-                                                then sudo pacman -R gnome-console
-                                            fi""",
-                                         """if [ ! "$(pacman -Qqs gnome-terminal-transparency | grep ^gnome-terminal-transparency$)" = "gnome-terminal-transparency" ]
-                                                then sudo pacman -S gnome-terminal-transparency
-                                            fi &&
-                                            if [ -f /usr/bin/kgx ]
-                                                then sudo pacman -R gnome-console
-                                            fi"""
+                                            then sudo pacman -S gnome-terminal
+                                        fi &&
+                                        if [ -f /usr/bin/kgx ]
+                                            then sudo pacman -R gnome-console
+                                        fi""",
+                                         f"""if [ ! "$(pacman -Qqs gnome-terminal-transparency | grep ^gnome-terminal-transparency$)" = "gnome-terminal-transparency" ]
+                                            then
+                                            if [ "$(command -v {aur_helper()})" ]
+                                                then {aur_helper()} -S gnome-terminal-transparency
+                                            else
+                                                read
+                                                exit 1
+                                            fi
+                                        fi &&
+                                        if [ -f /usr/bin/kgx ]
+                                            then sudo pacman -R gnome-console
+                                        fi"""
                                      ))
         # Chose Gnome Console over Terminal
         self.appConsole = ButtonBox("Gnome Console", "GUI/Assets/Tweaks/gnomeconsole.png",
@@ -64,12 +70,14 @@ class GnomeTab(QWidget):
                                         CommandButton(
                                             QIcon("GUI/Assets/configure.png"), "Use Gnome Console", self),
                                     ), (
-                                        """[ ! -f /usr/bin/kgx ] && sudo pacman -S gnome-console &&
-                                            if [ "$(pacman -Qqs gnome-terminal)" = "gnome-terminal-transparency" ]
-                                                then sudo pacman -R gnome-terminal-transparency
-                                            elif [ "$(pacman -Qqs gnome-terminal)" = "gnome-terminal" ]
-                                                then sudo pacman -R gnome-terminal
-                                            fi""",
+                                        """if [ ! -f /usr/bin/kgx ]
+                                            then sudo pacman -S gnome-console
+                                        fi &&
+                                        if [ "$(pacman -Qqs gnome-terminal)" = "gnome-terminal-transparency" ]
+                                            then sudo pacman -R gnome-terminal-transparency
+                                        elif [ "$(pacman -Qqs gnome-terminal)" = "gnome-terminal" ]
+                                            then sudo pacman -R gnome-terminal
+                                        fi""",
                                     ))
         self.gbxTerm.addWidget(self.appTerminal)
         self.gbxTerm.addWidget(self.appConsole, 0, 1)
