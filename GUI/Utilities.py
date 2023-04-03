@@ -1,53 +1,31 @@
 from os import popen, system, WEXITSTATUS
-from Result import CommandButton
 from PyQt5.QtWidgets import QGridLayout, QHBoxLayout, QGroupBox, QWidget, QLabel, QVBoxLayout, QPushButton, QTextEdit
 from PyQt5.QtGui import QIcon, QPixmap, QFont
 from PyQt5.QtCore import Qt
 from typing import Iterable
 
 
-def run_command(command: str, result_widget: CommandButton):
-    result = popen(f"""statusfile=$(mktemp);
-        xterm -bg black -fg green -e sh -c '{command}; echo $? > '$statusfile 2> /dev/null;
-        cat $statusfile;
-        rm $statusfile
-""").readline()
-    if result == "":
-        result = -1
-    result_widget.setStatus(int(result))
+class CommandButton(QPushButton):
+    def __init__(self, icon: QIcon, text: str, parent: QWidget):
+        super(QPushButton, self).__init__()
+        self.setParent(parent)
+        self.text = text
+        self.setText(self.text)
+        self.setIcon(icon)
 
-
-def aur_helper():
-    return popen("""if [ -f /bin/paru ]; then
-    aurhelper="/bin/paru"
-elif [ -f /bin/yay ]; then
-    aurhelper="/bin/yay"
-else
-    aurhelper=""
-fi
-echo $aurhelper""").readline().strip()
-
-
-def has_aur_helper():
-    return aur_helper() != ""
-
-
-def install_if_doesnt_have(package: str, result_widget: CommandButton):
-    run_command(
-        f"""if [ ! "$(pacman -Qqs {package} | grep "^{package}$")" = "{package}" ]
-    then {aur_helper()} -S {package}
-fi""" if has_aur_helper() else "false", result_widget)
-
-
-def uninstall_if_have(package: str, result_widget: CommandButton):
-    run_command(
-        f"""if [ "$(pacman -Qqs {package} | grep "^{package}$" )" = "{package}" ]
-    then {aur_helper()} -R {package}
-fi""" if has_aur_helper() else "false", result_widget)
-
-
-def color(color: str, text: str) -> str:
-    return f"<font color='{color}'>{text}</font>"
+    def setStatus(self, statusCode):
+        status_icon = ""
+        match statusCode:
+            case 0:
+                self.setStyleSheet("color: green")
+                status_icon = "✓"
+            case -1:
+                self.setStyleSheet("color: gray")
+                status_icon = "☠"
+            case _:
+                self.setStyleSheet("color: red")
+                status_icon = "✗"
+        self.setText(f"{self.text} {status_icon}")
 
 
 class AppBox(QGroupBox):
@@ -330,3 +308,47 @@ class CommandLine(QTextEdit):
         self.setStyleSheet("""QTextEdit {
                                 background: black;
                            }""")
+
+
+def run_command(command: str, result_widget: CommandButton):
+    result = popen(f"""statusfile=$(mktemp);
+        xterm -bg black -fg green -e sh -c '{command}; echo $? > '$statusfile 2> /dev/null;
+        cat $statusfile;
+        rm $statusfile
+""").readline()
+    if result == "":
+        result = -1
+    result_widget.setStatus(int(result))
+
+
+def aur_helper():
+    return popen("""if [ -f /bin/paru ]; then
+    aurhelper="/bin/paru"
+elif [ -f /bin/yay ]; then
+    aurhelper="/bin/yay"
+else
+    aurhelper=""
+fi
+echo $aurhelper""").readline().strip()
+
+
+def has_aur_helper():
+    return aur_helper() != ""
+
+
+def install_if_doesnt_have(package: str, result_widget: CommandButton):
+    run_command(
+        f"""if [ ! "$(pacman -Qqs {package} | grep "^{package}$")" = "{package}" ]
+    then {aur_helper()} -S {package}
+fi""" if has_aur_helper() else "false", result_widget)
+
+
+def uninstall_if_have(package: str, result_widget: CommandButton):
+    run_command(
+        f"""if [ "$(pacman -Qqs {package} | grep "^{package}$" )" = "{package}" ]
+    then {aur_helper()} -R {package}
+fi""" if has_aur_helper() else "false", result_widget)
+
+
+def color(color: str, text: str) -> str:
+    return f"<font color='{color}'>{text}</font>"

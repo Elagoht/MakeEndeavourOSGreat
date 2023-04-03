@@ -1,7 +1,6 @@
 from PyQt5.QtWidgets import QWidget, QGroupBox, QVBoxLayout
 from PyQt5.QtGui import QIcon
-from Utilities import run_command
-from Result import CommandButton
+from Utilities import run_command, CommandButton
 
 
 class UpdateTab(QWidget):

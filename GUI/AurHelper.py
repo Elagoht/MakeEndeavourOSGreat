@@ -1,8 +1,7 @@
 from PyQt5.QtWidgets import QWidget, QLabel, QGridLayout
 from PyQt5.QtGui import QIcon
-from Result import CommandButton
 from os import popen
-from Utilities import GridBox, ButtonBox
+from Utilities import GridBox, ButtonBox, CommandButton
 
 
 class AurHelperTab(QWidget):
