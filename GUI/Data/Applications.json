@@ -3,37 +3,37 @@
         [
             "Code",
             "code",
-            "GUI/Assets/Apps/code-oss.png",
+            "GUI/Assets/Apps/Development/code-oss.png",
             "Code OSS, is a source-code editor made with the Electron Framework."
         ],
         [
             "VSCode",
             "visual-studio-code-bin",
-            "GUI/Assets/Apps/vscode.png",
+            "GUI/Assets/Apps/Development/vscode.png",
             "A Code OSS distribution with Microsoft specific customizations."
         ],
         [
             "Neovim",
             "neovim",
-            "GUI/Assets/Apps/nvim.png",
+            "GUI/Assets/Apps/Development/nvim.png",
             "Vim with lua scripting support and still supports vimscript."
         ],
         [
             "Emacs",
             "emacs",
-            "GUI/Assets/Apps/emacs.png",
+            "GUI/Assets/Apps/Development/emacs.png",
             "The extensible, customizable, self-documenting, real-time display editor."
         ],
         [
             "Kate",
             "kate",
-            "GUI/Assets/Apps/kate.png",
+            "GUI/Assets/Apps/Development/kate.png",
             "The KDE Advanced Text Editor, source code editor developed by the KDE."
         ],
         [
             "Kdevelop",
             "kdevelop",
-            "GUI/Assets/Apps/kdevelop.png",
+            "GUI/Assets/Apps/Development/kdevelop.png",
             "Free and Open-source integrated development environment by KDE."
         ]
     ],
@@ -41,13 +41,13 @@
         [
             "GitHub CLI",
             "github-cli",
-            "GUI/Assets/Apps/github.png",
+            "GUI/Assets/Apps/Development/github.png",
             "Commandline interface for GitHub. Use with command: <font color='yellow'>gh</font>"
         ],
         [
             "GitHub Desktop",
             "github-desktop-bin",
-            "GUI/Assets/Apps/githubdesktop.png",
+            "GUI/Assets/Apps/Development/githubdesktop.png",
             "Desktop GUI interface for GitHub. Manage your repositories, issues, pull requests etc."
         ]
     ],
@@ -55,19 +55,19 @@
         [
             "Draw.io Desktop",
             "drawio-desktop-bin",
-            "GUI/Assets/Apps/drawio.png",
+            "GUI/Assets/Apps/Development/drawio.png",
             "Graph, flowchart drawing software developed in HTML5 and JavaScript."
         ],
         [
             "Minder",
             "minder",
-            "GUI/Assets/Apps/minder.png",
+            "GUI/Assets/Apps/Development/minder.png",
             "Use the power of mind-mapping to make your ideas come to life."
         ],
         [
             "Logisim",
             "logisim",
-            "GUI/Assets/Apps/logisim.png",
+            "GUI/Assets/Apps/Development/logisim.png",
             "An educational tool for designing and simulating digital logic circuits."
         ]
     ],
@@ -75,13 +75,13 @@
         [
             "Qt Creator",
             "qt5-tools",
-            "GUI/Assets/Apps/qtcreator.png",
+            "GUI/Assets/Apps/Development/qtcreator.png",
             "Part of the SDK for the Qt GUI application development framework."
         ],
         [
             "Gnome Builder",
             "gnome-builder",
-            "GUI/Assets/Apps/gnomebuilder.png",
+            "GUI/Assets/Apps/Development/gnomebuilder.png",
             "IDE for the GNOME platform, primarily designed to aid for GNOME-based applications."
         ]
     ],
@@ -89,25 +89,25 @@
         [
             "Oracle VM VirtualBox",
             "virtualbox",
-            "GUI/Assets/Apps/virtualbox.png",
+            "GUI/Assets/Apps/Development/virtualbox.png",
             "Oracle VM VirtualBox is a type-2 hypervisor for x86 virtualization"
         ],
         [
             "QEMU Base",
             "qemu-base",
-            "GUI/Assets/Apps/qemu.png",
+            "GUI/Assets/Apps/Development/qemu.png",
             "QEMU generic and open source machine emulator and virtualizer (without GUI)."
         ],
         [
             "QEMU Full",
             "qemu-full",
-            "GUI/Assets/Apps/qemu.png",
+            "GUI/Assets/Apps/Development/qemu.png",
             "QEMU generic and open source machine emulator and virtualizer (with GUI)."
         ],
         [
             "Docker",
             "docker",
-            "GUI/Assets/Apps/docker.png",
+            "GUI/Assets/Apps/Development/docker.png",
             "Set of platform as a service products use OS-level virtualization in packages called containers."
         ]
     ],
@@ -115,43 +115,43 @@
         [
             "Nginx",
             "nginx",
-            "GUI/Assets/Apps/nginx.png",
+            "GUI/Assets/Apps/Development/nginx.png",
             "Web server that can also be used as a reverse proxy, load balancer, mail proxy and HTTP cache."
         ],
         [
             "Apacher HTTP Server",
             "apache",
-            "GUI/Assets/Apps/apachehttpserver.png",
+            "GUI/Assets/Apps/Development/apachehttpserver.png",
             "Very popular web server, developed by the Apache Software Foundation."
         ],
         [
             "MongoDB",
             "mongodb-bin",
-            "GUI/Assets/Apps/mongodb.png",
+            "GUI/Assets/Apps/Development/mongodb.png",
             "Source-available, cross-platform, document-oriented NoSQL database program."
         ],
         [
             "MariaDB",
             "mariadb",
-            "GUI/Assets/Apps/mariadb.png",
+            "GUI/Assets/Apps/Development/mariadb.png",
             "Commercially supported fork of MySQL relational database management system."
         ],
         [
             "DB Browser for SQLite",
             "sqlitebrowser",
-            "GUI/Assets/Apps/sqlitebrowser.png",
+            "GUI/Assets/Apps/Development/sqlitebrowser.png",
             "High quality visual tool to create, design and edit SQLite database."
         ],
         [
             "DBeaver",
             "sqlitebrowser",
-            "GUI/Assets/Apps/dbeaver.png",
+            "GUI/Assets/Apps/Development/dbeaver.png",
             "High quality visual tool to create, design and edit SQLite database."
         ],
         [
             "Azure Data Studio",
             "azuredatastudio-bin",
-            "GUI/Assets/Apps/azuredatastudio.png",
+            "GUI/Assets/Apps/Development/azuredatastudio.png",
             "Cross-platform database tool for data professionals who use on-premises and cloud data platforms."
         ]
     ],
@@ -159,13 +159,13 @@
         [
             "BlueFish Editor",
             "bluefish",
-            "GUI/Assets/Apps/bluefish.png",
+            "GUI/Assets/Apps/Development/bluefish.png",
             "Editor targeted for webdevelopers, with many options, scripts and programming code."
         ],
         [
             "Google Web Designer",
             "google-webdesigner",
-            "GUI/Assets/Apps/googlewebdesigner.png",
+            "GUI/Assets/Apps/Development/googlewebdesigner.png",
             "Drag-and-drop page builder for creating interactive HTML5 ads and other HTML5 content. "
         ]
     ],
@@ -173,19 +173,19 @@
         [
             "Node.js",
             "nodejs",
-            "GUI/Assets/Apps/nodejs.png",
+            "GUI/Assets/Apps/Development/nodejs.png",
             "Backend JavaScript runtime environment, executes JavaScript outside a web browser."
         ],
         [
             "Npm",
             "npm",
-            "GUI/Assets/Apps/npm.png",
+            "GUI/Assets/Apps/Development/npm.png",
             "Package manager for the JavaScript programming language."
         ],
         [
             "Yarn",
             "yarn",
-            "GUI/Assets/Apps/yarn.png",
+            "GUI/Assets/Apps/Development/yarn.png",
             "Package manager for your code. It allows to use and share (e.g. JavaScript) code."
         ]
     ],
@@ -193,25 +193,25 @@
         [
             "PHP",
             "php",
-            "GUI/Assets/Apps/php.png",
+            "GUI/Assets/Apps/Development/php.png",
             "General-purpose scripting language geared toward web development."
         ],
         [
             "PHPStorm",
             "phpstorm ",
-            "GUI/Assets/Apps/phpstorm.png",
+            "GUI/Assets/Apps/Development/phpstorm.png",
             "Proprietary, cross-platform IDE for PHP, built by JetBrains."
         ],
         [
             "phpMyAdmin",
             "phpmyadmin",
-            "GUI/Assets/Apps/phpmyadmin.png",
+            "GUI/Assets/Apps/Development/phpmyadmin.png",
             "Open source administration tool for MySQL and MariaDB."
         ],
         [
             "Netbeans PHP",
             "netbeans-php",
-            "GUI/Assets/Apps/netbeans.png",
+            "GUI/Assets/Apps/Development/netbeans.png",
             "NetBeans integrated development environment for PHP language."
         ]
     ],
@@ -219,43 +219,43 @@
         [
             "Eclipse Java",
             "eclipse-java",
-            "GUI/Assets/Apps/eclipse.png",
+            "GUI/Assets/Apps/Development/eclipse.png",
             "Most popular integrated development environment for Java development."
         ],
         [
             "Netbeans Java",
             "netbeans",
-            "GUI/Assets/Apps/netbeans.png",
+            "GUI/Assets/Apps/Development/netbeans.png",
             "NetBeans integrated development environment for Java language."
         ],
         [
             "IntelliJ IDEA",
             "intellij-idea-community-edition",
-            "GUI/Assets/Apps/intellijidea.png",
+            "GUI/Assets/Apps/Development/intellijidea.png",
             "IDE for developing software in Java, Kotlin, Groovy and other JVM-based languages."
         ],
         [
             "JDK latest",
             "jdk-openjdk",
-            "GUI/Assets/Apps/java.png",
+            "GUI/Assets/Apps/Development/java.png",
             "Java Development Kit by Oracle Corporation, latest version."
         ],
         [
             "JDK 17",
             "jdk17-openjdk",
-            "GUI/Assets/Apps/java.png",
+            "GUI/Assets/Apps/Development/java.png",
             "Java Development Kit by Oracle Corporation, version 17."
         ],
         [
             "JDK 11",
             "jdk11-openjdk",
-            "GUI/Assets/Apps/java.png",
+            "GUI/Assets/Apps/Development/java.png",
             "Java Development Kit by Oracle Corporation, version 11."
         ],
         [
             "JDK 8",
             "jdk8-openjdk",
-            "GUI/Assets/Apps/java.png",
+            "GUI/Assets/Apps/Development/java.png",
             "Java Development Kit by Oracle Corporation, latest version 8."
         ]
     ],
@@ -263,31 +263,31 @@
         [
             "bPython",
             "bpython",
-            "GUI/Assets/Apps/bpython.png",
+            "GUI/Assets/Apps/Development/bpython.png",
             "Fancy Python interpreter with syntax higlhligter and more."
         ],
         [
             "PyCharm",
             "pycharm-community-edition",
-            "GUI/Assets/Apps/pycharm.png",
+            "GUI/Assets/Apps/Development/pycharm.png",
             "Integrated development environment used for programming in Python"
         ],
         [
             "IDLE",
             "idle",
-            "GUI/Assets/Apps/python.png",
+            "GUI/Assets/Apps/Development/python.png",
             "Integrated Development and Learning Environment for Python"
         ],
         [
             "IDLEX",
             "idlex",
-            "GUI/Assets/Apps/python.png",
+            "GUI/Assets/Apps/Development/python.png",
             "Basically IDLE, extended."
         ],
         [
             "TK",
             "tk",
-            "GUI/Assets/Apps/tcltk.png",
+            "GUI/Assets/Apps/Development/tcltk.png",
             "Graphical user interface toolkit. (Required for Tkinter)"
         ]
     ],
@@ -295,7 +295,7 @@
         [
             "Dotnet SDK",
             "dotnet-sdk",
-            "GUI/Assets/Apps/dotnet.png",
+            "GUI/Assets/Apps/Development/dotnet.png",
             "Software development kit to build and run .NET applications."
         ]
     ],
@@ -303,37 +303,37 @@
         [
             "Code::Blocks",
             "codeblocks",
-            "GUI/Assets/Apps/codeblocks.png",
+            "GUI/Assets/Apps/Development/codeblocks.png",
             "IDE for multiple compilers including GCC, Clang and Visual C++."
         ],
         [
             "Eclipse C/C++",
             "eclipse-cpp",
-            "GUI/Assets/Apps/eclipse-cdt.png",
+            "GUI/Assets/Apps/Development/eclipse-cdt.png",
             "The Eclipse CDT™ Project provides a fully functional C and C++."
         ],
         [
             "Netbeans C++",
             "netbeans-cpp",
-            "GUI/Assets/Apps/netbeans.png",
+            "GUI/Assets/Apps/Development/netbeans.png",
             "NetBeans integrated development environment for C and C++ languages."
         ],
         [
             ".h files)",
             "linux-headers",
-            "GUI/Assets/Apps/header.png",
+            "GUI/Assets/Apps/Development/header.png",
             "Required header (*.h) files for Linux kernel."
         ],
         [
             "Linux LTS Headers",
             "linux-lts-headers",
-            "GUI/Assets/Apps/header.png",
+            "GUI/Assets/Apps/Development/header.png",
             "Required header (*.h) files for Linux LTS kernel."
         ],
         [
             "Linux Zen Headers",
             "linux-zen-headers",
-            "GUI/Assets/Apps/header.png",
+            "GUI/Assets/Apps/Development/header.png",
             "Required header (*.h) files for Linux ZEN kernel."
         ]
     ],
@@ -341,7 +341,7 @@
         [
             "RustUp",
             "rustup",
-            "GUI/Assets/Apps/rust.png",
+            "GUI/Assets/Apps/Development/rust.png",
             "Installs The Rust Programming Language from the official release channels."
         ]
     ],
@@ -349,13 +349,13 @@
         [
             "R",
             "r",
-            "GUI/Assets/Apps/r.png",
+            "GUI/Assets/Apps/Development/r.png",
             "Programming language for statistical computing and graphics."
         ],
         [
             "RStudio",
             "rstudio-desktop-bin",
-            "GUI/Assets/Apps/rstudio.png",
+            "GUI/Assets/Apps/Development/rstudio.png",
             "Integrated development environment for R."
         ]
     ],
@@ -363,13 +363,13 @@
         [
             "Swi-Prolog",
             "swi-prolog",
-            "GUI/Assets/Apps/swiprolog.png",
+            "GUI/Assets/Apps/Development/swiprolog.png",
             "Commonly used for teaching and semantic web applications. Launch with command: <font color='yellow'>swipl-win</font>."
         ],
         [
             "GNU Prolog",
             "gprolog",
-            "GUI/Assets/Apps/gprolog.png",
+            "GUI/Assets/Apps/Development/gprolog.png",
             "Prolog compiler with constraint solvingover finite domains. Launch with command: <font color='yellow'>gprolog</font>."
         ]
     ]

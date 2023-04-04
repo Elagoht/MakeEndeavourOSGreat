@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QWidget, QGroupBox, QLabel, QVBoxLayout
+from PyQt5.QtWidgets import QWidget, QLabel, QVBoxLayout
 from Utilities import AppBox, GridBox
 from json import load
 
@@ -7,17 +7,8 @@ class DevelopmentTab(QWidget):
     def __init__(self):
         super(QWidget, self).__init__()
 
-        # Create Devs section
-        self.gbxDev = QGroupBox("Development packages", self)
-        self.glyDev = QVBoxLayout(self.gbxDev)
-        self.lblDev = QLabel(
-            "Here are collections of development packages separated by languages for developers.")
-        self.lblDev.setWordWrap(True)
-        self.glyDev.addWidget(self.lblDev)
-
         # Insert groupboxes to layout
         self.layout = QVBoxLayout(self)
-        self.layout.addWidget(self.gbxDev)
         self.load_programs_lists()
 
     def load_programs_lists(self):

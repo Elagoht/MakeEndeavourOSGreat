@@ -278,11 +278,22 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "[
 Gaming applications:
 
 * steam-runtime
-* mongohud
-* goverlay-bin
 * heroic-games-launcher
+* itch
+* mangohud
+* goverlay-bin
+* gamemode
+* vkbasalt
 * lutris
 * protonge-custom-bin
 * wine
+* wine-gecko
+* wine-mono
+* winetricks
 * bottles
+* qjoypad
 * jstest-gtk
+* discord
+* discover-overlay
+* easyeffects
+* teamspeak
