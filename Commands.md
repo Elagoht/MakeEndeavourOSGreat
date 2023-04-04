@@ -272,3 +272,17 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/or
 
 gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2/', '/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom3/']"
 ```
+
+---
+
+Gaming applications:
+
+* steam-runtime
+* mongohud
+* goverlay-bin
+* heroic-games-launcher
+* lutris
+* protonge-custom-bin
+* wine
+* bottles
+* jstest-gtk
