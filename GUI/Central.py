@@ -22,10 +22,11 @@ class Central(QTabWidget):
         self.AurHelperTab = AurHelperTab()
         self.ExtensionsTab = ExtensionsTab()
         self.ThemingTab = ThemingTab()
-        self.DevelopmentTab = AppsTab("GUI/Data/Development.json")
         self.LureTab = LureTab()
         self.ShellTab = ShellTab()
         self.GamingTab = AppsTab("GUI/Data/Gaming.json")
+        self.GamesTab = AppsTab("GUI/Data/Games.json")
+        self.DevelopmentTab = AppsTab("GUI/Data/Development.json")
 
         self.scrollGnome = QScrollArea(self)
         self.scrollGnome.setWidget(self.GnomeTab)
@@ -67,6 +68,10 @@ class Central(QTabWidget):
         self.scrollGaming.setWidget(self.GamingTab)
         self.scrollGaming.setWidgetResizable(True)
 
+        self.scrollGames = QScrollArea(self)
+        self.scrollGames.setWidget(self.GamesTab)
+        self.scrollGames.setWidgetResizable(True)
+
         # Insert tab widgets
         self.insertTab(0, self.scrollUpdate, "Update System")
         self.insertTab(1, self.scrollPamac, "Sofware Manager")
@@ -77,4 +82,5 @@ class Central(QTabWidget):
         self.insertTab(6, self.scrollGnome, "Gnome Options")
         self.insertTab(7, self.scrollExtensions, "Gnome Extensions")
         self.insertTab(8, self.scrollGaming, "Gaming")
-        self.insertTab(9, self.scrollDevelopment, "Development")
+        self.insertTab(9, self.scrollGames, "Suggested Games")
+        self.insertTab(10, self.scrollDevelopment, "Development")

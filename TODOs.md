@@ -21,5 +21,6 @@
 - [X] Disable/enable Wayland.
 - [ ] Set Gnome shortcuts.
 - [ ] Install `easyeffects` to configure voice channels.
-- [ ] Add gaming package section.
+- [X] Add gaming package section.
+- [ ] Add suggested game packages.
 - [X] Install lure.

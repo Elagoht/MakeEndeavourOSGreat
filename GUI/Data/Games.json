@@ -1,0 +1,130 @@
+{
+    "Strategy Games": [
+        [
+            "Mindustry",
+            "mindustry-bin",
+            "GUI/Assets/Apps/Games/mindustry.png",
+            "Sandbox tower-defense game. Defend your base from waves of powerful enemies. Build complex designs for processing materials."
+        ],
+        [
+            "0 A.D.",
+            "0ad",
+            "GUI/Assets/Apps/Games/0ad.png",
+            "Real time strategy (RTS) game of ancient wasfare."
+        ],
+        [
+            "OpenRA (Red Alert)",
+            "openra",
+            "GUI/Assets/Apps/Games/openra.png",
+            "Reimagining of early Westwood real time strategy games."
+        ],
+        [
+            "Sudo Mice",
+            "sudo-mice-bin",
+            "GUI/Assets/Apps/Games/sudomice.png",
+            "Pixel graphics two players real time strategy game."
+        ],
+        [
+            "Battle for Wesnoth",
+            "wesnoth",
+            "GUI/Assets/Apps/Games/wesnoth.png",
+            "Turn-based strategy game with a gihg fantasy theme."
+        ]
+    ],
+    "Simulation": [
+        [
+            "OpenTTD (Transport Tycoon Deluxe)",
+            "openttd",
+            "GUI/Assets/Apps/Games/openttd.png",
+            "A simulation game based on Transport Tycoon Deluxe."
+        ]
+    ],
+    "Platformer": [
+        [
+            "SuperTux 2",
+            "supertux",
+            "GUI/Assets/Apps/Games/supertux.png",
+            "Super Mario Bros clone starring Tux the Penguin."
+        ]
+    ],
+    "Racing": [
+        [
+            "SuperTuxKart",
+            "supertuxkart",
+            "GUI/Assets/Apps/Games/supertuxkart.png",
+            "3D opensurce kart racing game starring almost all open source mascots."
+        ]
+    ],
+    "Card Game": [
+        [
+            "Aisleriot Solitaire",
+            "supertuxkart",
+            "GUI/Assets/Apps/Games/aisleriot.png",
+            "Play lots of solitaire games."
+        ]
+    ],
+    "Space Shooter": [
+        [
+            "Chromium B.S.U",
+            "chromium-bsu",
+            "GUI/Assets/Apps/Games/chromiumbsu.png",
+            "Scrolling space shooter for Linux."
+        ],
+        [
+            "Open Tyrian 2000",
+            "opentyrian2000",
+            "GUI/Assets/Apps/Games/tyrian2000.png",
+            "Open Source port of the classic DOX shoot-em-up Tyrian 2000."
+        ]
+    ],
+    "Casual": [
+        [
+            "Gnome 2048",
+            "gnome-2048",
+            "GUI/Assets/Apps/Games/gnome2048.png",
+            "Obtain the 2048 tile by merging other low number tiles."
+        ],
+        [
+            "Gnome Chess",
+            "gnome-chess",
+            "GUI/Assets/Apps/Games/gnomechess.png",
+            "Clasic two player board game of chess."
+        ],
+        [
+            "Gnome Sudoku",
+            "gnome-sudoku",
+            "GUI/Assets/Apps/Games/gnomesudoku.png",
+            "Test your logic skills in this number grid puzzle."
+        ],
+        [
+            "Gnome Mines",
+            "gnome-mines",
+            "GUI/Assets/Apps/Games/gnomemines.png",
+            "Clear hidden mines from a minefield."
+        ],
+        [
+            "Gnome Mahjongg",
+            "gnome-mahjongg",
+            "GUI/Assets/Apps/Games/gnomemahjongg.png",
+            "Match tiles and clear the board."
+        ],
+        [
+            "Gnome Nibbles",
+            "gnome-nibbles",
+            "GUI/Assets/Apps/Games/gnomenibbles.png",
+            "Multiplayer PvP, PvE snake game."
+        ],
+        [
+            "Gnome Reversi",
+            "iagno",
+            "GUI/Assets/Apps/Games/gnomereversi.png",
+            "Dominate the board in a classic reversi game or play the reversed variant."
+        ],
+        [
+            "Gnome Robots",
+            "iagno",
+            "GUI/Assets/Apps/Games/gnomerobots.png",
+            "Avoid the robots and make them crash into each other."
+        ]
+    ]
+}

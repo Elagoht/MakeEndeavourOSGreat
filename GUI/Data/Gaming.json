@@ -3,31 +3,31 @@
         [
             "Steam",
             "steam-runtime",
-            "GUI/Assets/Apps/Games/steam.png",
+            "GUI/Assets/Apps/Gaming/steam.png",
             "You all know what Steam is."
         ],
         [
             "Heroic Games Launcher",
             "heroic-games-launcher-bin",
-            "GUI/Assets/Apps/Games/heroicgameslauncher.png",
+            "GUI/Assets/Apps/Gaming/heroicgameslauncher.png",
             "Epic Games Launcher and GOG launcher. Epic Games Launcher isn't supported. But this is better than even on Windows!"
         ],
         [
             "Itch",
             "itch-bin",
-            "GUI/Assets/Apps/Games/itch.png",
+            "GUI/Assets/Apps/Gaming/itch.png",
             "Indie game, assets, jam finding and serving application. Take a look at indie developers games and publish your own."
         ],
         [
             "Lutris",
             "lutris",
-            "GUI/Assets/Apps/Games/lutris.png",
+            "GUI/Assets/Apps/Gaming/lutris.png",
             "Serves community installer scripts to automatically configure the Wine environment for required games."
         ],
         [
             "Bottles",
             "bottles",
-            "GUI/Assets/Apps/Games/bottles.png",
+            "GUI/Assets/Apps/Gaming/bottles.png",
             "Bottles' Gaming Environment comes preconfigured to support a large set of Windows video games on Linux."
         ]
     ],
@@ -35,19 +35,19 @@
         [
             "Discord",
             "discord",
-            "GUI/Assets/Apps/Games/discord.png",
+            "GUI/Assets/Apps/Gaming/discord.png",
             "You all know what Discord is. In this program select to use XOrg over Wayland to be able to stream screen. Unfortunately Discord doesn't support audio streaming and overlay yet."
         ],
         [
             "Discover Overlay",
             "discover-overlay",
-            "GUI/Assets/Apps/Games/discoveroverlay.png",
+            "GUI/Assets/Apps/Gaming/discoveroverlay.png",
             "Third party support for Discord overlay to be able to see who is speaking right now. Highly customizable."
         ],
         [
             "Team Speak",
             "teamspeak",
-            "GUI/Assets/Apps/Games/teamspeak.png",
+            "GUI/Assets/Apps/Gaming/teamspeak.png",
             "You all know what Team Speak is."
         ]
     ],
@@ -55,37 +55,37 @@
         [
             "QJoyPad",
             "qjoypad",
-            "GUI/Assets/Apps/Games/qjoypad.png",
+            "GUI/Assets/Apps/Gaming/qjoypad.png",
             "Simply JoyToKey for Linux. Convert gamepad actions to keyboard or mouse actions."
         ],
         [
             "JS Test",
             "jstest-gtk-git",
-            "GUI/Assets/Apps/Games/jstestgtk.png",
+            "GUI/Assets/Apps/Gaming/jstestgtk.png",
             "Joystick, gamepad shortly game controller testing interface for Linux."
         ],
         [
             "Feral GameMode",
             "gamemode",
-            "GUI/Assets/Apps/Games/feralgamemode.png",
+            "GUI/Assets/Apps/Gaming/feralgamemode.png",
             "Support for optimisations including CPU governor, I/O priority, process niceness, kernel scheduler (SCHED_ISO)."
         ],
         [
             "Goverlay",
             "vkbasalt",
-            "GUI/Assets/Apps/Games/goverlay.png",
+            "GUI/Assets/Apps/Gaming/goverlay.png",
             "Graphical tweaker for Mangohud and vkBasalt. Highly recommended to use."
         ],
         [
             "Mangohud",
             "mangohud",
-            "GUI/Assets/Apps/Games/mangohud.png",
-            "Simply Riva Tuner Statistics Server for Linux. Shows FPS, CPU and GPU's usage and heat, RAM and Swap usage etc. To use add <font color=\"yellow\" face=\"monospace\">mangohud</font> on terminal or write <font color=\"green\" face=\"monospace\">mangohud %command%</font> on Steam launch options."
+            "GUI/Assets/Apps/Gaming/mangohud.png",
+            "Simply Riva Tuner Statistics Server for Linux. Shows FPS, CPU and GPU's usage and heat, RAM and Swap usage etc. To use add <font color=\"orange\" face=\"monospace\">mangohud</font> on terminal or write <font color=\"green\" face=\"monospace\">mangohud %command%</font> on Steam launch options."
         ],
         [
             "vkBasalt",
             "vkbasalt",
-            "GUI/Assets/Apps/Games/vkbasalt.png",
+            "GUI/Assets/Apps/Gaming/vkbasalt.png",
             "Vulkan post processing layer to enhance the visual graphics of games. To use add <font color=\"green\" face=\"monospace\">mangohud ENABLE_VKBASALT=1</font> on terminal or write <font color=\"green\" face=\"monospace\">mangohud ENABLE_VKBASALT=1 %command%</font> on Steam launch options."
         ]
     ],
@@ -93,31 +93,31 @@
         [
             "Proton GE Custom",
             "proton-ge-custom-bin",
-            "GUI/Assets/Apps/Games/protonge.png",
-            "Custom Proton (Wine version by Steam to run games.) by <a href=\"https://github.com/GloriousEggroll/proton-ge-custom\">Glorious Eggroll</a> that includes many additional components. Performs better than default Proton. Auto updates <font>Does not require protonup-qt.</font>"
+            "GUI/Assets/Apps/Gaming/protonge.png",
+            "Custom Proton (Wine version by Steam to run games.) by <a href=\"https://github.com/GloriousEggroll/proton-ge-custom\">Glorious Eggroll</a> that includes many additional components. Performs better than default Proton. Updates automatically. <font color=\"orange\">Does not require protonup-qt.</font>"
         ],
         [
             "Wine (Wine Is Not an Emulator)",
             "wine-stable",
-            "GUI/Assets/Apps/Games/wine.png",
+            "GUI/Assets/Apps/Gaming/wine.png",
             "Compatibility layer capable of running Windows applications on several POSIX-compliant operating systems."
         ],
         [
             "Wine Mono",
             "wine-mono",
-            "GUI/Assets/Apps/Games/winemono.png",
+            "GUI/Assets/Apps/Gaming/winemono.png",
             "Open source version of .Net Framework. Required for Windows applications using .Net Framework."
         ],
         [
             "Wine Gecko",
             "wine-gecko",
-            "GUI/Assets/Apps/Games/winegecko.png",
+            "GUI/Assets/Apps/Gaming/winegecko.png",
             "Wine's built-in replacement for Microsoft's Internet Explorer. May be required in some cases."
         ],
         [
             "Wine Tricks",
             "wine-gecko",
-            "GUI/Assets/Apps/Games/winetricks.png",
+            "GUI/Assets/Apps/Gaming/winetricks.png",
             "Graphical interface for script to install various redistributable runtime libraries in Wine."
         ]
     ]
