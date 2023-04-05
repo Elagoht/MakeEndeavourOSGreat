@@ -1,11 +1,11 @@
 from PyQt5.QtWidgets import QTabWidget, QScrollArea
+from Utilities import AppsTab
 from Gnome import GnomeTab
 from Update import UpdateTab
 from Pamac import PamacTab
 from AurHelper import AurHelperTab
 from GnomeExtensions import ExtensionsTab
 from Theming import ThemingTab
-from Development import DevelopmentTab
 from Lure import LureTab
 from Shell import ShellTab
 
@@ -22,9 +22,10 @@ class Central(QTabWidget):
         self.AurHelperTab = AurHelperTab()
         self.ExtensionsTab = ExtensionsTab()
         self.ThemingTab = ThemingTab()
-        self.DevelopmentTab = DevelopmentTab()
+        self.DevelopmentTab = AppsTab("GUI/Data/Development.json")
         self.LureTab = LureTab()
         self.ShellTab = ShellTab()
+        self.GamingTab = AppsTab("GUI/Data/Gaming.json")
 
         self.scrollGnome = QScrollArea(self)
         self.scrollGnome.setWidget(self.GnomeTab)
@@ -62,6 +63,10 @@ class Central(QTabWidget):
         self.scrollShell.setWidget(self.ShellTab)
         self.scrollShell.setWidgetResizable(True)
 
+        self.scrollGaming = QScrollArea(self)
+        self.scrollGaming.setWidget(self.GamingTab)
+        self.scrollGaming.setWidgetResizable(True)
+
         # Insert tab widgets
         self.insertTab(0, self.scrollUpdate, "Update System")
         self.insertTab(1, self.scrollPamac, "Sofware Manager")
@@ -71,4 +76,5 @@ class Central(QTabWidget):
         self.insertTab(5, self.scrollShell, "Shell")
         self.insertTab(6, self.scrollGnome, "Gnome Options")
         self.insertTab(7, self.scrollExtensions, "Gnome Extensions")
-        self.insertTab(8, self.scrollDevelopment, "Development")
+        self.insertTab(8, self.scrollGaming, "Gaming")
+        self.insertTab(9, self.scrollDevelopment, "Development")
