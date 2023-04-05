@@ -19,6 +19,12 @@
             "Reimagining of early Westwood real time strategy games."
         ],
         [
+            "Warzone2100",
+            "warzone2100",
+            "GUI/Assets/Apps/Games/warzone2100.png",
+            "3D realtime strategy game on a future Earth."
+        ],
+        [
             "Sudo Mice",
             "sudo-mice-bin",
             "GUI/Assets/Apps/Games/sudomice.png",
@@ -29,6 +35,40 @@
             "wesnoth",
             "GUI/Assets/Apps/Games/wesnoth.png",
             "Turn-based strategy game with a gihg fantasy theme."
+        ]
+    ],
+    "First Person Shooter": [
+        [
+            "AssaultCube Reloaded",
+            "assaultcube-reloaded",
+            "GUI/Assets/Apps/Games/assaultcubereloaded.png",
+            "Battle against the computer or other players for control of an area."
+        ],
+        [
+            "Xonotic",
+            "xonotic",
+            "GUI/Assets/Apps/Games/xonotic.png",
+            "Fast-paced crossplatform first-person shooter."
+        ]
+    ],
+    "Sandbox": [
+        [
+            "Minecraft Launcher",
+            "minecraft-launcher",
+            "GUI/Assets/Apps/Games/minecraft.png",
+            "Official Minecraft launcher. You all know what minecraft is."
+        ],
+        [
+            "Prism Launcher",
+            "prismlauncher-bin",
+            "GUI/Assets/Apps/Games/prismlauncher.png",
+            "Third party Minecraft launcher with ability to manage multiple instances. Good for modpack management."
+        ],
+        [
+            "Minetest",
+            "minetest",
+            "GUI/Assets/Apps/Games/minetest.png",
+            "Multiplayer infinite-world block sandbox game."
         ]
     ],
     "Simulation": [
@@ -45,6 +85,18 @@
             "supertux",
             "GUI/Assets/Apps/Games/supertux.png",
             "Super Mario Bros clone starring Tux the Penguin."
+        ],
+        [
+            "Hedgewars",
+            "hedgewars",
+            "GUI/Assets/Apps/Games/hedgewars.png",
+            "Worms clone single/multiplayer turnbased war game."
+        ],
+        [
+            "Teeworlds",
+            "teeworlds",
+            "GUI/Assets/Apps/Games/teeworlds.png",
+            "Fast-paced multiplayer 2D shooter game."
         ]
     ],
     "Racing": [

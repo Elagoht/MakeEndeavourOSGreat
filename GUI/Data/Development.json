@@ -69,6 +69,12 @@
             "logisim",
             "GUI/Assets/Apps/Development/logisim.png",
             "An educational tool for designing and simulating digital logic circuits."
+        ],
+        [
+            "Geogebra",
+            "geogebra",
+            "GUI/Assets/Apps/Development/geogebra.png",
+            "Dynamic mathematics software with interactive graphics, algebra and spreadsheet."
         ]
     ],
     "GUI Builders": [
@@ -153,6 +159,12 @@
             "azuredatastudio-bin",
             "GUI/Assets/Apps/Development/azuredatastudio.png",
             "Cross-platform database tool for data professionals who use on-premises and cloud data platforms."
+        ],
+        [
+            "Filezilla",
+            "filezilla",
+            "GUI/Assets/Apps/Development/filezilla.png",
+            "Fast and reliable FTP, FTPS and SFTP client with graphical interface."
         ]
     ],
     "HTML / CSS": [

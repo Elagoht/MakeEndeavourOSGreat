@@ -59,6 +59,18 @@
     ],
     "Tools": [
         [
+            "LogMeIn Hamachi (No GUI)",
+            "logmein-hamachi",
+            "GUI/Assets/Apps/Gaming/logmeinhamachi.png",
+            "A zero-configuration VPN service. Run this command after install: <font color=\"green\" face=\"monospace\">sudo systemctl enable --now logmein-hamachi.service</font>"
+        ],
+        [
+            "HaGUIchi (GUI for Hamachi)",
+            "haguichi",
+            "GUI/Assets/Apps/Gaming/haguichi.png",
+            "Provides a user friendly GUI to control the Hamachi client on Linux"
+        ],
+        [
             "QJoyPad",
             "qjoypad",
             "GUI/Assets/Apps/Gaming/qjoypad.png",
@@ -125,6 +137,30 @@
             "wine-gecko",
             "GUI/Assets/Apps/Gaming/winetricks.png",
             "Graphical interface for script to install various redistributable runtime libraries in Wine."
+        ],
+        [
+            "OpenJDK JRE (latest)",
+            "jre-openjdk",
+            "GUI/Assets/Apps/Development/java.png",
+            "OpenJDK latest Java full runtime environment."
+        ],
+        [
+            "OpenJDK JRE 17",
+            "jre17-openjdk",
+            "GUI/Assets/Apps/Development/java.png",
+            "OpenJDK Java 17 full runtime environment."
+        ],
+        [
+            "OpenJDK JRE 11",
+            "jre11-openjdk",
+            "GUI/Assets/Apps/Development/java.png",
+            "OpenJDK Java 11 full runtime environment."
+        ],
+        [
+            "OpenJDK JRE 8",
+            "jre8-openjdk",
+            "GUI/Assets/Apps/Development/java.png",
+            "OpenJDK Java 8 full runtime environment."
         ]
     ]
 }

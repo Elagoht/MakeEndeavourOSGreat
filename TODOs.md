@@ -1,6 +1,7 @@
 # TODOs
 
 - [ ] Make commands run on another thread.
+- [ ] Convert tabs to windows for optimization.
 - [X] Create a function to detect installed AUR helper.
 - [X] Update and upgrade the system.
 - [X] Replace `gnome-console` with `gnome-terminal`.
