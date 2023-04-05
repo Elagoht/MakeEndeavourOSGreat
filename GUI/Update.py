@@ -11,14 +11,14 @@ class UpdateTab(QWidget):
         self.gbxUpdate = QGroupBox("Update", self)
         self.glyUpdate = QVBoxLayout(self.gbxUpdate)
         self.btnUpdate = CommandButton(
-            QIcon("GUI/Assets/update.png"), "Update databases", self.gbxUpdate, aur_helper()+" -Sy")
+            QIcon("GUI/Assets/update.png"), "Update databases", aur_helper()+" -Sy", self.gbxUpdate)
         self.glyUpdate.addWidget(self.btnUpdate)
 
         # Create upgrade section
         self.gbxUpgrade = QGroupBox("Upgrade", self)
         self.glyUpgrade = QVBoxLayout(self.gbxUpgrade)
         self.btnUpgrade = CommandButton(
-            QIcon("GUI/Assets/upgrade.png"), "Upgrade system", self.gbxUpgrade, aur_helper()+" -Su")
+            QIcon("GUI/Assets/upgrade.png"), "Upgrade system", aur_helper()+" -Su", self.gbxUpgrade)
         self.glyUpgrade.addWidget(self.btnUpgrade)
 
         # Add groupboxes to layout

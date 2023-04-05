@@ -13,45 +13,39 @@ class GnomeTab(QWidget):
             "<p>Wayland is a new technology to replace Xorg display server. Its may be lighter and faster. Waydroid only works on Wayland but because of it is a new technology, some features are not compatible yet. I.e. global keyboard shourtcuts does not supported right now. Discord cannot share screen on.</p>\
             <p>Wayland has its own <font color='green'>advantages</font> and <font color='red'>disadvantages</font>. So you may want to change this setting in the future depending on your needs. But for now using Xorg and ditching Wayland is more compatible.</p>\
             <p><u>Changes require restart.</u></p>", (
-                CommandButton(QIcon("GUI/Assets/configure.png"),
-                              "Use Wayland", self),
-                CommandButton(QIcon("GUI/Assets/configure.png"),
-                              "Use XOrg", self)
-            ), (
-                "sudo sed -i \"s/^WaylandEnable=false/#WaylandEnable=false/\" /etc/gdm/custom.conf",
-                "sudo sed -i \"s/^#WaylandEnable=false/WaylandEnable=false/\" /etc/gdm/custom.conf"
-            )
+                CommandButton(QIcon("GUI/Assets/configure.png"), "Use Wayland",
+                              "sudo sed -i \"s/^WaylandEnable=false/#WaylandEnable=false/\" /etc/gdm/custom.conf",
+                              self),
+                CommandButton(QIcon("GUI/Assets/configure.png"), "Use XOrg",
+                              "sudo sed -i \"s/^#WaylandEnable=false/WaylandEnable=false/\" /etc/gdm/custom.conf",
+                              self))
         )
 
         # Create context menu section
         self.gbxContext = ButtonBox(
             "Context Menu", "GUI/Assets/Tweaks/contextmenu.png", "Enable context (right click) menu icons.", (
-                CommandButton(QIcon("GUI/Assets/enabled.png"),
-                              "Enable Icons", self),
-                CommandButton(QIcon("GUI/Assets/disabled.png"),
-                              "Disable Icons", self)
-            ), (
-                "gsettings set org.gnome.settings-daemon.plugins.xsettings overrides \"{\\\"Gtk/ButtonImages\\\": <1>, \\\"Gtk/MenuImages\\\": <1>}\"",
-                "gsettings set org.gnome.settings-daemon.plugins.xsettings overrides \"{}\""
-            ))
+                CommandButton(QIcon("GUI/Assets/enabled.png"), "Enable Icons",
+                              "gsettings set org.gnome.settings-daemon.plugins.xsettings overrides \"{\\\"Gtk/ButtonImages\\\": <1>, \\\"Gtk/MenuImages\\\": <1>}\"",
+                              self),
+                CommandButton(QIcon("GUI/Assets/disabled.png"), "Disable Icons",
+                              "gsettings set org.gnome.settings-daemon.plugins.xsettings overrides \"{}\"", self))
+        )
 
         # Create Gnome Terminal/Console section
         self.gbxTerm = GridBox("Gnome Terminal / Console")
         # Chose Gnome Terminal over Console
-        self.appTerminal = ButtonBox("Gnome Terminal", "GUI/Assets/Tweaks/gnometerminal.png",
-                                     "Gnome terminal is more compatible than console with Gnome desktop environment (open with terminal etc.). But may not be able to adapt dark/light theme. <u>Transparency support is serving separately.</u> Chose one.", (
-                                         CommandButton(
-                                             QIcon("GUI/Assets/configure.png"), "Use Terminal", self),
-                                         CommandButton(
-                                             QIcon("GUI/Assets/configure.png"), "Use Transparent Terminal", self),
-                                     ), (
-                                         """if [ ! "$(pacman -Qqs gnome-terminal | grep ^gnome-terminal$)" = "gnome-terminal" ]
+        self.appTerminal = \
+            ButtonBox("Gnome Terminal", "GUI/Assets/Tweaks/gnometerminal.png",
+                      "Gnome terminal is more compatible than console with Gnome desktop environment (open with terminal etc.). But may not be able to adapt dark/light theme. <u>Transparency support is serving separately.</u> Chose one.", (
+                          CommandButton(QIcon("GUI/Assets/configure.png"), "Use Terminal",
+                                        """if [ ! "$(pacman -Qqs gnome-terminal | grep ^gnome-terminal$)" = "gnome-terminal" ]
                                             then sudo pacman -S gnome-terminal
                                         fi &&
                                         if [ -f /usr/bin/kgx ]
                                             then sudo pacman -R gnome-console
-                                        fi""",
-                                         f"""if [ ! "$(pacman -Qqs gnome-terminal-transparency | grep ^gnome-terminal-transparency$)" = "gnome-terminal-transparency" ]
+                                        fi""", self),
+                          CommandButton(QIcon("GUI/Assets/configure.png"), "Use Transparent Terminal",
+                                        f"""if [ ! "$(pacman -Qqs gnome-terminal-transparency | grep ^gnome-terminal-transparency$)" = "gnome-terminal-transparency" ]
                                             then
                                             if [ "$(command -v {aur_helper()})" ]
                                                 then {aur_helper()} -S gnome-terminal-transparency
@@ -62,14 +56,13 @@ class GnomeTab(QWidget):
                                         fi &&
                                         if [ -f /usr/bin/kgx ]
                                             then sudo pacman -R gnome-console
-                                        fi"""
-                                     ))
+                                        fi""", self))
+                      )
         # Chose Gnome Console over Terminal
-        self.appConsole = ButtonBox("Gnome Console", "GUI/Assets/Tweaks/gnomeconsole.png",
-                                    "Gnome Console is more compatible with dark/light theme but is not compatible with default terminal application configuration.", (
-                                        CommandButton(
-                                            QIcon("GUI/Assets/configure.png"), "Use Gnome Console", self),
-                                    ), (
+        self.appConsole = \
+            ButtonBox("Gnome Console", "GUI/Assets/Tweaks/gnomeconsole.png",
+                      "Gnome Console is more compatible with dark/light theme but is not compatible with default terminal application configuration.", (
+                          CommandButton(QIcon("GUI/Assets/configure.png"), "Use Gnome Console",
                                         """if [ ! -f /usr/bin/kgx ]
                                             then sudo pacman -S gnome-console
                                         fi &&
@@ -77,8 +70,9 @@ class GnomeTab(QWidget):
                                             then sudo pacman -R gnome-terminal-transparency
                                         elif [ "$(pacman -Qqs gnome-terminal)" = "gnome-terminal" ]
                                             then sudo pacman -R gnome-terminal
-                                        fi""",
-                                    ))
+                                        fi""", self),)
+                      )
+
         self.gbxTerm.addWidget(self.appTerminal)
         self.gbxTerm.addWidget(self.appConsole, 0, 1)
 

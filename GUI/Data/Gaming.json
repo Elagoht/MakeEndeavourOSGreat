@@ -2,7 +2,7 @@
     "Game Launchers": [
         [
             "Steam",
-            "steam-runtime",
+            "steam",
             "GUI/Assets/Apps/Gaming/steam.png",
             "You all know what Steam is."
         ],

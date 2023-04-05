@@ -13,7 +13,7 @@ class AurHelperTab(QWidget):
         self.lblAurDesc = QLabel("Arch User Repository packages needs to be install manually by cloning git repositories (technically downloading files from internet but in a cooler way), and running some commands that creating packages from recipe file. That's usually a few step process. In this point, AUR helpers helps you to install, update and uninstall packages from AUR and official repositories.")
         self.lblAurDesc.setWordWrap(True)
         self.btnAurCheck = CommandButton(
-            QIcon("GUI/Assets/check.png"), "Check AUR Helpers", self.gbxAur)
+            QIcon("GUI/Assets/check.png"), "Check AUR Helpers", "true", self.gbxAur)
         self.btnAurCheck.clicked.connect(
             lambda: self.lblAurHelper.setText(self.get_aur_helpers()))
         self.lblAurHelper = QLabel(self.gbxAur)
@@ -22,44 +22,44 @@ class AurHelperTab(QWidget):
         self.gbxAur.addWidget(self.lblAurHelper, 2, 0)
 
         # Create paru section
-        self.appParu = ButtonBox("Paru", "GUI/Assets/Apps/paru.png", "Paru is the most popular AUR helper written in Rust.", (
-            CommandButton(QIcon("GUI/Assets/install.png"),
-                          "Install", self),
-            CommandButton(QIcon("GUI/Assets/uninstall.png"),
-                          "Uninstall", self)
-        ), (
-            """if [ ! -f /bin/paru ]
-                then workdir=$(mktemp -d) &&
-                cd $workdir &&
-                git clone https://aur.archlinux.org/paru-bin.git &&
-                cd paru-bin &&
-                makepkg -si &&
-                rm -rf $workdir
-            fi""",
-            """if [ -f /bin/paru ]
-                then sudo pacman -R paru-bin || sudo pacman -R paru
-            fi"""
-        ))
+        self.appParu = \
+            ButtonBox("Paru", "GUI/Assets/Apps/paru.png", "Paru is the most popular AUR helper written in Rust.", (
+                CommandButton(QIcon("GUI/Assets/install.png"), "Install",
+                              """if [ ! -f /bin/paru ]
+                                then workdir=$(mktemp -d) &&
+                                cd $workdir &&
+                                git clone https://aur.archlinux.org/paru-bin.git &&
+                                cd paru-bin &&
+                                makepkg -si &&
+                                rm -rf $workdir
+                            fi""",
+                              self),
+                CommandButton(QIcon("GUI/Assets/uninstall.png"), "Uninstall",
+                              """if [ -f /bin/paru ]
+                                then sudo pacman -R paru-bin || sudo pacman -R paru
+                              fi""",
+                              self))
+                      )
 
         # Create yay section
-        self.appYay = ButtonBox("Yay", "GUI/Assets/Apps/yay.png", "Yay is widely used AUR helper written in Go.", (
-            CommandButton(QIcon("GUI/Assets/install.png"),
-                          "Install", self),
-            CommandButton(QIcon("GUI/Assets/uninstall.png"),
-                          "Uninstall", self)
-        ), (
-            """if [ ! -f /bin/yay ]
-                then workdir=$(mktemp -d) &&
-                cd $workdir &&
-                git clone https://aur.archlinux.org/yay-bin.git &&
-                cd yay-bin &&
-                makepkg -si &&
-                rm -rf $workdir
-            fi""",
-            """if [ -f /bin/yay ]
-                then sudo pacman -R yay-bin || sudo pacman -R yay
-            fi"""
-        ))
+        self.appYay = \
+            ButtonBox("Yay", "GUI/Assets/Apps/yay.png", "Yay is widely used AUR helper written in Go.", (
+                CommandButton(QIcon("GUI/Assets/install.png"), "Install",
+                              """if [ ! -f /bin/yay ]
+                                then workdir=$(mktemp -d) &&
+                                cd $workdir &&
+                                git clone https://aur.archlinux.org/yay-bin.git &&
+                                cd yay-bin &&
+                                makepkg -si &&
+                                rm -rf $workdir
+                              fi""",
+                              self),
+                CommandButton(QIcon("GUI/Assets/uninstall.png"), "Uninstall",
+                              """if [ -f /bin/yay ]
+                                then sudo pacman -R yay-bin || sudo pacman -R yay
+                              fi""",
+                              self)
+            ))
 
         # Insert groupboxes to layout
         self.layout = QGridLayout(self)

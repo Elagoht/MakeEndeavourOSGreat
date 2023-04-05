@@ -7,7 +7,8 @@ from json import load
 
 
 class CommandButton(QPushButton):
-    def __init__(self, icon: QIcon, text: str, parent: QWidget, command: str = ""):
+    # Create a button to run commands in a separated thread
+    def __init__(self, icon: QIcon, text: str, command: str, parent: QWidget) -> None:
         super(QPushButton, self).__init__()
         self.setParent(parent)
         self.text = text
@@ -17,7 +18,7 @@ class CommandButton(QPushButton):
         self.clicked.connect(self.thread.start)
         self.thread.output.connect(self.on_thread_output)
 
-    def set_status(self, status_code):
+    def set_status(self, status_code) -> None:
         status_icon = ""
         match status_code:
             case 0:
@@ -31,18 +32,19 @@ class CommandButton(QPushButton):
                 status_icon = "✗"
         self.setText(f"{self.text} {status_icon}")
 
-    def on_thread_output(self, status_code):
+    def on_thread_output(self, status_code) -> None:
         self.set_status(status_code)
 
 
 class CommandThread(QThread):
+    # Create thread worker for command button.
     output = pyqtSignal(int)
 
-    def __init__(self, command):
+    def __init__(self, command) -> None:
         super().__init__()
         self.command = command
 
-    def run(self):
+    def run(self) -> None:
         process = QProcess()
         process.start("bash")
         process.write(f"""statusfile=$(mktemp);
@@ -64,7 +66,7 @@ class CommandThread(QThread):
 
 
 class AppBox(QGroupBox):
-    def __init__(self, title: str, package: str, image: str, description: str):
+    def __init__(self, title: str, package: str, image: str, description: str) -> None:
         super(QGroupBox, self).__init__()
         self.glyApp = QVBoxLayout(self)
         self.layButtons = QHBoxLayout()
@@ -87,9 +89,11 @@ class AppBox(QGroupBox):
         self.lblDescription.setTextInteractionFlags(Qt.TextBrowserInteraction)
         self.lblDescription.setWordWrap(True)
         self.btnInstall = CommandButton(
-            QIcon("GUI/Assets/install.png"), "Install", self)
+            QIcon("GUI/Assets/install.png"), "Install",
+            install_if_doesnt_have(package), self)
         self.btnUninstall = CommandButton(
-            QIcon("GUI/Assets/uninstall.png"), "Uninstall", self)
+            QIcon("GUI/Assets/uninstall.png"), "Uninstall",
+            uninstall_if_have(package), self)
 
         self.layButtons.addWidget(self.btnInstall)
         self.layButtons.addWidget(self.btnUninstall)
@@ -103,15 +107,9 @@ class AppBox(QGroupBox):
             border-radius: .25em;
         }""")
 
-        # Connect buttons to functions
-        self.btnInstall.clicked.connect(
-            lambda: install_if_doesnt_have(package, self.btnInstall))
-        self.btnUninstall.clicked.connect(
-            lambda: uninstall_if_have(package, self.btnUninstall))
-
 
 class ButtonBox(QGroupBox):
-    def __init__(self, title: str, image: str, description: str, buttons: Iterable[QPushButton], functions: Iterable[str]):
+    def __init__(self, title: str, image: str, description: str, buttons: Iterable[QPushButton]) -> None:
         super(QGroupBox, self).__init__()
         self.glyApp = QVBoxLayout(self)
         self.layInfo = QHBoxLayout()
@@ -126,35 +124,37 @@ class ButtonBox(QGroupBox):
 
         self.layInfo.addWidget(self.imgApp)
         self.layInfo.addWidget(self.lblDescription)
-        for button, function in zip(buttons, functions):
-            button.clicked.connect(
-                (lambda _button, _function: (
-                    lambda: run_command(_function, _button))
-                 )(button, function)
-            )
+        # for button, function in zip(buttons, functions):
+        #     button.clicked.connect(
+        #         (lambda _button, _function: (
+        #             lambda: run_command(_function, _button))
+        #          )(button, function)
+        #     )
+        #     self.layButtons.addWidget(button)
+        for button in buttons:
             self.layButtons.addWidget(button)
         self.glyApp.addWidget(self.lblTitle)
         self.glyApp.addLayout(self.layInfo)
         self.glyApp.addLayout(self.layButtons)
         self.setStyleSheet("""QGroupBox {
-            background: rgba(0,0,0,.25);
-            border: 1px solid rgba(0,0,0,.5);
+            background: rgba(0, 0, 0, .25);
+            border: 1px solid rgba(0, 0, 0, .5);
             border-radius: .25em;
         }""")
 
 
 class GridBox(QGroupBox):
-    def __init__(self, title: str):
+    def __init__(self, title: str) -> None:
         super(QGroupBox, self).__init__()
         self.setTitle(title)
         self.glyField = QGridLayout(self)
 
-    def addWidget(self, widget: QWidget, row: int = 0, col: int = 0, rSpan: int = 1, cSpan: int = 1):
+    def addWidget(self, widget: QWidget, row: int = 0, col: int = 0, rSpan: int = 1, cSpan: int = 1) -> None:
         self.glyField.addWidget(widget, row, col, rSpan, cSpan)
         for column in range(self.glyField.columnCount()):
             self.glyField.setColumnStretch(column, 1)
 
-    def addWidgets(self, *widgets: QWidget):
+    def addWidgets(self, *widgets: QWidget) -> None:
         for widget in widgets:
             self.glyField.addWidget(widget)
         for column in range(self.glyField.columnCount()):
@@ -162,7 +162,7 @@ class GridBox(QGroupBox):
 
 
 class ExtensionBox(QGroupBox):
-    def __init__(self, title: str, link: str, image: str):
+    def __init__(self, title: str, link: str, image: str) -> None:
         super(QGroupBox, self).__init__()
         self.glyExt = QHBoxLayout(self)
 
@@ -185,7 +185,7 @@ class ExtensionBox(QGroupBox):
 
 
 class ThemeBox(QGroupBox):
-    def __init__(self, name: str, package: str, image: str, themes: dict, type: int = 0):
+    def __init__(self, name: str, package: str, image: str, themes: dict, type: int = 0) -> None:
         """
         type 0 = GTK Theme
         type 1 = Icon Theme
@@ -211,9 +211,16 @@ class ThemeBox(QGroupBox):
         self.imgTheme.setFixedSize(128, 128)
 
         self.btnThemeInstall = CommandButton(
-            QIcon("GUI/Assets/install.png"), "Install", self)
+            QIcon("GUI/Assets/install.png"), "Install",
+            install_if_doesnt_have(package),
+            self
+        )
         self.btnThemeUninstall = CommandButton(
-            QIcon("GUI/Assets/uninstall.png"), "Uninstall", self)
+            QIcon("GUI/Assets/uninstall.png"),
+            "Uninstall",
+            uninstall_if_have(package),
+            self
+        )
         self.layInfo.addWidget(self.imgTheme, 0, 0, 3, 1)
         self.layInfo.addWidget(self.lblThemeTitle, 0, 1)
         self.layInfo.addWidget(self.btnThemeInstall, 1, 1)
@@ -224,20 +231,24 @@ class ThemeBox(QGroupBox):
 
         # Bundle buttons and functions
         self.buttons = [CommandButton(
-            QIcon("GUI/Assets/configure.png"), name, self)
-            for name in themes.keys()
+            QIcon("GUI/Assets/configure.png"), name,
+            f"""[ "$(pacman -Qqs {package} | grep ^{package}$)" = "{package}" ] && \
+            gsettings set org.gnome.desktop.interface {self.to_change} '{theme}'""",
+            self)
+            for name, theme in themes.items()
         ]
-        self.functions = [
-            f"""[ "$(pacman -Qqs {package} | grep ^{package}$)" = "{package}" ] && gsettings set org.gnome.desktop.interface {self.to_change} '{theme}'"""
-            for theme in themes.values()
-        ]
+        # self.functions = [
+        #     f"""[ "$(pacman -Qqs {package} | grep ^{package}$)" = "{package}" ] && gsettings set org.gnome.desktop.interface {self.to_change} '{theme}'"""
+        #     for theme in themes.values()
+        # ]
 
-        for number, (button, function) in enumerate(zip(self.buttons, self.functions)):
-            button.clicked.connect(
-                (lambda _button, _function: (
-                    lambda: run_command(_function, _button))
-                 )(button, function)
-            )
+        # for number, (button, function) in enumerate(zip(self.buttons, self.functions)):
+        #     button.clicked.connect(
+        #         (lambda _button, _function: (
+        #             lambda: run_command(_function, _button))
+        #          )(button, function)
+        #     )
+        for number, button in enumerate(self.buttons):
             if number == 1:
                 self.layButtons.addWidget(button, 0, 1)
             else:
@@ -249,12 +260,6 @@ class ThemeBox(QGroupBox):
             border-radius: .25em;
         }""")
 
-        # Connect buttons to functions
-        self.btnThemeInstall.clicked.connect(
-            lambda: install_if_doesnt_have(package, self.btnThemeInstall))
-        self.btnThemeUninstall.clicked.connect(
-            lambda: uninstall_if_have(package, self.btnThemeUninstall))
-
     def set_this(self, theme_string: str, package: str, result_widget: CommandButton) -> None:
         if WEXITSTATUS(system(f"[ ! \"$(pacman -Qqs {package} | grep \"^{package}$\")\" = \"{package}\" ]")) == 0:
             result_widget.set_status(-1)
@@ -264,17 +269,17 @@ class ThemeBox(QGroupBox):
 
 
 class FontBox(QGroupBox):
-    def __init__(self, name: str, package: str):
+    def __init__(self, name: str, package: str) -> None:
         super(QGroupBox, self).__init__()
         self.glyFont = QGridLayout(self)
         self.lblFontTitle = QLabel("<b>" + name + "</b>", self)
         self.lblFontTitle.setWordWrap(True)
         self.btnFontInstall = CommandButton(
-            QIcon("GUI/Assets/install.png"), "Install", self)
+            QIcon("GUI/Assets/install.png"), "Install", install_if_doesnt_have(package), self)
         self.btnFontUninstall = CommandButton(
-            QIcon("GUI/Assets/uninstall.png"), "Uninstall", self)
+            QIcon("GUI/Assets/uninstall.png"), "Uninstall", uninstall_if_have(package), self)
         self.btnFontSet = CommandButton(
-            QIcon("GUI/Assets/enabled.png"), "Select", self)
+            QIcon("GUI/Assets/enabled.png"), "Select", self.set_this(name, package), self)
         self.glyFont.addWidget(self.lblFontTitle, 0, 0, 1, 2)
         self.glyFont.addWidget(self.btnFontInstall, 1, 0, 1, 1)
         self.glyFont.addWidget(self.btnFontUninstall, 1, 1, 1, 1)
@@ -285,27 +290,17 @@ class FontBox(QGroupBox):
             border-radius: .25em;
         }""")
 
-        # Connect buttons to functions
-        self.btnFontInstall.clicked.connect(
-            lambda: install_if_doesnt_have(package, self.btnFontInstall))
-        self.btnFontUninstall.clicked.connect(
-            lambda: uninstall_if_have(package, self.btnFontUninstall))
-        self.btnFontSet.clicked.connect(
-            lambda: self.set_this(name, package, self.btnFontSet))
-
-    def set_this(self, font_family: str, package: str, result_widget: CommandButton) -> None:
+    def set_this(self, font_family: str, package: str) -> None:
         if WEXITSTATUS(system(f"[ ! \"$(pacman -Qqs {package} | grep \"^{package}$\")\" = \"{package}\" ]")) == 0:
-            result_widget.set_status(-1)
-            return
+            return "false"
         font_size = popen(
             "gsettings get org.gnome.desktop.interface monospace-font-name")\
             .readline().strip().split()[-1].replace("'", "")
-        run_command(f"gsettings set org.gnome.desktop.interface monospace-font-name \"{font_family} {font_size}\"",
-                    result_widget)
+        return f"gsettings set org.gnome.desktop.interface monospace-font-name \"{font_family} {font_size}\""
 
 
 class ShellBox(AppBox):
-    def __init__(self, title: str, package: str, image: str, description: str, uninstallable: bool = False):
+    def __init__(self, title: str, package: str, image: str, description: str, uninstallable: bool = False) -> None:
         super().__init__(title, package, image, description)
 
         # If uninstallable remove install buttons
@@ -317,15 +312,13 @@ class ShellBox(AppBox):
 
         # Setter buttons
         self.btnSet = CommandButton(
-            QIcon("GUI/Assets/configure.png"), "Set Default", self)
+            QIcon("GUI/Assets/configure.png"), "Set Default",
+            f"echo New shell will be {package}.;\
+                [ \"{package}\" = \"sh\" ] || [ \"$(pacman -Qqs {package} | grep ^{package}$)\" = \"{package}\" ] &&\
+                chsh -s /bin/{package}",
+            self)
         self.btnSetRoot = CommandButton(
-            QIcon("GUI/Assets/configure.png"), "Set Default for Root", self)
-
-        # Connect buttons to functions
-        self.btnSet.clicked.connect(
-            lambda: run_command(f"echo New shell will be {package}.; [ \"{package}\" = \"sh\" ] || [ \"$(pacman -Qqs {package} | grep ^{package}$)\" = \"{package}\" ] && chsh -s /bin/{package}", self.btnSet))
-        self.btnSetRoot.clicked.connect(
-            lambda: run_command(f"echo New shell will be {package}.; [ \"$(pacman -Qqs {package} | grep ^{package}$)\" = \"{package}\" ] && sudo chsh -s /bin/{package} root", self.btnSetRoot))
+            QIcon("GUI/Assets/configure.png"), "Set Default for Root", f"echo New shell will be {package}.; [ \"$(pacman -Qqs {package} | grep ^{package}$)\" = \"{package}\" ] && sudo chsh -s /bin/{package} root", self)
 
         # Add buttons to layout
         self.laySetButtons = QHBoxLayout()
@@ -335,7 +328,7 @@ class ShellBox(AppBox):
 
 
 class AppsTab(QWidget):
-    def __init__(self, json_file: str):
+    def __init__(self, json_file: str) -> None:
         super(QWidget, self).__init__()
 
         self.layout = QVBoxLayout(self)
@@ -355,25 +348,26 @@ class AppsTab(QWidget):
 
 
 class MonoFont(QFont):
-    def __init__(self):
+    def __init__(self) -> None:
         super(QFont, self).__init__("Monospace")
         self.setPointSize(12)
         self.setStyleHint(QFont.Monospace)
 
 
 class CommandLine(QTextEdit):
-    def __init__(self, text, height):
+    def __init__(self, text, height) -> None:
         super(QTextEdit, self).__init__()
         self.setText(text)
         self.setFont(MonoFont())
         self.setFixedHeight(height)
         self.setReadOnly(True)
-        self.setStyleSheet("""QTextEdit {
-                                background: black;
-                           }""")
+        self.setStyleSheet(
+            """QTextEdit {
+                background: black;
+            }""")
 
 
-def run_command(command: str, result_widget: CommandButton):
+def run_command(command: str, result_widget: CommandButton) -> None:
     thrTerm = QThread()
     thrTerm.finished.connect(thrTerm.terminate)
     result = popen(f"""statusfile=$(mktemp);
@@ -386,7 +380,7 @@ def run_command(command: str, result_widget: CommandButton):
     result_widget.set_status(int(result))
 
 
-def aur_helper():
+def aur_helper() -> str:
     return popen("""if [ -f /bin/paru ]; then
     aurhelper="/bin/paru"
 elif [ -f /bin/yay ]; then
@@ -397,22 +391,20 @@ fi
 echo $aurhelper""").readline().strip()
 
 
-def has_aur_helper():
+def has_aur_helper() -> bool:
     return aur_helper() != ""
 
 
-def install_if_doesnt_have(package: str, result_widget: CommandButton):
-    run_command(
-        f"""if [ ! "$(pacman -Qqs {package} | grep "^{package}$")" = "{package}" ]
+def install_if_doesnt_have(package: str) -> str:
+    return f"""if [ ! "$(pacman -Qqs {package} | grep "^{package}$")" = "{package}" ]
     then {aur_helper()} -S {package}
-fi""" if has_aur_helper() else "false", result_widget)
+fi""" if has_aur_helper() else "false"
 
 
-def uninstall_if_have(package: str, result_widget: CommandButton):
-    run_command(
-        f"""if [ "$(pacman -Qqs {package} | grep "^{package}$" )" = "{package}" ]
+def uninstall_if_have(package: str) -> str:
+    return f"""if [ "$(pacman -Qqs {package} | grep "^{package}$" )" = "{package}" ]
     then {aur_helper()} -R {package}
-fi""" if has_aur_helper() else "false", result_widget)
+fi""" if has_aur_helper() else "false"
 
 
 def color(color: str, text: str) -> str:
