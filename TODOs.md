@@ -20,7 +20,6 @@
 - [ ] Install oh-my-zsh and synthshell (give credits).
 - [X] Disable/enable Wayland.
 - [ ] Set Gnome shortcuts.
-- [ ] Install `easyeffects` to configure voice channels.
 - [X] Add gaming package section.
-- [ ] Add suggested game packages.
+- [X] Add suggested game packages.
 - [X] Install lure.

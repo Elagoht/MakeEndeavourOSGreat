@@ -49,6 +49,12 @@
             "teamspeak",
             "GUI/Assets/Apps/Gaming/teamspeak.png",
             "You all know what Team Speak is."
+        ],
+        [
+            "Easy Effects",
+            "easyeffects",
+            "GUI/Assets/Apps/Gaming/easyeffects.png",
+            "Audio effets for pipewire applications. Make the voice your microphone capture more understandable and better quality."
         ]
     ],
     "Tools": [
