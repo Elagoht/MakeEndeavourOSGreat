@@ -1,22 +1,25 @@
 from os import popen, system, WEXITSTATUS
 from PyQt5.QtWidgets import QGridLayout, QHBoxLayout, QGroupBox, QWidget, QLabel, QVBoxLayout, QPushButton, QTextEdit, QSizePolicy
 from PyQt5.QtGui import QIcon, QPixmap, QFont
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QThread, QProcess, pyqtSignal
 from typing import Iterable
 from json import load
 
 
 class CommandButton(QPushButton):
-    def __init__(self, icon: QIcon, text: str, parent: QWidget):
+    def __init__(self, icon: QIcon, text: str, parent: QWidget, command: str = ""):
         super(QPushButton, self).__init__()
         self.setParent(parent)
         self.text = text
         self.setText(self.text)
         self.setIcon(icon)
+        self.thread = CommandThread(command)
+        self.clicked.connect(self.thread.start)
+        self.thread.output.connect(self.on_thread_output)
 
-    def setStatus(self, statusCode):
+    def set_status(self, status_code):
         status_icon = ""
-        match statusCode:
+        match status_code:
             case 0:
                 self.setStyleSheet("color: green")
                 status_icon = "✓"
@@ -27,6 +30,37 @@ class CommandButton(QPushButton):
                 self.setStyleSheet("color: red")
                 status_icon = "✗"
         self.setText(f"{self.text} {status_icon}")
+
+    def on_thread_output(self, status_code):
+        self.set_status(status_code)
+
+
+class CommandThread(QThread):
+    output = pyqtSignal(int)
+
+    def __init__(self, command):
+        super().__init__()
+        self.command = command
+
+    def run(self):
+        process = QProcess()
+        process.start("bash")
+        process.write(f"""statusfile=$(mktemp);
+        xterm -bg black -fg green -e sh -c '{self.command}; echo $? > '$statusfile 2> /dev/null;
+        cat $statusfile;
+        rm $statusfile""".encode())
+        process.closeWriteChannel()
+        process.waitForFinished()
+
+        status_code = process.readAllStandardOutput()\
+            .data().decode()
+        if status_code != "":
+            status_code = status_code.splitlines()[-1]
+        try:
+            status_code = int(status_code)
+        except ValueError:
+            status_code = -1
+        self.output.emit(status_code)
 
 
 class AppBox(QGroupBox):
@@ -223,7 +257,7 @@ class ThemeBox(QGroupBox):
 
     def set_this(self, theme_string: str, package: str, result_widget: CommandButton) -> None:
         if WEXITSTATUS(system(f"[ ! \"$(pacman -Qqs {package} | grep \"^{package}$\")\" = \"{package}\" ]")) == 0:
-            result_widget.setStatus(-1)
+            result_widget.set_status(-1)
             return
         run_command(f"gsettings set org.gnome.desktop.interface \"{theme_string}\"",
                     result_widget)
@@ -261,7 +295,7 @@ class FontBox(QGroupBox):
 
     def set_this(self, font_family: str, package: str, result_widget: CommandButton) -> None:
         if WEXITSTATUS(system(f"[ ! \"$(pacman -Qqs {package} | grep \"^{package}$\")\" = \"{package}\" ]")) == 0:
-            result_widget.setStatus(-1)
+            result_widget.set_status(-1)
             return
         font_size = popen(
             "gsettings get org.gnome.desktop.interface monospace-font-name")\
@@ -340,6 +374,8 @@ class CommandLine(QTextEdit):
 
 
 def run_command(command: str, result_widget: CommandButton):
+    thrTerm = QThread()
+    thrTerm.finished.connect(thrTerm.terminate)
     result = popen(f"""statusfile=$(mktemp);
         xterm -bg black -fg green -e sh -c '{command}; echo $? > '$statusfile 2> /dev/null;
         cat $statusfile;
@@ -347,7 +383,7 @@ def run_command(command: str, result_widget: CommandButton):
 """).readline()
     if result == "":
         result = -1
-    result_widget.setStatus(int(result))
+    result_widget.set_status(int(result))
 
 
 def aur_helper():
