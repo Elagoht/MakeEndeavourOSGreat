@@ -1,8 +1,9 @@
 from os import popen, system, WEXITSTATUS
-from PyQt5.QtWidgets import QGridLayout, QHBoxLayout, QGroupBox, QWidget, QLabel, QVBoxLayout, QPushButton, QTextEdit
+from PyQt5.QtWidgets import QGridLayout, QHBoxLayout, QGroupBox, QWidget, QLabel, QVBoxLayout, QPushButton, QTextEdit, QSizePolicy
 from PyQt5.QtGui import QIcon, QPixmap, QFont
 from PyQt5.QtCore import Qt
 from typing import Iterable
+from json import load
 
 
 class CommandButton(QPushButton):
@@ -29,29 +30,38 @@ class CommandButton(QPushButton):
 
 
 class AppBox(QGroupBox):
-    def __init__(self, title: str, package: str, image: str, description: str = ""):
+    def __init__(self, title: str, package: str, image: str, description: str):
         super(QGroupBox, self).__init__()
         self.glyApp = QVBoxLayout(self)
-        self.layInfo = QHBoxLayout()
         self.layButtons = QHBoxLayout()
 
         self.lblTitle = QLabel("<b>" + title + "<b>")
-        self.imgApp = QLabel(self)
-        self.imgApp.setPixmap(QPixmap(image))
-        self.imgApp.setFixedSize(128, 128)
-        self.lblDescription = QLabel(description)
+        self.lblDescription = QLabel(
+            f"""
+            <table style="float: left;">
+                <tr>
+                    <td width="136" height="136"> <!-- Placing table because Qt supports float only for images and tables -->
+                        <img src="{image}" />
+                    </td>
+                </tr>
+            </table>
+            <span>
+                {description}
+            </span>""")
+        self.lblDescription.setOpenExternalLinks(True)
+        self.lblDescription.setTextFormat(Qt.RichText)
+        self.lblDescription.setTextInteractionFlags(Qt.TextBrowserInteraction)
         self.lblDescription.setWordWrap(True)
         self.btnInstall = CommandButton(
             QIcon("GUI/Assets/install.png"), "Install", self)
         self.btnUninstall = CommandButton(
             QIcon("GUI/Assets/uninstall.png"), "Uninstall", self)
 
-        self.layInfo.addWidget(self.imgApp)
-        self.layInfo.addWidget(self.lblDescription)
         self.layButtons.addWidget(self.btnInstall)
         self.layButtons.addWidget(self.btnUninstall)
         self.glyApp.addWidget(self.lblTitle)
-        self.glyApp.addLayout(self.layInfo)
+        self.glyApp.addWidget(self.lblDescription)
+        self.glyApp.addStretch()
         self.glyApp.addLayout(self.layButtons)
         self.setStyleSheet("""QGroupBox {
             background: rgba(0,0,0,.25);
@@ -129,7 +139,6 @@ class ExtensionBox(QGroupBox):
             f"< a href=\"{link}\" style=\"text-decoration: none; color:cornflowerblue\">{title}</a>")
         self.lblExt.setWordWrap(True)
         self.lblExt.setOpenExternalLinks(True)
-        self.lblExt.setTextFormat(Qt.RichText)
         self.lblExt.setTextInteractionFlags(Qt.TextBrowserInteraction)
 
         self.glyExt.addWidget(self.imgExt)
@@ -158,7 +167,6 @@ class ThemeBox(QGroupBox):
 
         super(QGroupBox, self).__init__()
         self.glyTheme = QVBoxLayout(self)
-        self.glyTheme.setAlignment(Qt.AlignTop)
         self.layInfo = QGridLayout()
         self.layButtons = QGridLayout()
 
@@ -178,6 +186,7 @@ class ThemeBox(QGroupBox):
         self.layInfo.addWidget(self.btnThemeUninstall, 2, 1)
         self.glyTheme.addLayout(self.layInfo)
         self.glyTheme.addLayout(self.layButtons)
+        self.glyTheme.addStretch()
 
         # Bundle buttons and functions
         self.buttons = [CommandButton(
@@ -289,6 +298,26 @@ class ShellBox(AppBox):
         self.laySetButtons.addWidget(self.btnSet)
         self.laySetButtons.addWidget(self.btnSetRoot)
         self.glyApp.addLayout(self.laySetButtons)
+
+
+class AppsTab(QWidget):
+    def __init__(self, json_file: str):
+        super(QWidget, self).__init__()
+
+        self.layout = QVBoxLayout(self)
+        with open(json_file, "r") as programs_json:
+            program_lists = load(programs_json)
+        for language_name, program_list in program_lists.items():
+            grid_box = GridBox(language_name)
+            for number, program in enumerate(program_list):
+                match number:
+                    case 1:
+                        grid_box.addWidget(AppBox(*program), 0, 1)
+                    case 2:
+                        grid_box.addWidget(AppBox(*program), 0, 2)
+                    case _:
+                        grid_box.glyField.addWidget(AppBox(*program))
+            self.layout.addWidget(grid_box)
 
 
 class MonoFont(QFont):
