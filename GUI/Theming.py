@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QWidget, QLabel, QVBoxLayout
 from Utilities import GridBox
 from json import load
-from Utilities import FontBox, ThemeBox
+from Utilities import ThemeBox
 
 
 class AppearanceWin(QWidget):
@@ -39,7 +39,7 @@ class AppearanceWin(QWidget):
             "Nerd fonts are font collections formed by combining alphanumerical and symbolic characters. Includes lots of font-icon and have wide use area. To be able to see font-icons instead of empty rectangle, install and use one of the following.", self.gbxFont)
         self.lblFont.setWordWrap(True)
         self.gbxFont.addWidget(self.lblFont, 0, 0, 1, 3)
-        self.load_fonts()
+        self.load_themes("GUI/Data/Fonts.json", 3, self.gbxFont)
 
         # Insert groupboxes to layout
         self.layout = QVBoxLayout(self)
@@ -62,17 +62,3 @@ class AppearanceWin(QWidget):
                 case _:
                     widget.glyField.addWidget(
                         ThemeBox(*theme.values(), type))
-
-    def load_fonts(self):
-        with open("GUI/Data/Fonts.json", "r") as fonts_json:
-            fonts: dict = load(fonts_json)
-        for number, font in enumerate(fonts.items()):
-            match number:
-                case 0:
-                    self.gbxFont.addWidget(FontBox(*font), 1, 0, 1, 1)
-                case 1:
-                    self.gbxFont.addWidget(FontBox(*font), 1, 1, 1, 1)
-                case 2:
-                    self.gbxFont.addWidget(FontBox(*font), 1, 2, 1, 1)
-                case _:
-                    self.gbxFont.glyField.addWidget(FontBox(*font))

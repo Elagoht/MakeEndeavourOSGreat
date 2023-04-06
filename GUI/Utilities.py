@@ -226,6 +226,7 @@ class ThemeBox(QGroupBox):
         type 0 = GTK Theme
         type 1 = Icon Theme
         type 2 = Cursor Theme
+        type 3 = Monospace Font
         """
         # Determine theme type
         match type:
@@ -233,6 +234,8 @@ class ThemeBox(QGroupBox):
                 self.to_change = "icon-theme"
             case 2:
                 self.to_change = "cursor-theme"
+            case 3:
+                self.to_change = "monospace-font-name"
             case _:
                 self.to_change = "gtk-theme"
 
@@ -292,40 +295,6 @@ class ThemeBox(QGroupBox):
             border: 1px solid rgba(0,0,0,.5);
             border-radius: .25em;
         }""")
-
-# TODO Delete this section and adapt fonts to ThemeBox
-
-
-class FontBox(QGroupBox):
-    # Create font installation box.
-    def __init__(self, name: str, package: str) -> None:
-        super(QGroupBox, self).__init__()
-        self.glyFont = QGridLayout(self)
-        self.lblFontTitle = QLabel("<b>" + name + "</b>", self)
-        self.lblFontTitle.setWordWrap(True)
-        self.btnFontInstall = CommandButton(
-            QIcon("GUI/Assets/install.png"), "Install", install_if_doesnt_have(package), self)
-        self.btnFontUninstall = CommandButton(
-            QIcon("GUI/Assets/uninstall.png"), "Uninstall", uninstall_if_have(package), self)
-        self.btnFontSet = CommandButton(
-            QIcon("GUI/Assets/enabled.png"), "Select", self.set_this(name, package), self)
-        self.glyFont.addWidget(self.lblFontTitle, 0, 0, 1, 2)
-        self.glyFont.addWidget(self.btnFontInstall, 1, 0, 1, 1)
-        self.glyFont.addWidget(self.btnFontUninstall, 1, 1, 1, 1)
-        self.glyFont.addWidget(self.btnFontSet, 2, 0, 1, 2)
-        self.setStyleSheet("""QGroupBox {
-            background: rgba(0,0,0,.25);
-            border: 1px solid rgba(0,0,0,.5);
-            border-radius: .25em;
-        }""")
-
-    def set_this(self, font_family: str, package: str) -> None:
-        if WEXITSTATUS(system(f"[ ! \"$(pacman -Qqs {package} | grep \"^{package}$\")\" = \"{package}\" ]")) == 0:
-            return "false"
-        font_size = popen(
-            "gsettings get org.gnome.desktop.interface monospace-font-name")\
-            .readline().strip().split()[-1].replace("'", "")
-        return f"gsettings set org.gnome.desktop.interface monospace-font-name \"{font_family} {font_size}\""
 
 
 class ShellBox(AppBox):
