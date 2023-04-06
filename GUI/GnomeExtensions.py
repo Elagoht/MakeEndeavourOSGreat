@@ -3,7 +3,7 @@ from Utilities import ExtensionBox, AppBox, GridBox
 from json import load
 
 
-class ExtensionsTab(QWidget):
+class ExtensionsWin(QWidget):
     def __init__(self):
         super(QWidget, self).__init__()
 

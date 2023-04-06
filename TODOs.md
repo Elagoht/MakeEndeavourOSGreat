@@ -1,6 +1,6 @@
 # TODOs
 
-- [ ] Make commands run on another thread.
+- [X] Make commands run on another thread.
 - [ ] Convert tabs to windows for optimization.
 - [X] Create a function to detect installed AUR helper.
 - [X] Update and upgrade the system.
@@ -24,3 +24,4 @@
 - [X] Add gaming package section.
 - [X] Add suggested game packages.
 - [X] Install lure.
+- [ ] Add and set Kvantum themes.

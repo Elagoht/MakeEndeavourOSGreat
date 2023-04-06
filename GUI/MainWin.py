@@ -7,5 +7,5 @@ class MainWin(QMainWindow):
         super(MainWin, self).__init__()
         self.central = Central()
         self.setCentralWidget(self.central)
-        self.setMinimumSize(900, 500)
+        self.setFixedSize(500, 275)
         self.show()

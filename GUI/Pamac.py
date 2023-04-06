@@ -3,7 +3,7 @@ from PyQt5.QtGui import QIcon
 from Utilities import ButtonBox, AppBox, CommandButton
 
 
-class PamacTab(QWidget):
+class PamacWin(QWidget):
     def __init__(self):
         super(QWidget, self).__init__()
 

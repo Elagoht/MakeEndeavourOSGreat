@@ -4,7 +4,7 @@ from json import load
 from Utilities import FontBox, ThemeBox
 
 
-class ThemingTab(QWidget):
+class AppearanceWin(QWidget):
     def __init__(self):
         super(QWidget, self).__init__()
 

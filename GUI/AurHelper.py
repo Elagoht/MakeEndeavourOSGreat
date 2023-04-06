@@ -4,7 +4,7 @@ from os import popen
 from Utilities import GridBox, ButtonBox, CommandButton
 
 
-class AurHelperTab(QWidget):
+class AurHelperWin(QWidget):
     def __init__(self):
         super(QWidget, self).__init__()
 

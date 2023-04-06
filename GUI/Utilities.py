@@ -327,7 +327,7 @@ class ShellBox(AppBox):
         self.glyApp.addLayout(self.laySetButtons)
 
 
-class AppsTab(QWidget):
+class AppsWin(QWidget):
     def __init__(self, json_file: str) -> None:
         super(QWidget, self).__init__()
 

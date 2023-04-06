@@ -2,7 +2,7 @@ from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLabel
 from Utilities import AppBox, GridBox, color, CommandLine
 
 
-class LureTab(QWidget):
+class LureWin(QWidget):
     def __init__(self):
         super(QWidget, self).__init__()
         self.gbxLure = AppBox("Linux User Repository", "linux-user-repository-bin", "GUI/Assets/Apps/lure.png",

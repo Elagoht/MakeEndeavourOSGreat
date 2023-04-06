@@ -3,7 +3,7 @@ from PyQt5.QtGui import QIcon
 from Utilities import ButtonBox, GridBox, CommandButton, aur_helper
 
 
-class GnomeTab(QWidget):
+class GnomeWin(QWidget):
     def __init__(self):
         super(QWidget, self).__init__()
 

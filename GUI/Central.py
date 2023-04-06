@@ -1,86 +1,93 @@
-from PyQt5.QtWidgets import QTabWidget, QScrollArea
-from Utilities import AppsTab
-from Gnome import GnomeTab
-from Update import UpdateTab
-from Pamac import PamacTab
-from AurHelper import AurHelperTab
-from GnomeExtensions import ExtensionsTab
-from Theming import ThemingTab
-from Lure import LureTab
-from Shell import ShellTab
+from PyQt5.QtWidgets import QWidget, QScrollArea, QGridLayout, QPushButton, QLabel
+from PyQt5.QtCore import QSize, Qt
+from PyQt5.QtGui import QIcon
+from Utilities import GridBox, AppsWin, CommandButton, aur_helper
+from Gnome import GnomeWin
+from Pamac import PamacWin
+from AurHelper import AurHelperWin
+from GnomeExtensions import ExtensionsWin
+from Theming import AppearanceWin
+from Lure import LureWin
+from Shell import ShellWin
 
 
-class Central(QTabWidget):
+class Central(QWidget):
     def __init__(self):
-        super(QTabWidget, self).__init__()
-        self.setTabPosition(1)
+        super(QWidget, self).__init__()
 
-        # Create tab widgets
-        self.GnomeTab = GnomeTab()
-        self.UpdateTab = UpdateTab()
-        self.PamacTab = PamacTab()
-        self.AurHelperTab = AurHelperTab()
-        self.ExtensionsTab = ExtensionsTab()
-        self.ThemingTab = ThemingTab()
-        self.LureTab = LureTab()
-        self.ShellTab = ShellTab()
-        self.GamingTab = AppsTab("GUI/Data/Gaming.json")
-        self.GamesTab = AppsTab("GUI/Data/Games.json")
-        self.DevelopmentTab = AppsTab("GUI/Data/Development.json")
+        # Create welcome section
+        self.gbxWelcome = GridBox("Welcome to Endeavour OS Tweaker")
+        self.lblWelcome = QLabel(
+            "Adapt your computer to your usage patterns by using this application. Click buttons below to start tweaking.")
+        self.lblWelcome.setWordWrap(True)
+        self.gbxWelcome.addWidget(self.lblWelcome, 0, 0)
 
-        self.scrollGnome = QScrollArea(self)
-        self.scrollGnome.setWidget(self.GnomeTab)
-        self.scrollGnome.setWidgetResizable(True)
+        # Create window opener buttons
+        self.btnUpdate = CommandButton(
+            QIcon("GUI/Assets/upgrade.png"), "Update System",
+            aur_helper()+" -Syu", self)
+        self.btnGnome = QPushButton("Gnome Settings")
+        self.btnExtension = QPushButton("Gnome Extensions")
+        self.btnPamac = QPushButton("Software Manager")
+        self.btnAurHelper = QPushButton("AUR Helper")
+        self.btnLure = QPushButton("LURE")
+        self.btnTheming = QPushButton("Appearance")
+        self.btnShell = QPushButton("Shell Program")
+        self.btnGaming = QPushButton("Gaming Tools")
+        self.btnGames = QPushButton("Suggested Games")
+        self.btnDevelopment = QPushButton("Development")
 
-        self.scrollUpdate = QScrollArea(self)
-        self.scrollUpdate.setWidget(self.UpdateTab)
-        self.scrollUpdate.setWidgetResizable(True)
+        # Insert buttons to layout
+        self.layout = QGridLayout(self)
+        self.layout.addWidget(self.gbxWelcome, 0, 0, 1, 3)
+        self.layout.addWidget(self.btnUpdate, 1, 0)
+        self.layout.addWidget(self.btnGnome, 1, 1)
+        self.layout.addWidget(self.btnExtension, 1, 2)
+        self.layout.addWidget(self.btnPamac)
+        self.layout.addWidget(self.btnAurHelper)
+        self.layout.addWidget(self.btnLure)
+        self.layout.addWidget(self.btnTheming)
+        self.layout.addWidget(self.btnShell)
+        self.layout.addWidget(self.btnGaming)
+        self.layout.addWidget(self.btnGames)
+        self.layout.addWidget(self.btnDevelopment)
 
-        self.scrollPamac = QScrollArea(self)
-        self.scrollPamac.setWidget(self.PamacTab)
-        self.scrollPamac.setWidgetResizable(True)
+        # Connect buttons to functions
+        self.btnGnome.clicked.connect(lambda: self.open_window(
+            "Gnome Settings", GnomeWin))
+        self.btnPamac.clicked.connect(lambda: self.open_window(
+            "Software Manager", PamacWin))
+        self.btnAurHelper.clicked.connect(lambda: self.open_window(
+            "AUR Helper", AurHelperWin))
+        self.btnExtension.clicked.connect(lambda: self.open_window(
+            "Gnome Extensions", ExtensionsWin))
+        self.btnTheming.clicked.connect(lambda: self.open_window(
+            "Appearance", AppearanceWin, size=QSize(900, 500)))
+        self.btnLure.clicked.connect(lambda: self.open_window(
+            "Linux User Repository", LureWin))
+        self.btnShell.clicked.connect(lambda: self.open_window(
+            "Shell Program & Customizations", ShellWin))
+        self.btnGaming.clicked.connect(lambda: self.open_window(
+            "Gaming Tools", AppsWin, ["GUI/Data/Gaming.json"], QSize(900, 500)))
+        self.btnGames.clicked.connect(lambda: self.open_window(
+            "Suggested Games", AppsWin, ["GUI/Data/Games.json"], QSize(900, 500)))
+        self.btnDevelopment.clicked.connect(lambda: self.open_window(
+            "Development", AppsWin, ["GUI/Data/Development.json"], QSize(900, 500)))
 
-        self.scrollAurHelper = QScrollArea(self)
-        self.scrollAurHelper.setWidget(self.AurHelperTab)
-        self.scrollAurHelper.setWidgetResizable(True)
+    def open_window(self, title: str, window_class: QWidget, params: list = [], size: QSize = QSize(800, 500)):
+        self.winWidget = ExternalWindow(title, window_class, params, size)
 
-        self.scrollExtensions = QScrollArea(self)
-        self.scrollExtensions.setWidget(self.ExtensionsTab)
-        self.scrollExtensions.setWidgetResizable(True)
 
-        self.scrollTheming = QScrollArea(self)
-        self.scrollTheming.setWidget(self.ThemingTab)
-        self.scrollTheming.setWidgetResizable(True)
-
-        self.scrollDevelopment = QScrollArea(self)
-        self.scrollDevelopment.setWidget(self.DevelopmentTab)
-        self.scrollDevelopment.setWidgetResizable(True)
-
-        self.scrollLure = QScrollArea(self)
-        self.scrollLure.setWidget(self.LureTab)
-        self.scrollLure.setWidgetResizable(True)
-
-        self.scrollShell = QScrollArea(self)
-        self.scrollShell.setWidget(self.ShellTab)
-        self.scrollShell.setWidgetResizable(True)
-
-        self.scrollGaming = QScrollArea(self)
-        self.scrollGaming.setWidget(self.GamingTab)
-        self.scrollGaming.setWidgetResizable(True)
-
-        self.scrollGames = QScrollArea(self)
-        self.scrollGames.setWidget(self.GamesTab)
-        self.scrollGames.setWidgetResizable(True)
-
-        # Insert tab widgets
-        self.insertTab(0, self.scrollUpdate, "Update System")
-        self.insertTab(1, self.scrollPamac, "Sofware Manager")
-        self.insertTab(2, self.scrollAurHelper, "AUR Helper")
-        self.insertTab(3, self.scrollLure, "LURE")
-        self.insertTab(4, self.scrollTheming, "Theming")
-        self.insertTab(5, self.scrollShell, "Shell")
-        self.insertTab(6, self.scrollGnome, "Gnome Options")
-        self.insertTab(7, self.scrollExtensions, "Gnome Extensions")
-        self.insertTab(8, self.scrollGaming, "Gaming")
-        self.insertTab(9, self.scrollGames, "Suggested Games")
-        self.insertTab(10, self.scrollDevelopment, "Development")
+class ExternalWindow(QWidget):
+    def __init__(self, title: str, window_class: QWidget, params: list, size: QSize) -> None:
+        super(QWidget, self).__init__()
+        self.setWindowModality(Qt.ApplicationModal)
+        self.scrWidget = QScrollArea(self)
+        self.deneme = window_class(*params)
+        self.scrWidget.setWidget(self.deneme)
+        self.scrWidget.setWidgetResizable(True)
+        self.setWindowTitle(title)
+        self.layout = QGridLayout(self)
+        self.layout.addWidget(self.scrWidget)
+        self.setMinimumSize(size)
+        self.show()

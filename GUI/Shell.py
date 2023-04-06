@@ -2,7 +2,7 @@ from PyQt5.QtWidgets import QWidget, QGridLayout
 from Utilities import ShellBox
 
 
-class ShellTab(QWidget):
+class ShellWin(QWidget):
     def __init__(self):
         super(QWidget, self).__init__()
 
