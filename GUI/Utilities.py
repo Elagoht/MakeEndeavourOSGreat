@@ -380,9 +380,9 @@ class CommandLine(QTextEdit):
 def aur_helper() -> str:
     # Get AUR helper
     return popen(
-        """if [ -f /bin/paru ]; then
+        """if [ "$(command -v paru)" ]; then
             aurhelper="/bin/paru"
-        elif [ -f /bin/yay ]; then
+        elif [ "$(command -v yay)" ]; then
             aurhelper="/bin/yay"
         else
             aurhelper=""
