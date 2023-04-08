@@ -357,13 +357,13 @@ class AppsWin(QWidget):
 
 class DconfCheckBox(QCheckBox):
     # Create dconf setting checkbox
-    def __init__(self, text, value: str) -> None:
+    def __init__(self, text, val: str) -> None:
         super(QCheckBox, self).__init__(text)
-        self.val = value
+        self.keybind = val
 
     @property
     def value(self):
-        return self.val if self.isChecked() else ""
+        return self.keybind if self.isChecked() else ""
 
 
 class DconfEditRow(QGroupBox):
@@ -394,12 +394,27 @@ class DconfEditRow(QGroupBox):
             border-radius: .25em;
         }""")
 
+        # Initialize
+        self.check_current_state()
+
+    # If already setted, check itself
+    def check_current_state(self):
+        # Get bindings from current configuration
+        keybinds = [
+            keybind.strip() for keybind in
+            popen("gsettings get " + self.setting)
+            .read().strip()[1:-1].split(",")
+        ]
+
+        for checkbox in self.checkboxes:
+            checkbox.setChecked(checkbox.keybind in keybinds)
+
     # Define checkbox add function
     def add_checkbox(self, checkbox: DconfCheckBox):
         self.layout.addWidget(checkbox)
 
     # Create command property
-    @property
+    @ property
     def command(self):
         return "gsettings set " + \
             self.setting + " \"" + \
