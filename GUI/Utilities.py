@@ -8,8 +8,10 @@ from json import load
 
 class CommandButton(QPushButton):
     # Create a button to run commands in a separated thread
-    def __init__(self, icon: QIcon, text: str, command: str, parent: QWidget) -> None:
+    def __init__(self, icon: QIcon, text: str, command: str, parent: QWidget, post_commands: Iterable[callable] = [], iconless: bool = False) -> None:
         super(QPushButton, self).__init__()
+        self.post_commands = post_commands
+        self.iconless = iconless
         self.setParent(parent)
         self.text = text
         self.setText(self.text)
@@ -22,23 +24,27 @@ class CommandButton(QPushButton):
 
     # Update button color and icon depending on exit status
     def set_status(self, status_code) -> None:
-        status_icon = ""
-        match status_code:
-            case 0:
-                self.setStyleSheet("color: green")
-                status_icon = "✓"
-            case -1:
-                # Special exit code that means terminal closed by user.
-                self.setStyleSheet("color: gray")
-                status_icon = "☠"
-            case _:
-                self.setStyleSheet("color: red")
-                status_icon = "✗"
-        self.setText(f"{self.text} {status_icon}")
+        if not self.iconless:
+            status_icon = ""
+            match status_code:
+                case 0:
+                    self.setStyleSheet("color: green")
+                    status_icon = "✓"
+                case -1:
+                    # Special exit code that means terminal closed by user.
+                    self.setStyleSheet("color: gray")
+                    status_icon = "☠"
+                case _:
+                    self.setStyleSheet("color: red")
+                    status_icon = "✗"
+            self.setText(f"{self.text} {status_icon}")
 
     # Function will be called after thread end
     def on_thread_output(self, status_code) -> None:
         self.set_status(status_code)
+        # Run post-execute commands
+        for command in self.post_commands:
+            command()
 
 
 class CommandThread(QThread):
@@ -60,7 +66,7 @@ class CommandThread(QThread):
         process.start("bash")
         # Write command to execute to bash standard input.
         process.write(f"""statusfile=$(mktemp);
-        xterm -bg black -fg green -e sh -c '{self.command}; echo $? > '$statusfile 2> /dev/null;
+        xterm -xrm 'XTerm.vt100.allowTitleOps: false' -T "Endeavour OS Tweaker Slave" -bg black -fg green -e sh -c '{self.command}; echo $? > '$statusfile 2> /dev/null;
         cat $statusfile;
         rm $statusfile""".encode())
         process.closeWriteChannel()
@@ -86,6 +92,7 @@ class AppBox(QGroupBox):
     # Create app widget that have install management system
     def __init__(self, title: str, package: str, image: str, description: str) -> None:
         super(QGroupBox, self).__init__()
+        self.package = package
 
         # Create layouts
         self.glyApp = QVBoxLayout(self)
@@ -112,17 +119,15 @@ class AppBox(QGroupBox):
         self.lblDescription.setTextInteractionFlags(Qt.TextBrowserInteraction)
         self.lblDescription.setWordWrap(True)
 
-        # Create ınstallation buttons
+        # Create installation buttons
         self.btnInstall = CommandButton(
             QIcon("GUI/Assets/install.png"), "Install",
-            install_if_doesnt_have(package), self)
+            install_if_doesnt_have(self.package), self, (self.check_install_state,), True)
         self.btnUninstall = CommandButton(
             QIcon("GUI/Assets/uninstall.png"), "Uninstall",
-            uninstall_if_have(package), self)
+            uninstall_if_have(self.package), self, (self.check_install_state,), True)
 
         # Insert layouts and wigdets to layouts
-        self.layButtons.addWidget(self.btnInstall)
-        self.layButtons.addWidget(self.btnUninstall)
         self.glyApp.addWidget(self.lblTitle)
         self.glyApp.addWidget(self.lblDescription)
         self.glyApp.addStretch()
@@ -133,6 +138,25 @@ class AppBox(QGroupBox):
             border: 1px solid rgba(0,0,0,.5);
             border-radius: .25em;
         }""")
+        self.check_install_state()
+
+    # Check if package is installed
+    def check_install_state(self):
+        # Get state
+        is_installed = WEXITSTATUS(system(
+            f"[ \"$(pacman -Qqs {self.package} | grep \"^{self.package}$\")\" = \"{self.package}\" ]"
+        )) == 0
+        # Insert/delete layouts and wigdets to layouts
+        if is_installed:
+            self.layButtons.removeWidget(self.btnInstall)
+            self.layButtons.addWidget(self.btnUninstall)
+            self.btnInstall.hide()
+            self.btnUninstall.show()
+        else:
+            self.layButtons.removeWidget(self.btnUninstall)
+            self.layButtons.addWidget(self.btnInstall)
+            self.btnInstall.show()
+            self.btnUninstall.hide()
 
 
 class ButtonBox(QGroupBox):
@@ -240,6 +264,7 @@ class ThemeBox(QGroupBox):
                 self.to_change = "gtk-theme"
 
         super(QGroupBox, self).__init__()
+        self.package = package
 
         # Create layouts
         self.glyTheme = QVBoxLayout(self)
@@ -256,19 +281,17 @@ class ThemeBox(QGroupBox):
         # Create installation buttons
         self.btnThemeInstall = CommandButton(
             QIcon("GUI/Assets/install.png"), "Install",
-            install_if_doesnt_have(package),
-            self)
+            install_if_doesnt_have(self.package),
+            self, (self.check_install_state,), True)
         self.btnThemeUninstall = CommandButton(
             QIcon("GUI/Assets/uninstall.png"),
             "Uninstall",
-            uninstall_if_have(package),
-            self)
+            uninstall_if_have(self.package),
+            self, (self.check_install_state,), True)
 
         # Insert layouts and widgets to layouts
-        self.layInfo.addWidget(self.imgTheme, 0, 0, 3, 1)
+        self.layInfo.addWidget(self.imgTheme, 0, 0, 2, 1)
         self.layInfo.addWidget(self.lblThemeTitle, 0, 1)
-        self.layInfo.addWidget(self.btnThemeInstall, 1, 1)
-        self.layInfo.addWidget(self.btnThemeUninstall, 2, 1)
         self.glyTheme.addLayout(self.layInfo)
         self.glyTheme.addLayout(self.layButtons)
         self.glyTheme.addStretch()
@@ -276,8 +299,8 @@ class ThemeBox(QGroupBox):
         # Create list for theme-setter commandbuttons
         self.buttons = [CommandButton(
             QIcon("GUI/Assets/configure.png"), name,
-            f"""[ "$(pacman -Qqs {package} | grep ^{package}$)" = "{package}" ] && \
-            gsettings set org.gnome.desktop.interface {self.to_change} '{theme}'""",
+            f"""[ "$(pacman -Qqs {self.package} | grep ^{self.package}$)" = "{self.package}" ] && \
+            gsettings set org.gnome.desktop.interface {self.to_change} \"{theme + ("" if type != 3 else " 10")}\"""",
             self)
             for name, theme in themes.items()
         ]
@@ -295,6 +318,26 @@ class ThemeBox(QGroupBox):
             border: 1px solid rgba(0,0,0,.5);
             border-radius: .25em;
         }""")
+
+        # Initialize
+        self.check_install_state()
+
+    def check_install_state(self):
+        # Get state
+        is_installed = WEXITSTATUS(system(
+            f"[ \"$(pacman -Qqs {self.package} | grep \"^{self.package}$\")\" = \"{self.package}\" ]"
+        )) == 0
+        # Insert/delete layouts and wigdets to layouts
+        if is_installed:
+            self.layInfo.removeWidget(self.btnThemeInstall)
+            self.layInfo.addWidget(self.btnThemeUninstall, 1, 1)
+            self.btnThemeInstall.hide()
+            self.btnThemeUninstall.show()
+        else:
+            self.layInfo.removeWidget(self.btnThemeUninstall)
+            self.layInfo.addWidget(self.btnThemeInstall, 1, 1)
+            self.btnThemeInstall.show()
+            self.btnThemeUninstall.hide()
 
 
 class ShellBox(AppBox):
@@ -414,7 +457,7 @@ class DconfEditRow(QGroupBox):
         self.layout.addWidget(checkbox)
 
     # Create command property
-    @ property
+    @property
     def command(self):
         return "gsettings set " + \
             self.setting + " \"" + \
