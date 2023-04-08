@@ -5,7 +5,7 @@
         "image": "GUI/Assets/Themes/Cursors/openzone.png",
         "themes": {
             "Black": "OpenZone_Black",
-            "White": "OpenZone_",
+            "White": "OpenZone_White",
             "Ice": "OpenZone_Ice",
             "Fire": "OpenZone_Fire"
         }
