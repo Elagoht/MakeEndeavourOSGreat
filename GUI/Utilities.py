@@ -1,5 +1,5 @@
 from os import popen, system, WEXITSTATUS
-from PyQt5.QtWidgets import QGridLayout, QHBoxLayout, QGroupBox, QWidget, QLabel, QVBoxLayout, QPushButton, QTextEdit, QSizePolicy
+from PyQt5.QtWidgets import QGridLayout, QHBoxLayout, QGroupBox, QWidget, QLabel, QVBoxLayout, QPushButton, QTextEdit, QCheckBox
 from PyQt5.QtGui import QIcon, QPixmap, QFont
 from PyQt5.QtCore import Qt, QThread, QProcess, pyqtSignal
 from typing import Iterable
@@ -353,6 +353,104 @@ class AppsWin(QWidget):
                     case _:
                         grid_box.glyField.addWidget(AppBox(*program))
             self.layout.addWidget(grid_box)
+
+
+class DconfCheckBox(QCheckBox):
+    # Create dconf setting checkbox
+    def __init__(self, text, value: str) -> None:
+        super(QCheckBox, self).__init__(text)
+        self.val = value
+
+    @property
+    def value(self):
+        return self.val if self.isChecked() else ""
+
+
+class DconfEditRow(QGroupBox):
+    # Create dconf settings option
+    def __init__(self, name: str, setting: str, checkboxes: Iterable[DconfCheckBox], is_list: bool = True) -> None:
+        super().__init__()
+
+        # Set properties
+        self.checkboxes = checkboxes
+        self.setting = setting
+        self.is_list = is_list
+
+        # Create Layouts
+        self.lblDconf = QLabel(name)
+        self.layout = QHBoxLayout(self)
+
+        # Insert layouts and widgets to layouts
+        self.layButtons = QHBoxLayout()
+        self.layout.addWidget(self.lblDconf)
+        self.layout.addLayout(self.layButtons)
+        for checkbox in self.checkboxes:
+            self.layButtons.addWidget(checkbox)
+
+        # Additional CSS
+        self.setStyleSheet("""QGroupBox {
+            background: rgba(0,0,0,.25);
+            border: 1px solid rgba(0,0,0,.5);
+            border-radius: .25em;
+        }""")
+
+    # Define checkbox add function
+    def add_checkbox(self, checkbox: DconfCheckBox):
+        self.layout.addWidget(checkbox)
+
+    # Create command property
+    @property
+    def command(self):
+        return "gsettings set " + \
+            self.setting + " \"" + \
+            ("[" if self.is_list else "") + \
+            (", ".join([
+                option for option in
+                list(filter(
+                    lambda val: val != "",
+                    [checkbox.value for checkbox in self.checkboxes]
+                ))
+            ])) + \
+            ("]" if self.is_list else "") + \
+            "\""
+
+
+class DconfEditBox(QGroupBox):
+    # Create dconf settings editor
+    def __init__(self, title: str, options: Iterable[DconfEditRow]) -> None:
+        super(QGroupBox, self).__init__(title)
+        self.settings = []
+        self.txtDconf = "Save Changes"
+
+        # Create widgets
+        self.glyDconf = QVBoxLayout(self)
+        self.btnDconf = QPushButton(
+            QIcon("GUI/Assets/configure.png"), self.txtDconf, self)
+
+        # Insert widgets to layout
+        self.add_options(*options)
+        self.glyDconf.addWidget(self.btnDconf)
+
+        # Connect buttons to functions
+        self.btnDconf.clicked.connect(lambda: self.save_changes())
+
+    # Define add option function
+    def add_options(self, *options: Iterable[DconfEditRow]):
+        for option in options:
+            self.settings.append(option)
+            self.glyDconf.addWidget(option)
+
+    # Define save changes
+    def save_changes(self):
+        command = "\n".join(setting.command for setting in self.settings)
+        exit_status = WEXITSTATUS(system(command))
+        match exit_status:
+            case 0:
+                self.btnDconf.setText(self.txtDconf + "✓")
+                self.btnDconf.setStyleSheet("color: green")
+            case _:
+                self.btnDconf.setStyleSheet("color: red")
+                self.btnDconf.setText(self.txtDconf + "✗")
 
 
 class MonoFont(QFont):

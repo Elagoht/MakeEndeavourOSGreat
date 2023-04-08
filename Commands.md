@@ -241,14 +241,17 @@ Gnome shortcust:
 ```bash
 gsettings set org.gnome.desktop.wm.keybindings panel-run-dialog "['<Super>r']"
 gsettings set org.gnome.desktop.wm.keybindings show-desktop "['<Super>d']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys home "['<Super>e']"
 gsettings set org.gnome.desktop.wm.keybindings switch-applications "['<Super>Tab']"
 gsettings set org.gnome.desktop.wm.keybindings switch-applications-backward "['<Shift><Super>Tab']"
 gsettings set org.gnome.desktop.wm.keybindings switch-windows "['<Alt>Tab']"
+gsettings set org.gnome.desktop.wm.keybindings switch-windows-backward "['<Alt><Shift>Tab']"
+gsettings set org.gnome.desktop.wm.keybindings close "['<Alt>F4', '<Super><Shift>q']"
 gsettings set org.gnome.desktop.wm.keybindings toggle-fullscreen "['<Alt>F12']"
 gsettings set org.gnome.desktop.wm.keybindings toggle-on-all-workspaces "['<Alt>F9']"
 gsettings set org.gnome.shell.keybindings focus-active-notification "[]"
 gsettings set org.gnome.shell.keybindings toggle-message-tray "['<Super>n']"
-gsettings set org.gnome.settings-daemon.plugins.media-keys "['<Super><Shift>p']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys touchpad-toggle "['<Super><Shift>p']"
 ```
 
 *Custom shortcuts:*
