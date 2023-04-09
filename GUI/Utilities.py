@@ -8,9 +8,10 @@ from json import load
 
 class CommandButton(QPushButton):
     # Create a button to run commands in a separated thread
-    def __init__(self, icon: QIcon, text: str, command: str, parent: QWidget, post_commands: Iterable[callable] = [], iconless: bool = False) -> None:
+    def __init__(self, icon: QIcon, text: str, command: str, parent: QWidget, post_commands: Iterable[callable] = [], iconless: bool = False, avoid_xterm: bool = False) -> None:
         super(QPushButton, self).__init__()
         self.post_commands = post_commands
+        self.avoid_xterm = avoid_xterm
         self.iconless = iconless
         self.setParent(parent)
         self.text = text
@@ -18,7 +19,7 @@ class CommandButton(QPushButton):
         self.setIcon(icon)
 
         # Create command thread
-        self.thread = CommandThread(command)
+        self.thread = CommandThread(command, avoid_xterm)
         self.clicked.connect(self.thread.start)
         self.thread.output.connect(self.on_thread_output)
 
@@ -53,11 +54,12 @@ class CommandThread(QThread):
     # Createa signal to communicate between threads
     output = pyqtSignal(int)
 
-    def __init__(self, command) -> None:
+    def __init__(self, command, avoid_xterm) -> None:
         super().__init__()
 
         # Pass command to run method
         self.command = command
+        self.avoid_xterm = avoid_xterm
 
     # Function will be executed on thread called
     def run(self) -> None:
@@ -66,7 +68,8 @@ class CommandThread(QThread):
         process.start("bash")
         # Write command to execute to bash standard input.
         process.write(f"""statusfile=$(mktemp);
-        xterm -xrm 'XTerm.vt100.allowTitleOps: false' -T "Endeavour OS Tweaker Slave" -bg black -fg green -e sh -c '{self.command}; echo $? > '$statusfile 2> /dev/null;
+        {"" if self.avoid_xterm else "xterm -xrm 'XTerm.vt100.allowTitleOps: false' -T 'Endeavour OS Tweaker Slave' -bg black -fg peru -e"}\
+        sh -c '{self.command}; echo $? > '$statusfile 2> /dev/null;
         cat $statusfile;
         rm $statusfile""".encode())
         process.closeWriteChannel()
@@ -74,18 +77,21 @@ class CommandThread(QThread):
         process.waitForFinished()
 
         # Handle process's exit code.
-        status_code = process.readAllStandardOutput()\
-            .data().decode()
-        if status_code != "":
-            status_code = status_code.splitlines()[-1]
-        else:
-            status_code = 1
         try:
-            status_code = int(status_code)
-        except ValueError:
-            # If exit code couldn't get, set as special exit code
-            status_code = -1
-        self.output.emit(status_code)
+            status_code = process.readAllStandardOutput()\
+                .data().decode()
+            if status_code != "":
+                status_code = status_code.splitlines()[-1]
+            else:
+                status_code = 1
+            try:
+                status_code = int(status_code)
+            except ValueError:
+                # If exit code couldn't get, set as special exit code
+                status_code = -1
+            self.output.emit(status_code)
+        except RuntimeError:
+            pass
 
 
 class AppBox(QGroupBox):
@@ -272,7 +278,8 @@ class ThemeBox(QGroupBox):
         self.layButtons = QGridLayout()
 
         # Create information section
-        self.lblThemeTitle = QLabel("<b>" + name + "</b>", self)
+        self.lblThemeTitle = QLabel(
+            "<center><b>" + name + "</b></center>", self)
         self.lblThemeTitle.setWordWrap(True)
         self.imgTheme = QLabel(self)
         self.imgTheme.setPixmap(QPixmap(image))
@@ -480,13 +487,13 @@ class DconfEditBox(QGroupBox):
         self.settings = []
         self.txtDconf = "Save Changes"
 
-        # Create widgets
+        # Insert widgets to layout
         self.glyDconf = QVBoxLayout(self)
+        self.add_options(*options)
+
+        # Create widgets
         self.btnDconf = QPushButton(
             QIcon("GUI/Assets/configure.png"), self.txtDconf, self)
-
-        # Insert widgets to layout
-        self.add_options(*options)
         self.glyDconf.addWidget(self.btnDconf)
 
         # Connect buttons to functions

@@ -1,0 +1,4 @@
+#!/bin/env bash
+# First parameter is input svg
+# Second parameter is output image
+convert -density 100000 -background none -size 128x128 $1 $2

@@ -1,14 +1,35 @@
 from PyQt5.QtWidgets import QWidget, QLabel, QVBoxLayout
-from Utilities import GridBox
+from PyQt5.QtGui import QIcon
 from json import load
-from Utilities import ThemeBox
+from Utilities import ThemeBox, GridBox, ButtonBox, CommandButton
 
 
 class AppearanceWin(QWidget):
     def __init__(self):
         super(QWidget, self).__init__()
 
-        # Create themes section
+        # Create Kvantum config section
+        self.gbxKvantum = \
+            ButtonBox("Kvantum QT Theme Setter", "GUI/Assets/Tweaks/kvantum.png",
+                      """<p>Qt applications does not follow GTK themes by default. You can use kvantum to manage Qt applications' (like this one) themes. There is an alternative to kvantum, named qt5ct. But updating that is a bit painful.</p>
+                         <p>You can change Qt themes thanks to Kvantum Manager. You can set <font color="orange">KvLibadwaita(Dark)</font> theme to uniform themes with Adw-gtk3 theme.</p>
+                         <p>Note that: <u>Enable/disable actions require restart.</u></p>""", (
+                          CommandButton(QIcon("GUI/Assets/enabled.png"), "Enable Kvantum",
+                                        """sudo sed -i "s/^\#QT_STYLE_OVERRIDE=kvantum/QT_STYLE_OVERRIDE=kvantum/" /etc/environment
+                                if [ ! "$(grep '^QT_STYLE_OVERRIDE=kvantum' /etc/environment)" ]
+                                    then sudo echo "QT_STYLE_OVERRIDE=kvantum" >> /etc/environment
+                                fi""",
+                                        self),
+                          CommandButton(QIcon("GUI/Assets/disabled.png"), "Disable Kvantum",
+                                        """if [ "$(grep '^QT_STYLE_OVERRIDE=kvantum' /etc/environment)" ]
+                                    then sudo sed -i "s/^QT_STYLE_OVERRIDE=kvantum/#QT_STYLE_OVERRIDE=kvantum/" /etc/environment
+                                fi""", self),
+                          CommandButton(
+                              QIcon("GUI/Assets/configure.png"),
+                              "Open Kvantum Manager", "kvantummanager",
+                              self, [], True, True),))
+
+        # Create GTK themes section
         self.gbxTheme = GridBox("GTK Themes")
         self.lblTheme = QLabel(
             """<p>This is the primary theme for your interface and apps that use GTK framwork.</p>
@@ -42,7 +63,9 @@ class AppearanceWin(QWidget):
         self.load_themes("GUI/Data/Fonts.json", 3, self.gbxFont)
 
         # Insert groupboxes to layout
+
         self.layout = QVBoxLayout(self)
+        self.layout.addWidget(self.gbxKvantum)
         self.layout.addWidget(self.gbxTheme)
         self.layout.addWidget(self.gbxIcons)
         self.layout.addWidget(self.gbxCursor)

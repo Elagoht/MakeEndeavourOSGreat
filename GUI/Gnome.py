@@ -8,28 +8,28 @@ class GnomeWin(QWidget):
         super(QWidget, self).__init__()
 
         # Create Wayland section
-        self.gbxWayland = ButtonBox(
-            "Wayland Settings", "GUI/Assets/Tweaks/wayland.png",
-            "<p>Wayland is a new technology to replace Xorg display server. Its may be lighter and faster. Waydroid only works on Wayland but because of it is a new technology, some features are not compatible yet. I.e. global keyboard shourtcuts does not supported right now. Discord cannot share screen on.</p>\
-            <p>Wayland has its own <font color='green'>advantages</font> and <font color='red'>disadvantages</font>. So you may want to change this setting in the future depending on your needs. But for now using Xorg and ditching Wayland is more compatible.</p>\
-            <p><u>Changes require restart.</u></p>", (
-                CommandButton(QIcon("GUI/Assets/configure.png"), "Use Wayland",
-                              "sudo sed -i \"s/^WaylandEnable=false/#WaylandEnable=false/\" /etc/gdm/custom.conf",
-                              self),
-                CommandButton(QIcon("GUI/Assets/configure.png"), "Use XOrg",
-                              "sudo sed -i \"s/^#WaylandEnable=false/WaylandEnable=false/\" /etc/gdm/custom.conf",
-                              self))
-        )
+        self.gbxWayland = \
+            ButtonBox("Wayland Settings", "GUI/Assets/Tweaks/wayland.png",
+                      "<p>Wayland is a new technology to replace Xorg display server. Its may be lighter and faster. Waydroid only works on Wayland but because of it is a new technology, some features are not compatible yet. I.e. global keyboard shourtcuts does not supported right now. Discord cannot share screen on.</p>\
+                       <p>Wayland has its own <font color='green'>advantages</font> and <font color='red'>disadvantages</font>. So you may want to change this setting in the future depending on your needs. But for now using Xorg and ditching Wayland is more compatible.</p>", (
+                          CommandButton(QIcon("GUI/Assets/configure.png"), "Use Wayland",
+                                        "sudo sed -i \"s/^WaylandEnable=false/#WaylandEnable=false/\" /etc/gdm/custom.conf",
+                                        self),
+                          CommandButton(QIcon("GUI/Assets/configure.png"), "Use XOrg",
+                                        "sudo sed -i \"s/^#WaylandEnable=false/WaylandEnable=false/\" /etc/gdm/custom.conf",
+                                        self))
+                      )
 
         # Create context menu section
-        self.gbxContext = ButtonBox(
-            "Context Menu", "GUI/Assets/Tweaks/contextmenu.png", "Enable context (right click) menu icons.", (
-                CommandButton(QIcon("GUI/Assets/enabled.png"), "Enable Icons",
-                              "org.gnome.settings-daemon.plugins.xsettings overrides \"{\\\"Gtk/ButtonImages\\\": <1>, \\\"Gtk/MenuImages\\\": <1>}\"",
-                              self),
-                CommandButton(QIcon("GUI/Assets/disabled.png"), "Disable Icons",
-                              "org.gnome.settings-daemon.plugins.xsettings overrides \"{}\"", self))
-        )
+        self.gbxContext = \
+            ButtonBox("Context Menu", "GUI/Assets/Tweaks/contextmenu.png",
+                      "Enable context (right click) menu icons.", (
+                          CommandButton(QIcon("GUI/Assets/enabled.png"), "Enable Icons",
+                                        "gsettings set org.gnome.settings-daemon.plugins.xsettings overrides \"{\\\"Gtk/ButtonImages\\\": <1>, \\\"Gtk/MenuImages\\\": <1>}\"",
+                                        self),
+                          CommandButton(QIcon("GUI/Assets/disabled.png"), "Disable Icons",
+                                        "gsettings set org.gnome.settings-daemon.plugins.xsettings overrides \"{}\"", self))
+                      )
 
         # Create Gnome Terminal/Console section
         self.gbxTerm = GridBox("Gnome Terminal / Console")
