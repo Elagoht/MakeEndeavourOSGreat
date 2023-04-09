@@ -33,12 +33,12 @@ class AurHelperWin(QWidget):
                                 makepkg -si &&
                                 rm -rf $workdir
                             fi""",
-                              self),
+                              self, (lambda: self.lblAurHelper.setText(self.get_aur_helpers()),)),
                 CommandButton(QIcon("GUI/Assets/uninstall.png"), "Uninstall",
                               """if [ -f /bin/paru ]
                                 then sudo pacman -R paru-bin || sudo pacman -R paru
                               fi""",
-                              self))
+                              self, (lambda: self.lblAurHelper.setText(self.get_aur_helpers()),)))
                       )
 
         # Create yay section
@@ -53,12 +53,12 @@ class AurHelperWin(QWidget):
                                 makepkg -si &&
                                 rm -rf $workdir
                               fi""",
-                              self),
+                              self, (lambda: self.lblAurHelper.setText(self.get_aur_helpers()),)),
                 CommandButton(QIcon("GUI/Assets/uninstall.png"), "Uninstall",
                               """if [ -f /bin/yay ]
                                 then sudo pacman -R yay-bin || sudo pacman -R yay
                               fi""",
-                              self)
+                              self, (lambda: self.lblAurHelper.setText(self.get_aur_helpers()),))
             ))
 
         # Insert groupboxes to layout
@@ -84,6 +84,6 @@ class AurHelperWin(QWidget):
             helpers.append("paru")
         if self.has_yay():
             helpers.append("yay")
-        return f"Your installed AUR helper{'s' if len(helpers) > 1 else ''}: "\
-            + ", ".join(helpers) + "."\
-            if len(helpers) else "You do not have any AUR helper."
+        return f"Your installed AUR helper{'s' if len(helpers) > 1 else ''}: <font color=\"orange\">"\
+            + " and ".join(helpers) + "</font>."\
+            if len(helpers) else "<font color=\"red\">You do not have any AUR helper.</font>"

@@ -72,6 +72,7 @@ class CommandThread(QThread):
         sh -c '{self.command}; echo $? > '$statusfile 2> /dev/null;
         cat $statusfile;
         rm $statusfile""".encode())
+
         process.closeWriteChannel()
         # Wait until process is finished.
         process.waitForFinished()
@@ -190,6 +191,7 @@ class ButtonBox(QGroupBox):
             self.layButtons.addWidget(button)
         self.glyApp.addWidget(self.lblTitle)
         self.glyApp.addLayout(self.layInfo)
+        self.glyApp.addStretch()
         self.glyApp.addLayout(self.layButtons)
 
         # Additional CSS
@@ -562,8 +564,9 @@ def has_aur_helper() -> bool:
 def install_if_doesnt_have(package: str) -> str:
     # If app is already installed, do not try to install again, else install
     # Returns string to use on command texts
+    # Checks aur helper and inserts required parameters.
     return f"""if [ ! "$(pacman -Qqs {package} | grep "^{package}$")" = "{package}" ]
-        then {aur_helper()} -S {package}
+        then {aur_helper()} -S {"--skipreview" if aur_helper() == "/bin/paru" else ""} {"--noeditmenu --nodiffmenu --norebuild --noredownload --nopgpfetch" if aur_helper() == "/bin/yay" else ""} {package}
     fi""" if has_aur_helper() else "false"
 
 

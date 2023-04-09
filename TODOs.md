@@ -20,8 +20,8 @@
 - [X] Install and select shell.
 - [ ] Install oh-my-zsh and synthshell (give credits).
 - [X] Disable/enable Wayland.
-- [ ] Set Gnome shortcuts.
+- [X] Set Gnome shortcuts.
 - [X] Add gaming package section.
 - [X] Add suggested game packages.
 - [X] Install lure.
-- [ ] Add and set Kvantum themes.
+- [X] Add and set Kvantum themes.
