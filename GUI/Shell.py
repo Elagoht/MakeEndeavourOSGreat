@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import QWidget, QGridLayout
 from PyQt5.QtGui import QIcon
 from Utilities import ShellBox, ButtonBox, CommandButton
+from os import system
 
 
 class ShellWin(QWidget):
@@ -42,40 +43,8 @@ class ShellWin(QWidget):
             ButtonBox(
                 "Oh-My-Zsh",
                 "GUI/Assets/Apps/Shells/ohmyzsh.png",
-                "<font color=\"orange\">Requires zsh.</font> Delightful, open source, community-driven framework for managing your Zsh configuration. It comes bundled with thousands of helpful functions, helpers, plugins, themes, and a few things that make you shout...", (
-                    CommandButton(QIcon("GUI/Assets/install.png"), "Install",
-                                  r"""curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | bash;
-                                  curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sudo -i bash;
-                                  echo Installing Elagoht Theme
-                                  curl -sfSL "https://raw.githubusercontent.com/Elagoht/BashPlusZshTheme/main/bashplus.zsh-theme" -o ~/.oh-my-zsh/themes/bashplus.zsh-theme;
-                                  sudo curl -sfSL "https://raw.githubusercontent.com/Elagoht/BashPlusZshTheme/main/bashplus.zsh-theme" -o /root/.oh-my-zsh/themes/bashplus.zsh-theme;
-                                  sleep 1
-                                  echo Installing Elagoht-Safe Theme
-                                  curl -sfSL "https://raw.githubusercontent.com/Elagoht/Elagoht.zsh-theme/main/elagoht.zsh-theme" -o ~/.oh-my-zsh/themes/elagoht.zsh-theme;
-                                  sudo curl -sfSL "https://raw.githubusercontent.com/Elagoht/Elagoht.zsh-theme/main/elagoht.zsh-theme" -o /root/.oh-my-zsh/themes/elagoht.zsh-theme
-                                  sleep 1
-                                  echo Installing Bash Plus Theme
-                                  curl -sfSL "https://raw.githubusercontent.com/Elagoht/Elagoht.zsh-theme/main/elagoht-safe.zsh-theme" -o ~/.oh-my-zsh/themes/elagoht-safe.zsh-theme;
-                                  sudo curl -sfSL "https://raw.githubusercontent.com/Elagoht/Elagoht.zsh-theme/main/elagoht-safe.zsh-theme" -o /root/.oh-my-zsh/themes/elagoht-safe.zsh-theme
-                                  sleep 1
-                                  echo Installing Syntax Highlighting Plugin
-                                  git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-                                  sudo -i git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_CUSTOM:-/root/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-                                  sleep 1
-                                  echo Installing Auto Suggestions Plugin
-                                  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-                                  sudo -i git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-/root/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-                                  echo Enabling Plugins
-                                  sleep 1
-                                  sed -i "s/plugins=.*/plugins=(git virtualenv zsh-autosuggestions zsh-syntax-highlighting)/" ~/.zshrc
-                                  sudo sed -i "s/plugins=.*/plugins=(git virtualenv zsh-autosuggestions zsh-syntax-highlighting)/" /root/.zshrc
-                                  """,
-                                  self),
-                    CommandButton(QIcon("GUI/Assets/uninstall.png"), "Uninstall",
-                                  r"""echo Confirm that you really want to uninstall oh-my-zsh; rm -ri $HOME/.oh-my-zsh/;
-                                  sudo -i rm -ri $HOME/.oh-my-zsh/""",
-                                  self)
-                )
+                "<font color=\"orange\">Requires zsh.</font> Delightful, open source, community-driven framework for managing your Zsh configuration. It comes bundled with thousands of helpful functions, helpers, plugins, themes, and a few things that make you shout...",
+                []
             )
         self.layOhMyZsh = QGridLayout(self.extOhMyZsh)
         self.layOhMyZsh.addWidget(
@@ -92,6 +61,39 @@ class ShellWin(QWidget):
             CommandButton(QIcon("GUI/Assets/configure.png"), "Use Robby Russell Theme",
                           self.zsh_theme_setter("robbyrussell"), self))
         self.extOhMyZsh.glyApp.addLayout(self.layOhMyZsh)
+        self.btnOhMyZshInstall = CommandButton(QIcon("GUI/Assets/install.png"), "Install",
+                                               """curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | bash;
+                                  curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sudo -i bash;
+                                  echo Installing Elagoht Theme;
+                                  curl -sfSL "https://raw.githubusercontent.com/Elagoht/BashPlusZshTheme/main/bashplus.zsh-theme" -o ~/.oh-my-zsh/themes/bashplus.zsh-theme;
+                                  sudo curl -sfSL "https://raw.githubusercontent.com/Elagoht/BashPlusZshTheme/main/bashplus.zsh-theme" -o /root/.oh-my-zsh/themes/bashplus.zsh-theme;
+                                  sleep 1;
+                                  echo Installing Elagoht-Safe Theme;
+                                  curl -sfSL "https://raw.githubusercontent.com/Elagoht/Elagoht.zsh-theme/main/elagoht.zsh-theme" -o ~/.oh-my-zsh/themes/elagoht.zsh-theme;
+                                  sudo curl -sfSL "https://raw.githubusercontent.com/Elagoht/Elagoht.zsh-theme/main/elagoht.zsh-theme" -o /root/.oh-my-zsh/themes/elagoht.zsh-theme;
+                                  sleep 1;
+                                  echo Installing Bash Plus Theme;
+                                  curl -sfSL "https://raw.githubusercontent.com/Elagoht/Elagoht.zsh-theme/main/elagoht-safe.zsh-theme" -o ~/.oh-my-zsh/themes/elagoht-safe.zsh-theme;
+                                  sudo curl -sfSL "https://raw.githubusercontent.com/Elagoht/Elagoht.zsh-theme/main/elagoht-safe.zsh-theme" -o /root/.oh-my-zsh/themes/elagoht-safe.zsh-theme;
+                                  sleep 1;
+                                  echo Installing Syntax Highlighting Plugin;
+                                  git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting;
+                                  sudo -i git clone https://github.com/zsh-users/zsh-syntax-highlighting ${ZSH_CUSTOM:-/root/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting;
+                                  sleep 1;
+                                  echo Installing Auto Suggestions Plugin;
+                                  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions;
+                                  sudo -i git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-/root/.oh-my-zsh/custom}/plugins/zsh-autosuggestions;
+                                  echo Enabling Plugins;
+                                  sleep 1;
+                                  sed -i "s/plugins=.*/plugins=(git virtualenv zsh-autosuggestions zsh-syntax-highlighting)/" ~/.zshrc;
+                                  sudo sed -i "s/plugins=.*/plugins=(git virtualenv zsh-autosuggestions zsh-syntax-highlighting)/" /root/.zshrc;
+                                  """,
+                                               self.extOhMyZsh, (self.check_oh_my_zsh,), True)
+        self.btnOhMyZshUninstall = CommandButton(QIcon("GUI/Assets/uninstall.png"), "Uninstall",
+                                                 r"""echo Confirm that you really want to uninstall oh-my-zsh
+                                  sudo rm -rf /root/.oh-my-zsh/ &&
+                                  rm -rf $HOME/.oh-my-zsh/""",
+                                                 self.extOhMyZsh, (self.check_oh_my_zsh,), True)
 
         # Create SyntShell section
         # ! Looks like it's not working. Will be added when it's ready.
@@ -104,6 +106,27 @@ class ShellWin(QWidget):
         self.layout.addWidget(self.appFish)
         self.layout.addWidget(self.extOhMyZsh)
 
-    def zsh_theme_setter(self, theme: str):
+        # Initialize
+        self.check_oh_my_zsh()
+
+    # Shortcut for OhMyZsh theme setter.
+    def zsh_theme_setter(self, theme: str) -> str:
         return fr"""[ \"$(grep \"^ZSH_THEME=\" $HOME/.zshrc)\" ] && sudo -i sed -i "s/^ZSH_THEME=.*/ZSH_THEME=\"{theme}\"/" $HOME/.zshrc
                    sudo [ \"$(sudo grep \"^ZSH_THEME=\" /root/.zshrc)\" ] && sudo -i sed -i "s/^ZSH_THEME=.*/ZSH_THEME=\"{theme}\"/" /root/.zshrc"""
+
+    def check_oh_my_zsh(self) -> None:
+        installed = system("[ -d ~/.oh-my-zsh ]") == 0
+        if installed:
+            self.extOhMyZsh.layButtons.addWidget(
+                self.btnOhMyZshUninstall)
+            self.extOhMyZsh.layButtons.removeWidget(
+                self.btnOhMyZshInstall)
+            self.btnOhMyZshUninstall.show()
+            self.btnOhMyZshInstall.hide()
+        else:
+            self.extOhMyZsh.layButtons.addWidget(
+                self.btnOhMyZshInstall)
+            self.extOhMyZsh.layButtons.removeWidget(
+                self.btnOhMyZshUninstall)
+            self.btnOhMyZshUninstall.hide()
+            self.btnOhMyZshInstall.show()
