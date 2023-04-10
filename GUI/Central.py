@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QWidget, QScrollArea, QGridLayout, QPushButton, QLabel
+from PyQt5.QtWidgets import QWidget, QScrollArea, QVBoxLayout, QGridLayout, QPushButton, QLabel
 from PyQt5.QtCore import QSize, Qt
 from PyQt5.QtGui import QIcon
 from Utilities import GridBox, AppsWin, CommandButton, aur_helper, has_aur_helper
@@ -41,20 +41,28 @@ class Central(QWidget):
         self.btnGames = QPushButton("Suggested Games")
         self.btnDevelopment = QPushButton("Development")
 
-        # Insert buttons to layout
+        # Insert buttons to menu layout
+        self.layMenu = QVBoxLayout()
+        self.layMenu.addWidget(self.gbxWelcome)
+        self.layMenu.addWidget(self.btnUpdate)
+        self.layMenu.addWidget(self.btnAurHelper)
+        self.layMenu.addWidget(self.btnPamac)
+        self.layMenu.addWidget(self.btnLure)
+        self.layMenu.addWidget(self.btnGnome)
+        self.layMenu.addWidget(self.btnExtension)
+        self.layMenu.addWidget(self.btnTheming)
+        self.layMenu.addWidget(self.btnShell)
+        self.layMenu.addWidget(self.btnGaming)
+        self.layMenu.addWidget(self.btnGames)
+        self.layMenu.addWidget(self.btnDevelopment)
+
+        # Window Container
+        self.layWindow = QVBoxLayout()
+
+        # Add layouts and widgets to layout
         self.layout = QGridLayout(self)
-        self.layout.addWidget(self.gbxWelcome, 0, 0, 1, 3)
-        self.layout.addWidget(self.btnUpdate, 1, 0)
-        self.layout.addWidget(self.btnAurHelper, 1, 1)
-        self.layout.addWidget(self.btnPamac, 1, 2)
-        self.layout.addWidget(self.btnLure)
-        self.layout.addWidget(self.btnGnome)
-        self.layout.addWidget(self.btnExtension)
-        self.layout.addWidget(self.btnTheming)
-        self.layout.addWidget(self.btnShell)
-        self.layout.addWidget(self.btnGaming)
-        self.layout.addWidget(self.btnGames)
-        self.layout.addWidget(self.btnDevelopment)
+        self.layout.addLayout(self.layMenu, 0, 0, 3, 1)
+        self.layout.addLayout(self.layWindow, 1, 1)
 
         # Connect buttons to functions
         self.btnGnome.clicked.connect(lambda: self.open_window(
@@ -96,9 +104,7 @@ class Central(QWidget):
 class ExternalWindow(QWidget):
     def __init__(self, title: str, window_class: QWidget, params: list, size: QSize, caller: QWidget) -> None:
         super(QWidget, self).__init__()
-        self.setWindowModality(Qt.ApplicationModal)
         self.title = title
-        self.setWindowTitle(self.title)
         self.scrWidget = QScrollArea(self)
         self.winWidget = window_class(*params)
         self.scrWidget.setWidget(self.winWidget)
@@ -107,8 +113,12 @@ class ExternalWindow(QWidget):
         self.layout.addWidget(self.scrWidget)
         self.setMinimumSize(size)
         self.caller = caller
-        self.show()
-        self.caller.parent().close()
+        caller_win = self.caller.layWindow
+        if caller_win.count():
+            widget = caller_win.takeAt(0).widget()
+            caller_win.removeWidget(widget)
+            del widget
+        caller_win.addWidget(self)
 
     def closeEvent(self, event):
         if self.title == "AUR Helper":
