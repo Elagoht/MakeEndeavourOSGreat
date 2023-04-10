@@ -581,3 +581,8 @@ def uninstall_if_have(package: str) -> str:
 def color(color: str, text: str) -> str:
     # Return colored text for labels
     return f"<font color='{color}'>{text}</font>"
+
+
+def long_bash_script(file: str) -> str:
+    with open(file, "r", encoding="UTF-8") as code:
+        return code.read()
