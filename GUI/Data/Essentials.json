@@ -1,0 +1,120 @@
+{
+    "Emoji Typing": [
+        [
+            "Noto Color Emoji Font",
+            "noto-color-emoji-fontconfig",
+            "GUI/Assets/Apps/Essentials/notoemoji.png",
+            "Without this package you will not be able to see emojis."
+        ],
+        [
+            "Emote",
+            "emote",
+            "GUI/Assets/Apps/Essentials/emote.png",
+            "Emoji keyboard that can be toggle with Ctrl + Shift + E keybinding."
+        ]
+    ],
+    "Fonts & Character": [
+        [
+            "Gnome Font Viewer",
+            "gnome-font-viewer",
+            "GUI/Assets/Apps/Essentials/gnomefontviewer.png",
+            "Gnome's font viewing tool. Shows installed fonts on your system."
+        ],
+        [
+            "GuCharmap",
+            "gucharmap",
+            "GUI/Assets/Apps/Essentials/gucharmap.png",
+            "Gnome's unicode character mapp tool. See all the characters available."
+        ]
+    ],
+    "Drop-Down Terminal": [
+        [
+            "Guake",
+            "guake",
+            "GUI/Assets/Apps/Essentials/guake.png",
+            "Drop-down toggleable terminal editor with multi-tab feature. Does not shown in list windows menu."
+        ],
+        [
+            "Yakuake",
+            "tilda",
+            "GUI/Assets/Apps/Essentials/yakuake.png",
+            "KDE's drop-down toggleable terminal emulator based on KDE konsole technology."
+        ],
+        [
+            "Tilda",
+            "tilda",
+            "GUI/Assets/Apps/Essentials/tilda.png",
+            "Lite, GTK based drop-down terminal for Linux and Unix."
+        ]
+    ],
+    "Music": [
+        [
+            "Spotify",
+            "spotify",
+            "GUI/Assets/Apps/Essentials/spotify.png",
+            "Proprietary, paid music streaming service."
+        ],
+        [
+            "Lollypop",
+            "lollypop",
+            "GUI/Assets/Apps/Essentials/lollypop.png",
+            "Gnome's additional music player."
+        ],
+        [
+            "Elisa",
+            "elisa",
+            "GUI/Assets/Apps/Essentials/elisa.png",
+            "Simple music player aiming to provide a nice experience for its users."
+        ],
+        [
+            "Rhythmbox",
+            "rhythmbox",
+            "GUI/Assets/Apps/Essentials/elisa.png",
+            "Music playback and management application."
+        ],
+        [
+            "Clementine",
+            "clementine",
+            "GUI/Assets/Apps/Essentials/clementine.png",
+            "A modern music player and library organizer"
+        ]
+    ],
+    "Messaging and Communication": [
+        [
+            "Discord",
+            "discord",
+            "GUI/Assets/Apps/Gaming/discord.png",
+            "All-in-one voice and text chat for gamers."
+        ],
+        [
+            "Telegram",
+            "telegram-desktop",
+            "GUI/Assets/Apps/Essentials/telegram.png",
+            "Official Telegram desktop client."
+        ],
+        [
+            "Signal",
+            "signal-desktop",
+            "GUI/Assets/Apps/Essentials/signal.png",
+            "Private messenger for Linux."
+        ],
+        [
+            "Whatsapp (Unofficial)",
+            "whatsapp-nativefier-autostart-tray-hook",
+            "GUI/Assets/Apps/Essentials/whatsapp.png",
+            "Private messenger for Linux."
+        ],
+        [
+            "Ferdium (A.K.A. Ferdi)",
+            "ferdium-bin",
+            "GUI/Assets/Apps/Essentials/ferdium.png",
+            "Messaging browser that allows you to combine your favorite messaging services into one application."
+        ],
+        [
+            "Hexchat",
+            "hexchat",
+            "GUI/Assets/Apps/Essentials/hexchat.png",
+            "Popular and easy to use graphical IRC (chat) client."
+        ]
+    ]
+}

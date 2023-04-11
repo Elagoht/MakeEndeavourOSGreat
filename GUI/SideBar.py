@@ -25,6 +25,7 @@ class SideBar(QWidget):
         self.btnAurHelper = QPushButton(self.txtAurButton)
         self.btnPamac = QPushButton("Software Manager")
         self.btnLure = QPushButton("LURE")
+        self.btnEssentials = QPushButton("Essential Apps")
         self.btnGnome = QPushButton("Gnome Settings")
         self.btnExtension = QPushButton("Gnome Extensions")
         self.btnTheming = QPushButton("Appearance")
@@ -40,6 +41,7 @@ class SideBar(QWidget):
         self.layout.addWidget(self.btnAurHelper)
         self.layout.addWidget(self.btnPamac)
         self.layout.addWidget(self.btnLure)
+        self.layout.addWidget(self.btnEssentials)
         self.layout.addWidget(self.btnGnome)
         self.layout.addWidget(self.btnExtension)
         self.layout.addWidget(self.btnTheming)
@@ -58,6 +60,8 @@ class SideBar(QWidget):
             "Software Manager", PamacWin))
         self.btnAurHelper.clicked.connect(lambda: parent.open_window(
             "AUR Helper", AurHelperWin))
+        self.btnEssentials.clicked.connect(lambda: parent.open_window(
+            "Essential Apps", AppsWin, ["GUI/Data/Essentials.json"]))
         self.btnTheming.clicked.connect(lambda: parent.open_window(
             "Appearance", AppearanceWin))
         self.btnLure.clicked.connect(lambda: parent.open_window(
