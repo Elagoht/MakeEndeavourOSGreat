@@ -26,7 +26,7 @@ class TopBar(QWidget):
         super(QWidget, self).__init__()
         self.setParent(parent)
 
-        self.btnBack = QPushButton(QIcon("GUI/Assets/back.png"), "", self)
+        self.btnBack = QPushButton(QIcon("GUI/Assets/back.png"), "Back", self)
         self.lblTitle = QLabel(title)
 
         self.layout = QHBoxLayout(self)

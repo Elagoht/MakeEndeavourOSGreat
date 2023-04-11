@@ -7,7 +7,7 @@ class WelcomeWin(QWidget):
         super(QWidget, self).__init__()
 
         self.lblWelcome = QLabel("""<h1>Welcome to Endeavour OS Tweaker</h1>
-            <p>Adapt your computer to your usage patterns by using this application. Click buttons below to start tweaking.</p>""")
+            <p>Adapt your computer to your usage patterns by using this application. Click buttons on the left to start tweaking.</p>""")
         self.lblWelcome.setWordWrap(True)
 
         self.layout = QVBoxLayout(self)
