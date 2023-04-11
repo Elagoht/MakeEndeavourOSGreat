@@ -7,6 +7,12 @@
             "Code OSS, is a source-code editor made with the Electron Framework."
         ],
         [
+            "VSCodium",
+            "vscodium-bin",
+            "GUI/Assets/Apps/Development/vscodium.png",
+            "Community-driven, freely-licensed binary distribution of Microsoft's editor VS Code."
+        ],
+        [
             "VSCode",
             "visual-studio-code-bin",
             "GUI/Assets/Apps/Development/vscode.png",
