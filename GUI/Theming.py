@@ -18,8 +18,7 @@ class AppearanceWin(QWidget):
                                         """sudo sed -i "s/^\#QT_STYLE_OVERRIDE=kvantum/QT_STYLE_OVERRIDE=kvantum/" /etc/environment
                                 if [ ! "$(grep '^QT_STYLE_OVERRIDE=kvantum' /etc/environment)" ]
                                     then sudo echo "QT_STYLE_OVERRIDE=kvantum" >> /etc/environment
-                                fi""",
-                                        self),
+                                fi""", self),
                           CommandButton(QIcon("GUI/Assets/disabled.png"), "Disable Kvantum",
                                         """if [ "$(grep '^QT_STYLE_OVERRIDE=kvantum' /etc/environment)" ]
                                     then sudo sed -i "s/^QT_STYLE_OVERRIDE=kvantum/#QT_STYLE_OVERRIDE=kvantum/" /etc/environment
