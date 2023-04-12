@@ -1,182 +1,182 @@
 {
     "Strategy Games": [
-        [
-            "Mindustry",
-            "mindustry-bin",
-            "GUI/Assets/Apps/Games/mindustry.png",
-            "Sandbox tower-defense game. Defend your base from waves of powerful enemies. Build complex designs for processing materials."
-        ],
-        [
-            "0 A.D.",
-            "0ad",
-            "GUI/Assets/Apps/Games/0ad.png",
-            "Real time strategy (RTS) game of ancient wasfare."
-        ],
-        [
-            "OpenRA (Red Alert)",
-            "openra",
-            "GUI/Assets/Apps/Games/openra.png",
-            "Reimagining of early Westwood real time strategy games."
-        ],
-        [
-            "Warzone2100",
-            "warzone2100",
-            "GUI/Assets/Apps/Games/warzone2100.png",
-            "3D realtime strategy game on a future Earth."
-        ],
-        [
-            "Sudo Mice",
-            "sudo-mice-bin",
-            "GUI/Assets/Apps/Games/sudomice.png",
-            "Pixel graphics two players real time strategy game."
-        ],
-        [
-            "Battle for Wesnoth",
-            "wesnoth",
-            "GUI/Assets/Apps/Games/wesnoth.png",
-            "Turn-based strategy game with a gihg fantasy theme."
-        ]
+        {
+            "name": "Mindustry",
+            "package": "mindustry-bin",
+            "image": "GUI/Assets/Apps/Games/mindustry.png",
+            "description": "Sandbox tower-defense game. Defend your base from waves of powerful enemies. Build complex designs for processing materials."
+        },
+        {
+            "name": "0 A.D.",
+            "package": "0ad",
+            "image": "GUI/Assets/Apps/Games/0ad.png",
+            "description": "Real time strategy (RTS) game of ancient wasfare."
+        },
+        {
+            "name": "OpenRA (Red Alert)",
+            "package": "openra",
+            "image": "GUI/Assets/Apps/Games/openra.png",
+            "description": "Reimagining of early Westwood real time strategy games."
+        },
+        {
+            "name": "Warzone2100",
+            "package": "warzone2100",
+            "image": "GUI/Assets/Apps/Games/warzone2100.png",
+            "description": "3D realtime strategy game on a future Earth."
+        },
+        {
+            "name": "Sudo Mice",
+            "package": "sudo-mice-bin",
+            "image": "GUI/Assets/Apps/Games/sudomice.png",
+            "description": "Pixel graphics two players real time strategy game."
+        },
+        {
+            "name": "Battle for Wesnoth",
+            "package": "wesnoth",
+            "image": "GUI/Assets/Apps/Games/wesnoth.png",
+            "description": "Turn-based strategy game with a gihg fantasy theme."
+        }
     ],
     "First Person Shooter": [
-        [
-            "AssaultCube Reloaded",
-            "assaultcube-reloaded",
-            "GUI/Assets/Apps/Games/assaultcubereloaded.png",
-            "Battle against the computer or other players for control of an area."
-        ],
-        [
-            "Xonotic",
-            "xonotic",
-            "GUI/Assets/Apps/Games/xonotic.png",
-            "Fast-paced crossplatform first-person shooter."
-        ]
+        {
+            "name": "AssaultCube Reloaded",
+            "package": "assaultcube-reloaded",
+            "image": "GUI/Assets/Apps/Games/assaultcubereloaded.png",
+            "description": "Battle against the computer or other players for control of an area."
+        },
+        {
+            "name": "Xonotic",
+            "package": "xonotic",
+            "image": "GUI/Assets/Apps/Games/xonotic.png",
+            "description": "Fast-paced crossplatform first-person shooter."
+        }
     ],
     "Sandbox": [
-        [
-            "Minecraft Launcher",
-            "minecraft-launcher",
-            "GUI/Assets/Apps/Games/minecraft.png",
-            "Official Minecraft launcher. You all know what minecraft is."
-        ],
-        [
-            "Prism Launcher",
-            "prismlauncher-bin",
-            "GUI/Assets/Apps/Games/prismlauncher.png",
-            "Third party Minecraft launcher with ability to manage multiple instances. Good for modpack management."
-        ],
-        [
-            "Minetest",
-            "minetest",
-            "GUI/Assets/Apps/Games/minetest.png",
-            "Multiplayer infinite-world block sandbox game."
-        ]
+        {
+            "name": "Minecraft Launcher",
+            "package": "minecraft-launcher",
+            "image": "GUI/Assets/Apps/Games/minecraft.png",
+            "description": "Official Minecraft launcher. You all know what minecraft is."
+        },
+        {
+            "name": "Prism Launcher",
+            "package": "prismlauncher-bin",
+            "image": "GUI/Assets/Apps/Games/prismlauncher.png",
+            "description": "Third party Minecraft launcher with ability to manage multiple instances. Good for modpack management."
+        },
+        {
+            "name": "Minetest",
+            "package": "minetest",
+            "image": "GUI/Assets/Apps/Games/minetest.png",
+            "description": "Multiplayer infinite-world block sandbox game."
+        }
     ],
     "Simulation": [
-        [
-            "OpenTTD (Transport Tycoon Deluxe)",
-            "openttd",
-            "GUI/Assets/Apps/Games/openttd.png",
-            "A simulation game based on Transport Tycoon Deluxe."
-        ]
+        {
+            "name": "OpenTTD (Transport Tycoon Deluxe)",
+            "package": "openttd",
+            "image": "GUI/Assets/Apps/Games/openttd.png",
+            "description": "A simulation game based on Transport Tycoon Deluxe."
+        }
     ],
     "Platformer": [
-        [
-            "SuperTux 2",
-            "supertux",
-            "GUI/Assets/Apps/Games/supertux.png",
-            "Super Mario Bros clone starring Tux the Penguin."
-        ],
-        [
-            "Hedgewars",
-            "hedgewars",
-            "GUI/Assets/Apps/Games/hedgewars.png",
-            "Worms clone single/multiplayer turnbased war game."
-        ],
-        [
-            "Teeworlds",
-            "teeworlds",
-            "GUI/Assets/Apps/Games/teeworlds.png",
-            "Fast-paced multiplayer 2D shooter game."
-        ]
+        {
+            "name": "SuperTux 2",
+            "package": "supertux",
+            "image": "GUI/Assets/Apps/Games/supertux.png",
+            "description": "Super Mario Bros clone starring Tux the Penguin."
+        },
+        {
+            "name": "Hedgewars",
+            "package": "hedgewars",
+            "image": "GUI/Assets/Apps/Games/hedgewars.png",
+            "description": "Worms clone single/multiplayer turnbased war game."
+        },
+        {
+            "name": "Teeworlds",
+            "package": "teeworlds",
+            "image": "GUI/Assets/Apps/Games/teeworlds.png",
+            "description": "Fast-paced multiplayer 2D shooter game."
+        }
     ],
     "Racing": [
-        [
-            "SuperTuxKart",
-            "supertuxkart",
-            "GUI/Assets/Apps/Games/supertuxkart.png",
-            "3D opensurce kart racing game starring almost all open source mascots."
-        ]
+        {
+            "name": "SuperTuxKart",
+            "package": "supertuxkart",
+            "image": "GUI/Assets/Apps/Games/supertuxkart.png",
+            "description": "3D opensurce kart racing game starring almost all open source mascots."
+        }
     ],
     "Card Game": [
-        [
-            "Aisleriot Solitaire",
-            "supertuxkart",
-            "GUI/Assets/Apps/Games/aisleriot.png",
-            "Play lots of solitaire games."
-        ]
+        {
+            "name": "Aisleriot Solitaire",
+            "package": "supertuxkart",
+            "image": "GUI/Assets/Apps/Games/aisleriot.png",
+            "description": "Play lots of solitaire games."
+        }
     ],
     "Space Shooter": [
-        [
-            "Chromium B.S.U",
-            "chromium-bsu",
-            "GUI/Assets/Apps/Games/chromiumbsu.png",
-            "Scrolling space shooter for Linux."
-        ],
-        [
-            "Open Tyrian 2000",
-            "opentyrian2000",
-            "GUI/Assets/Apps/Games/tyrian2000.png",
-            "Open Source port of the classic DOX shoot-em-up Tyrian 2000."
-        ]
+        {
+            "name": "Chromium B.S.U",
+            "package": "chromium-bsu",
+            "image": "GUI/Assets/Apps/Games/chromiumbsu.png",
+            "description": "Scrolling space shooter for Linux."
+        },
+        {
+            "name": "Open Tyrian 2000",
+            "package": "opentyrian2000",
+            "image": "GUI/Assets/Apps/Games/tyrian2000.png",
+            "description": "Open Source port of the classic DOX shoot-em-up Tyrian 2000."
+        }
     ],
     "Casual": [
-        [
-            "Gnome 2048",
-            "gnome-2048",
-            "GUI/Assets/Apps/Games/gnome2048.png",
-            "Obtain the 2048 tile by merging other low number tiles."
-        ],
-        [
-            "Gnome Chess",
-            "gnome-chess",
-            "GUI/Assets/Apps/Games/gnomechess.png",
-            "Clasic two player board game of chess."
-        ],
-        [
-            "Gnome Sudoku",
-            "gnome-sudoku",
-            "GUI/Assets/Apps/Games/gnomesudoku.png",
-            "Test your logic skills in this number grid puzzle."
-        ],
-        [
-            "Gnome Mines",
-            "gnome-mines",
-            "GUI/Assets/Apps/Games/gnomemines.png",
-            "Clear hidden mines from a minefield."
-        ],
-        [
-            "Gnome Mahjongg",
-            "gnome-mahjongg",
-            "GUI/Assets/Apps/Games/gnomemahjongg.png",
-            "Match tiles and clear the board."
-        ],
-        [
-            "Gnome Nibbles",
-            "gnome-nibbles",
-            "GUI/Assets/Apps/Games/gnomenibbles.png",
-            "Multiplayer PvP, PvE snake game."
-        ],
-        [
-            "Gnome Reversi",
-            "iagno",
-            "GUI/Assets/Apps/Games/gnomereversi.png",
-            "Dominate the board in a classic reversi game or play the reversed variant."
-        ],
-        [
-            "Gnome Robots",
-            "iagno",
-            "GUI/Assets/Apps/Games/gnomerobots.png",
-            "Avoid the robots and make them crash into each other."
-        ]
+        {
+            "name": "Gnome 2048",
+            "package": "gnome-2048",
+            "image": "GUI/Assets/Apps/Games/gnome2048.png",
+            "description": "Obtain the 2048 tile by merging other low number tiles."
+        },
+        {
+            "name": "Gnome Chess",
+            "package": "gnome-chess",
+            "image": "GUI/Assets/Apps/Games/gnomechess.png",
+            "description": "Clasic two player board game of chess."
+        },
+        {
+            "name": "Gnome Sudoku",
+            "package": "gnome-sudoku",
+            "image": "GUI/Assets/Apps/Games/gnomesudoku.png",
+            "description": "Test your logic skills in this number grid puzzle."
+        },
+        {
+            "name": "Gnome Mines",
+            "package": "gnome-mines",
+            "image": "GUI/Assets/Apps/Games/gnomemines.png",
+            "description": "Clear hidden mines from a minefield."
+        },
+        {
+            "name": "Gnome Mahjongg",
+            "package": "gnome-mahjongg",
+            "image": "GUI/Assets/Apps/Games/gnomemahjongg.png",
+            "description": "Match tiles and clear the board."
+        },
+        {
+            "name": "Gnome Nibbles",
+            "package": "gnome-nibbles",
+            "image": "GUI/Assets/Apps/Games/gnomenibbles.png",
+            "description": "Multiplayer PvP, PvE snake game."
+        },
+        {
+            "name": "Gnome Reversi",
+            "package": "iagno",
+            "image": "GUI/Assets/Apps/Games/gnomereversi.png",
+            "description": "Dominate the board in a classic reversi game or play the reversed variant."
+        },
+        {
+            "name": "Gnome Robots",
+            "package": "iagno",
+            "image": "GUI/Assets/Apps/Games/gnomerobots.png",
+            "description": "Avoid the robots and make them crash into each other."
+        }
     ]
 }

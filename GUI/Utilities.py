@@ -399,11 +399,11 @@ class AppsWin(QWidget):
             for number, program in enumerate(program_list):
                 match number:
                     case 1:
-                        grid_box.addWidget(AppBox(*program), 0, 1)
+                        grid_box.addWidget(AppBox(*program.values()), 0, 1)
                     case 2:
-                        grid_box.addWidget(AppBox(*program), 0, 2)
+                        grid_box.addWidget(AppBox(*program.values()), 0, 2)
                     case _:
-                        grid_box.glyField.addWidget(AppBox(*program))
+                        grid_box.glyField.addWidget(AppBox(*program.values()))
             self.layout.addWidget(grid_box)
 
 

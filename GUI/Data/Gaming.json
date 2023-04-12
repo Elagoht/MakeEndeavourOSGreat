@@ -1,166 +1,166 @@
 {
     "Game Launchers": [
-        [
-            "Steam",
-            "steam",
-            "GUI/Assets/Apps/Gaming/steam.png",
-            "You all know what Steam is."
-        ],
-        [
-            "Heroic Games Launcher",
-            "heroic-games-launcher-bin",
-            "GUI/Assets/Apps/Gaming/heroicgameslauncher.png",
-            "Epic Games Launcher and GOG launcher. Epic Games Launcher isn't supported. But this is better than even on Windows!"
-        ],
-        [
-            "Itch",
-            "itch-bin",
-            "GUI/Assets/Apps/Gaming/itch.png",
-            "Indie game, assets, jam finding and serving application. Take a look at indie developers games and publish your own."
-        ],
-        [
-            "Lutris",
-            "lutris",
-            "GUI/Assets/Apps/Gaming/lutris.png",
-            "Serves community installer scripts to automatically configure the Wine environment for required games."
-        ],
-        [
-            "Bottles",
-            "bottles",
-            "GUI/Assets/Apps/Gaming/bottles.png",
-            "Bottles' Gaming Environment comes preconfigured to support a large set of Windows video games on Linux."
-        ]
+        {
+            "name": "Steam",
+            "package": "steam",
+            "image": "GUI/Assets/Apps/Gaming/steam.png",
+            "description": "You all know what Steam is."
+        },
+        {
+            "name": "Heroic Games Launcher",
+            "package": "heroic-games-launcher-bin",
+            "image": "GUI/Assets/Apps/Gaming/heroicgameslauncher.png",
+            "description": "Epic Games Launcher and GOG launcher. Epic Games Launcher isn't supported. But this is better than even on Windows!"
+        },
+        {
+            "name": "Itch",
+            "package": "itch-bin",
+            "image": "GUI/Assets/Apps/Gaming/itch.png",
+            "description": "Indie game, assets, jam finding and serving application. Take a look at indie developers games and publish your own."
+        },
+        {
+            "name": "Lutris",
+            "package": "lutris",
+            "image": "GUI/Assets/Apps/Gaming/lutris.png",
+            "description": "Serves community installer scripts to automatically configure the Wine environment for required games."
+        },
+        {
+            "name": "Bottles",
+            "package": "bottles",
+            "image": "GUI/Assets/Apps/Gaming/bottles.png",
+            "description": "Bottles' Gaming Environment comes preconfigured to support a large set of Windows video games on Linux."
+        }
     ],
     "Communication": [
-        [
-            "Discord",
-            "discord",
-            "GUI/Assets/Apps/Gaming/discord.png",
-            "You all know what Discord is. In this program select to use XOrg over Wayland to be able to stream screen. Unfortunately Discord doesn't support audio streaming and overlay yet."
-        ],
-        [
-            "Discover Overlay",
-            "discover-overlay",
-            "GUI/Assets/Apps/Gaming/discoveroverlay.png",
-            "Third party support for Discord overlay to be able to see who is speaking right now. Highly customizable."
-        ],
-        [
-            "Team Speak",
-            "teamspeak",
-            "GUI/Assets/Apps/Gaming/teamspeak.png",
-            "You all know what Team Speak is."
-        ],
-        [
-            "Easy Effects",
-            "easyeffects",
-            "GUI/Assets/Apps/Gaming/easyeffects.png",
-            "Audio effects for pipewire applications. Make the voice your microphone capture more understandable and better quality."
-        ]
+        {
+            "name": "Discord",
+            "package": "discord",
+            "image": "GUI/Assets/Apps/Gaming/discord.png",
+            "description": "You all know what Discord is. In this program select to use XOrg over Wayland to be able to stream screen. Unfortunately Discord doesn't support audio streaming and overlay yet."
+        },
+        {
+            "name": "Discover Overlay",
+            "package": "discover-overlay",
+            "image": "GUI/Assets/Apps/Gaming/discoveroverlay.png",
+            "description": "Third party support for Discord overlay to be able to see who is speaking right now. Highly customizable."
+        },
+        {
+            "name": "Team Speak",
+            "package": "teamspeak",
+            "image": "GUI/Assets/Apps/Gaming/teamspeak.png",
+            "description": "You all know what Team Speak is."
+        },
+        {
+            "name": "Easy Effects",
+            "package": "easyeffects",
+            "image": "GUI/Assets/Apps/Gaming/easyeffects.png",
+            "description": "Audio effects for pipewire applications. Make the voice your microphone capture more understandable and better quality."
+        }
     ],
     "Tools": [
-        [
-            "LogMeIn Hamachi (No GUI)",
-            "logmein-hamachi",
-            "GUI/Assets/Apps/Gaming/logmeinhamachi.png",
-            "A zero-configuration VPN service. Run this command after install: <font color=\"green\" face=\"monospace\">sudo systemctl enable --now logmein-hamachi.service</font>"
-        ],
-        [
-            "HaGUIchi (GUI for Hamachi)",
-            "haguichi",
-            "GUI/Assets/Apps/Gaming/haguichi.png",
-            "Provides a user friendly GUI to control the Hamachi client on Linux"
-        ],
-        [
-            "QJoyPad",
-            "qjoypad",
-            "GUI/Assets/Apps/Gaming/qjoypad.png",
-            "Simply JoyToKey for Linux. Convert gamepad actions to keyboard or mouse actions."
-        ],
-        [
-            "JS Test",
-            "jstest-gtk-git",
-            "GUI/Assets/Apps/Gaming/jstestgtk.png",
-            "Joystick, gamepad shortly game controller testing interface for Linux."
-        ],
-        [
-            "Feral GameMode",
-            "gamemode",
-            "GUI/Assets/Apps/Gaming/feralgamemode.png",
-            "Support for optimisations including CPU governor, I/O priority, process niceness, kernel scheduler (SCHED_ISO)."
-        ],
-        [
-            "Goverlay",
-            "vkbasalt",
-            "GUI/Assets/Apps/Gaming/goverlay.png",
-            "Graphical tweaker for Mangohud and vkBasalt. Highly recommended to use."
-        ],
-        [
-            "Mangohud",
-            "mangohud",
-            "GUI/Assets/Apps/Gaming/mangohud.png",
-            "Simply Riva Tuner Statistics Server for Linux. Shows FPS, CPU and GPU's usage and heat, RAM and Swap usage etc. To use add <font color=\"orange\" face=\"monospace\">mangohud</font> on terminal or write <font color=\"green\" face=\"monospace\">mangohud %command%</font> on Steam launch options."
-        ],
-        [
-            "vkBasalt",
-            "vkbasalt",
-            "GUI/Assets/Apps/Gaming/vkbasalt.png",
-            "Vulkan post processing layer to enhance the visual graphics of games. To use add <font color=\"green\" face=\"monospace\">mangohud ENABLE_VKBASALT=1</font> on terminal or write <font color=\"green\" face=\"monospace\">mangohud ENABLE_VKBASALT=1 %command%</font> on Steam launch options."
-        ]
+        {
+            "name": "LogMeIn Hamachi (No GUI)",
+            "package": "logmein-hamachi",
+            "image": "GUI/Assets/Apps/Gaming/logmeinhamachi.png",
+            "description": "A zero-configuration VPN service. Run this command after install: <font color=\"green\" face=\"monospace\">sudo systemctl enable --now logmein-hamachi.service</font>"
+        },
+        {
+            "name": "HaGUIchi (GUI for Hamachi)",
+            "package": "haguichi",
+            "image": "GUI/Assets/Apps/Gaming/haguichi.png",
+            "description": "Provides a user friendly GUI to control the Hamachi client on Linux"
+        },
+        {
+            "name": "QJoyPad",
+            "package": "qjoypad",
+            "image": "GUI/Assets/Apps/Gaming/qjoypad.png",
+            "description": "Simply JoyToKey for Linux. Convert gamepad actions to keyboard or mouse actions."
+        },
+        {
+            "name": "JS Test",
+            "package": "jstest-gtk-git",
+            "image": "GUI/Assets/Apps/Gaming/jstestgtk.png",
+            "description": "Joystick, gamepad shortly game controller testing interface for Linux."
+        },
+        {
+            "name": "Feral GameMode",
+            "package": "gamemode",
+            "image": "GUI/Assets/Apps/Gaming/feralgamemode.png",
+            "description": "Support for optimisations including CPU governor, I/O priority, process niceness, kernel scheduler (SCHED_ISO)."
+        },
+        {
+            "name": "Goverlay",
+            "package": "vkbasalt",
+            "image": "GUI/Assets/Apps/Gaming/goverlay.png",
+            "description": "Graphical tweaker for Mangohud and vkBasalt. Highly recommended to use."
+        },
+        {
+            "name": "Mangohud",
+            "package": "mangohud",
+            "image": "GUI/Assets/Apps/Gaming/mangohud.png",
+            "description": "Simply Riva Tuner Statistics Server for Linux. Shows FPS, CPU and GPU's usage and heat, RAM and Swap usage etc. To use add <font color=\"orange\" face=\"monospace\">mangohud</font> on terminal or write <font color=\"green\" face=\"monospace\">mangohud %command%</font> on Steam launch options."
+        },
+        {
+            "name": "vkBasalt",
+            "package": "vkbasalt",
+            "image": "GUI/Assets/Apps/Gaming/vkbasalt.png",
+            "description": "Vulkan post processing layer to enhance the visual graphics of games. To use add <font color=\"green\" face=\"monospace\">mangohud ENABLE_VKBASALT=1</font> on terminal or write <font color=\"green\" face=\"monospace\">mangohud ENABLE_VKBASALT=1 %command%</font> on Steam launch options."
+        }
     ],
     "Runtimes": [
-        [
-            "Proton GE Custom",
-            "proton-ge-custom-bin",
-            "GUI/Assets/Apps/Gaming/protonge.png",
-            "Custom Proton (Wine version by Steam to run games.) by <a href=\"https://github.com/GloriousEggroll/proton-ge-custom\">Glorious Eggroll</a> that includes many additional components. Performs better than default Proton. Updates automatically. <font color=\"orange\">Does not require protonup-qt.</font>"
-        ],
-        [
-            "Wine (Wine Is Not an Emulator)",
-            "wine-stable",
-            "GUI/Assets/Apps/Gaming/wine.png",
-            "Compatibility layer capable of running Windows applications on several POSIX-compliant operating systems."
-        ],
-        [
-            "Wine Mono",
-            "wine-mono",
-            "GUI/Assets/Apps/Gaming/winemono.png",
-            "Open source version of .Net Framework. Required for Windows applications using .Net Framework."
-        ],
-        [
-            "Wine Gecko",
-            "wine-gecko",
-            "GUI/Assets/Apps/Gaming/winegecko.png",
-            "Wine's built-in replacement for Microsoft's Internet Explorer. May be required in some cases."
-        ],
-        [
-            "Wine Tricks",
-            "wine-gecko",
-            "GUI/Assets/Apps/Gaming/winetricks.png",
-            "Graphical interface for script to install various redistributable runtime libraries in Wine."
-        ],
-        [
-            "OpenJDK JRE (latest)",
-            "jre-openjdk",
-            "GUI/Assets/Apps/Development/java.png",
-            "OpenJDK latest Java full runtime environment."
-        ],
-        [
-            "OpenJDK JRE 17",
-            "jre17-openjdk",
-            "GUI/Assets/Apps/Development/java.png",
-            "OpenJDK Java 17 full runtime environment."
-        ],
-        [
-            "OpenJDK JRE 11",
-            "jre11-openjdk",
-            "GUI/Assets/Apps/Development/java.png",
-            "OpenJDK Java 11 full runtime environment."
-        ],
-        [
-            "OpenJDK JRE 8",
-            "jre8-openjdk",
-            "GUI/Assets/Apps/Development/java.png",
-            "OpenJDK Java 8 full runtime environment."
-        ]
+        {
+            "name": "Proton GE Custom",
+            "package": "proton-ge-custom-bin",
+            "image": "GUI/Assets/Apps/Gaming/protonge.png",
+            "description": "Custom Proton (Wine version by Steam to run games.) by <a href=\"https://github.com/GloriousEggroll/proton-ge-custom\">Glorious Eggroll</a> that includes many additional components. Performs better than default Proton. Updates automatically. <font color=\"orange\">Does not require protonup-qt.</font>"
+        },
+        {
+            "name": "Wine (Wine Is Not an Emulator)",
+            "package": "wine-stable",
+            "image": "GUI/Assets/Apps/Gaming/wine.png",
+            "description": "Compatibility layer capable of running Windows applications on several POSIX-compliant operating systems."
+        },
+        {
+            "name": "Wine Mono",
+            "package": "wine-mono",
+            "image": "GUI/Assets/Apps/Gaming/winemono.png",
+            "description": "Open source version of .Net Framework. Required for Windows applications using .Net Framework."
+        },
+        {
+            "name": "Wine Gecko",
+            "package": "wine-gecko",
+            "image": "GUI/Assets/Apps/Gaming/winegecko.png",
+            "description": "Wine's built-in replacement for Microsoft's Internet Explorer. May be required in some cases."
+        },
+        {
+            "name": "Wine Tricks",
+            "package": "wine-gecko",
+            "image": "GUI/Assets/Apps/Gaming/winetricks.png",
+            "description": "Graphical interface for script to install various redistributable runtime libraries in Wine."
+        },
+        {
+            "name": "OpenJDK JRE (latest)",
+            "package": "jre-openjdk",
+            "image": "GUI/Assets/Apps/Development/java.png",
+            "description": "OpenJDK latest Java full runtime environment."
+        },
+        {
+            "name": "OpenJDK JRE 17",
+            "package": "jre17-openjdk",
+            "image": "GUI/Assets/Apps/Development/java.png",
+            "description": "OpenJDK Java 17 full runtime environment."
+        },
+        {
+            "name": "OpenJDK JRE 11",
+            "package": "jre11-openjdk",
+            "image": "GUI/Assets/Apps/Development/java.png",
+            "description": "OpenJDK Java 11 full runtime environment."
+        },
+        {
+            "name": "OpenJDK JRE 8",
+            "package": "jre8-openjdk",
+            "image": "GUI/Assets/Apps/Development/java.png",
+            "description": "OpenJDK Java 8 full runtime environment."
+        }
     ]
 }
