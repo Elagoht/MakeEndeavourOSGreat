@@ -47,6 +47,224 @@
             "Lite, GTK based drop-down terminal for Linux and Unix."
         ]
     ],
+    "Video": [
+        [
+            "Totem",
+            "totem",
+            "GUI/Assets/Apps/Essentials/totem.png",
+            "Gnome's video player application."
+        ],
+        [
+            "MPV",
+            "mpv",
+            "GUI/Assets/Apps/Essentials/mpv.png",
+            "Free, open source, and cross-platform media player with lots of plugin support."
+        ],
+        [
+            "Celluloid",
+            "celluloid",
+            "GUI/Assets/Apps/Essentials/celluloid.png",
+            "Simple GTK+ frontend for MPV."
+        ],
+        [
+            "VLC",
+            "mpv",
+            "GUI/Assets/Apps/Essentials/vlc.png",
+            "Multi-platform MPEG, VCD/DVD, and DivX player."
+        ]
+    ],
+    "Graphic Editors": [
+        [
+            "GIMP",
+            "gimp",
+            "GUI/Assets/Apps/Essentials/gimp.png",
+            "GNU Image Manipulation Program."
+        ],
+        [
+            "Inkscape",
+            "Inkscape",
+            "GUI/Assets/Apps/Essentials/inkscape.png",
+            "Professional vector graphics editor."
+        ],
+        [
+            "Drawing",
+            "drawing",
+            "GUI/Assets/Apps/Essentials/drawing.png",
+            "Drawing application for the GNOME desktop."
+        ],
+        [
+            "Krita",
+            "krita",
+            "GUI/Assets/Apps/Essentials/krita.png",
+            "Edit and paint images."
+        ],
+        [
+            "Libre Sprite",
+            "libresprite",
+            "GUI/Assets/Apps/Essentials/libresprite.png",
+            "Animated sprite editor & pixel art tool -- Fork of the last GPLv2 commit of Aseprite."
+        ],
+        [
+            "Imagemagick",
+            "imagemagick",
+            "GUI/Assets/Apps/Essentials/imagemagick.png",
+            "An image viewing/manipulation program, especially for <font color=\"green\">commandline</font> image editing. Use with command <font color=\"yellow\" face=\"monospace\">convert</font>."
+        ]
+    ],
+    "Sound Editor": [
+        [
+            "Audacity",
+            "audacity",
+            "GUI/Assets/Apps/Essentials/audacity.png",
+            "A program that lets you manipulate digital audio waveforms."
+        ]
+    ],
+    "Music Composing": [
+        [
+            "Musescore (latest)",
+            "musescore",
+            "GUI/Assets/Apps/Essentials/musescore.png",
+            "Create, play and print beautiful sheet music."
+        ],
+        [
+            "Musescore 3",
+            "musescore3",
+            "GUI/Assets/Apps/Essentials/musescore.png",
+            "Create, play and print beautiful sheet music. Version 3."
+        ]
+    ],
+    "Video Editors": [
+        [
+            "Kdenlive",
+            "kdenlive",
+            "GUI/Assets/Apps/Essentials/kdenlive.png",
+            "KDE's non-linear video editor for Linux using the MLT video framework."
+        ],
+        [
+            "OpenShot",
+            "openshot",
+            "GUI/Assets/Apps/Essentials/openshot.png",
+            "An award-winning free and open-source video editor."
+        ],
+        [
+            "Shotcut",
+            "shotcut",
+            "GUI/Assets/Apps/Essentials/shotcut.png",
+            "An award-winning free and open-source video editor."
+        ],
+        [
+            "Davinci Resolve",
+            "davinci-resolve",
+            "GUI/Assets/Apps/Essentials/davinciresolve.png",
+            "Professional A/V post-production software suite from Blackmagic Design."
+        ],
+        [
+            "Davinci Resolve Studio",
+            "davinci-resolve-studio",
+            "GUI/Assets/Apps/Essentials/davinciresolve.png",
+            "Professional A/V post-production software suite from Blackmagic Design. <u>Requires license key or dongle.</u>"
+        ]
+    ],
+    "Screen Recorder": [
+        [
+            "OBS",
+            "obs-studio",
+            "GUI/Assets/Apps/Essentials/obs.png",
+            "[O]pen [B]roadcast [S]oftware, open source software for live streaming and recording."
+        ],
+        [
+            "SimpleScreenRecorder",
+            "simplescreenrecorder",
+            "GUI/Assets/Apps/Essentials/simplescreenrecorder.png",
+            "Feature-rich screen recorder that supports X11 and OpenGL."
+        ],
+        [
+            "Kazam",
+            "kazam",
+            "GUI/Assets/Apps/Essentials/kazam.png",
+            "Screencast and screenshot application created with design in mind."
+        ]
+    ],
+    "Web Browsers": [
+        [
+            "Firefox",
+            "firefox",
+            "GUI/Assets/Apps/Essentials/firefox.png",
+            "Standalone web browser from Mozilla Organization."
+        ],
+        [
+            "Google Chrome",
+            "google-chrome",
+            "GUI/Assets/Apps/Essentials/googlechrome.png",
+            "The popular and trusted web browser by Google."
+        ],
+        [
+            "Brave",
+            "brave-bin",
+            "GUI/Assets/Apps/Essentials/brave.png",
+            "Web browser that blocks ads and trackers by default."
+        ],
+        [
+            "Opera",
+            "opera",
+            "GUI/Assets/Apps/Essentials/opera.png",
+            "Fast and secure web browser with built-in proxy."
+        ],
+        [
+            "Microsoft Edge",
+            "microsoft-edge-stable-bin",
+            "GUI/Assets/Apps/Essentials/microsoftedge.png",
+            "Browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier."
+        ],
+        [
+            "Yandex",
+            "yandex-browser",
+            "GUI/Assets/Apps/Essentials/yandex.png",
+            "The web browser from Yandex. Yandex Browser is a browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier."
+        ],
+        [
+            "Vivaldi",
+            "vivaldi",
+            "GUI/Assets/Apps/Essentials/vivaldi.png",
+            "Advanced browser made with the power user in mind."
+        ],
+        [
+            "Qute Browser",
+            "qutebrowser",
+            "GUI/Assets/Apps/Essentials/qutebrowser.png",
+            "Keyboard-driven, vim-like browser based on PyQt5."
+        ],
+        [
+            "Epiphany",
+            "Epiphany",
+            "GUI/Assets/Apps/Essentials/epiphany.png",
+            "Gnome web browser based on the WebKit rendering engine."
+        ],
+        [
+            "Chromium Browser",
+            "ungoogled-chromium-bin",
+            "GUI/Assets/Apps/Essentials/chromiumbrowser.png",
+            "lightweight approach to removing Google web service dependency"
+        ],
+        [
+            "Librewolf",
+            "librewolf",
+            "GUI/Assets/Apps/Essentials/librewolf.png",
+            "List differences between sets of Firefox config files. This tool was used to compare different librewolf.cfg and user.js files."
+        ],
+        [
+            "Ungoogled Chromium Browser",
+            "ungoogled-chromium-bin",
+            "GUI/Assets/Apps/Essentials/ungoogledchromiumbrowser.png",
+            "lightweight approach to removing Google web service dependency"
+        ],
+        [
+            "Waterfox",
+            "waterfox",
+            "GUI/Assets/Apps/Essentials/waterfox.png",
+            "Fork of Mozilla Firefox featuring some legacy extensions, removed telemetry and no Pocket integration. This is the Current branch."
+        ]
+    ],
     "Music": [
         [
             "Spotify",
@@ -69,7 +287,7 @@
         [
             "Rhythmbox",
             "rhythmbox",
-            "GUI/Assets/Apps/Essentials/elisa.png",
+            "GUI/Assets/Apps/Essentials/rhythmbox.png",
             "Music playback and management application."
         ],
         [
@@ -77,6 +295,138 @@
             "clementine",
             "GUI/Assets/Apps/Essentials/clementine.png",
             "A modern music player and library organizer"
+        ]
+    ],
+    "Office Suits": [
+        [
+            "Libre Office Still (Stable)",
+            "libreoffice-still",
+            "GUI/Assets/Apps/Essentials/libreoffice.png",
+            "Libre office applications bundle. Stable branch."
+        ],
+        [
+            "Libre Office Fresh (Bleeding Edge)",
+            "libreoffice-still",
+            "GUI/Assets/Apps/Essentials/libreoffice.png",
+            "LibreOffice branch which contains new features and program enhancements."
+        ],
+        [
+            "Only Office",
+            "onlyoffice-bin",
+            "GUI/Assets/Apps/Essentials/onlyoffice.png",
+            "office suite that combines text, spreadsheet and presentation editors."
+        ],
+        [
+            "WPS Office",
+            "wps-office",
+            "GUI/Assets/Apps/Essentials/wpsoffice.png",
+            "Office productivity suite also known as Kingsoft Office."
+        ],
+        [
+            "SoftMaker Free Office",
+            "freeoffice",
+            "GUI/Assets/Apps/Essentials/freeoffice.png",
+            "complete, reliable, lightning-fast and Microsoft Office-compatible office suite with a word processor, spreadsheet, and presentation graphics software."
+        ]
+    ],
+    "E-mail": [
+        [
+            "Mailspring",
+            "mailspring",
+            "GUI/Assets/Apps/Essentials/mailspring.png",
+            "Beautiful, fast and maintained fork of Nylas Mail by one of the original authors."
+        ],
+        [
+            "Thunderbird",
+            "thunderbird",
+            "GUI/Assets/Apps/Essentials/thunderbird.png",
+            "Standalone mail and news reader from Mozilla Organization."
+        ],
+        [
+            "Evolution",
+            "evolution",
+            "GUI/Assets/Apps/Essentials/evolution.png",
+            "Manage your email, contacts and schedule."
+        ],
+        [
+            "Geary",
+            "geary",
+            "GUI/Assets/Apps/Essentials/geary.png",
+            "lightweight email client for the GNOME desktop."
+        ]
+    ],
+    "Calendar": [
+        [
+            "Gnome Calendar",
+            "gnome-calendar",
+            "GUI/Assets/Apps/Essentials/gnomecalendar.png",
+            "Simple and beautiful calendar application designed to perfectly fit the GNOME desktop"
+        ],
+        [
+            "kOrganizer",
+            "korganizer",
+            "GUI/Assets/Apps/Essentials/korganizer.png",
+            "Calendar and scheduling program made by KDE."
+        ]
+    ],
+    "Contacts": [
+        [
+            "Gnome Contacts",
+            "gnome-contacts",
+            "GUI/Assets/Apps/Essentials/gnomecontacts.png",
+            "Contacts Manager for Gnome"
+        ]
+    ],
+    "Dictionary and Wiki": [
+        [
+            "Gnome Dictionary",
+            "gnome-dictionary",
+            "GUI/Assets/Apps/Essentials/gnomedictionary.png",
+            "Look up words in dictionary sources."
+        ],
+        [
+            "Golden Dict",
+            "goldendict-git",
+            "GUI/Assets/Apps/Essentials/goldendict.png",
+            "Feature-rich dictionary lookup program supporting multiple dictionary formats."
+        ],
+        [
+            "Dialect",
+            "dialect",
+            "GUI/Assets/Apps/Essentials/dialect.png",
+            "Translation app for GNOME."
+        ],
+        [
+            "Wike",
+            "wike",
+            "GUI/Assets/Apps/Essentials/wike.png",
+            " Wikipedia Reader for the GNOME Desktop"
+        ]
+    ],
+    "Calculator and Plot": [
+        [
+            "Gnome Calculator",
+            "gnome-calculator",
+            "GUI/Assets/Apps/Essentials/gnomecalculator.png",
+            "Gnome's Scientific calculator."
+        ],
+        [
+            "Galculator",
+            "galculator",
+            "GUI/Assets/Apps/Essentials/galculator.png",
+            "GTK+ based scientific calculator"
+        ],
+        [
+            "Geogebra",
+            "geogebra",
+            "GUI/Assets/Apps/Essentials/geogebra.png",
+            "Dynamic mathematics software with interactive graphics, algebra and spreadsheet."
+        ],
+        [
+            "Plots",
+            "plots",
+            "GUI/Assets/Apps/Essentials/plots.png",
+            "graph plotting app for Gnome."
         ]
     ],
     "Messaging and Communication": [
