@@ -97,7 +97,7 @@ class CommandThread(QThread):
 
 class AppBox(QGroupBox):
     # Create app widget that have install management system
-    def __init__(self, title: str, package: str, image: str, description: str) -> None:
+    def __init__(self, title: str, package: str, image: str, description: str, dependency: list = []) -> None:
         super(QGroupBox, self).__init__()
         self.package = package
 
@@ -129,10 +129,10 @@ class AppBox(QGroupBox):
         # Create installation buttons
         self.btnInstall = CommandButton(
             QIcon("GUI/Assets/install.png"), "Install",
-            install_if_doesnt_have(self.package), self, (self.check_install_state,), True)
+            install_if_doesnt_have(self.package), self, (self.update_install_state,), True)
         self.btnUninstall = CommandButton(
             QIcon("GUI/Assets/uninstall.png"), "Uninstall",
-            uninstall_if_have(self.package), self, (self.check_install_state,), True)
+            uninstall_if_have(self.package), self, (self.update_install_state,), True)
 
         # Insert layouts and wigdets to layouts
         self.glyApp.addWidget(self.lblTitle)
@@ -145,16 +145,18 @@ class AppBox(QGroupBox):
             border: 1px solid rgba(0,0,0,.5);
             border-radius: .25em;
         }""")
-        self.check_install_state()
+        self.update_install_state()
 
     # Check if package is installed
-    def check_install_state(self):
+    def check_if_installed(self):
         # Get state
-        is_installed = WEXITSTATUS(system(
+        return WEXITSTATUS(system(
             f"[ \"$(pacman -Qqs {self.package} | grep \"^{self.package}$\")\" = \"{self.package}\" ]"
         )) == 0
-        # Insert/delete layouts and wigdets to layouts
-        if is_installed:
+
+    # Insert/delete layouts and wigdets to layouts
+    def update_install_state(self):
+        if self.check_if_installed():
             self.layButtons.removeWidget(self.btnInstall)
             self.layButtons.addWidget(self.btnUninstall)
             self.btnInstall.hide()
@@ -570,11 +572,11 @@ def install_if_doesnt_have(package: str) -> str:
     fi""" if has_aur_helper() else "false"
 
 
-def uninstall_if_have(package: str) -> str:
+def uninstall_if_have(package: str, dependency: list = []) -> str:
     # If app is not already installed, do not try to uninstall again, else uninstall
     # Returns string to use on command texts
     return f"""if [ "$(pacman -Qqs {package} | grep "^{package}$" )" = "{package}" ]
-        then {aur_helper()} -R {package}
+        then {aur_helper()} -R {package} {" ".join(dependency)}
     fi""" if has_aur_helper() else "false"
 
 

@@ -332,7 +332,10 @@
             "name": "Evince",
             "package": "evince",
             "image": "GUI/Assets/Apps/Essentials/evince.png",
-            "description": "Document viewer (PDF, PostScript, XPS, djvu, dvi, tiff, cbr, cbz, cb7, cbt)"
+            "description": "Document viewer (PDF, PostScript, XPS, djvu, dvi, tiff, cbr, cbz, cb7, cbt)",
+            "dependency": [
+                "sushi"
+            ]
         },
         {
             "name": "Okular",
