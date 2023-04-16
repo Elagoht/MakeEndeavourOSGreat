@@ -18,7 +18,7 @@
 - [X] Install and set icon themes.
 - [X] Add developer package section.
 - [X] Install and select shell.
-- [ ] Install oh-my-zsh and synthshell (give credits).
+- [X] Install oh-my-zsh and synthshell (give credits).
 - [X] Disable/enable Wayland.
 - [X] Set Gnome shortcuts.
 - [X] Add gaming package section.

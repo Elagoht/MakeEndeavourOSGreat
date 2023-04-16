@@ -52,17 +52,19 @@ class TopBar(QWidget):
 
 
 class BottomBar(QWidget):
+    txtInstall = "To install: "
+    txtUninstall = "To uninstall: "
+
     def __init__(self, parent) -> None:
         super().__init__(parent=parent)
         # Install and uninstall lists
         self.to_install = []
         self.to_uninstall = []
 
-        txtInstall = "To install: "
-        txtUninstall = "To uninstall: "
-
-        self.lblInstall = QLabel(txtInstall, self)
-        self.lblUninstall = QLabel(txtUninstall, self)
+        self.lblInstall = QLabel(BottomBar.txtInstall, self)
+        self.lblInstall.setWordWrap(True)
+        self.lblUninstall = QLabel(BottomBar.txtUninstall, self)
+        self.lblUninstall.setWordWrap(True)
         self.btnInstall = QPushButton(
             QIcon("GUI/Assets/install.png"), "Start", self)
         self.btnInstall.setMaximumWidth(120)
@@ -74,14 +76,19 @@ class BottomBar(QWidget):
         self.layout.addWidget(self.btnInstall, 0, 1, 2, 1)
 
     # Add to install list if not already exists
-
     def add_to_install(self, package: str) -> None:
         if package not in self.to_install:
             self.to_install.append(package)
-        self.lblInstall.setText(", ".join([self.to_install]))
+            self.lblInstall.setText(
+                BottomBar.txtInstall +
+                ", ".join(self.to_install)
+            )
 
     # Add to uninstall list if not already exists
     def add_to_uninstall(self, package: str) -> None:
         if package not in self.to_uninstall:
             self.to_uninstall.append(package)
-            self.lblUninstall.setText(", ".join([self.to_uninstall]))
+            self.lblUninstall.setText(
+                BottomBar.txtUninstall +
+                ", ".join(self.to_uninstall)
+            )

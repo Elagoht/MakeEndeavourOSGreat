@@ -36,7 +36,7 @@
         },
         {
             "name": "Yakuake",
-            "package": "tilda",
+            "package": "yakuake",
             "image": "GUI/Assets/Apps/Essentials/yakuake.png",
             "description": "KDE's drop-down toggleable terminal emulator based on KDE konsole technology."
         },

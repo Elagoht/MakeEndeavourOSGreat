@@ -97,9 +97,11 @@ class CommandThread(QThread):
 
 class AppBox(QGroupBox):
     # Create app widget that have install management system
-    def __init__(self, title: str, package: str, image: str, description: str, dependency: list = []) -> None:
+    def __init__(self, title: str, package: str, image: str, description: str, owner: QWidget, dependency: list = []) -> None:
         super(QGroupBox, self).__init__()
         self.package = package
+        self.owner = owner
+        self.is_installed = False
 
         # Create layouts
         self.glyApp = QVBoxLayout(self)
@@ -134,7 +136,11 @@ class AppBox(QGroupBox):
             QIcon("GUI/Assets/uninstall.png"), "Uninstall",
             uninstall_if_have(self.package), self, (self.update_install_state,), True)
 
+        # Create install-uninstall checkbox
+        self.chkAddToList = QCheckBox("Add to List", self)
+
         # Insert layouts and wigdets to layouts
+        self.glyApp.addWidget(self.chkAddToList)
         self.glyApp.addWidget(self.lblTitle)
         self.glyApp.addWidget(self.lblDescription)
         self.glyApp.addStretch()
@@ -147,16 +153,18 @@ class AppBox(QGroupBox):
         }""")
         self.update_install_state()
 
-    # Check if package is installed
+        self.chkAddToList.stateChanged.connect(self.update_lists)
+
+    # Update package state
     def check_if_installed(self):
-        # Get state
-        return WEXITSTATUS(system(
+        self.is_installed = WEXITSTATUS(system(
             f"[ \"$(pacman -Qqs {self.package} | grep \"^{self.package}$\")\" = \"{self.package}\" ]"
         )) == 0
 
     # Insert/delete layouts and wigdets to layouts
     def update_install_state(self):
-        if self.check_if_installed():
+        self.check_if_installed()
+        if self.is_installed:
             self.layButtons.removeWidget(self.btnInstall)
             self.layButtons.addWidget(self.btnUninstall)
             self.btnInstall.hide()
@@ -166,6 +174,13 @@ class AppBox(QGroupBox):
             self.layButtons.addWidget(self.btnInstall)
             self.btnInstall.show()
             self.btnUninstall.hide()
+
+    # Install/uninstall list updater
+    def update_lists(self):
+        if self.is_installed:
+            self.owner.parent().parent().parent().barBottom.add_to_uninstall(self.package)
+        if not self.is_installed:
+            self.owner.parent().parent().parent().barBottom.add_to_install(self.package)
 
 
 class ButtonBox(QGroupBox):
@@ -399,13 +414,24 @@ class AppsWin(QWidget):
         for language_name, program_list in program_lists.items():
             grid_box = GridBox(language_name)
             for number, program in enumerate(program_list):
-                match number:
-                    case 1:
-                        grid_box.addWidget(AppBox(*program.values()), 0, 1)
-                    case 2:
-                        grid_box.addWidget(AppBox(*program.values()), 0, 2)
-                    case _:
-                        grid_box.glyField.addWidget(AppBox(*program.values()))
+                if number < 3:
+                    grid_box.addWidget(
+                        AppBox(title=program["name"],
+                               package=program["package"],
+                               image=program["image"],
+                               description=program["description"],
+                               dependency=program["dependency"]
+                               if "dependency" in program.keys() else [],
+                               owner=self), 0, number)
+                else:
+                    grid_box.glyField.addWidget(
+                        AppBox(title=program["name"],
+                               package=program["package"],
+                               image=program["image"],
+                               description=program["description"],
+                               dependency=program["dependency"]
+                               if "dependency" in program.keys() else [],
+                               owner=self))
             self.layout.addWidget(grid_box)
 
 
