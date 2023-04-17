@@ -97,11 +97,13 @@ class CommandThread(QThread):
 
 class AppBox(QGroupBox):
     # Create app widget that have install management system
-    def __init__(self, title: str, package: str, image: str, description: str, owner: QWidget, dependency: list = []) -> None:
+    def __init__(self, title: str, package: str, image: str, description: str, bar_bottom: QWidget, lists: Iterable[Iterable[str]] = [[], []], dependency: list = []) -> None:
         super(QGroupBox, self).__init__()
         self.package = package
-        self.owner = owner
-        self.is_installed = False
+        self.bar_bottom = bar_bottom
+        self.dependency = dependency
+        self.is_installed: bool = False
+        self.is_checked: bool = False
 
         # Create layouts
         self.glyApp = QVBoxLayout(self)
@@ -151,15 +153,31 @@ class AppBox(QGroupBox):
             border: 1px solid rgba(0,0,0,.5);
             border-radius: .25em;
         }""")
-        self.update_install_state()
 
+        # Connect events
         self.chkAddToList.stateChanged.connect(self.update_lists)
+
+        # Initialize
+        self.update_install_state()
+        self.update_check_state()
 
     # Update package state
     def check_if_installed(self):
         self.is_installed = WEXITSTATUS(system(
             f"[ \"$(pacman -Qqs {self.package} | grep \"^{self.package}$\")\" = \"{self.package}\" ]"
         )) == 0
+
+    # Update added to list state
+    def check_if_listed(self):
+        self.is_checked = any([
+            self.package in self.bar_bottom.to_install,
+            self.package in self.bar_bottom.to_uninstall
+        ])
+
+    # Update checkbox check state
+    def update_check_state(self):
+        self.check_if_listed()
+        self.chkAddToList.setChecked(self.is_checked)
 
     # Insert/delete layouts and wigdets to layouts
     def update_install_state(self):
@@ -178,9 +196,13 @@ class AppBox(QGroupBox):
     # Install/uninstall list updater
     def update_lists(self):
         if self.is_installed:
-            self.owner.parent().parent().parent().barBottom.add_to_uninstall(self.package)
-        if not self.is_installed:
-            self.owner.parent().parent().parent().barBottom.add_to_install(self.package)
+            self.bar_bottom.to_uninstall_list(
+                self.package,
+                self.chkAddToList.isChecked())
+        else:
+            self.bar_bottom.to_install_list(
+                self.package,
+                self.chkAddToList.isChecked())
 
 
 class ButtonBox(QGroupBox):
@@ -369,8 +391,8 @@ class ThemeBox(QGroupBox):
 class ShellBox(AppBox):
     # Create installable and uninstallable shell boxes that
     # support setting default shell for user and root
-    def __init__(self, title: str, package: str, image: str, description: str, uninstallable: bool = False) -> None:
-        super().__init__(title, package, image, description)
+    def __init__(self, title: str, package: str, image: str, description: str, bottom_bar: QWidget, uninstallable: bool = False) -> None:
+        super().__init__(title, package, image, description, bottom_bar)
 
         # If uninstallable remove install buttons
         if uninstallable:
@@ -401,8 +423,9 @@ class ShellBox(AppBox):
 
 class AppsWin(QWidget):
     # Create application install catalog window
-    def __init__(self, json_file: str) -> None:
+    def __init__(self, json_file: str, owner: QWidget) -> None:
         super(QWidget, self).__init__()
+        self.setParent(owner)
 
         # Create layout
         self.layout = QVBoxLayout(self)
@@ -422,7 +445,8 @@ class AppsWin(QWidget):
                                description=program["description"],
                                dependency=program["dependency"]
                                if "dependency" in program.keys() else [],
-                               owner=self), 0, number)
+                               bar_bottom=self.parent().parent().parent().central_widget.barBottom),
+                        0, number)
                 else:
                     grid_box.glyField.addWidget(
                         AppBox(title=program["name"],
@@ -431,7 +455,7 @@ class AppsWin(QWidget):
                                description=program["description"],
                                dependency=program["dependency"]
                                if "dependency" in program.keys() else [],
-                               owner=self))
+                               bar_bottom=self.parent().parent().parent().central_widget.barBottom))
             self.layout.addWidget(grid_box)
 
 

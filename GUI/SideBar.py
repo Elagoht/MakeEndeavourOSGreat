@@ -53,27 +53,27 @@ class SideBar(QWidget):
 
         # Connect buttons to functions
         self.btnGnome.clicked.connect(lambda: parent.open_window(
-            "Gnome Settings", GnomeWin))
+            "Gnome Settings", GnomeWin, [self]))
         self.btnExtension.clicked.connect(lambda: parent.open_window(
-            "Gnome Extensions", ExtensionsWin))
+            "Gnome Extensions", ExtensionsWin, [self]))
         self.btnPamac.clicked.connect(lambda: parent.open_window(
-            "Software Manager", PamacWin))
+            "Software Manager", PamacWin, [self]))
         self.btnAurHelper.clicked.connect(lambda: parent.open_window(
-            "AUR Helper", AurHelperWin))
+            "AUR Helper", AurHelperWin, [self]))
         self.btnEssentials.clicked.connect(lambda: parent.open_window(
-            "Essential Apps", AppsWin, ["GUI/Data/Essentials.json"]))
+            "Essential Apps", AppsWin, ["GUI/Data/Essentials.json", self]))
         self.btnTheming.clicked.connect(lambda: parent.open_window(
-            "Appearance", AppearanceWin))
+            "Appearance", AppearanceWin, [self]))
         self.btnLure.clicked.connect(lambda: parent.open_window(
-            "Linux User Repository", LureWin))
+            "Linux User Repository", LureWin, [self]))
         self.btnShell.clicked.connect(lambda: parent.open_window(
-            "Shell Program & Customizations", ShellWin))
+            "Shell Program & Customizations", ShellWin, [self]))
         self.btnGaming.clicked.connect(lambda: parent.open_window(
-            "Gaming Tools", AppsWin, ["GUI/Data/Gaming.json"]))
+            "Gaming Tools", AppsWin, ["GUI/Data/Gaming.json", self]))
         self.btnGames.clicked.connect(lambda: parent.open_window(
-            "Suggested Games", AppsWin, ["GUI/Data/Games.json"]))
+            "Suggested Games", AppsWin, ["GUI/Data/Games.json", self]))
         self.btnDevelopment.clicked.connect(lambda: parent.open_window(
-            "Development", AppsWin, ["GUI/Data/Development.json"]))
+            "Development", AppsWin, ["GUI/Data/Development.json", self]))
 
         # Initialization
         self.check_aur_helper()

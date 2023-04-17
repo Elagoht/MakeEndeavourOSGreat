@@ -75,20 +75,32 @@ class BottomBar(QWidget):
         self.layout.addWidget(self.lblUninstall, 1, 0)
         self.layout.addWidget(self.btnInstall, 0, 1, 2, 1)
 
-    # Add to install list if not already exists
-    def add_to_install(self, package: str) -> None:
-        if package not in self.to_install:
-            self.to_install.append(package)
-            self.lblInstall.setText(
-                BottomBar.txtInstall +
-                ", ".join(self.to_install)
-            )
+    # Handle installation list
+    def to_install_list(self, package: str, checked: bool) -> None:
+        if checked:
+            if package not in self.to_install:
+                self.to_install.append(package)
+        elif package in self.to_install:
+            self.to_install.remove(package)
 
-    # Add to uninstall list if not already exists
-    def add_to_uninstall(self, package: str) -> None:
-        if package not in self.to_uninstall:
-            self.to_uninstall.append(package)
-            self.lblUninstall.setText(
-                BottomBar.txtUninstall +
-                ", ".join(self.to_uninstall)
-            )
+        self.lblInstall.setText(
+            BottomBar.txtInstall +
+            "<font color=\"green\" face=\"monospace\">" +
+            ", ".join(self.to_install) +
+            "</font>"
+        )
+
+    # Handle uninstallation list
+    def to_uninstall_list(self, package: str, checked: bool) -> None:
+        if checked:
+            if package not in self.to_uninstall:
+                self.to_uninstall.append(package)
+        elif package in self.to_uninstall:
+            self.to_uninstall.remove(package)
+
+        self.lblUninstall.setText(
+            BottomBar.txtUninstall +
+            "<font color=\"red\" face=\"monospace\">" +
+            ", ".join(self.to_uninstall) +
+            "</font>"
+        )

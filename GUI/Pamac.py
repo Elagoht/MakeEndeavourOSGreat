@@ -4,12 +4,14 @@ from Utilities import ButtonBox, AppBox, CommandButton
 
 
 class PamacWin(QWidget):
-    def __init__(self):
+    def __init__(self, parent):
         super(QWidget, self).__init__()
+        self.setParent(parent)
 
         # Create install section
         self.appPamac = AppBox("Install Pamac", "pamac-aur", "GUI/Assets/Apps/pamac.png",
-                               "Pamac is a graphical software manager/application market created by Manjaro team. It makes installing, updating and removing apps easy.")
+                               "Pamac is a graphical software manager/application market created by Manjaro team. It makes installing, updating and removing apps easy.",
+                               self.parent().parent().barBottom)
         # Create AUR section
         self.gbxAUR = \
             ButtonBox("AUR Support for Pamac",

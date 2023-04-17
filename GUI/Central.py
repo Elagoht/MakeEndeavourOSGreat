@@ -34,7 +34,7 @@ class Central(QWidget):
             pass
 
         if self.is_page_open:
-            self.winWidget = SideWindow(WelcomeWin, [], self)
+            self.winWidget = SideWindow(WelcomeWin, [self], self)
             self.layWindow.addWidget(self.winWidget, 1, 0)
             self.barTop.set_title("Main Menu")
 

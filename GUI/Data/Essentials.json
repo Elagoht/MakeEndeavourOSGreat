@@ -82,7 +82,7 @@
         },
         {
             "name": "Inkscape",
-            "package": "Inkscape",
+            "package": "inkscape",
             "image": "GUI/Assets/Apps/Essentials/inkscape.png",
             "description": "Professional vector graphics editor."
         },

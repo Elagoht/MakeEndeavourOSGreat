@@ -5,8 +5,9 @@ from Utilities import GridBox, ButtonBox, CommandButton
 
 
 class AurHelperWin(QWidget):
-    def __init__(self):
+    def __init__(self, parent):
         super(QWidget, self).__init__()
+        self.setParent(parent)
 
         # Create description section
         self.gbxAur = GridBox("What is AUR Helper")
