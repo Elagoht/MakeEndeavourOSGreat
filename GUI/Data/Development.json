@@ -8,7 +8,7 @@
         },
         {
             "name": "VSCodium",
-            "package": "vscodium-bin",
+            "package": "vscodium-bin vscodium-bin-features vscodium-bin-marketplace",
             "image": "GUI/Assets/Apps/Development/vscodium.png",
             "description": "Community-driven, freely-licensed binary distribution of Microsoft's editor VS Code."
         },

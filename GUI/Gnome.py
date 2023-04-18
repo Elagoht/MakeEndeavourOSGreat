@@ -112,6 +112,7 @@ class GnomeWin(QWidget):
             DconfEditRow(
                 "Close Active Window", "org.gnome.desktop.wm.keybindings close", (
                     DconfCheckBox("Super+Shift+Q", "'<Super><Shift>q'"),
+                    DconfCheckBox("Super+Q", "'<Super>q'"),
                     DconfCheckBox("Alt+F4", "'<Alt>F4'"),
                 )
             ),
