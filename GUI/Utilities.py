@@ -9,7 +9,7 @@ from json import load
 class CommandButton(QPushButton):
     # Create a button to run commands in a separated thread
     def __init__(self, icon: QIcon, text: str, command: str, parent: QWidget, post_commands: Iterable[callable] = [], iconless: bool = False, avoid_xterm: bool = False) -> None:
-        super(QPushButton, self).__init__()
+        super().__init__()
         self.post_commands = post_commands
         self.avoid_xterm = avoid_xterm
         self.iconless = iconless
@@ -99,7 +99,7 @@ class CommandThread(QThread):
 class AppBox(QGroupBox):
     # Create app widget that have install management system
     def __init__(self, title: str, package: str, image: str, description: str, bar_bottom: QWidget, lists: Iterable[Iterable[str]] = [[], []]) -> None:
-        super(QGroupBox, self).__init__()
+        super().__init__()
         self.package = package
         self.bar_bottom = bar_bottom
         self.is_installed: bool = False
@@ -211,7 +211,7 @@ class AppBox(QGroupBox):
 class ButtonBox(QGroupBox):
     # Create boxes can have multiple buttons
     def __init__(self, title: str, image: str, description: str, buttons: Iterable[QPushButton]) -> None:
-        super(QGroupBox, self).__init__()
+        super().__init__()
 
         # Create layouts
         self.glyApp = QVBoxLayout(self)
@@ -247,7 +247,7 @@ class ButtonBox(QGroupBox):
 class GridBox(QGroupBox):
     # Create an easy to use groupbox, gridlayout combination
     def __init__(self, title: str) -> None:
-        super(QGroupBox, self).__init__()
+        super().__init__()
         self.setTitle(title)
         self.glyField = QGridLayout(self)
 
@@ -267,7 +267,7 @@ class GridBox(QGroupBox):
 class ExtensionBox(QGroupBox):
     # Create a smaller box for extensions with only image and clickable link.
     def __init__(self, title: str, link: str, image: str) -> None:
-        super(QGroupBox, self).__init__()
+        super().__init__()
         self.glyExt = QHBoxLayout(self)
 
         # Create image
@@ -313,7 +313,7 @@ class ThemeBox(QGroupBox):
             case _:
                 self.to_change = "gtk-theme"
 
-        super(QGroupBox, self).__init__()
+        super().__init__()
         self.package = package
 
         # Create layouts
@@ -428,7 +428,7 @@ class ShellBox(AppBox):
 class AppsWin(QWidget):
     # Create application install catalog window
     def __init__(self, json_file: str, owner: QWidget) -> None:
-        super(QWidget, self).__init__()
+        super().__init__()
         self.setParent(owner)
 
         # Create layout
@@ -462,7 +462,7 @@ class AppsWin(QWidget):
 class DconfCheckBox(QCheckBox):
     # Create dconf setting checkbox
     def __init__(self, text, val: str) -> None:
-        super(QCheckBox, self).__init__(text)
+        super().__init__(text)
         self.keybind = val
 
     @property
@@ -537,7 +537,7 @@ class DconfEditRow(QGroupBox):
 class DconfEditBox(QGroupBox):
     # Create dconf settings editor
     def __init__(self, title: str, options: Iterable[DconfEditRow]) -> None:
-        super(QGroupBox, self).__init__(title)
+        super().__init__(title)
         self.settings = []
         self.txtDconf = "Save Changes"
 
@@ -575,7 +575,7 @@ class DconfEditBox(QGroupBox):
 class MonoFont(QFont):
     # Create terminal font
     def __init__(self) -> None:
-        super(QFont, self).__init__("Monospace")
+        super().__init__("Monospace")
         self.setPointSize(12)
         self.setStyleHint(QFont.Monospace)
 
@@ -583,7 +583,7 @@ class MonoFont(QFont):
 class CommandLine(QTextEdit):
     # Create terminal output
     def __init__(self, text, height) -> None:
-        super(QTextEdit, self).__init__()
+        super().__init__()
         self.setText(text)
         self.setFont(MonoFont())
         self.setFixedHeight(height)

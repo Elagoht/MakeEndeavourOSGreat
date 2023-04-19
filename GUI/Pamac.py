@@ -5,7 +5,7 @@ from Utilities import ButtonBox, AppBox, CommandButton
 
 class PamacWin(QWidget):
     def __init__(self, parent):
-        super(QWidget, self).__init__()
+        super().__init__()
         self.setParent(parent)
 
         # Create install section

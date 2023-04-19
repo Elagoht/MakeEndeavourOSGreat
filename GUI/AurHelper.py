@@ -6,7 +6,7 @@ from Utilities import GridBox, ButtonBox, CommandButton
 
 class AurHelperWin(QWidget):
     def __init__(self, parent):
-        super(QWidget, self).__init__()
+        super().__init__()
         self.setParent(parent)
 
         # Create description section

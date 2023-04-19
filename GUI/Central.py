@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QWidget, QGridLayout, QLabel
+from PyQt5.QtWidgets import QWidget, QGridLayout
 from InnerWindow import SideWindow, TopBar, BottomBar
 from SideBar import SideBar
 from Welcome import WelcomeWin
@@ -6,7 +6,7 @@ from Welcome import WelcomeWin
 
 class Central(QWidget):
     def __init__(self, parent):
-        super(QWidget, self).__init__()
+        super().__init__()
         self.setParent(parent)
 
         self.barSide = SideBar(self)
@@ -42,9 +42,10 @@ class Central(QWidget):
         self.barSide.setVisible(not self.is_page_open)
 
     # Open side window
-    def open_window(self, title: str, window_class: QWidget, params: list = []) -> None:
+    def open_window(self, title: str, window_class: QWidget, params: list) -> None:
         self.close_window()
-        self.winWidget = SideWindow(window_class, params, self, [])
+        self.winWidget = SideWindow(
+            window_class, params if params else [], self, [])
         self.layWindow.addWidget(self.winWidget, 1, 0)
         self.barTop.set_title(title)
         self.barTop.toggle_back_button_visibility()

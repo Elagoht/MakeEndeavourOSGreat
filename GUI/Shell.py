@@ -6,7 +6,7 @@ from os import system
 
 class ShellWin(QWidget):
     def __init__(self, parent):
-        super(QWidget, self).__init__()
+        super().__init__()
         self.setParent(parent)
 
         # Create Bash section

@@ -6,7 +6,7 @@ from Utilities import ThemeBox, GridBox, ButtonBox, CommandButton
 
 class AppearanceWin(QWidget):
     def __init__(self, parent):
-        super(QWidget, self).__init__()
+        super().__init__()
         self.setParent(parent)
 
         # Create Kvantum config section

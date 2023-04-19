@@ -5,7 +5,7 @@ from json import load
 
 class ExtensionsWin(QWidget):
     def __init__(self, parent: QWidget):
-        super(QWidget, self).__init__()
+        super().__init__()
         self.setParent(parent)
 
         # Create connector section

@@ -1,5 +1,7 @@
 # Make Endeavour OS Great
 
+![Codacity](https://app.codacy.com/project/badge/Grade/bb3500c728344ef898cb6c66bc356f00)
+
 ![Pyton GUI APP](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white&style=for-the-badge)
 ![QT5 APP](https://img.shields.io/badge/QT-41CD52?logo=qt&logoColor=white&style=for-the-badge)
 ![Endeavour OS](https://img.shields.io/badge/Endeavour_OS-7e3dbc?logo=linux&logoColor=white&style=for-the-badge)

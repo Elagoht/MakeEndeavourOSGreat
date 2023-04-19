@@ -6,9 +6,9 @@ from typing import Iterable, Callable
 
 
 class SideWindow(QScrollArea):
-    def __init__(self, window_class: QWidget, params: list, parent: QWidget, close_actions: Iterable[Callable] = []) -> None:
-        super(QScrollArea, self).__init__()
-        self.close_actions = close_actions
+    def __init__(self, window_class: QWidget, params: list, parent: QWidget, close_actions: Iterable[Callable] = None) -> None:
+        super().__init__()
+        self.close_actions = close_actions if close_actions else []
 
         self.winWidget = window_class(*params)
         self.setWidget(self.winWidget)
@@ -24,7 +24,7 @@ class SideWindow(QScrollArea):
 
 class TopBar(QWidget):
     def __init__(self, title: str, parent) -> None:
-        super(QWidget, self).__init__()
+        super().__init__()
         self.setParent(parent)
 
         self.btnBack = QPushButton(QIcon("GUI/Assets/back.png"), "Back", self)

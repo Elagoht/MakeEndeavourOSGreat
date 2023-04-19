@@ -12,7 +12,7 @@ from Shell import ShellWin
 
 class SideBar(QWidget):
     def __init__(self, parent):
-        super(QWidget, self).__init__()
+        super().__init__()
         self.setParent(parent)
 
         # Declare AUR helper button text to safely edit it later
