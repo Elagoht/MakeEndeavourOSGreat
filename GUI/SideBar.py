@@ -31,7 +31,7 @@ class SideBar(QWidget):
         self.btnTheming = QPushButton("Appearance")
         self.btnShell = QPushButton("Shell Program")
         self.btnGaming = QPushButton("Gaming Tools")
-        self.btnGames = QPushButton("Suggested Games")
+        self.btnGames = QPushButton("Recommended Games")
         self.btnDevelopment = QPushButton("Development")
 
         # Insert buttons to menu layout
@@ -41,11 +41,11 @@ class SideBar(QWidget):
         self.layout.addWidget(self.btnAurHelper)
         self.layout.addWidget(self.btnPamac)
         self.layout.addWidget(self.btnLure)
-        self.layout.addWidget(self.btnEssentials)
         self.layout.addWidget(self.btnGnome)
         self.layout.addWidget(self.btnExtension)
         self.layout.addWidget(self.btnTheming)
         self.layout.addWidget(self.btnShell)
+        self.layout.addWidget(self.btnEssentials)
         self.layout.addWidget(self.btnGaming)
         self.layout.addWidget(self.btnGames)
         self.layout.addWidget(self.btnDevelopment)
@@ -60,18 +60,18 @@ class SideBar(QWidget):
             "Software Manager", PamacWin, [self]))
         self.btnAurHelper.clicked.connect(lambda: parent.open_window(
             "AUR Helper", AurHelperWin, [self]))
-        self.btnEssentials.clicked.connect(lambda: parent.open_window(
-            "Essential Apps", AppsWin, ["GUI/Data/Essentials.json", self]))
         self.btnTheming.clicked.connect(lambda: parent.open_window(
             "Appearance", AppearanceWin, [self]))
         self.btnLure.clicked.connect(lambda: parent.open_window(
             "Linux User Repository", LureWin, [self]))
         self.btnShell.clicked.connect(lambda: parent.open_window(
             "Shell Program & Customizations", ShellWin, [self]))
+        self.btnEssentials.clicked.connect(lambda: parent.open_window(
+            "Essential Apps", AppsWin, ["GUI/Data/Essentials.json", self]))
         self.btnGaming.clicked.connect(lambda: parent.open_window(
             "Gaming Tools", AppsWin, ["GUI/Data/Gaming.json", self]))
         self.btnGames.clicked.connect(lambda: parent.open_window(
-            "Suggested Games", AppsWin, ["GUI/Data/Games.json", self]))
+            "Recommended Games", AppsWin, ["GUI/Data/Games.json", self]))
         self.btnDevelopment.clicked.connect(lambda: parent.open_window(
             "Development", AppsWin, ["GUI/Data/Development.json", self]))
 

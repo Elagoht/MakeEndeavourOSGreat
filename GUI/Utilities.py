@@ -71,7 +71,8 @@ class CommandThread(QThread):
         {"" if self.avoid_xterm else "xterm -xrm 'XTerm.vt100.allowTitleOps: false' -T 'Endeavour OS Tweaker Slave' -bg black -fg peru -e"}\
         sh -c '{self.command}; echo $? > '$statusfile 2> /dev/null;
         cat $statusfile;
-        rm $statusfile""".encode())
+        rm $statusfile;
+        read""".encode())
 
         process.closeWriteChannel()
         # Wait until process is finished.
@@ -97,11 +98,10 @@ class CommandThread(QThread):
 
 class AppBox(QGroupBox):
     # Create app widget that have install management system
-    def __init__(self, title: str, package: str, image: str, description: str, bar_bottom: QWidget, lists: Iterable[Iterable[str]] = [[], []], dependency: list = []) -> None:
+    def __init__(self, title: str, package: str, image: str, description: str, bar_bottom: QWidget, lists: Iterable[Iterable[str]] = [[], []]) -> None:
         super(QGroupBox, self).__init__()
         self.package = package
         self.bar_bottom = bar_bottom
-        self.dependency = dependency
         self.is_installed: bool = False
         self.is_checked: bool = False
 
@@ -139,7 +139,7 @@ class AppBox(QGroupBox):
             uninstall_if_have(self.package), self, (self.update_install_state,), True)
 
         # Create install-uninstall checkbox
-        self.chkAddToList = QCheckBox("Add to List", self)
+        self.chkAddToList = QCheckBox("Mark for installation", self)
 
         # Insert layouts and wigdets to layouts
         self.glyApp.addWidget(self.chkAddToList)
@@ -163,8 +163,9 @@ class AppBox(QGroupBox):
 
     # Update package state
     def check_if_installed(self):
+        name = self.package.split(" ")[0]
         self.is_installed = WEXITSTATUS(system(
-            f"[ \"$(pacman -Qqs {self.package} | grep \"^{self.package}$\")\" = \"{self.package}\" ]"
+            f"[ \"$(pacman -Qqs {name} | grep \"^{name}$\")\" = \"{name}\" ]"
         )) == 0
 
     # Update added to list state
@@ -187,11 +188,13 @@ class AppBox(QGroupBox):
             self.layButtons.addWidget(self.btnUninstall)
             self.btnInstall.hide()
             self.btnUninstall.show()
+            self.chkAddToList.setText("Mark for deletion")
         else:
             self.layButtons.removeWidget(self.btnUninstall)
             self.layButtons.addWidget(self.btnInstall)
             self.btnInstall.show()
             self.btnUninstall.hide()
+            self.chkAddToList.setText("Mark for installation")
 
     # Install/uninstall list updater
     def update_lists(self):
@@ -372,8 +375,9 @@ class ThemeBox(QGroupBox):
 
     def check_install_state(self):
         # Get state
+        name = self.package.split(" ")[0]
         is_installed = WEXITSTATUS(system(
-            f"[ \"$(pacman -Qqs {self.package} | grep \"^{self.package}$\")\" = \"{self.package}\" ]"
+            f"[ \"$(pacman -Qqs {name} | grep \"^{name}$\")\" = \"{name}\" ]"
         )) == 0
         # Insert/delete layouts and wigdets to layouts
         if is_installed:
@@ -443,8 +447,6 @@ class AppsWin(QWidget):
                                package=program["package"],
                                image=program["image"],
                                description=program["description"],
-                               dependency=program["dependency"]
-                               if "dependency" in program.keys() else [],
                                bar_bottom=self.parent().parent().parent().central_widget.barBottom),
                         0, number)
                 else:
@@ -453,8 +455,6 @@ class AppsWin(QWidget):
                                package=program["package"],
                                image=program["image"],
                                description=program["description"],
-                               dependency=program["dependency"]
-                               if "dependency" in program.keys() else [],
                                bar_bottom=self.parent().parent().parent().central_widget.barBottom))
             self.layout.addWidget(grid_box)
 
@@ -617,16 +617,18 @@ def install_if_doesnt_have(package: str) -> str:
     # If app is already installed, do not try to install again, else install
     # Returns string to use on command texts
     # Checks aur helper and inserts required parameters.
-    return f"""if [ ! "$(pacman -Qqs {package} | grep "^{package}$")" = "{package}" ]
-        then {aur_helper()} -S {"--skipreview" if aur_helper() == "/bin/paru" else ""} {"--noeditmenu --nodiffmenu --norebuild --noredownload --nopgpfetch" if aur_helper() == "/bin/yay" else ""} {package}
+    name = package.split(" ")[0]
+    return f"""if [ ! "$(pacman -Qqs {name} | grep "^{name}$")" = "{name}" ]
+        then {aur_helper()} -S {"--skipreview" if aur_helper() == "/bin/paru" else ""} {"--noeditmenu --nodiffmenu --norebuild --noredownload --nopgpfetch" if aur_helper() == "/bin/yay" else ""} {name}
     fi""" if has_aur_helper() else "false"
 
 
-def uninstall_if_have(package: str, dependency: list = []) -> str:
+def uninstall_if_have(package: str) -> str:
     # If app is not already installed, do not try to uninstall again, else uninstall
     # Returns string to use on command texts
-    return f"""if [ "$(pacman -Qqs {package} | grep "^{package}$" )" = "{package}" ]
-        then {aur_helper()} -R {package} {" ".join(dependency)}
+    name = package.split(" ")[0]
+    return f"""if [ "$(pacman -Qqs {name} | grep "^{name}$" )" = "{name}" ]
+        then {aur_helper()} -R {name}
     fi""" if has_aur_helper() else "false"
 
 

@@ -68,7 +68,7 @@
         },
         {
             "name": "VLC",
-            "package": "mpv",
+            "package": "vlc",
             "image": "GUI/Assets/Apps/Essentials/vlc.png",
             "description": "Multi-platform MPEG, VCD/DVD, and DivX player."
         }
@@ -274,7 +274,7 @@
             "name": "Chromium Browser",
             "package": "ungoogled-chromium-bin",
             "image": "GUI/Assets/Apps/Essentials/chromiumbrowser.png",
-            "description": "lightweight approach to removing Google web service dependency"
+            "description": "Lightweight approach to removing Google web service dependency."
         },
         {
             "name": "Librewolf",
@@ -286,7 +286,7 @@
             "name": "Ungoogled Chromium Browser",
             "package": "ungoogled-chromium-bin",
             "image": "GUI/Assets/Apps/Essentials/ungoogledchromiumbrowser.png",
-            "description": "lightweight approach to removing Google web service dependency"
+            "description": "Lightweight approach to removing Google web service dependency. Un-Googled version."
         },
         {
             "name": "Waterfox",
@@ -330,12 +330,9 @@
     "PDF Viewer": [
         {
             "name": "Evince",
-            "package": "evince",
+            "package": "evince sushi",
             "image": "GUI/Assets/Apps/Essentials/evince.png",
-            "description": "Document viewer (PDF, PostScript, XPS, djvu, dvi, tiff, cbr, cbz, cb7, cbt)",
-            "dependency": [
-                "sushi"
-            ]
+            "description": "Document viewer (PDF, PostScript, XPS, djvu, dvi, tiff, cbr, cbz, cb7, cbt)"
         },
         {
             "name": "Okular",
