@@ -17,24 +17,28 @@ I'll create a GUI app to make it easier to use for newcomers.
 
 ## ScreenShots
 
-![Main Window](Screenshots/MainWindow.png)
+![Main Window](Screenshots/mainpage.png)
 
-![Gnome Options](Screenshots/Gnome.png)
+![Gnome Options](Screenshots/gnomesettings.png)
 
-![Gnome Extensions](Screenshots/GnomeExtensions.png)
+![Gnome Options](Screenshots/gnomesettings2.png)
 
-![Software Manager](Screenshots/Pamac.png)
+![Gnome Extensions](Screenshots/gnomeextensions.png)
 
-![AUR Helper](Screenshots/AurHelper.png)
+![Software Manager](Screenshots/pamac.png)
 
-![Lure](Screenshots/Lure.png)
+![AUR Helper](Screenshots/aurhelper.png)
 
-![Appearance](Screenshots/Appearance.png)
+![Lure](Screenshots/lure.png)
 
-![Shell](Screenshots/Shell.png)
+![Appearance](Screenshots/appearance.png)
 
-![Gaming Tools](Screenshots/Gaming.png)
+![Shell](Screenshots/shell.png)
 
-![Suggested Games](Screenshots/Games.png)
+![Essential Apps](Screenshots/essentials.png)
 
-![Development](Screenshots/Development.png)
+![Gaming Tools](Screenshots/gaming.png)
+
+![Recommended Games](Screenshots/games.png)
+
+![Development](Screenshots/development.png)
