@@ -4,8 +4,9 @@ from Utilities import ButtonBox, GridBox, DconfEditBox, DconfEditRow, DconfCheck
 
 
 class GnomeWin(QWidget):
-    def __init__(self):
+    def __init__(self, parent):
         super(QWidget, self).__init__()
+        self.setParent(parent)
 
         # Create Wayland section
         self.gbxWayland = \

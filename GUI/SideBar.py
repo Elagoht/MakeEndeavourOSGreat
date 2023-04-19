@@ -31,7 +31,7 @@ class SideBar(QWidget):
         self.btnTheming = QPushButton("Appearance")
         self.btnShell = QPushButton("Shell Program")
         self.btnGaming = QPushButton("Gaming Tools")
-        self.btnGames = QPushButton("Suggested Games")
+        self.btnGames = QPushButton("Recommended Games")
         self.btnDevelopment = QPushButton("Development")
 
         # Insert buttons to menu layout
@@ -41,11 +41,11 @@ class SideBar(QWidget):
         self.layout.addWidget(self.btnAurHelper)
         self.layout.addWidget(self.btnPamac)
         self.layout.addWidget(self.btnLure)
-        self.layout.addWidget(self.btnEssentials)
         self.layout.addWidget(self.btnGnome)
         self.layout.addWidget(self.btnExtension)
         self.layout.addWidget(self.btnTheming)
         self.layout.addWidget(self.btnShell)
+        self.layout.addWidget(self.btnEssentials)
         self.layout.addWidget(self.btnGaming)
         self.layout.addWidget(self.btnGames)
         self.layout.addWidget(self.btnDevelopment)
@@ -53,27 +53,27 @@ class SideBar(QWidget):
 
         # Connect buttons to functions
         self.btnGnome.clicked.connect(lambda: parent.open_window(
-            "Gnome Settings", GnomeWin))
+            "Gnome Settings", GnomeWin, [self]))
         self.btnExtension.clicked.connect(lambda: parent.open_window(
-            "Gnome Extensions", ExtensionsWin))
+            "Gnome Extensions", ExtensionsWin, [self]))
         self.btnPamac.clicked.connect(lambda: parent.open_window(
-            "Software Manager", PamacWin))
+            "Software Manager", PamacWin, [self]))
         self.btnAurHelper.clicked.connect(lambda: parent.open_window(
-            "AUR Helper", AurHelperWin))
-        self.btnEssentials.clicked.connect(lambda: parent.open_window(
-            "Essential Apps", AppsWin, ["GUI/Data/Essentials.json"]))
+            "AUR Helper", AurHelperWin, [self]))
         self.btnTheming.clicked.connect(lambda: parent.open_window(
-            "Appearance", AppearanceWin))
+            "Appearance", AppearanceWin, [self]))
         self.btnLure.clicked.connect(lambda: parent.open_window(
-            "Linux User Repository", LureWin))
+            "Linux User Repository", LureWin, [self]))
         self.btnShell.clicked.connect(lambda: parent.open_window(
-            "Shell Program & Customizations", ShellWin))
+            "Shell Program & Customizations", ShellWin, [self]))
+        self.btnEssentials.clicked.connect(lambda: parent.open_window(
+            "Essential Apps", AppsWin, ["GUI/Data/Essentials.json", self]))
         self.btnGaming.clicked.connect(lambda: parent.open_window(
-            "Gaming Tools", AppsWin, ["GUI/Data/Gaming.json"]))
+            "Gaming Tools", AppsWin, ["GUI/Data/Gaming.json", self]))
         self.btnGames.clicked.connect(lambda: parent.open_window(
-            "Suggested Games", AppsWin, ["GUI/Data/Games.json"]))
+            "Recommended Games", AppsWin, ["GUI/Data/Games.json", self]))
         self.btnDevelopment.clicked.connect(lambda: parent.open_window(
-            "Development", AppsWin, ["GUI/Data/Development.json"]))
+            "Development", AppsWin, ["GUI/Data/Development.json", self]))
 
         # Initialization
         self.check_aur_helper()

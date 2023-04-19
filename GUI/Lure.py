@@ -3,10 +3,12 @@ from Utilities import AppBox, GridBox, color, CommandLine
 
 
 class LureWin(QWidget):
-    def __init__(self):
+    def __init__(self, parent):
         super(QWidget, self).__init__()
+        self.setParent(parent)
         self.gbxLure = AppBox("Linux User Repository", "linux-user-repository-bin", "GUI/Assets/Apps/lure.png",
-                              "LURE allows users to install software that may not be widely distributed through official repositories, while still maintaining the convenience of installation through repository sources. This includes features such as updates and simple uninstallation. Additionally, LURE provides developers with a central location for all their users to use to install their software.")
+                              "LURE allows users to install software that may not be widely distributed through official repositories, while still maintaining the convenience of installation through repository sources. This includes features such as updates and simple uninstallation. Additionally, LURE provides developers with a central location for all their users to use to install their software.",
+                              self.parent().parent().barBottom)
 
         self.gbxUsage = GridBox("Usage of LURE")
         self.lblUsage = QLabel(

@@ -4,12 +4,14 @@ from json import load
 
 
 class ExtensionsWin(QWidget):
-    def __init__(self):
+    def __init__(self, parent: QWidget):
         super(QWidget, self).__init__()
+        self.setParent(parent)
 
         # Create connector section
         self.gbxConnector = AppBox("Browser Connector", "gnome-browser-connector", "GUI/Assets/Apps/gnomeextensions.png",
-                                   "You need to install a browser connector to be able to install extensions from your web browser.")
+                                   "You need to install a browser connector to be able to install extensions from your web browser.",
+                                   self.parent().parent().barBottom)
 
         # Create Extensions section
         self.gbxExtensions = GridBox("Suggested Extensions")

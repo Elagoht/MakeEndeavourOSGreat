@@ -5,14 +5,16 @@ from os import system
 
 
 class ShellWin(QWidget):
-    def __init__(self):
+    def __init__(self, parent):
         super(QWidget, self).__init__()
+        self.setParent(parent)
 
         # Create Bash section
         self.appBash = ShellBox("Bash (Default)",
                                 "bash",
                                 "GUI/Assets/Apps/Shells/bash.png",
                                 "Unix shell and command language written for the GNU Project as a replacement for the Bourne shell. <font color='red'>Do not remove this package!</font>",
+                                self.parent().parent().barBottom,
                                 True
                                 )
 
@@ -21,6 +23,7 @@ class ShellWin(QWidget):
                               "sh",
                               "GUI/Assets/Apps/Shells/sh.png",
                               "Shell command-line interpreter for computer operating systems. <font color='red'>Do not remove this package!</font>",
+                              self.parent().parent().barBottom,
                               True
                               )
 
@@ -28,14 +31,16 @@ class ShellWin(QWidget):
         self.appZsh = ShellBox("Zsh",
                                "zsh",
                                "GUI/Assets/Apps/Shells/zsh.png",
-                               "extended Bourne shell with many improvements, including some features of Bash, ksh, and tcsh."
+                               "extended Bourne shell with many improvements, including some features of Bash, ksh, and tcsh.",
+                               self.parent().parent().barBottom
                                )
 
         # Create fish section
         self.appFish = ShellBox("Fish",
                                 "fish",
                                 "GUI/Assets/Apps/Shells/fish.png",
-                                "Friendly interactive shell. Smart and user-friendly command line shell"
+                                "Friendly interactive shell. Smart and user-friendly command line shell",
+                                self.parent().parent().barBottom
                                 )
 
         # Create Oh-My-Zsh section
