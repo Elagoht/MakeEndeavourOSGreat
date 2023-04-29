@@ -68,7 +68,6 @@ class CommandThread(QThread):
         process.start("bash")
         # Write command to execute to bash standard input.
         process.write(f"""statusfile=$(mktemp);
-        {"" if self.avoid_xterm else "xterm -xrm 'XTerm.vt100.allowTitleOps: false' -T 'Endeavour OS Tweaker Slave' -bg black -fg peru -e"}\
         sh -c '{self.command}; echo $? > '$statusfile 2> /dev/null;
         cat $statusfile;
         rm $statusfile;
@@ -415,7 +414,7 @@ class ShellBox(AppBox):
         self.btnSetRoot = CommandButton(
             QIcon("GUI/Assets/configure.png"), "Set Default for Root",
             f"echo New shell will be {package}.;\
-                [ \"$(pacman -Qqs {package} | grep ^{package}$)\" = \"{package}\" ] && sudo chsh -s /bin/{package} root",
+                [ \"$(pacman -Qqs {package} | grep ^{package}$)\" = \"{package}\" ] && pkexec chsh -s /bin/{package} root",
             self)
 
         # Add buttons to layout
@@ -598,9 +597,9 @@ def aur_helper() -> str:
     # Get AUR helper
     return popen(
         """if [ "$(command -v paru)" ]; then
-            aurhelper="/bin/paru"
+            aurhelper="/bin/paru --noconfirm --skipreview --sudo pkexec"
         elif [ "$(command -v yay)" ]; then
-            aurhelper="/bin/yay"
+            aurhelper="/bin/yay --noeditmenu --nodiffmenu --norebuild --noredownload --nopgpfetch"
         else
             aurhelper=""
         fi
@@ -619,7 +618,7 @@ def install_if_doesnt_have(package: str) -> str:
     # Checks aur helper and inserts required parameters.
     name = package.split(" ")[0]
     return f"""if [ ! "$(pacman -Qqs {name} | grep "^{name}$")" = "{name}" ]
-        then {aur_helper()} -S {"--skipreview" if aur_helper() == "/bin/paru" else ""} {"--noeditmenu --nodiffmenu --norebuild --noredownload --nopgpfetch" if aur_helper() == "/bin/yay" else ""} {name}
+        then {aur_helper()} -S {name}
     fi""" if has_aur_helper() else "false"
 
 

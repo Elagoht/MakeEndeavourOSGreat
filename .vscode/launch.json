@@ -8,7 +8,7 @@
             "name": "Python: GUI",
             "request": "launch",
             "type": "python",
-            "program": "${workspaceFolder}/GUI/index.py",
+            "program": "${workspaceFolder}/GUI/main.py",
             "console": "integratedTerminal",
             "justMyCode": true
         }

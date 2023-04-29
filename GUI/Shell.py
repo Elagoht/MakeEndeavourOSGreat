@@ -72,7 +72,7 @@ class ShellWin(QWidget):
             self.extOhMyZsh, (self.check_oh_my_zsh,), True)
         self.btnOhMyZshUninstall = CommandButton(
             QIcon("GUI/Assets/uninstall.png"), "Uninstall",
-            r"""echo Confirm that you really want to uninstall oh-my-zsh; sudo rm -rf /root/.oh-my-zsh/ && rm -rf $HOME/.oh-my-zsh/""",
+            r"""echo Confirm that you really want to uninstall oh-my-zsh; pkexec rm -rf /root/.oh-my-zsh/ && rm -rf $HOME/.oh-my-zsh/""",
             self.extOhMyZsh, (self.check_oh_my_zsh,), True)
 
         # Create SyntShell section
@@ -91,8 +91,8 @@ class ShellWin(QWidget):
 
     # Shortcut for OhMyZsh theme setter.
     def zsh_theme_setter(self, theme: str) -> str:
-        return fr"""[ \"$(grep \"^ZSH_THEME=\" $HOME/.zshrc)\" ] && sudo -i sed -i "s/^ZSH_THEME=.*/ZSH_THEME=\"{theme}\"/" $HOME/.zshrc
-                   sudo [ \"$(sudo grep \"^ZSH_THEME=\" /root/.zshrc)\" ] && sudo -i sed -i "s/^ZSH_THEME=.*/ZSH_THEME=\"{theme}\"/" /root/.zshrc"""
+        return fr"""[ \"$(grep \"^ZSH_THEME=\" $HOME/.zshrc)\" ] && pkexec -i sed -i "s/^ZSH_THEME=.*/ZSH_THEME=\"{theme}\"/" $HOME/.zshrc
+                   pkexec [ \"$(pkexec grep \"^ZSH_THEME=\" /root/.zshrc)\" ] && pkexec -i sed -i "s/^ZSH_THEME=.*/ZSH_THEME=\"{theme}\"/" /root/.zshrc"""
 
     # Show/hide OhMyZsh Install button
     def check_oh_my_zsh(self) -> None:

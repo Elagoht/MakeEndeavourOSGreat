@@ -5,13 +5,13 @@
 Update the system:
 
 ```bash
-sudo pacman -Sy
+pkexec pacman -Sy
 ```
 
 Upgrade the system:
 
 ```bash
-sudo pacman -Su
+pkexec pacman -Su
 ```
 
 ---
@@ -19,13 +19,13 @@ sudo pacman -Su
 Enable AUR on Pamac:
 
 ```bash
-sudo sed -Ei '/EnableAUR/s/^#//' /etc/pamac.conf
+pkexec sed -Ei '/EnableAUR/s/^#//' /etc/pamac.conf
 ```
 
 Disable AUR on Pamac:
 
 ```bash
-sudo sed -Ei '/EnableAUR/s/^/#/' /etc/pamac.conf
+pkexec sed -Ei '/EnableAUR/s/^/#/' /etc/pamac.conf
 ```
 
 ---
@@ -33,13 +33,13 @@ sudo sed -Ei '/EnableAUR/s/^/#/' /etc/pamac.conf
 Install Pamac software manager:
 
 ```bash
-sudo pacman -S pamac-aur
+pkexec pacman -S pamac-aur
 ```
 
 Remove Pamac software manager:
 
 ```bash
-sudo pacman -R pamac-aur
+pkexec pacman -R pamac-aur
 ```
 
 ---
@@ -47,25 +47,25 @@ sudo pacman -R pamac-aur
 Install paru:
 
 ```bash
-sudo pacman -S paru
+pkexec pacman -S paru
 ```
 
 Remove yay:
 
 ```bash
-sudo pacman -R yay
+pkexec pacman -R yay
 ```
 
 Install yay:
 
 ```bash
-sudo pacman -S paru
+pkexec pacman -S paru
 ```
 
 Remove paru:
 
 ```bash
-sudo pacman -R paru
+pkexec pacman -R paru
 ```
 
 ---
@@ -95,7 +95,7 @@ fi
 Install easy-effects:
 
 ```bash
-sudo pacman -S easyeffects
+pkexec pacman -S easyeffects
 ```
 
 ---
@@ -103,25 +103,25 @@ sudo pacman -S easyeffects
 Install `gnome-terminal`:
 
 ```bash
-sudo pacman -S gnome-terminal
+pkexec pacman -S gnome-terminal
 ```
 
 Remove `gnome-console`:
 
 ```bash
-sudo pacman -R gnome-console
+pkexec pacman -R gnome-console
 ```
 
 Install `gnome-console`:
 
 ```bash
-sudo pacman -S gnome-console
+pkexec pacman -S gnome-console
 ```
 
 Remove `gnome-terminal`:
 
 ```bash
-sudo pacman -R gnome-terminal
+pkexec pacman -R gnome-terminal
 ```
 
 ---

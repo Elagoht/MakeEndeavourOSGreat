@@ -16,13 +16,13 @@ class AppearanceWin(QWidget):
                          <p>You can change Qt themes thanks to Kvantum Manager. You can set <font color="orange">KvLibadwaita(Dark)</font> theme to uniform themes with Adw-gtk3 theme.</p>
                          <p>Note that: <u>Enable/disable actions require restart.</u></p>""", (
                           CommandButton(QIcon("GUI/Assets/enabled.png"), "Enable Kvantum",
-                                        """sudo sed -i "s/^\#QT_STYLE_OVERRIDE=kvantum/QT_STYLE_OVERRIDE=kvantum/" /etc/environment
+                                        """pkexec sed -i "s/^\#QT_STYLE_OVERRIDE=kvantum/QT_STYLE_OVERRIDE=kvantum/" /etc/environment
                                 if [ ! "$(grep '^QT_STYLE_OVERRIDE=kvantum' /etc/environment)" ]
-                                    then sudo echo "QT_STYLE_OVERRIDE=kvantum" >> /etc/environment
+                                    then pkexec echo "QT_STYLE_OVERRIDE=kvantum" >> /etc/environment
                                 fi""", self),
                           CommandButton(QIcon("GUI/Assets/disabled.png"), "Disable Kvantum",
                                         """if [ "$(grep '^QT_STYLE_OVERRIDE=kvantum' /etc/environment)" ]
-                                    then sudo sed -i "s/^QT_STYLE_OVERRIDE=kvantum/#QT_STYLE_OVERRIDE=kvantum/" /etc/environment
+                                    then pkexec sed -i "s/^QT_STYLE_OVERRIDE=kvantum/#QT_STYLE_OVERRIDE=kvantum/" /etc/environment
                                 fi""", self),
                           CommandButton(
                               QIcon("GUI/Assets/configure.png"),

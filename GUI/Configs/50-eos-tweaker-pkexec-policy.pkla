@@ -1,0 +1,7 @@
+[Allow pkexec for a limited time]
+Identity=unix-group:wheel
+Action=org.freedesktop.policykit.exec
+ResultAny=no
+ResultInactive=no
+ResultActive=yes
+TimeoutSec=30

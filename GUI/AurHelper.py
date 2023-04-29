@@ -37,7 +37,7 @@ class AurHelperWin(QWidget):
                               self, (lambda: self.lblAurHelper.setText(self.get_aur_helpers()),)),
                 CommandButton(QIcon("GUI/Assets/uninstall.png"), "Uninstall",
                               """if [ -f /bin/paru ]
-                                then sudo pacman -R paru-bin || sudo pacman -R paru
+                                then pkexec pacman -R paru-bin || pkexec pacman -R paru
                               fi""",
                               self, (lambda: self.lblAurHelper.setText(self.get_aur_helpers()),)))
                       )
@@ -57,7 +57,7 @@ class AurHelperWin(QWidget):
                               self, (lambda: self.lblAurHelper.setText(self.get_aur_helpers()),)),
                 CommandButton(QIcon("GUI/Assets/uninstall.png"), "Uninstall",
                               """if [ -f /bin/yay ]
-                                then sudo pacman -R yay-bin || sudo pacman -R yay
+                                then pkexec pacman -R yay-bin || pkexec pacman -R yay
                               fi""",
                               self, (lambda: self.lblAurHelper.setText(self.get_aur_helpers()),))
             ))
