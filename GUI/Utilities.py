@@ -599,7 +599,7 @@ def aur_helper() -> str:
         """if [ "$(command -v paru)" ]; then
             aurhelper="/bin/paru --noconfirm --skipreview --sudo pkexec"
         elif [ "$(command -v yay)" ]; then
-            aurhelper="/bin/yay --noeditmenu --nodiffmenu --norebuild --noredownload --nopgpfetch"
+            aurhelper="pkexec /bin/yay --noeditmenu --nodiffmenu --norebuild --noredownload --nopgpfetch"
         else
             aurhelper=""
         fi
