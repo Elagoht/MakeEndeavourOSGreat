@@ -97,55 +97,35 @@ class CommandThread(QThread):
 
 class AppBox(QGroupBox):
     # Create app widget that have install management system
-    def __init__(self, title: str, package: str, image: str, description: str, bar_bottom: QWidget, lists: Iterable[Iterable[str]] = [[], []]) -> None:
-        super().__init__()
+    def __init__(self, title: str, package: str, image: str, description: str, owner: QWidget, bar_bottom: QWidget, lists: Iterable[Iterable[str]] = [[], []]) -> None:
+        super().__init__(title, owner)
         self.package = package
         self.bar_bottom = bar_bottom
         self.is_installed: bool = False
         self.is_checked: bool = False
 
         # Create layouts
-        self.glyApp = QVBoxLayout(self)
-        self.layButtons = QHBoxLayout()
+        self.glyApp = QHBoxLayout(self)
 
         # Create info section
-        self.lblTitle = QLabel("<b>" + title + "<b>")
         # * Placing table because Qt supports float only for images and tables and cannot add padding
-        self.lblDescription = QLabel(
-            f"""
-            <table style="float: left;">
-                <tr>
-                    <td width="136" height="136">
-                        <img src="{image}" />
-                    </td>
-                </tr>
-            </table>
-            <span>
-                {description}
-            </span>""")
+        self.imgImage = QLabel(self)
+        self.imgImage.setPixmap(QPixmap(image))
+        self.lblDescription = QLabel(description)
         # Make links clickable
         self.lblDescription.setOpenExternalLinks(True)
         self.lblDescription.setTextFormat(Qt.RichText)
         self.lblDescription.setTextInteractionFlags(Qt.TextBrowserInteraction)
         self.lblDescription.setWordWrap(True)
 
-        # Create installation buttons
-        self.btnInstall = CommandButton(
-            QIcon("GUI/Assets/install.png"), "Install",
-            install_if_doesnt_have(self.package), self, (self.update_install_state,), True)
-        self.btnUninstall = CommandButton(
-            QIcon("GUI/Assets/uninstall.png"), "Uninstall",
-            uninstall_if_have(self.package), self, (self.update_install_state,), True)
-
         # Create install-uninstall checkbox
         self.chkAddToList = QCheckBox("Mark for installation", self)
 
         # Insert layouts and wigdets to layouts
         self.glyApp.addWidget(self.chkAddToList)
-        self.glyApp.addWidget(self.lblTitle)
+        self.glyApp.addWidget(self.imgImage)
         self.glyApp.addWidget(self.lblDescription)
-        self.glyApp.addStretch()
-        self.glyApp.addLayout(self.layButtons)
+        self.glyApp.addWidget(self.chkAddToList)
         # Additional CSS
         self.setStyleSheet("""QGroupBox {
             background: rgba(0,0,0,.25);
@@ -161,11 +141,17 @@ class AppBox(QGroupBox):
         self.update_check_state()
 
     # Update package state
-    def check_if_installed(self):
-        name = self.package.split(" ")[0]
-        self.is_installed = WEXITSTATUS(system(
-            f"[ \"$(pacman -Qqs {name} | grep \"^{name}$\")\" = \"{name}\" ]"
-        )) == 0
+    def check_if_installed(self) -> bool:
+        x = self.package.split(" ")[0] in self.parent().installed_apps
+        print(x)
+        return x
+
+    def update_install_state(self) -> None:
+        self.is_installed = self.check_if_installed()
+        self.chkAddToList\
+            .setText("Mark for uninstallation"
+                     if self.is_installed else
+                     "Mark for Installation")
 
     # Update added to list state
     def check_if_listed(self):
@@ -178,22 +164,6 @@ class AppBox(QGroupBox):
     def update_check_state(self):
         self.check_if_listed()
         self.chkAddToList.setChecked(self.is_checked)
-
-    # Insert/delete layouts and wigdets to layouts
-    def update_install_state(self):
-        self.check_if_installed()
-        if self.is_installed:
-            self.layButtons.removeWidget(self.btnInstall)
-            self.layButtons.addWidget(self.btnUninstall)
-            self.btnInstall.hide()
-            self.btnUninstall.show()
-            self.chkAddToList.setText("Mark for deletion")
-        else:
-            self.layButtons.removeWidget(self.btnUninstall)
-            self.layButtons.addWidget(self.btnInstall)
-            self.btnInstall.show()
-            self.btnUninstall.hide()
-            self.chkAddToList.setText("Mark for installation")
 
     # Install/uninstall list updater
     def update_lists(self):
@@ -399,10 +369,8 @@ class ShellBox(AppBox):
 
         # If uninstallable remove install buttons
         if uninstallable:
-            self.glyApp.removeWidget(self.btnInstall)
-            self.glyApp.removeWidget(self.btnUninstall)
-            del self.btnInstall
-            del self.btnUninstall
+            self.glyApp.removeWidget(self.chkAddToList)
+            del self.chkAddToList
 
         # Setter buttons
         self.btnSet = CommandButton(
@@ -430,6 +398,10 @@ class AppsWin(QWidget):
         super().__init__()
         self.setParent(owner)
 
+        # Get installed apps list
+        self.installed_apps = get_installed_apps()
+        print(self.installed_apps)
+
         # Create layout
         self.layout = QVBoxLayout(self)
 
@@ -446,6 +418,7 @@ class AppsWin(QWidget):
                                package=program["package"],
                                image=program["image"],
                                description=program["description"],
+                               owner=self,
                                bar_bottom=self.parent().parent().parent().central_widget.barBottom),
                         0, number)
                 else:
@@ -454,6 +427,7 @@ class AppsWin(QWidget):
                                package=program["package"],
                                image=program["image"],
                                description=program["description"],
+                               owner=self,
                                bar_bottom=self.parent().parent().parent().central_widget.barBottom))
             self.layout.addWidget(grid_box)
 
@@ -639,3 +613,7 @@ def color(color: str, text: str) -> str:
 def long_bash_script(file: str) -> str:
     with open(file, "r", encoding="UTF-8") as code:
         return code.read()
+
+
+def get_installed_apps() -> list:
+    return popen("pacman -Qq").read().splitlines()

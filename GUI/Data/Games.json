@@ -110,7 +110,7 @@
     "Card Game": [
         {
             "name": "Aisleriot Solitaire",
-            "package": "supertuxkart",
+            "package": "aisleriot",
             "image": "GUI/Assets/Apps/Games/aisleriot.png",
             "description": "Play lots of solitaire games."
         }
