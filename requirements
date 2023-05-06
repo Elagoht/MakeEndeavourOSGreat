@@ -1,7 +1,5 @@
 base-devel
 git
-glib2
-python
 python-pyqt5
 kvantum
-kvantum-theme-libadwaita-git
+polkit
