@@ -25,9 +25,9 @@
             "description": "3D realtime strategy game on a future Earth."
         },
         {
-            "name": "pkexec Mice",
-            "package": "pkexec-mice-bin",
-            "image": "GUI/Assets/Apps/Games/pkexecmice.png",
+            "name": "Sudo Mice",
+            "package": "sudo-mice-bin",
+            "image": "GUI/Assets/Apps/Games/sudomice.png",
             "description": "Pixel graphics two players real time strategy game."
         },
         {
@@ -110,7 +110,7 @@
     "Card Game": [
         {
             "name": "Aisleriot Solitaire",
-            "package": "aisleriot",
+            "package": "supertuxkart",
             "image": "GUI/Assets/Apps/Games/aisleriot.png",
             "description": "Play lots of solitaire games."
         }
@@ -143,9 +143,9 @@
             "description": "Clasic two player board game of chess."
         },
         {
-            "name": "Gnome pkexecku",
-            "package": "gnome-pkexecku",
-            "image": "GUI/Assets/Apps/Games/gnomepkexecku.png",
+            "name": "Gnome Sudoku",
+            "package": "gnome-sudoku",
+            "image": "GUI/Assets/Apps/Games/gnomesudoku.png",
             "description": "Test your logic skills in this number grid puzzle."
         },
         {
