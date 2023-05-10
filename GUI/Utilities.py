@@ -98,17 +98,17 @@ class CommandThread(QThread):
 class AppBox(QGroupBox):
     # Create app widget that have install management system
     def __init__(self, title: str, package: str, image: str, description: str, owner: QWidget, bar_bottom: QWidget, lists: Iterable[Iterable[str]] = [[], []]) -> None:
-        super().__init__(title, owner)
+        super().__init__(owner)
         self.package = package
         self.bar_bottom = bar_bottom
         self.is_installed: bool = False
         self.is_checked: bool = False
 
         # Create layouts
-        self.glyApp = QHBoxLayout(self)
+        self.glyApp = QGridLayout(self)
 
         # Create info section
-        # * Placing table because Qt supports float only for images and tables and cannot add padding
+        self.lblTitle = QLabel(title)
         self.imgImage = QLabel(self)
         self.imgImage.setPixmap(QPixmap(image))
         self.lblDescription = QLabel(description)
@@ -117,15 +117,14 @@ class AppBox(QGroupBox):
         self.lblDescription.setTextFormat(Qt.RichText)
         self.lblDescription.setTextInteractionFlags(Qt.TextBrowserInteraction)
         self.lblDescription.setWordWrap(True)
-
-        # Create install-uninstall checkbox
-        self.chkAddToList = QCheckBox("Mark for installation", self)
+        self.btnInstall = AppInstallButton(False, False, self)
+        self.btnInstall.update_install(False)
 
         # Insert layouts and wigdets to layouts
-        self.glyApp.addWidget(self.chkAddToList)
-        self.glyApp.addWidget(self.imgImage)
-        self.glyApp.addWidget(self.lblDescription)
-        self.glyApp.addWidget(self.chkAddToList)
+        self.glyApp.addWidget(self.lblTitle, 0, 0, 1, 3)
+        self.glyApp.addWidget(self.imgImage, 1, 0)
+        self.glyApp.addWidget(self.lblDescription, 1, 1)
+        self.glyApp.addWidget(self.btnInstall, 1, 2)
         # Additional CSS
         self.setStyleSheet("""QGroupBox {
             background: rgba(0,0,0,.25);
@@ -134,47 +133,38 @@ class AppBox(QGroupBox):
         }""")
 
         # Connect events
-        self.chkAddToList.stateChanged.connect(self.update_lists)
+        self.btnInstall.clicked.connect(
+            lambda: self.btnInstall.update_action(not self.btnInstall.action_state))
 
-        # Initialize
-        self.update_install_state()
-        self.update_check_state()
 
-    # Update package state
-    def check_if_installed(self) -> bool:
-        x = self.package.split(" ")[0] in self.parent().installed_apps
-        print(x)
-        return x
+class AppInstallButton(QPushButton):
+    # 4 state custom button for install managemenet
+    def __init__(self, install_state: bool, action_state: bool, parent: AppBox):
+        super().__init__("Install", parent)
+        self.install_state = install_state
+        self.action_state = action_state
 
-    def update_install_state(self) -> None:
-        self.is_installed = self.check_if_installed()
-        self.chkAddToList\
-            .setText("Mark for uninstallation"
-                     if self.is_installed else
-                     "Mark for Installation")
+        # Button Style
+        self.setFixedWidth(100)
 
-    # Update added to list state
-    def check_if_listed(self):
-        self.is_checked = any([
-            self.package in self.bar_bottom.to_install,
-            self.package in self.bar_bottom.to_uninstall
-        ])
-
-    # Update checkbox check state
-    def update_check_state(self):
-        self.check_if_listed()
-        self.chkAddToList.setChecked(self.is_checked)
-
-    # Install/uninstall list updater
-    def update_lists(self):
-        if self.is_installed:
-            self.bar_bottom.to_uninstall_list(
-                self.package,
-                self.chkAddToList.isChecked())
+    def update_action(self, new_state):
+        self.action_state = new_state
+        if self.install_state == False:
+            if self.action_state == False:
+                self.setStyleSheet("background: #00e64d; color: white;")
+            else:
+                self.setStyleSheet("background: #00a60d; color: white;")
+            self.setText("Install")
         else:
-            self.bar_bottom.to_install_list(
-                self.package,
-                self.chkAddToList.isChecked())
+            if self.action_state == False:
+                self.setStyleSheet("background: #b20; color: white;")
+            else:
+                self.setStyleSheet("background: #c42; color: white;")
+            self.setText("Uninstall")
+
+    def update_install(self, new_state):
+        self.action = new_state
+        self.update_action(False)
 
 
 class ButtonBox(QGroupBox):
@@ -369,8 +359,8 @@ class ShellBox(AppBox):
 
         # If uninstallable remove install buttons
         if uninstallable:
-            self.glyApp.removeWidget(self.chkAddToList)
-            del self.chkAddToList
+            self.glyApp.removeWidget(self.btnInstall)
+            del self.btnInstall
 
         # Setter buttons
         self.btnSet = CommandButton(
@@ -400,7 +390,6 @@ class AppsWin(QWidget):
 
         # Get installed apps list
         self.installed_apps = get_installed_apps()
-        print(self.installed_apps)
 
         # Create layout
         self.layout = QVBoxLayout(self)
