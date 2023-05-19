@@ -1,14 +1,15 @@
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLabel
-from Utilities import AppBox, GridBox, color, CommandLine
+from Utilities import AppBox, GridBox, color, CommandLine, get_installed_apps
 
 
 class LureWin(QWidget):
     def __init__(self, parent):
         super().__init__()
         self.setParent(parent)
+        self.installed_apps = get_installed_apps()
         self.gbxLure = AppBox("Linux User Repository", "linux-user-repository-bin", "GUI/Assets/Apps/lure.png",
                               "LURE allows users to install software that may not be widely distributed through official repositories, while still maintaining the convenience of installation through repository sources. This includes features such as updates and simple uninstallation. Additionally, LURE provides developers with a central location for all their users to use to install their software.",
-                              self.parent().parent().barBottom)
+                              self, self.parent().parent().barBottom)
 
         self.gbxUsage = GridBox("Usage of LURE")
         self.lblUsage = QLabel(

@@ -50,29 +50,27 @@ class CommandButton(QPushButton):
 
 class CommandThread(QThread):
     # Create thread worker for command button
-
     # Createa signal to communicate between threads
     output = pyqtSignal(int)
 
     def __init__(self, command, avoid_xterm) -> None:
         super().__init__()
-
         # Pass command to run method
         self.command = command
         self.avoid_xterm = avoid_xterm
-
     # Function will be executed on thread called
+
     def run(self) -> None:
         # Create bash process to run command
         process = QProcess()
         process.start("bash")
         # Write command to execute to bash standard input.
         process.write(f"""statusfile=$(mktemp);
+        {"" if self.avoid_xterm else "xterm -xrm 'XTerm.vt100.allowTitleOps: false' -T 'Endeavour OS Tweaker Slave' -bg black -fg peru -e"}\
         sh -c '{self.command}; echo $? > '$statusfile 2> /dev/null;
         cat $statusfile;
         rm $statusfile;
         read""".encode())
-
         process.closeWriteChannel()
         # Wait until process is finished.
         process.waitForFinished()
@@ -99,6 +97,7 @@ class AppBox(QGroupBox):
     # Create app widget that have install management system
     def __init__(self, title: str, package: str, image: str, description: str, owner: QWidget, bar_bottom: QWidget, lists: Iterable[Iterable[str]] = [[], []]) -> None:
         super().__init__(owner)
+        self.owner = owner
         self.package = package
         self.bar_bottom = bar_bottom
         self.is_installed: bool = False
@@ -118,7 +117,6 @@ class AppBox(QGroupBox):
         self.lblDescription.setTextInteractionFlags(Qt.TextBrowserInteraction)
         self.lblDescription.setWordWrap(True)
         self.btnInstall = AppInstallButton(False, False, self)
-        self.btnInstall.update_install(False)
 
         # Insert layouts and wigdets to layouts
         self.glyApp.addWidget(self.lblTitle, 0, 0, 1, 3)
@@ -133,38 +131,70 @@ class AppBox(QGroupBox):
         }""")
 
         # Connect events
-        self.btnInstall.clicked.connect(
-            lambda: self.btnInstall.update_action(not self.btnInstall.action_state))
+        self.btnInstall.clicked.connect(self.btnInstall.toggle_action)
+
+        # Initialize
+        self.btnInstall.update_install()
 
 
 class AppInstallButton(QPushButton):
     # 4 state custom button for install managemenet
-    def __init__(self, install_state: bool, action_state: bool, parent: AppBox):
-        super().__init__("Install", parent)
+    def __init__(self, install_state: bool, action_state: bool, owner: AppBox):
+        super().__init__("▼", owner)
+        self.owner = owner
         self.install_state = install_state
         self.action_state = action_state
 
         # Button Style
-        self.setFixedWidth(100)
+        self.setFixedSize(40, 40)
 
-    def update_action(self, new_state):
-        self.action_state = new_state
-        if self.install_state == False:
-            if self.action_state == False:
-                self.setStyleSheet("background: #00e64d; color: white;")
+    def toggle_action(self):
+        self.action_state = not self.action_state
+        if self.install_state:
+            if self.action_state:
+                self.setStyleSheet(
+                    """background: #b20;
+                    border: 4px solid #a10;
+                    padding:8px;
+                    border-radius:6px;
+                    color: white;"""
+                )
+                self.setText("×")
             else:
-                self.setStyleSheet("background: #00a60d; color: white;")
-            self.setText("Install")
+                self.setStyleSheet(
+                    """background: #f68;
+                    border: 4px solid #e57;
+                    padding:8px;
+                    border-radius:6px;
+                    color: white;"""
+                )
+                self.setText("🗸")
         else:
-            if self.action_state == False:
-                self.setStyleSheet("background: #b20; color: white;")
+            if self.action_state:
+                self.setStyleSheet(
+                    """background: #0a0;
+                    border: 4px solid #090;
+                    padding:8px;
+                    border-radius:6px;
+                    color: white;"""
+                )
+                self.setText("▼")
             else:
-                self.setStyleSheet("background: #c42; color: white;")
-            self.setText("Uninstall")
+                self.setStyleSheet(
+                    """background: #5d5;
+                    border: 4px solid #4c4;
+                    padding:8px;
+                    border-radius:6px;
+                    color: white;"""
+                )
+                self.setText("🗸")
 
-    def update_install(self, new_state):
-        self.action = new_state
-        self.update_action(False)
+    def check_install_state(self):
+        return self.owner.package in self.owner.owner.installed_apps
+
+    def update_install(self):
+        self.install_state = self.check_install_state()
+        self.toggle_action()
 
 
 class ButtonBox(QGroupBox):
@@ -354,8 +384,8 @@ class ThemeBox(QGroupBox):
 class ShellBox(AppBox):
     # Create installable and uninstallable shell boxes that
     # support setting default shell for user and root
-    def __init__(self, title: str, package: str, image: str, description: str, bottom_bar: QWidget, uninstallable: bool = False) -> None:
-        super().__init__(title, package, image, description, bottom_bar)
+    def __init__(self, title: str, package: str, image: str, description: str, owner: QWidget, bottom_bar: QWidget, uninstallable: bool = False) -> None:
+        super().__init__(title, package, image, description, owner, bottom_bar)
 
         # If uninstallable remove install buttons
         if uninstallable:
@@ -372,14 +402,14 @@ class ShellBox(AppBox):
         self.btnSetRoot = CommandButton(
             QIcon("GUI/Assets/configure.png"), "Set Default for Root",
             f"echo New shell will be {package}.;\
-                [ \"$(pacman -Qqs {package} | grep ^{package}$)\" = \"{package}\" ] && pkexec chsh -s /bin/{package} root",
+                [ \"$(pacman -Qqs {package} | grep ^{package}$)\" = \"{package}\" ] && sudo chsh -s /bin/{package} root",
             self)
 
         # Add buttons to layout
         self.laySetButtons = QHBoxLayout()
         self.laySetButtons.addWidget(self.btnSet)
         self.laySetButtons.addWidget(self.btnSetRoot)
-        self.glyApp.addLayout(self.laySetButtons)
+        self.glyApp.addLayout(self.laySetButtons, 2, 0, 1, 3)
 
 
 class AppsWin(QWidget):
@@ -560,9 +590,9 @@ def aur_helper() -> str:
     # Get AUR helper
     return popen(
         """if [ "$(command -v paru)" ]; then
-            aurhelper="/bin/paru --noconfirm --skipreview --sudo pkexec"
+            aurhelper="/bin/paru --noconfirm --skipreview"
         elif [ "$(command -v yay)" ]; then
-            aurhelper="pkexec /bin/yay --noeditmenu --nodiffmenu --norebuild --noredownload --nopgpfetch"
+            aurhelper="sudo /bin/yay --noeditmenu --nodiffmenu --norebuild --noredownload --nopgpfetch"
         else
             aurhelper=""
         fi

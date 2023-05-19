@@ -1,19 +1,21 @@
 from PyQt5.QtWidgets import QWidget, QGridLayout
 from PyQt5.QtGui import QIcon
-from Utilities import ShellBox, ButtonBox, CommandButton, long_bash_script
+from Utilities import ShellBox, ButtonBox, CommandButton, long_bash_script, get_installed_apps
 from os import system
 
 
 class ShellWin(QWidget):
-    def __init__(self, parent):
+    def __init__(self, parent: QWidget):
         super().__init__()
         self.setParent(parent)
 
         # Create Bash section
+        self.installed_apps = get_installed_apps()
         self.appBash = ShellBox("Bash (Default)",
                                 "bash",
                                 "GUI/Assets/Apps/Shells/bash.png",
                                 "Unix shell and command language written for the GNU Project as a replacement for the Bourne shell. <font color='red'>Do not remove this package!</font>",
+                                self,
                                 self.parent().parent().barBottom,
                                 True
                                 )
@@ -23,6 +25,7 @@ class ShellWin(QWidget):
                               "sh",
                               "GUI/Assets/Apps/Shells/sh.png",
                               "Shell command-line interpreter for computer operating systems. <font color='red'>Do not remove this package!</font>",
+                              self,
                               self.parent().parent().barBottom,
                               True
                               )
@@ -32,6 +35,7 @@ class ShellWin(QWidget):
                                "zsh",
                                "GUI/Assets/Apps/Shells/zsh.png",
                                "extended Bourne shell with many improvements, including some features of Bash, ksh, and tcsh.",
+                               self,
                                self.parent().parent().barBottom
                                )
 
@@ -40,6 +44,7 @@ class ShellWin(QWidget):
                                 "fish",
                                 "GUI/Assets/Apps/Shells/fish.png",
                                 "Friendly interactive shell. Smart and user-friendly command line shell",
+                                self,
                                 self.parent().parent().barBottom
                                 )
 
@@ -72,7 +77,7 @@ class ShellWin(QWidget):
             self.extOhMyZsh, (self.check_oh_my_zsh,), True)
         self.btnOhMyZshUninstall = CommandButton(
             QIcon("GUI/Assets/uninstall.png"), "Uninstall",
-            r"""echo Confirm that you really want to uninstall oh-my-zsh; pkexec rm -rf /root/.oh-my-zsh/ && rm -rf $HOME/.oh-my-zsh/""",
+            r"""echo Confirm that you really want to uninstall oh-my-zsh; sudo rm -rf /root/.oh-my-zsh/ && rm -rf $HOME/.oh-my-zsh/""",
             self.extOhMyZsh, (self.check_oh_my_zsh,), True)
 
         # Create SyntShell section
@@ -91,8 +96,8 @@ class ShellWin(QWidget):
 
     # Shortcut for OhMyZsh theme setter.
     def zsh_theme_setter(self, theme: str) -> str:
-        return fr"""[ \"$(grep \"^ZSH_THEME=\" $HOME/.zshrc)\" ] && pkexec -i sed -i "s/^ZSH_THEME=.*/ZSH_THEME=\"{theme}\"/" $HOME/.zshrc
-                   pkexec [ \"$(pkexec grep \"^ZSH_THEME=\" /root/.zshrc)\" ] && pkexec -i sed -i "s/^ZSH_THEME=.*/ZSH_THEME=\"{theme}\"/" /root/.zshrc"""
+        return fr"""[ \"$(grep \"^ZSH_THEME=\" $HOME/.zshrc)\" ] && sudo -i sed -i "s/^ZSH_THEME=.*/ZSH_THEME=\"{theme}\"/" $HOME/.zshrc
+                   sudo [ \"$(sudo grep \"^ZSH_THEME=\" /root/.zshrc)\" ] && sudo -i sed -i "s/^ZSH_THEME=.*/ZSH_THEME=\"{theme}\"/" /root/.zshrc"""
 
     # Show/hide OhMyZsh Install button
     def check_oh_my_zsh(self) -> None:

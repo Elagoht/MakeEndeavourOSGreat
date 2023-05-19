@@ -14,7 +14,6 @@ class SideWindow(QScrollArea):
         self.setWidget(self.winWidget)
         self.setWidgetResizable(True)
         self.setParent(parent)
-        # self.setMinimumSize(900, 500)
 
     def close(self) -> bool:
         for action in self.close_actions:

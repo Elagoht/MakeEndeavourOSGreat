@@ -62,7 +62,7 @@
             "name": "LogMeIn Hamachi (No GUI)",
             "package": "logmein-hamachi",
             "image": "GUI/Assets/Apps/Gaming/logmeinhamachi.png",
-            "description": "A zero-configuration VPN service. Run this command after install: <font color=\"green\" face=\"monospace\">pkexec systemctl enable --now logmein-hamachi.service</font>"
+            "description": "A zero-configuration VPN service. Run this command after install: <font color=\"green\" face=\"monospace\">sudo systemctl enable --now logmein-hamachi.service</font>"
         },
         {
             "name": "HaGUIchi (GUI for Hamachi)",

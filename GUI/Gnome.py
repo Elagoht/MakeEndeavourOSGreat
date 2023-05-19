@@ -14,10 +14,10 @@ class GnomeWin(QWidget):
                       "<p>Wayland is a new technology to replace Xorg display server. Its may be lighter and faster. Waydroid only works on Wayland but because of it is a new technology, some features are not compatible yet. I.e. global keyboard shourtcuts does not supported right now. Discord cannot share screen on.</p>\
                        <p>Wayland has its own <font color='green'>advantages</font> and <font color='red'>disadvantages</font>. So you may want to change this setting in the future depending on your needs. But for now using Xorg and ditching Wayland is more compatible.</p>", (
                           CommandButton(QIcon("GUI/Assets/configure.png"), "Use Wayland",
-                                        "pkexec sed -i \"s/^WaylandEnable=false/#WaylandEnable=false/\" /etc/gdm/custom.conf",
+                                        "sudo sed -i \"s/^WaylandEnable=false/#WaylandEnable=false/\" /etc/gdm/custom.conf",
                                         self),
                           CommandButton(QIcon("GUI/Assets/configure.png"), "Use XOrg",
-                                        "pkexec sed -i \"s/^#WaylandEnable=false/WaylandEnable=false/\" /etc/gdm/custom.conf",
+                                        "sudo sed -i \"s/^#WaylandEnable=false/WaylandEnable=false/\" /etc/gdm/custom.conf",
                                         self))
                       )
 
@@ -49,7 +49,7 @@ class GnomeWin(QWidget):
                                             fi
                                         fi &&
                                         if [ -f /usr/bin/kgx ]
-                                            then pkexec pacman -R gnome-console
+                                            then sudo pacman -R gnome-console
                                         fi""", self),)
                       )
         # Chose Gnome Console over Terminal
@@ -58,12 +58,12 @@ class GnomeWin(QWidget):
                       "Gnome Console is more compatible with dark/light theme but is not compatible with default terminal application configuration.", (
                           CommandButton(QIcon("GUI/Assets/configure.png"), "Use Gnome Console",
                                         """if [ ! -f /usr/bin/kgx ]
-                                            then pkexec pacman -S gnome-console
+                                            then sudo pacman -S gnome-console
                                         fi &&
                                         if [ "$(pacman -Qqs gnome-terminal)" = "gnome-terminal-transparency" ]
-                                            then pkexec pacman -R gnome-terminal-transparency
+                                            then sudo pacman -R gnome-terminal-transparency
                                         elif [ "$(pacman -Qqs gnome-terminal)" = "gnome-terminal" ]
-                                            then pkexec pacman -R gnome-terminal
+                                            then sudo pacman -R gnome-terminal
                                         fi""", self),)
                       )
         # Create keybinds section

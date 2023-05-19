@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import QWidget, QLabel, QVBoxLayout
-from Utilities import ExtensionBox, AppBox, GridBox
+from Utilities import ExtensionBox, AppBox, GridBox, get_installed_apps
 from json import load
 
 
@@ -9,9 +9,10 @@ class ExtensionsWin(QWidget):
         self.setParent(parent)
 
         # Create connector section
+        self.installed_apps = get_installed_apps()
         self.gbxConnector = AppBox("Browser Connector", "gnome-browser-connector", "GUI/Assets/Apps/gnomeextensions.png",
                                    "You need to install a browser connector to be able to install extensions from your web browser.",
-                                   self.parent().parent().barBottom)
+                                   self, self.parent().parent().barBottom)
 
         # Create Extensions section
         self.gbxExtensions = GridBox("Suggested Extensions")
