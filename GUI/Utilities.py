@@ -69,8 +69,7 @@ class CommandThread(QThread):
         {"" if self.avoid_xterm else "xterm -xrm 'XTerm.vt100.allowTitleOps: false' -T 'Endeavour OS Tweaker Slave' -bg black -fg peru -e"}\
         sh -c '{self.command}; echo $? > '$statusfile 2> /dev/null;
         cat $statusfile;
-        rm $statusfile;
-        read""".encode())
+        rm $statusfile""".encode())
         process.closeWriteChannel()
         # Wait until process is finished.
         process.waitForFinished()
@@ -107,9 +106,10 @@ class AppBox(QGroupBox):
         self.glyApp = QGridLayout(self)
 
         # Create info section
-        self.lblTitle = QLabel(title)
+        self.lblTitle = QLabel("<b>" + title+" </b>")
         self.imgImage = QLabel(self)
         self.imgImage.setPixmap(QPixmap(image))
+        self.imgImage.setFixedSize(64, 64)
         self.lblDescription = QLabel(description)
         # Make links clickable
         self.lblDescription.setOpenExternalLinks(True)
@@ -117,12 +117,17 @@ class AppBox(QGroupBox):
         self.lblDescription.setTextInteractionFlags(Qt.TextBrowserInteraction)
         self.lblDescription.setWordWrap(True)
         self.btnInstall = AppInstallButton(False, False, self)
+        self.btnInstall.setFixedSize(40, 40)
+
+        # Description Box
+        self.layDescription = QVBoxLayout()
+        self.layDescription.addWidget(self.lblTitle)
+        self.layDescription.addWidget(self.lblDescription)
 
         # Insert layouts and wigdets to layouts
-        self.glyApp.addWidget(self.lblTitle, 0, 0, 1, 3)
-        self.glyApp.addWidget(self.imgImage, 1, 0)
-        self.glyApp.addWidget(self.lblDescription, 1, 1)
-        self.glyApp.addWidget(self.btnInstall, 1, 2)
+        self.glyApp.addWidget(self.imgImage, 0, 0)
+        self.glyApp.addLayout(self.layDescription, 0, 1)
+        self.glyApp.addWidget(self.btnInstall, 0, 2)
         # Additional CSS
         self.setStyleSheet("""QGroupBox {
             background: rgba(0,0,0,.25);
@@ -145,9 +150,6 @@ class AppInstallButton(QPushButton):
         self.install_state = install_state
         self.action_state = action_state
 
-        # Button Style
-        self.setFixedSize(40, 40)
-
     def toggle_action(self):
         self.action_state = not self.action_state
         if self.install_state:
@@ -168,7 +170,7 @@ class AppInstallButton(QPushButton):
                     border-radius:6px;
                     color: white;"""
                 )
-                self.setText("🗸")
+                self.setText("√")
         else:
             if self.action_state:
                 self.setStyleSheet(
@@ -187,7 +189,7 @@ class AppInstallButton(QPushButton):
                     border-radius:6px;
                     color: white;"""
                 )
-                self.setText("🗸")
+                self.setText("√")
 
     def check_install_state(self):
         return self.owner.package in self.owner.owner.installed_apps
@@ -211,7 +213,7 @@ class ButtonBox(QGroupBox):
         self.lblTitle = QLabel("<b>" + title + "<b>")
         self.imgApp = QLabel(self)
         self.imgApp.setPixmap(QPixmap(image))
-        self.imgApp.setFixedSize(128, 128)
+        self.imgApp.setFixedSize(64, 64)
         self.lblDescription = QLabel(description)
         self.lblDescription.setWordWrap(True)
 
@@ -316,7 +318,7 @@ class ThemeBox(QGroupBox):
         self.lblThemeTitle.setWordWrap(True)
         self.imgTheme = QLabel(self)
         self.imgTheme.setPixmap(QPixmap(image))
-        self.imgTheme.setFixedSize(128, 128)
+        self.imgTheme.setFixedSize(64, 64)
 
         # Create installation buttons
         self.btnThemeInstall = CommandButton(
@@ -431,7 +433,7 @@ class AppsWin(QWidget):
         for language_name, program_list in program_lists.items():
             grid_box = GridBox(language_name)
             for number, program in enumerate(program_list):
-                if number < 3:
+                if number < 2:
                     grid_box.addWidget(
                         AppBox(title=program["name"],
                                package=program["package"],

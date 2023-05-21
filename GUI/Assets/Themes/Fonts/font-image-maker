@@ -2,7 +2,7 @@
 
 # echo \
 convert \
-  -size 128x128 xc:transparent \
-  \( -font $1 -fill black -pointsize 100 -gravity center -draw "text 4,0 'Aa'" -blur 0x5 \) \
-  \( -font $1 -fill white -pointsize 100 -gravity center -draw "text 4,0 'Aa'" \) \
+  -size 64x64 xc:transparent \
+  \( -font $1 -fill black -pointsize 100 -gravity center -draw "text 2,0 'Aa'" -blur 0x5 \) \
+  \( -font $1 -fill white -pointsize 100 -gravity center -draw "text 2,0 'Aa'" \) \
   "$2.png"
