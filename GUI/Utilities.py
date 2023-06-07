@@ -72,7 +72,7 @@ class CommandThread(QThread):
         rm $statusfile""".encode())
         process.closeWriteChannel()
         # Wait until process is finished.
-        process.waitForFinished()
+        process.waitForFinished(-1)
 
         # Handle process's exit code.
         try:
@@ -98,7 +98,7 @@ class AppBox(QGroupBox):
         super().__init__(owner)
         self.owner = owner
         self.package = package
-        self.bar_bottom = bar_bottom
+        self.bar_bottom:BottomBar = bar_bottom
         self.is_installed: bool = False
         self.is_checked: bool = False
 
@@ -171,6 +171,8 @@ class AppInstallButton(QPushButton):
                     color: white;"""
                 )
                 self.setText("√")
+            # Add to/Remove from "to uninstall" list
+            self.owner.bar_bottom.to_uninstall_list(self.owner.package, not self.action_state)
         else:
             if self.action_state:
                 self.setStyleSheet(
@@ -190,6 +192,8 @@ class AppInstallButton(QPushButton):
                     color: white;"""
                 )
                 self.setText("√")
+            # Add to/Remove from "to install" list
+            self.owner.bar_bottom.to_install_list(self.owner.package, not self.action_state)
 
     def check_install_state(self):
         return self.owner.package in self.owner.owner.installed_apps
@@ -390,6 +394,7 @@ class ShellBox(AppBox):
         super().__init__(title, package, image, description, owner, bottom_bar)
 
         # If uninstallable remove install buttons
+        self.uninstallable=uninstallable
         if uninstallable:
             self.glyApp.removeWidget(self.btnInstall)
             del self.btnInstall
@@ -411,7 +416,7 @@ class ShellBox(AppBox):
         self.laySetButtons = QHBoxLayout()
         self.laySetButtons.addWidget(self.btnSet)
         self.laySetButtons.addWidget(self.btnSetRoot)
-        self.glyApp.addLayout(self.laySetButtons, 2, 0, 1, 3)
+        self.glyApp.addLayout(self.laySetButtons, 2, 0, 1, 2 if self.uninstallable else 3)
 
 
 class AppsWin(QWidget):
@@ -476,14 +481,18 @@ class DconfEditRow(QGroupBox):
 
         # Create Layouts
         self.lblDconf = QLabel(name)
+        self.lblDconf.setAlignment(Qt.AlignTop)
         self.layout = QHBoxLayout(self)
 
         # Insert layouts and widgets to layouts
-        self.layButtons = QHBoxLayout()
+        self.layButtons = QGridLayout()
         self.layout.addWidget(self.lblDconf)
         self.layout.addLayout(self.layButtons)
-        for checkbox in self.checkboxes:
-            self.layButtons.addWidget(checkbox)
+        for number, checkbox in enumerate(self.checkboxes):
+            if number < 2:
+                self.layButtons.addWidget(checkbox, 0, number)
+            else:
+                self.layButtons.addWidget(checkbox)
 
         # Additional CSS
         self.setStyleSheet("""QGroupBox {
@@ -506,10 +515,6 @@ class DconfEditRow(QGroupBox):
 
         for checkbox in self.checkboxes:
             checkbox.setChecked(checkbox.keybind in keybinds)
-
-    # Define checkbox add function
-    def add_checkbox(self, checkbox: DconfCheckBox):
-        self.layout.addWidget(checkbox)
 
     # Create command property
     @property

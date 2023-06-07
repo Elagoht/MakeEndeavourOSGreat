@@ -40,6 +40,7 @@ class Central(QWidget):
 
         self.is_page_open = not self.is_page_open
         self.barSide.setVisible(not self.is_page_open)
+        self.barTop.btnBack.hide()
 
     # Open side window
     def open_window(self, title: str, window_class: QWidget, params: list) -> None:
@@ -48,4 +49,4 @@ class Central(QWidget):
             window_class, params if params else [], self, [])
         self.layWindow.addWidget(self.winWidget, 1, 0)
         self.barTop.set_title(title)
-        self.barTop.toggle_back_button_visibility()
+        self.barTop.btnBack.show()

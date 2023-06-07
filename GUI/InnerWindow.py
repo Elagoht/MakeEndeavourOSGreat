@@ -47,11 +47,7 @@ class TopBar(QWidget):
     # Back to main page functin
     def go_back(self) -> None:
         self.parent().close_window()
-        self.toggle_back_button_visibility()
-
-    # Back button visibility setter
-    def toggle_back_button_visibility(self) -> None:
-        self.btnBack.setVisible(not self.btnBack.isVisible())
+        self.btnBack.hide()
 
 
 class BottomBar(QWidget):
@@ -81,8 +77,10 @@ class BottomBar(QWidget):
                 lambda: self.clear_lists() if has_aur_helper() else QMessageBox.warning(
                     self, "AUR Helper Needed",
                     "To install all applications, you need an AUR helper. This program only supports paru and yay. You can install one with the help of this application."
-                )
-            ]
+                ),
+                self.parent().close_window
+            ],
+            True
         )
         self.btnApply.setMaximumWidth(120)
 

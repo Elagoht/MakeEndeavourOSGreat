@@ -118,7 +118,7 @@ class GnomeWin(QWidget):
                 )
             ),
             DconfEditRow(
-                "Toggle Fullscreen (F11 may conflict with some apps)", "org.gnome.desktop.wm.keybindings toggle-fullscreen", (
+                "Toggle Fullscreen (F11 may conflict)", "org.gnome.desktop.wm.keybindings toggle-fullscreen", (
                     DconfCheckBox("Alt+F12", "'<Alt>F12'"),
                     DconfCheckBox("Super+F12", "'<Super>F12'"),
                     DconfCheckBox("Alt+F11", "'<Alt>F11'"),
