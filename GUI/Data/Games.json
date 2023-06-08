@@ -87,6 +87,12 @@
             "description": "Super Mario Bros clone starring Tux the Penguin."
         },
         {
+            "name": "Frogatto",
+            "package": "frogatto",
+            "image": "GUI/Assets/Apps/Games/frogatto.png",
+            "description": "An old-school 2d platformer game, starring a certain quixotic frog."
+        },
+        {
             "name": "Hedgewars",
             "package": "hedgewars",
             "image": "GUI/Assets/Apps/Games/hedgewars.png",
