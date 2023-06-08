@@ -9,9 +9,6 @@ Endeaours OS is already a great OS. But it describe itself as a *"terminal centr
 
 This application mostly targets Gnome DE users. You can always use other options than gnome ones. But my first aim is to make Gnome better for users. In close future, I *may* develop options for other DE or WM users (such as i3).
 
-You may want to take a look at [TODOs](TODOs.md)
-and may want to take a look at [Commands](Commands.md).
-
 I'll create a GUI app to make it easier to use for newcomers.
 
 ## ScreenShots
@@ -41,3 +38,8 @@ I'll create a GUI app to make it easier to use for newcomers.
 ![Recommended Games](Screenshots/games.png)
 
 ![Development](Screenshots/development.png)
+
+## Contributors
+
+<!-- readme: contributors -start -->
+<!-- readme: contributors -end -->
