@@ -78,6 +78,7 @@ class BottomBar(QWidget):
                     self, "AUR Helper Needed",
                     "To install all applications, you need an AUR helper. This program only supports paru and yay. You can install one with the help of this application."
                 ),
+                self.parent().close_window
             ],
             True
         )
@@ -126,8 +127,9 @@ class BottomBar(QWidget):
 
     def update_button_availablity(self):
         self.btnApply.setEnabled(
-            any([self.to_install, self.to_uninstall])
-        )
+            any([self.to_install, self.to_uninstall]))
+        self.btnTasks.setEnabled(
+            any([self.to_install, self.to_uninstall]))
 
     # * CummandButton is already connected as empty lists.
     # * To update command, update directly its command variable.
@@ -147,6 +149,3 @@ class BottomBar(QWidget):
 
     def open_tasks_modal(self):
         self.modal = TasksModal(self.to_install, self.to_uninstall)
-
-
-# TODO: Listeler boşsa buton iptal olsun
