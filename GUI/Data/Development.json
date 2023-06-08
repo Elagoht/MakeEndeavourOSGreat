@@ -3,43 +3,43 @@
         {
             "name": "Code",
             "package": "code",
-            "image": "GUI/Assets/Apps/Development/code-oss.png",
+            "image": "Assets/Apps/Development/code-oss.png",
             "description": "Code OSS, is a source-code editor made with the Electron Framework."
         },
         {
             "name": "VSCodium",
             "package": "vscodium-bin vscodium-bin-features vscodium-bin-marketplace",
-            "image": "GUI/Assets/Apps/Development/vscodium.png",
+            "image": "Assets/Apps/Development/vscodium.png",
             "description": "Community-driven, freely-licensed binary distribution of Microsoft's editor VS Code."
         },
         {
             "name": "VSCode",
             "package": "visual-studio-code-bin",
-            "image": "GUI/Assets/Apps/Development/vscode.png",
+            "image": "Assets/Apps/Development/vscode.png",
             "description": "A Code OSS distribution with Microsoft specific customizations."
         },
         {
             "name": "Neovim",
             "package": "neovim",
-            "image": "GUI/Assets/Apps/Development/nvim.png",
+            "image": "Assets/Apps/Development/nvim.png",
             "description": "Vim with lua scripting support and still supports vimscript."
         },
         {
             "name": "Emacs",
             "package": "emacs",
-            "image": "GUI/Assets/Apps/Development/emacs.png",
+            "image": "Assets/Apps/Development/emacs.png",
             "description": "The extensible, customizable, self-documenting, real-time display editor."
         },
         {
             "name": "Kate",
             "package": "kate",
-            "image": "GUI/Assets/Apps/Development/kate.png",
+            "image": "Assets/Apps/Development/kate.png",
             "description": "The KDE Advanced Text Editor, source code editor developed by the KDE."
         },
         {
             "name": "Kdevelop",
             "package": "kdevelop",
-            "image": "GUI/Assets/Apps/Development/kdevelop.png",
+            "image": "Assets/Apps/Development/kdevelop.png",
             "description": "Free and Open-source integrated development environment by KDE."
         }
     ],
@@ -47,13 +47,13 @@
         {
             "name": "GitHub CLI",
             "package": "github-cli",
-            "image": "GUI/Assets/Apps/Development/github.png",
+            "image": "Assets/Apps/Development/github.png",
             "description": "Commandline interface for GitHub. Use with command: <font color='yellow'>gh</font>"
         },
         {
             "name": "GitHub Desktop",
             "package": "github-desktop-bin",
-            "image": "GUI/Assets/Apps/Development/githubdesktop.png",
+            "image": "Assets/Apps/Development/githubdesktop.png",
             "description": "Desktop GUI interface for GitHub. Manage your repositories, issues, pull requests etc."
         }
     ],
@@ -61,25 +61,25 @@
         {
             "name": "Draw.io Desktop",
             "package": "drawio-desktop-bin",
-            "image": "GUI/Assets/Apps/Development/drawio.png",
+            "image": "Assets/Apps/Development/drawio.png",
             "description": "Graph, flowchart drawing software developed in HTML5 and JavaScript."
         },
         {
             "name": "Minder",
             "package": "minder",
-            "image": "GUI/Assets/Apps/Development/minder.png",
+            "image": "Assets/Apps/Development/minder.png",
             "description": "Use the power of mind-mapping to make your ideas come to life."
         },
         {
             "name": "Logisim",
             "package": "logisim",
-            "image": "GUI/Assets/Apps/Development/logisim.png",
+            "image": "Assets/Apps/Development/logisim.png",
             "description": "An educational tool for designing and simulating digital logic circuits."
         },
         {
             "name": "Geogebra",
             "package": "geogebra",
-            "image": "GUI/Assets/Apps/Development/geogebra.png",
+            "image": "Assets/Apps/Development/geogebra.png",
             "description": "Dynamic mathematics software with interactive graphics, algebra and spreadsheet."
         }
     ],
@@ -87,13 +87,13 @@
         {
             "name": "Qt Creator",
             "package": "qt5-tools",
-            "image": "GUI/Assets/Apps/Development/qtcreator.png",
+            "image": "Assets/Apps/Development/qtcreator.png",
             "description": "Part of the SDK for the Qt GUI application development framework."
         },
         {
             "name": "Gnome Builder",
             "package": "gnome-builder",
-            "image": "GUI/Assets/Apps/Development/gnomebuilder.png",
+            "image": "Assets/Apps/Development/gnomebuilder.png",
             "description": "IDE for the GNOME platform, primarily designed to aid for GNOME-based applications."
         }
     ],
@@ -101,25 +101,25 @@
         {
             "name": "Oracle VM VirtualBox",
             "package": "virtualbox",
-            "image": "GUI/Assets/Apps/Development/virtualbox.png",
+            "image": "Assets/Apps/Development/virtualbox.png",
             "description": "Oracle VM VirtualBox is a type-2 hypervisor for x86 virtualization"
         },
         {
             "name": "QEMU Base",
             "package": "qemu-base",
-            "image": "GUI/Assets/Apps/Development/qemu.png",
+            "image": "Assets/Apps/Development/qemu.png",
             "description": "QEMU generic and open source machine emulator and virtualizer (without GUI)."
         },
         {
             "name": "QEMU Full",
             "package": "qemu-full",
-            "image": "GUI/Assets/Apps/Development/qemu.png",
+            "image": "Assets/Apps/Development/qemu.png",
             "description": "QEMU generic and open source machine emulator and virtualizer (with GUI)."
         },
         {
             "name": "Docker",
             "package": "docker",
-            "image": "GUI/Assets/Apps/Development/docker.png",
+            "image": "Assets/Apps/Development/docker.png",
             "description": "Set of platform as a service products use OS-level virtualization in packages called containers."
         }
     ],
@@ -127,49 +127,49 @@
         {
             "name": "Nginx",
             "package": "nginx",
-            "image": "GUI/Assets/Apps/Development/nginx.png",
+            "image": "Assets/Apps/Development/nginx.png",
             "description": "Web server that can also be used as a reverse proxy, load balancer, mail proxy and HTTP cache."
         },
         {
             "name": "Apacher HTTP Server",
             "package": "apache",
-            "image": "GUI/Assets/Apps/Development/apachehttpserver.png",
+            "image": "Assets/Apps/Development/apachehttpserver.png",
             "description": "Very popular web server, developed by the Apache Software Foundation."
         },
         {
             "name": "MongoDB",
             "package": "mongodb-bin",
-            "image": "GUI/Assets/Apps/Development/mongodb.png",
+            "image": "Assets/Apps/Development/mongodb.png",
             "description": "Source-available, cross-platform, document-oriented NoSQL database program."
         },
         {
             "name": "MariaDB",
             "package": "mariadb",
-            "image": "GUI/Assets/Apps/Development/mariadb.png",
+            "image": "Assets/Apps/Development/mariadb.png",
             "description": "Commercially supported fork of MySQL relational database management system."
         },
         {
             "name": "DB Browser for SQLite",
             "package": "sqlitebrowser",
-            "image": "GUI/Assets/Apps/Development/sqlitebrowser.png",
+            "image": "Assets/Apps/Development/sqlitebrowser.png",
             "description": "High quality visual tool to create, design and edit SQLite database."
         },
         {
             "name": "DBeaver",
             "package": "sqlitebrowser",
-            "image": "GUI/Assets/Apps/Development/dbeaver.png",
+            "image": "Assets/Apps/Development/dbeaver.png",
             "description": "High quality visual tool to create, design and edit SQLite database."
         },
         {
             "name": "Azure Data Studio",
             "package": "azuredatastudio-bin",
-            "image": "GUI/Assets/Apps/Development/azuredatastudio.png",
+            "image": "Assets/Apps/Development/azuredatastudio.png",
             "description": "Cross-platform database tool for data professionals who use on-premises and cloud data platforms."
         },
         {
             "name": "Filezilla",
             "package": "filezilla",
-            "image": "GUI/Assets/Apps/Development/filezilla.png",
+            "image": "Assets/Apps/Development/filezilla.png",
             "description": "Fast and reliable FTP, FTPS and SFTP client with graphical interface."
         }
     ],
@@ -177,13 +177,13 @@
         {
             "name": "BlueFish Editor",
             "package": "bluefish",
-            "image": "GUI/Assets/Apps/Development/bluefish.png",
+            "image": "Assets/Apps/Development/bluefish.png",
             "description": "Editor targeted for webdevelopers, with many options, scripts and programming code."
         },
         {
             "name": "Google Web Designer",
             "package": "google-webdesigner",
-            "image": "GUI/Assets/Apps/Development/googlewebdesigner.png",
+            "image": "Assets/Apps/Development/googlewebdesigner.png",
             "description": "Drag-and-drop page builder for creating interactive HTML5 ads and other HTML5 content. "
         }
     ],
@@ -191,19 +191,19 @@
         {
             "name": "Node.js",
             "package": "nodejs",
-            "image": "GUI/Assets/Apps/Development/nodejs.png",
+            "image": "Assets/Apps/Development/nodejs.png",
             "description": "Backend JavaScript runtime environment, executes JavaScript outside a web browser."
         },
         {
             "name": "Npm",
             "package": "npm",
-            "image": "GUI/Assets/Apps/Development/npm.png",
+            "image": "Assets/Apps/Development/npm.png",
             "description": "Package manager for the JavaScript programming language."
         },
         {
             "name": "Yarn",
             "package": "yarn",
-            "image": "GUI/Assets/Apps/Development/yarn.png",
+            "image": "Assets/Apps/Development/yarn.png",
             "description": "Package manager for your code. It allows to use and share (e.g. JavaScript) code."
         }
     ],
@@ -211,25 +211,25 @@
         {
             "name": "PHP",
             "package": "php",
-            "image": "GUI/Assets/Apps/Development/php.png",
+            "image": "Assets/Apps/Development/php.png",
             "description": "General-purpose scripting language geared toward web development."
         },
         {
             "name": "PHPStorm",
             "package": "phpstorm ",
-            "image": "GUI/Assets/Apps/Development/phpstorm.png",
+            "image": "Assets/Apps/Development/phpstorm.png",
             "description": "Proprietary, cross-platform IDE for PHP, built by JetBrains."
         },
         {
             "name": "phpMyAdmin",
             "package": "phpmyadmin",
-            "image": "GUI/Assets/Apps/Development/phpmyadmin.png",
+            "image": "Assets/Apps/Development/phpmyadmin.png",
             "description": "Open source administration tool for MySQL and MariaDB."
         },
         {
             "name": "Netbeans PHP",
             "package": "netbeans-php",
-            "image": "GUI/Assets/Apps/Development/netbeans.png",
+            "image": "Assets/Apps/Development/netbeans.png",
             "description": "NetBeans integrated development environment for PHP language."
         }
     ],
@@ -237,43 +237,43 @@
         {
             "name": "Eclipse Java",
             "package": "eclipse-java",
-            "image": "GUI/Assets/Apps/Development/eclipse.png",
+            "image": "Assets/Apps/Development/eclipse.png",
             "description": "Most popular integrated development environment for Java development."
         },
         {
             "name": "Netbeans Java",
             "package": "netbeans",
-            "image": "GUI/Assets/Apps/Development/netbeans.png",
+            "image": "Assets/Apps/Development/netbeans.png",
             "description": "NetBeans integrated development environment for Java language."
         },
         {
             "name": "IntelliJ IDEA",
             "package": "intellij-idea-community-edition",
-            "image": "GUI/Assets/Apps/Development/intellijidea.png",
+            "image": "Assets/Apps/Development/intellijidea.png",
             "description": "IDE for developing software in Java, Kotlin, Groovy and other JVM-based languages."
         },
         {
             "name": "JDK latest",
             "package": "jdk-openjdk",
-            "image": "GUI/Assets/Apps/Development/java.png",
+            "image": "Assets/Apps/Development/java.png",
             "description": "Java Development Kit by Oracle Corporation, latest version."
         },
         {
             "name": "JDK 17",
             "package": "jdk17-openjdk",
-            "image": "GUI/Assets/Apps/Development/java.png",
+            "image": "Assets/Apps/Development/java.png",
             "description": "Java Development Kit by Oracle Corporation, version 17."
         },
         {
             "name": "JDK 11",
             "package": "jdk11-openjdk",
-            "image": "GUI/Assets/Apps/Development/java.png",
+            "image": "Assets/Apps/Development/java.png",
             "description": "Java Development Kit by Oracle Corporation, version 11."
         },
         {
             "name": "JDK 8",
             "package": "jdk8-openjdk",
-            "image": "GUI/Assets/Apps/Development/java.png",
+            "image": "Assets/Apps/Development/java.png",
             "description": "Java Development Kit by Oracle Corporation, latest version 8."
         }
     ],
@@ -281,37 +281,37 @@
         {
             "name": "Pip",
             "package": "python-pip",
-            "image": "GUI/Assets/Apps/Development/python.png",
+            "image": "Assets/Apps/Development/python.png",
             "description": "[P]ip [I]nstalls [P]ackages, package manager for Python."
         },
         {
             "name": "bPython",
             "package": "bpython",
-            "image": "GUI/Assets/Apps/Development/bpython.png",
+            "image": "Assets/Apps/Development/bpython.png",
             "description": "Fancy Python interpreter with syntax higlhligter and more."
         },
         {
             "name": "PyCharm",
             "package": "pycharm-community-edition",
-            "image": "GUI/Assets/Apps/Development/pycharm.png",
+            "image": "Assets/Apps/Development/pycharm.png",
             "description": "Integrated development environment used for programming in Python"
         },
         {
             "name": "IDLE",
             "package": "idle",
-            "image": "GUI/Assets/Apps/Development/python.png",
+            "image": "Assets/Apps/Development/python.png",
             "description": "Integrated Development and Learning Environment for Python"
         },
         {
             "name": "IDLEX",
             "package": "idlex",
-            "image": "GUI/Assets/Apps/Development/python.png",
+            "image": "Assets/Apps/Development/python.png",
             "description": "Basically IDLE, extended."
         },
         {
             "name": "TK",
             "package": "tk",
-            "image": "GUI/Assets/Apps/Development/tcltk.png",
+            "image": "Assets/Apps/Development/tcltk.png",
             "description": "Graphical user interface toolkit. (Required for Tkinter)"
         }
     ],
@@ -319,13 +319,13 @@
         {
             "name": "Dotnet SDK",
             "package": "dotnet-sdk",
-            "image": "GUI/Assets/Apps/Development/dotnet.png",
+            "image": "Assets/Apps/Development/dotnet.png",
             "description": "Software development kit to build and run .NET applications."
         },
         {
             "name": "ASP.NET Runtime",
             "package": "aspnet-runtime-bin",
-            "image": "GUI/Assets/Apps/Development/aspnet.png",
+            "image": "Assets/Apps/Development/aspnet.png",
             "description": "The ASP.NET Core runtime (binary)."
         }
     ],
@@ -333,37 +333,37 @@
         {
             "name": "Code::Blocks",
             "package": "codeblocks",
-            "image": "GUI/Assets/Apps/Development/codeblocks.png",
+            "image": "Assets/Apps/Development/codeblocks.png",
             "description": "IDE for multiple compilers including GCC, Clang and Visual C++."
         },
         {
             "name": "Eclipse C/C++",
             "package": "eclipse-cpp",
-            "image": "GUI/Assets/Apps/Development/eclipse-cdt.png",
+            "image": "Assets/Apps/Development/eclipse-cdt.png",
             "description": "The Eclipse CDT\u2122 Project provides a fully functional C and C++."
         },
         {
             "name": "Netbeans C++",
             "package": "netbeans-cpp",
-            "image": "GUI/Assets/Apps/Development/netbeans.png",
+            "image": "Assets/Apps/Development/netbeans.png",
             "description": "NetBeans integrated development environment for C and C++ languages."
         },
         {
             "name": ".h files)",
             "package": "linux-headers",
-            "image": "GUI/Assets/Apps/Development/header.png",
+            "image": "Assets/Apps/Development/header.png",
             "description": "Required header (*.h) files for Linux kernel."
         },
         {
             "name": "Linux LTS Headers",
             "package": "linux-lts-headers",
-            "image": "GUI/Assets/Apps/Development/header.png",
+            "image": "Assets/Apps/Development/header.png",
             "description": "Required header (*.h) files for Linux LTS kernel."
         },
         {
             "name": "Linux Zen Headers",
             "package": "linux-zen-headers",
-            "image": "GUI/Assets/Apps/Development/header.png",
+            "image": "Assets/Apps/Development/header.png",
             "description": "Required header (*.h) files for Linux ZEN kernel."
         }
     ],
@@ -371,7 +371,7 @@
         {
             "name": "RustUp",
             "package": "rustup",
-            "image": "GUI/Assets/Apps/Development/rust.png",
+            "image": "Assets/Apps/Development/rust.png",
             "description": "Installs The Rust Programming Language from the official release channels."
         }
     ],
@@ -379,13 +379,13 @@
         {
             "name": "R",
             "package": "r",
-            "image": "GUI/Assets/Apps/Development/r.png",
+            "image": "Assets/Apps/Development/r.png",
             "description": "Programming language for statistical computing and graphics."
         },
         {
             "name": "RStudio",
             "package": "rstudio-desktop-bin",
-            "image": "GUI/Assets/Apps/Development/rstudio.png",
+            "image": "Assets/Apps/Development/rstudio.png",
             "description": "Integrated development environment for R."
         }
     ],
@@ -393,13 +393,13 @@
         {
             "name": "Swi-Prolog",
             "package": "swi-prolog",
-            "image": "GUI/Assets/Apps/Development/swiprolog.png",
+            "image": "Assets/Apps/Development/swiprolog.png",
             "description": "Commonly used for teaching and semantic web applications. Launch with command: <font color='yellow'>swipl-win</font>."
         },
         {
             "name": "GNU Prolog",
             "package": "gprolog",
-            "image": "GUI/Assets/Apps/Development/gprolog.png",
+            "image": "Assets/Apps/Development/gprolog.png",
             "description": "Prolog compiler with constraint solvingover finite domains. Launch with command: <font color='yellow'>gprolog</font>."
         }
     ]

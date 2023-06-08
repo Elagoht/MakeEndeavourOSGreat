@@ -2,7 +2,7 @@
     {
         "name": "Papirus",
         "package": "papirus-icon-theme",
-        "image": "GUI/Assets/Themes/Icons/papirus.png",
+        "image": "Assets/Themes/Icons/papirus.png",
         "themes": {
             "Light": "Papirus-Light",
             "Default": "Papirus",
@@ -12,7 +12,7 @@
     {
         "name": "Qogir",
         "package": "qogir-gtk-theme",
-        "image": "GUI/Assets/Themes/Icons/qogir.png",
+        "image": "Assets/Themes/Icons/qogir.png",
         "themes": {
             "Default": "Qogir",
             "Dark": "Qogir-dark"
@@ -21,7 +21,7 @@
     {
         "name": "WhiteSur",
         "package": "whitesur-icon-theme",
-        "image": "GUI/Assets/Themes/Icons/whitesur.png",
+        "image": "Assets/Themes/Icons/whitesur.png",
         "themes": {
             "Default": "WhiteSur",
             "Dark": "WhiteSur-dark"
@@ -30,7 +30,7 @@
     {
         "name": "Numix Circle",
         "package": "numix-circle-icon-theme-git",
-        "image": "GUI/Assets/Themes/Icons/numix.png",
+        "image": "Assets/Themes/Icons/numix.png",
         "themes": {
             "Default": "Numix-Circle"
         }
@@ -38,7 +38,7 @@
     {
         "name": "We10X",
         "package": "we10x-icon-theme-git",
-        "image": "GUI/Assets/Themes/Icons/we10x.png",
+        "image": "Assets/Themes/Icons/we10x.png",
         "themes": {
             "Blue": "We10X-blue",
             "Blue Dark": "We10X-blue-dark",
@@ -51,7 +51,7 @@
     {
         "name": "Arc",
         "package": "arc-icon-theme",
-        "image": "GUI/Assets/Themes/Icons/arc.png",
+        "image": "Assets/Themes/Icons/arc.png",
         "themes": {
             "Default": "Arc"
         }
@@ -59,7 +59,7 @@
     {
         "name": "Yaru",
         "package": "yaru-icon-theme",
-        "image": "GUI/Assets/Themes/Icons/yaru.png",
+        "image": "Assets/Themes/Icons/yaru.png",
         "themes": {
             "Default": "Yaru",
             "Dark": "Yaru-dark"

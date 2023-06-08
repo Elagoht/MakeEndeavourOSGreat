@@ -55,7 +55,7 @@ I'll create a GUI app to make it easier to use for newcomers.
         <a href="https://github.com/gobelman67">
             <img src="https://avatars.githubusercontent.com/u/118717028?v=4" width="100;" alt="gobelman67"/>
             <br />
-            <sub><b>Null</b></sub>
+            <sub><b>Mehmet Burak Oktay</b></sub>
         </a>
     </td></tr>
 </table>

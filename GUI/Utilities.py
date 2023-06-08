@@ -337,11 +337,11 @@ class ThemeBox(QGroupBox):
 
         # Create installation buttons
         self.btnThemeInstall = CommandButton(
-            QIcon("GUI/Assets/install.png"), "Install",
+            QIcon("Assets/install.png"), "Install",
             install_if_doesnt_have(self.package),
             self, (self.check_install_state,), True)
         self.btnThemeUninstall = CommandButton(
-            QIcon("GUI/Assets/uninstall.png"),
+            QIcon("Assets/uninstall.png"),
             "Uninstall",
             uninstall_if_have(self.package),
             self, (self.check_install_state,), True)
@@ -355,7 +355,7 @@ class ThemeBox(QGroupBox):
 
         # Create list for theme-setter commandbuttons
         self.buttons = [CommandButton(
-            QIcon("GUI/Assets/configure.png"), name,
+            QIcon("Assets/configure.png"), name,
             f"""[ "$(pacman -Qqs {self.package} | grep ^{self.package}$)" = "{self.package}" ] && \
             gsettings set org.gnome.desktop.interface {self.to_change} \"{theme + ("" if type != 3 else " 10")}\"""",
             self)
@@ -412,13 +412,13 @@ class ShellBox(AppBox):
 
         # Setter buttons
         self.btnSet = CommandButton(
-            QIcon("GUI/Assets/configure.png"), "Set Default",
+            QIcon("Assets/configure.png"), "Set Default",
             f"echo New shell will be {package}.;\
                 [ \"{package}\" = \"sh\" ] || [ \"$(pacman -Qqs {package} | grep ^{package}$)\" = \"{package}\" ] &&\
                 chsh -s /bin/{package}",
             self)
         self.btnSetRoot = CommandButton(
-            QIcon("GUI/Assets/configure.png"), "Set Default for Root",
+            QIcon("Assets/configure.png"), "Set Default for Root",
             f"echo New shell will be {package}.;\
                 [ \"$(pacman -Qqs {package} | grep ^{package}$)\" = \"{package}\" ] && sudo chsh -s /bin/{package} root",
             self)
@@ -558,7 +558,7 @@ class DconfEditBox(QGroupBox):
 
         # Create widgets
         self.btnDconf = QPushButton(
-            QIcon("GUI/Assets/configure.png"), self.txtDconf, self)
+            QIcon("Assets/configure.png"), self.txtDconf, self)
         self.glyDconf.addWidget(self.btnDconf)
 
         # Connect buttons to functions

@@ -20,7 +20,7 @@ class SideBar(QWidget):
 
         # Create window opener buttons
         self.btnUpdate = CommandButton(
-            QIcon("GUI/Assets/upgrade.png"), "Update System",
+            QIcon("Assets/upgrade.png"), "Update System",
             aur_helper()+" -Syu", self)
         self.btnAurHelper = QPushButton(self.txtAurButton)
         self.btnPamac = QPushButton("Software Manager")
@@ -67,13 +67,13 @@ class SideBar(QWidget):
         self.btnShell.clicked.connect(lambda: parent.open_window(
             "Shell Program & Customizations", ShellWin, [self]))
         self.btnEssentials.clicked.connect(lambda: parent.open_window(
-            "Essential Apps", AppsWin, ["GUI/Data/Essentials.json", self]))
+            "Essential Apps", AppsWin, ["Data/Essentials.json", self]))
         self.btnGaming.clicked.connect(lambda: parent.open_window(
-            "Gaming Tools", AppsWin, ["GUI/Data/Gaming.json", self]))
+            "Gaming Tools", AppsWin, ["Data/Gaming.json", self]))
         self.btnGames.clicked.connect(lambda: parent.open_window(
-            "Recommended Games", AppsWin, ["GUI/Data/Games.json", self]))
+            "Recommended Games", AppsWin, ["Data/Games.json", self]))
         self.btnDevelopment.clicked.connect(lambda: parent.open_window(
-            "Development", AppsWin, ["GUI/Data/Development.json", self]))
+            "Development", AppsWin, ["Data/Development.json", self]))
 
         # Initialization
         self.check_aur_helper()

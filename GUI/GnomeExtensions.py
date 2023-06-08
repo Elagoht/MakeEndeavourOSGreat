@@ -10,7 +10,7 @@ class ExtensionsWin(QWidget):
 
         # Create connector section
         self.installed_apps = get_installed_apps()
-        self.gbxConnector = AppBox("Browser Connector", "gnome-browser-connector", "GUI/Assets/Apps/gnomeextensions.png",
+        self.gbxConnector = AppBox("Browser Connector", "gnome-browser-connector", "Assets/Apps/gnomeextensions.png",
                                    "You need to install a browser connector to be able to install extensions from your web browser.",
                                    self, self.parent().parent().barBottom)
 
@@ -27,7 +27,7 @@ class ExtensionsWin(QWidget):
         self.load_extensions()
 
     def load_extensions(self):
-        with open("GUI/Data/Extensions.json", "r") as extensions_json:
+        with open("Data/Extensions.json", "r") as extensions_json:
             extensions = load(extensions_json)
         for number, extension in enumerate(extensions):
             match number:

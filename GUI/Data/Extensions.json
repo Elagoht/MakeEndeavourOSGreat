@@ -2,66 +2,66 @@
     [
         "Appindicator Support",
         "https://extensions.gnome.org/extension/615/appindicator-support/",
-        "GUI/Assets/Extensions/appindicator.png"
+        "Assets/Extensions/appindicator.png"
     ],
     [
         "Dash to Dock",
         "https://extensions.gnome.org/extension/307/dash-to-dock/",
-        "GUI/Assets/Extensions/dashtodock.png"
+        "Assets/Extensions/dashtodock.png"
     ],
     [
         "NoAnnoyance v2",
         "https://extensions.gnome.org/extension/2182/noannoyance/",
-        "GUI/Assets/Extensions/noannoyance.png"
+        "Assets/Extensions/noannoyance.png"
     ],
     [
         "Scroll Panel",
         "https://extensions.gnome.org/extension/4257/scroll-panel/",
-        "GUI/Assets/Extensions/scrollpanel.png"
+        "Assets/Extensions/scrollpanel.png"
     ],
     [
         "Force Quit",
         "https://extensions.gnome.org/extension/770/force-quit/",
-        "GUI/Assets/Extensions/forcequit.png"
+        "Assets/Extensions/forcequit.png"
     ],
     [
         "Caffeine",
         "https://extensions.gnome.org/extension/517/caffeine/",
-        "GUI/Assets/Extensions/caffeine.png"
+        "Assets/Extensions/caffeine.png"
     ],
     [
         "Add to Desktop",
         "https://extensions.gnome.org/extension/3240/add-to-desktop/",
-        "GUI/Assets/Extensions/addtodesktop.png"
+        "Assets/Extensions/addtodesktop.png"
     ],
     [
         "Transparent Window",
         "https://extensions.gnome.org/extension/1454/transparent-window/",
-        "GUI/Assets/Extensions/transparent.png"
+        "Assets/Extensions/transparent.png"
     ],
     [
         "OpenWeather",
         "https://extensions.gnome.org/extension/750/openweather/",
-        "GUI/Assets/Extensions/openweather.png"
+        "Assets/Extensions/openweather.png"
     ],
     [
         "Statusarea Horizontal Spacing",
         "https://extensions.gnome.org/extension/355/status-area-horizontal-spacing/",
-        "GUI/Assets/Extensions/statusareaspacing.png"
+        "Assets/Extensions/statusareaspacing.png"
     ],
     [
         "Blur My Shell",
         "https://extensions.gnome.org/extension/3193/blur-my-shell/",
-        "GUI/Assets/Extensions/blurmyshell.png"
+        "Assets/Extensions/blurmyshell.png"
     ],
     [
         "Compiz Alike Magic Lamp Effect",
         "https://extensions.gnome.org/extension/3740/compiz-alike-magic-lamp-effect/",
-        "GUI/Assets/Extensions/compiz.png"
+        "Assets/Extensions/compiz.png"
     ],
     [
         "Color Picker",
         "https://extensions.gnome.org/extension/3396/color-picker/",
-        "GUI/Assets/Extensions/colorpicker.png"
+        "Assets/Extensions/colorpicker.png"
     ]
 ]

@@ -14,7 +14,7 @@ class AurHelperWin(QWidget):
         self.lblAurDesc = QLabel("Arch User Repository packages needs to be install manually by cloning git repositories (technically downloading files from internet but in a cooler way), and running some commands that creating packages from recipe file. That's usually a few step process. In this point, AUR helpers helps you to install, update and uninstall packages from AUR and official repositories.")
         self.lblAurDesc.setWordWrap(True)
         self.btnAurCheck = CommandButton(
-            QIcon("GUI/Assets/check.png"), "Check AUR Helpers", "true", self.gbxAur)
+            QIcon("Assets/check.png"), "Check AUR Helpers", "true", self.gbxAur)
         self.btnAurCheck.clicked.connect(
             lambda: self.lblAurHelper.setText(self.get_aur_helpers()))
         self.lblAurHelper = QLabel(self.gbxAur)
@@ -24,8 +24,8 @@ class AurHelperWin(QWidget):
 
         # Create paru section
         self.appParu = \
-            ButtonBox("Paru", "GUI/Assets/Apps/paru.png", "Paru is the most popular AUR helper written in Rust.", (
-                CommandButton(QIcon("GUI/Assets/install.png"), "Install",
+            ButtonBox("Paru", "Assets/Apps/paru.png", "Paru is the most popular AUR helper written in Rust.", (
+                CommandButton(QIcon("Assets/install.png"), "Install",
                               """if [ ! -f /bin/paru ]
                                 then workdir=$(mktemp -d) &&
                                 cd $workdir &&
@@ -35,7 +35,7 @@ class AurHelperWin(QWidget):
                                 rm -rf $workdir
                             fi""",
                               self, (lambda: self.lblAurHelper.setText(self.get_aur_helpers()),)),
-                CommandButton(QIcon("GUI/Assets/uninstall.png"), "Uninstall",
+                CommandButton(QIcon("Assets/uninstall.png"), "Uninstall",
                               """if [ -f /bin/paru ]
                                 then sudo pacman -R paru-bin || sudo pacman -R paru
                               fi""",
@@ -44,8 +44,8 @@ class AurHelperWin(QWidget):
 
         # Create yay section
         self.appYay = \
-            ButtonBox("Yay", "GUI/Assets/Apps/yay.png", "Yay is widely used AUR helper written in Go.", (
-                CommandButton(QIcon("GUI/Assets/install.png"), "Install",
+            ButtonBox("Yay", "Assets/Apps/yay.png", "Yay is widely used AUR helper written in Go.", (
+                CommandButton(QIcon("Assets/install.png"), "Install",
                               """if [ ! -f /bin/yay ]
                                 then workdir=$(mktemp -d) &&
                                 cd $workdir &&
@@ -55,7 +55,7 @@ class AurHelperWin(QWidget):
                                 rm -rf $workdir
                               fi""",
                               self, (lambda: self.lblAurHelper.setText(self.get_aur_helpers()),)),
-                CommandButton(QIcon("GUI/Assets/uninstall.png"), "Uninstall",
+                CommandButton(QIcon("Assets/uninstall.png"), "Uninstall",
                               """if [ -f /bin/yay ]
                                 then sudo pacman -R yay-bin || sudo pacman -R yay
                               fi""",

@@ -27,7 +27,7 @@ class TopBar(QWidget):
         super().__init__()
         self.setParent(parent)
 
-        self.btnBack = QPushButton(QIcon("GUI/Assets/back.png"), "Back", self)
+        self.btnBack = QPushButton(QIcon("Assets/back.png"), "Back", self)
         self.lblTitle = QLabel(title)
 
         self.layout = QHBoxLayout(self)
@@ -65,11 +65,10 @@ class BottomBar(QWidget):
 
         # Create tasks window opener
         self.btnTasks = QPushButton("Tasks", self)
-        # TODO: Add tasks window open code
         self.btnTasks.clicked.connect(self.open_tasks_modal)
         # Create apply button
         self.btnApply = CommandButton(
-            QIcon("GUI/Assets/install.png"),
+            QIcon("Assets/install.png"),
             "Apply",
             "",
             self,

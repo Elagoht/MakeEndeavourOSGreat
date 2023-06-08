@@ -13,7 +13,7 @@ class ShellWin(QWidget):
         self.installed_apps = get_installed_apps()
         self.appBash = ShellBox("Bash (Default)",
                                 "bash",
-                                "GUI/Assets/Apps/Shells/bash.png",
+                                "Assets/Apps/Shells/bash.png",
                                 "Unix shell and command language written for the GNU Project as a replacement for the Bourne shell. <font color='red'>Do not remove this package!</font>",
                                 self,
                                 self.parent().parent().barBottom,
@@ -23,7 +23,7 @@ class ShellWin(QWidget):
         # Create Shell section
         self.appSh = ShellBox("Sh",
                               "sh",
-                              "GUI/Assets/Apps/Shells/sh.png",
+                              "Assets/Apps/Shells/sh.png",
                               "Shell command-line interpreter for computer operating systems. <font color='red'>Do not remove this package!</font>",
                               self,
                               self.parent().parent().barBottom,
@@ -33,7 +33,7 @@ class ShellWin(QWidget):
         # Create ZSH section
         self.appZsh = ShellBox("Zsh",
                                "zsh",
-                               "GUI/Assets/Apps/Shells/zsh.png",
+                               "Assets/Apps/Shells/zsh.png",
                                "extended Bourne shell with many improvements, including some features of Bash, ksh, and tcsh.",
                                self,
                                self.parent().parent().barBottom
@@ -42,7 +42,7 @@ class ShellWin(QWidget):
         # Create fish section
         self.appFish = ShellBox("Fish",
                                 "fish",
-                                "GUI/Assets/Apps/Shells/fish.png",
+                                "Assets/Apps/Shells/fish.png",
                                 "Friendly interactive shell. Smart and user-friendly command line shell",
                                 self,
                                 self.parent().parent().barBottom
@@ -52,31 +52,31 @@ class ShellWin(QWidget):
         self.extOhMyZsh = \
             ButtonBox(
                 "Oh-My-Zsh",
-                "GUI/Assets/Apps/Shells/ohmyzsh.png",
+                "Assets/Apps/Shells/ohmyzsh.png",
                 "<font color=\"orange\">Requires zsh.</font> Delightful, open source, community-driven framework for managing your Zsh configuration. It comes bundled with thousands of helpful functions, helpers, plugins, themes, and a few things that make you shout...", []
             )
         # Add Oh-My-Zsh Theme Buttons
         self.layOhMyZsh = QGridLayout()
         self.layOhMyZsh.addWidget(CommandButton(
-            QIcon("GUI/Assets/configure.png"), "Use Elagoht Theme",
+            QIcon("Assets/configure.png"), "Use Elagoht Theme",
             self.zsh_theme_setter("elagoht"), self))
         self.layOhMyZsh.addWidget(CommandButton(
-            QIcon("GUI/Assets/configure.png"), "Use Elagoht Iconless Theme",
+            QIcon("Assets/configure.png"), "Use Elagoht Iconless Theme",
             self.zsh_theme_setter("elagoht-safe"), self), 0, 1)
         self.layOhMyZsh.addWidget(CommandButton(
-            QIcon("GUI/Assets/configure.png"), "Use BashPlus Theme",
+            QIcon("Assets/configure.png"), "Use BashPlus Theme",
             self.zsh_theme_setter("bashplus"), self))
         self.layOhMyZsh.addWidget(CommandButton(
-            QIcon("GUI/Assets/configure.png"), "Use Robby Russell Theme",
+            QIcon("Assets/configure.png"), "Use Robby Russell Theme",
             self.zsh_theme_setter("robbyrussell"), self))
         self.extOhMyZsh.glyApp.addLayout(self.layOhMyZsh)
         # Create Oh-My-Zsh install/uninstall buttons
         self.btnOhMyZshInstall = CommandButton(
-            QIcon("GUI/Assets/install.png"), "Install",
-            long_bash_script("GUI/LBSF/OhMyZsh.sh"),
+            QIcon("Assets/install.png"), "Install",
+            long_bash_script("LBSF/OhMyZsh.sh"),
             self.extOhMyZsh, (self.check_oh_my_zsh,), True)
         self.btnOhMyZshUninstall = CommandButton(
-            QIcon("GUI/Assets/uninstall.png"), "Uninstall",
+            QIcon("Assets/uninstall.png"), "Uninstall",
             r"""echo Confirm that you really want to uninstall oh-my-zsh; sudo rm -rf /root/.oh-my-zsh/ && rm -rf $HOME/.oh-my-zsh/""",
             self.extOhMyZsh, (self.check_oh_my_zsh,), True)
 

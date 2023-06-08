@@ -3,13 +3,13 @@
         {
             "name": "Noto Color Emoji Font",
             "package": "noto-color-emoji-fontconfig",
-            "image": "GUI/Assets/Apps/Essentials/notoemoji.png",
+            "image": "Assets/Apps/Essentials/notoemoji.png",
             "description": "Without this package you will not be able to see emojis."
         },
         {
             "name": "Emote",
             "package": "emote",
-            "image": "GUI/Assets/Apps/Essentials/emote.png",
+            "image": "Assets/Apps/Essentials/emote.png",
             "description": "Emoji keyboard that can be toggle with Ctrl + Shift + E keybinding."
         }
     ],
@@ -17,13 +17,13 @@
         {
             "name": "Gnome Font Viewer",
             "package": "gnome-font-viewer",
-            "image": "GUI/Assets/Apps/Essentials/gnomefontviewer.png",
+            "image": "Assets/Apps/Essentials/gnomefontviewer.png",
             "description": "Gnome's font viewing tool. Shows installed fonts on your system."
         },
         {
             "name": "GuCharmap",
             "package": "gucharmap",
-            "image": "GUI/Assets/Apps/Essentials/gucharmap.png",
+            "image": "Assets/Apps/Essentials/gucharmap.png",
             "description": "Gnome's unicode character mapp tool. See all the characters available."
         }
     ],
@@ -31,19 +31,19 @@
         {
             "name": "Guake",
             "package": "guake",
-            "image": "GUI/Assets/Apps/Essentials/guake.png",
+            "image": "Assets/Apps/Essentials/guake.png",
             "description": "Drop-down toggleable terminal editor with multi-tab feature. Does not shown in list windows menu."
         },
         {
             "name": "Yakuake",
             "package": "yakuake",
-            "image": "GUI/Assets/Apps/Essentials/yakuake.png",
+            "image": "Assets/Apps/Essentials/yakuake.png",
             "description": "KDE's drop-down toggleable terminal emulator based on KDE konsole technology."
         },
         {
             "name": "Tilda",
             "package": "tilda",
-            "image": "GUI/Assets/Apps/Essentials/tilda.png",
+            "image": "Assets/Apps/Essentials/tilda.png",
             "description": "Lite, GTK based drop-down terminal for Linux and Unix."
         }
     ],
@@ -51,25 +51,25 @@
         {
             "name": "Totem",
             "package": "totem",
-            "image": "GUI/Assets/Apps/Essentials/totem.png",
+            "image": "Assets/Apps/Essentials/totem.png",
             "description": "Gnome's video player application."
         },
         {
             "name": "MPV",
             "package": "mpv",
-            "image": "GUI/Assets/Apps/Essentials/mpv.png",
+            "image": "Assets/Apps/Essentials/mpv.png",
             "description": "Free, open source, and cross-platform media player with lots of plugin support."
         },
         {
             "name": "Celluloid",
             "package": "celluloid",
-            "image": "GUI/Assets/Apps/Essentials/celluloid.png",
+            "image": "Assets/Apps/Essentials/celluloid.png",
             "description": "Simple GTK+ frontend for MPV."
         },
         {
             "name": "VLC",
             "package": "vlc",
-            "image": "GUI/Assets/Apps/Essentials/vlc.png",
+            "image": "Assets/Apps/Essentials/vlc.png",
             "description": "Multi-platform MPEG, VCD/DVD, and DivX player."
         }
     ],
@@ -77,37 +77,37 @@
         {
             "name": "GIMP",
             "package": "gimp",
-            "image": "GUI/Assets/Apps/Essentials/gimp.png",
+            "image": "Assets/Apps/Essentials/gimp.png",
             "description": "GNU Image Manipulation Program."
         },
         {
             "name": "Inkscape",
             "package": "inkscape",
-            "image": "GUI/Assets/Apps/Essentials/inkscape.png",
+            "image": "Assets/Apps/Essentials/inkscape.png",
             "description": "Professional vector graphics editor."
         },
         {
             "name": "Drawing",
             "package": "drawing",
-            "image": "GUI/Assets/Apps/Essentials/drawing.png",
+            "image": "Assets/Apps/Essentials/drawing.png",
             "description": "Drawing application for the GNOME desktop."
         },
         {
             "name": "Krita",
             "package": "krita",
-            "image": "GUI/Assets/Apps/Essentials/krita.png",
+            "image": "Assets/Apps/Essentials/krita.png",
             "description": "Edit and paint images."
         },
         {
             "name": "Libre Sprite",
             "package": "libresprite",
-            "image": "GUI/Assets/Apps/Essentials/libresprite.png",
+            "image": "Assets/Apps/Essentials/libresprite.png",
             "description": "Animated sprite editor & pixel art tool -- Fork of the last GPLv2 commit of Aseprite."
         },
         {
             "name": "Imagemagick",
             "package": "imagemagick",
-            "image": "GUI/Assets/Apps/Essentials/imagemagick.png",
+            "image": "Assets/Apps/Essentials/imagemagick.png",
             "description": "An image viewing/manipulation program, especially for <font color=\"green\">commandline</font> image editing. Use with command <font color=\"yellow\" face=\"monospace\">convert</font>."
         }
     ],
@@ -115,7 +115,7 @@
         {
             "name": "Audacity",
             "package": "audacity",
-            "image": "GUI/Assets/Apps/Essentials/audacity.png",
+            "image": "Assets/Apps/Essentials/audacity.png",
             "description": "A program that lets you manipulate digital audio waveforms."
         }
     ],
@@ -123,43 +123,43 @@
         {
             "name": "Musescore (latest)",
             "package": "musescore",
-            "image": "GUI/Assets/Apps/Essentials/musescore.png",
+            "image": "Assets/Apps/Essentials/musescore.png",
             "description": "Create, play and print beautiful sheet music."
         },
         {
             "name": "Musescore 3",
             "package": "musescore3",
-            "image": "GUI/Assets/Apps/Essentials/musescore.png",
+            "image": "Assets/Apps/Essentials/musescore.png",
             "description": "Create, play and print beautiful sheet music. Version 3."
         },
         {
             "name": "LMMS",
             "package": "musescore3",
-            "image": "GUI/Assets/Apps/Essentials/lmms.png",
+            "image": "Assets/Apps/Essentials/lmms.png",
             "description": "The Linux MultiMedia Studio. Digital Audio Workstation."
         },
         {
             "name": "Ardour",
             "package": "ardour",
-            "image": "GUI/Assets/Apps/Essentials/ardour.png",
+            "image": "Assets/Apps/Essentials/ardour.png",
             "description": "Professional-grade digital audio workstation."
         },
         {
             "name": "Bitwig Studio",
             "package": "bitwig-studio",
-            "image": "GUI/Assets/Apps/Essentials/bitwigstudio.png",
+            "image": "Assets/Apps/Essentials/bitwigstudio.png",
             "description": "Digital audio workstation for music production, remixing and live performance."
         },
         {
             "name": "Tracktion Waveform",
             "package": "tracktion-waveform",
-            "image": "GUI/Assets/Apps/Essentials/tracktionwaveform.png",
+            "image": "Assets/Apps/Essentials/tracktionwaveform.png",
             "description": "Audio and MIDI Workstation (DAW)."
         },
         {
             "name": "Reaper",
             "package": "reaper",
-            "image": "GUI/Assets/Apps/Essentials/reaper.png",
+            "image": "Assets/Apps/Essentials/reaper.png",
             "description": "complete digital audio production application for computers."
         }
     ],
@@ -167,31 +167,31 @@
         {
             "name": "Kdenlive",
             "package": "kdenlive",
-            "image": "GUI/Assets/Apps/Essentials/kdenlive.png",
+            "image": "Assets/Apps/Essentials/kdenlive.png",
             "description": "KDE's non-linear video editor for Linux using the MLT video framework."
         },
         {
             "name": "OpenShot",
             "package": "openshot",
-            "image": "GUI/Assets/Apps/Essentials/openshot.png",
+            "image": "Assets/Apps/Essentials/openshot.png",
             "description": "An award-winning free and open-source video editor."
         },
         {
             "name": "Shotcut",
             "package": "shotcut",
-            "image": "GUI/Assets/Apps/Essentials/shotcut.png",
+            "image": "Assets/Apps/Essentials/shotcut.png",
             "description": "An award-winning free and open-source video editor."
         },
         {
             "name": "Davinci Resolve",
             "package": "davinci-resolve",
-            "image": "GUI/Assets/Apps/Essentials/davinciresolve.png",
+            "image": "Assets/Apps/Essentials/davinciresolve.png",
             "description": "Professional A/V post-production software suite from Blackmagic Design."
         },
         {
             "name": "Davinci Resolve Studio",
             "package": "davinci-resolve-studio",
-            "image": "GUI/Assets/Apps/Essentials/davinciresolve.png",
+            "image": "Assets/Apps/Essentials/davinciresolve.png",
             "description": "Professional A/V post-production software suite from Blackmagic Design. <u>Requires license key or dongle.</u>"
         }
     ],
@@ -199,19 +199,19 @@
         {
             "name": "OBS",
             "package": "obs-studio",
-            "image": "GUI/Assets/Apps/Essentials/obs.png",
+            "image": "Assets/Apps/Essentials/obs.png",
             "description": "[O]pen [B]roadcast [S]oftware, open source software for live streaming and recording."
         },
         {
             "name": "SimpleScreenRecorder",
             "package": "simplescreenrecorder",
-            "image": "GUI/Assets/Apps/Essentials/simplescreenrecorder.png",
+            "image": "Assets/Apps/Essentials/simplescreenrecorder.png",
             "description": "Feature-rich screen recorder that supports X11 and OpenGL."
         },
         {
             "name": "Kazam",
             "package": "kazam",
-            "image": "GUI/Assets/Apps/Essentials/kazam.png",
+            "image": "Assets/Apps/Essentials/kazam.png",
             "description": "Screencast and screenshot application created with design in mind."
         }
     ],
@@ -219,79 +219,79 @@
         {
             "name": "Firefox",
             "package": "firefox",
-            "image": "GUI/Assets/Apps/Essentials/firefox.png",
+            "image": "Assets/Apps/Essentials/firefox.png",
             "description": "Standalone web browser from Mozilla Organization."
         },
         {
             "name": "Google Chrome",
             "package": "google-chrome",
-            "image": "GUI/Assets/Apps/Essentials/googlechrome.png",
+            "image": "Assets/Apps/Essentials/googlechrome.png",
             "description": "The popular and trusted web browser by Google."
         },
         {
             "name": "Brave",
             "package": "brave-bin",
-            "image": "GUI/Assets/Apps/Essentials/brave.png",
+            "image": "Assets/Apps/Essentials/brave.png",
             "description": "Web browser that blocks ads and trackers by default."
         },
         {
             "name": "Opera",
             "package": "opera",
-            "image": "GUI/Assets/Apps/Essentials/opera.png",
+            "image": "Assets/Apps/Essentials/opera.png",
             "description": "Fast and secure web browser with built-in proxy."
         },
         {
             "name": "Microsoft Edge",
             "package": "microsoft-edge-stable-bin",
-            "image": "GUI/Assets/Apps/Essentials/microsoftedge.png",
+            "image": "Assets/Apps/Essentials/microsoftedge.png",
             "description": "Browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier."
         },
         {
             "name": "Yandex",
             "package": "yandex-browser",
-            "image": "GUI/Assets/Apps/Essentials/yandex.png",
+            "image": "Assets/Apps/Essentials/yandex.png",
             "description": "The web browser from Yandex. Yandex Browser is a browser that combines a minimal design with sophisticated technology to make the web faster, safer, and easier."
         },
         {
             "name": "Vivaldi",
             "package": "vivaldi",
-            "image": "GUI/Assets/Apps/Essentials/vivaldi.png",
+            "image": "Assets/Apps/Essentials/vivaldi.png",
             "description": "Advanced browser made with the power user in mind."
         },
         {
             "name": "Qute Browser",
             "package": "qutebrowser",
-            "image": "GUI/Assets/Apps/Essentials/qutebrowser.png",
+            "image": "Assets/Apps/Essentials/qutebrowser.png",
             "description": "Keyboard-driven, vim-like browser based on PyQt5."
         },
         {
             "name": "Epiphany",
             "package": "Epiphany",
-            "image": "GUI/Assets/Apps/Essentials/epiphany.png",
+            "image": "Assets/Apps/Essentials/epiphany.png",
             "description": "Gnome web browser based on the WebKit rendering engine."
         },
         {
             "name": "Chromium Browser",
             "package": "ungoogled-chromium-bin",
-            "image": "GUI/Assets/Apps/Essentials/chromiumbrowser.png",
+            "image": "Assets/Apps/Essentials/chromiumbrowser.png",
             "description": "Lightweight approach to removing Google web service dependency."
         },
         {
             "name": "Librewolf",
             "package": "librewolf",
-            "image": "GUI/Assets/Apps/Essentials/librewolf.png",
+            "image": "Assets/Apps/Essentials/librewolf.png",
             "description": "List differences between sets of Firefox config files. This tool was used to compare different librewolf.cfg and user.js files."
         },
         {
             "name": "Ungoogled Chromium Browser",
             "package": "ungoogled-chromium-bin",
-            "image": "GUI/Assets/Apps/Essentials/ungoogledchromiumbrowser.png",
+            "image": "Assets/Apps/Essentials/ungoogledchromiumbrowser.png",
             "description": "Lightweight approach to removing Google web service dependency. Un-Googled version."
         },
         {
             "name": "Waterfox",
             "package": "waterfox",
-            "image": "GUI/Assets/Apps/Essentials/waterfox.png",
+            "image": "Assets/Apps/Essentials/waterfox.png",
             "description": "Fork of Mozilla Firefox featuring some legacy extensions, removed telemetry and no Pocket integration. This is the Current branch."
         }
     ],
@@ -299,31 +299,31 @@
         {
             "name": "Spotify",
             "package": "spotify",
-            "image": "GUI/Assets/Apps/Essentials/spotify.png",
+            "image": "Assets/Apps/Essentials/spotify.png",
             "description": "Proprietary, paid music streaming service."
         },
         {
             "name": "Lollypop",
             "package": "lollypop",
-            "image": "GUI/Assets/Apps/Essentials/lollypop.png",
+            "image": "Assets/Apps/Essentials/lollypop.png",
             "description": "Gnome's additional music player."
         },
         {
             "name": "Elisa",
             "package": "elisa",
-            "image": "GUI/Assets/Apps/Essentials/elisa.png",
+            "image": "Assets/Apps/Essentials/elisa.png",
             "description": "Simple music player aiming to provide a nice experience for its users."
         },
         {
             "name": "Rhythmbox",
             "package": "rhythmbox",
-            "image": "GUI/Assets/Apps/Essentials/rhythmbox.png",
+            "image": "Assets/Apps/Essentials/rhythmbox.png",
             "description": "Music playback and management application."
         },
         {
             "name": "Clementine",
             "package": "clementine",
-            "image": "GUI/Assets/Apps/Essentials/clementine.png",
+            "image": "Assets/Apps/Essentials/clementine.png",
             "description": "A modern music player and library organizer"
         }
     ],
@@ -331,19 +331,19 @@
         {
             "name": "Evince",
             "package": "evince sushi",
-            "image": "GUI/Assets/Apps/Essentials/evince.png",
+            "image": "Assets/Apps/Essentials/evince.png",
             "description": "Document viewer (PDF, PostScript, XPS, djvu, dvi, tiff, cbr, cbz, cb7, cbt)"
         },
         {
             "name": "Okular",
             "package": "okular",
-            "image": "GUI/Assets/Apps/Essentials/okular.png",
+            "image": "Assets/Apps/Essentials/okular.png",
             "description": "Document viewer that supports lots of file format created by KDE."
         },
         {
             "name": "XViewer",
             "package": "xviewer",
-            "image": "GUI/Assets/Apps/Essentials/xviewer.png",
+            "image": "Assets/Apps/Essentials/xviewer.png",
             "description": "Document viewer for files like PDF and Postscript. X-Apps Project."
         }
     ],
@@ -351,31 +351,31 @@
         {
             "name": "Libre Office Still (Stable)",
             "package": "libreoffice-still",
-            "image": "GUI/Assets/Apps/Essentials/libreoffice.png",
+            "image": "Assets/Apps/Essentials/libreoffice.png",
             "description": "Libre office applications bundle. Stable branch."
         },
         {
             "name": "Libre Office Fresh (Bleeding Edge)",
             "package": "libreoffice-still",
-            "image": "GUI/Assets/Apps/Essentials/libreoffice.png",
+            "image": "Assets/Apps/Essentials/libreoffice.png",
             "description": "LibreOffice branch which contains new features and program enhancements."
         },
         {
             "name": "Only Office",
             "package": "onlyoffice-bin",
-            "image": "GUI/Assets/Apps/Essentials/onlyoffice.png",
+            "image": "Assets/Apps/Essentials/onlyoffice.png",
             "description": "office suite that combines text, spreadsheet and presentation editors."
         },
         {
             "name": "WPS Office",
             "package": "wps-office",
-            "image": "GUI/Assets/Apps/Essentials/wpsoffice.png",
+            "image": "Assets/Apps/Essentials/wpsoffice.png",
             "description": "Office productivity suite also known as Kingsoft Office."
         },
         {
             "name": "SoftMaker Free Office",
             "package": "freeoffice",
-            "image": "GUI/Assets/Apps/Essentials/freeoffice.png",
+            "image": "Assets/Apps/Essentials/freeoffice.png",
             "description": "complete, reliable, lightning-fast and Microsoft Office-compatible office suite with a word processor, spreadsheet, and presentation graphics software."
         }
     ],
@@ -383,25 +383,25 @@
         {
             "name": "Mailspring",
             "package": "mailspring",
-            "image": "GUI/Assets/Apps/Essentials/mailspring.png",
+            "image": "Assets/Apps/Essentials/mailspring.png",
             "description": "Beautiful, fast and maintained fork of Nylas Mail by one of the original authors."
         },
         {
             "name": "Thunderbird",
             "package": "thunderbird",
-            "image": "GUI/Assets/Apps/Essentials/thunderbird.png",
+            "image": "Assets/Apps/Essentials/thunderbird.png",
             "description": "Standalone mail and news reader from Mozilla Organization."
         },
         {
             "name": "Evolution",
             "package": "evolution",
-            "image": "GUI/Assets/Apps/Essentials/evolution.png",
+            "image": "Assets/Apps/Essentials/evolution.png",
             "description": "Manage your email, contacts and schedule."
         },
         {
             "name": "Geary",
             "package": "geary",
-            "image": "GUI/Assets/Apps/Essentials/geary.png",
+            "image": "Assets/Apps/Essentials/geary.png",
             "description": "lightweight email client for the GNOME desktop."
         }
     ],
@@ -409,13 +409,13 @@
         {
             "name": "Gnome Calendar",
             "package": "gnome-calendar",
-            "image": "GUI/Assets/Apps/Essentials/gnomecalendar.png",
+            "image": "Assets/Apps/Essentials/gnomecalendar.png",
             "description": "Simple and beautiful calendar application designed to perfectly fit the GNOME desktop"
         },
         {
             "name": "kOrganizer",
             "package": "korganizer",
-            "image": "GUI/Assets/Apps/Essentials/korganizer.png",
+            "image": "Assets/Apps/Essentials/korganizer.png",
             "description": "Calendar and scheduling program made by KDE."
         }
     ],
@@ -423,7 +423,7 @@
         {
             "name": "Gnome Contacts",
             "package": "gnome-contacts",
-            "image": "GUI/Assets/Apps/Essentials/gnomecontacts.png",
+            "image": "Assets/Apps/Essentials/gnomecontacts.png",
             "description": "Contacts Manager for Gnome"
         }
     ],
@@ -431,25 +431,25 @@
         {
             "name": "Gnome Dictionary",
             "package": "gnome-dictionary",
-            "image": "GUI/Assets/Apps/Essentials/gnomedictionary.png",
+            "image": "Assets/Apps/Essentials/gnomedictionary.png",
             "description": "Look up words in dictionary sources."
         },
         {
             "name": "Golden Dict",
             "package": "goldendict-git",
-            "image": "GUI/Assets/Apps/Essentials/goldendict.png",
+            "image": "Assets/Apps/Essentials/goldendict.png",
             "description": "Feature-rich dictionary lookup program supporting multiple dictionary formats."
         },
         {
             "name": "Dialect",
             "package": "dialect",
-            "image": "GUI/Assets/Apps/Essentials/dialect.png",
+            "image": "Assets/Apps/Essentials/dialect.png",
             "description": "Translation app for GNOME."
         },
         {
             "name": "Wike",
             "package": "wike",
-            "image": "GUI/Assets/Apps/Essentials/wike.png",
+            "image": "Assets/Apps/Essentials/wike.png",
             "description": " Wikipedia Reader for the GNOME Desktop"
         }
     ],
@@ -457,25 +457,25 @@
         {
             "name": "Gnome Calculator",
             "package": "gnome-calculator",
-            "image": "GUI/Assets/Apps/Essentials/gnomecalculator.png",
+            "image": "Assets/Apps/Essentials/gnomecalculator.png",
             "description": "Gnome's Scientific calculator."
         },
         {
             "name": "Galculator",
             "package": "galculator",
-            "image": "GUI/Assets/Apps/Essentials/galculator.png",
+            "image": "Assets/Apps/Essentials/galculator.png",
             "description": "GTK+ based scientific calculator"
         },
         {
             "name": "Geogebra",
             "package": "geogebra",
-            "image": "GUI/Assets/Apps/Essentials/geogebra.png",
+            "image": "Assets/Apps/Essentials/geogebra.png",
             "description": "Dynamic mathematics software with interactive graphics, algebra and spreadsheet."
         },
         {
             "name": "Plots",
             "package": "plots",
-            "image": "GUI/Assets/Apps/Essentials/plots.png",
+            "image": "Assets/Apps/Essentials/plots.png",
             "description": "graph plotting app for Gnome."
         }
     ],
@@ -483,49 +483,49 @@
         {
             "name": "Discord",
             "package": "discord",
-            "image": "GUI/Assets/Apps/Gaming/discord.png",
+            "image": "Assets/Apps/Gaming/discord.png",
             "description": "All-in-one voice and text chat for gamers."
         },
         {
             "name": "Telegram",
             "package": "telegram-desktop",
-            "image": "GUI/Assets/Apps/Essentials/telegram.png",
+            "image": "Assets/Apps/Essentials/telegram.png",
             "description": "Official Telegram desktop client."
         },
         {
             "name": "Signal",
             "package": "signal-desktop",
-            "image": "GUI/Assets/Apps/Essentials/signal.png",
+            "image": "Assets/Apps/Essentials/signal.png",
             "description": "Private messenger for Linux."
         },
         {
             "name": "Whatsapp (Unofficial)",
             "package": "whatsapp-nativefier-autostart-tray-hook",
-            "image": "GUI/Assets/Apps/Essentials/whatsapp.png",
+            "image": "Assets/Apps/Essentials/whatsapp.png",
             "description": "Private messenger for Linux."
         },
         {
             "name": "Zoom",
             "package": "zoom",
-            "image": "GUI/Assets/Apps/Essentials/zoom.png",
+            "image": "Assets/Apps/Essentials/zoom.png",
             "description": "Video conferencing and web conferencing service."
         },
         {
             "name": "Skype",
             "package": "skypeforlinux-stable-bin",
-            "image": "GUI/Assets/Apps/Essentials/skype.png",
+            "image": "Assets/Apps/Essentials/skype.png",
             "description": "Microsoft's video conference service for Linux."
         },
         {
             "name": "Ferdium (A.K.A. Ferdi)",
             "package": "ferdium-bin",
-            "image": "GUI/Assets/Apps/Essentials/ferdium.png",
+            "image": "Assets/Apps/Essentials/ferdium.png",
             "description": "Messaging browser that allows you to combine your favorite messaging services into one application."
         },
         {
             "name": "Hexchat",
             "package": "hexchat",
-            "image": "GUI/Assets/Apps/Essentials/hexchat.png",
+            "image": "Assets/Apps/Essentials/hexchat.png",
             "description": "Popular and easy to use graphical IRC (chat) client."
         }
     ],
@@ -533,19 +533,19 @@
         {
             "name": "Deluge",
             "package": "deluge-gtk",
-            "image": "GUI/Assets/Apps/Essentials/deluge.png",
+            "image": "Assets/Apps/Essentials/deluge.png",
             "description": "BitTorrent client with multiple user interfaces in a client/server model."
         },
         {
             "name": "Transmission",
             "package": "transmission-gtk",
-            "image": "GUI/Assets/Apps/Essentials/transmission.png",
+            "image": "Assets/Apps/Essentials/transmission.png",
             "description": "Fast, easy, and free BitTorrent client (GTK+ GUI)."
         },
         {
             "name": "QBittorrent",
             "package": "qbittorrent",
-            "image": "GUI/Assets/Apps/Essentials/qbittorrent.png",
+            "image": "Assets/Apps/Essentials/qbittorrent.png",
             "description": "An advanced BitTorrent client programmed in C++, based on Qt toolkit and libtorrent-rasterbar"
         }
     ],
@@ -553,13 +553,13 @@
         {
             "name": "Mega Sync",
             "package": "megasync-bin",
-            "image": "GUI/Assets/Apps/Essentials/megasync.png",
+            "image": "Assets/Apps/Essentials/megasync.png",
             "description": "Easy automated syncing between your computers and your MEGA cloud drive."
         },
         {
             "name": "PCloud",
             "package": "pcloud-drive",
-            "image": "GUI/Assets/Apps/Essentials/pcloud.png",
+            "image": "Assets/Apps/Essentials/pcloud.png",
             "description": "Electron edition GUI for pCloud service."
         }
     ]

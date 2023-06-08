@@ -2,7 +2,7 @@
     {
         "name": "OpenZone",
         "package": "xcursor-openzone",
-        "image": "GUI/Assets/Themes/Cursors/openzone.png",
+        "image": "Assets/Themes/Cursors/openzone.png",
         "themes": {
             "Black": "OpenZone_Black",
             "White": "OpenZone_White",
@@ -13,7 +13,7 @@
     {
         "name": "WhiteSur",
         "package": "whitesur-cursor-theme-git",
-        "image": "GUI/Assets/Themes/Cursors/whitesur.png",
+        "image": "Assets/Themes/Cursors/whitesur.png",
         "themes": {
             "Default": "WhiteSur-cursors"
         }
@@ -21,7 +21,7 @@
     {
         "name": "Numix",
         "package": "numix-cursor-theme",
-        "image": "GUI/Assets/Themes/Cursors/numix.png",
+        "image": "Assets/Themes/Cursors/numix.png",
         "themes": {
             "Default": "Numix-Cursor",
             "Light": "Numix-Cursor-Light"
@@ -30,7 +30,7 @@
     {
         "name": "Qogir",
         "package": "qogir-gtk-theme",
-        "image": "GUI/Assets/Themes/Cursors/qogir.png",
+        "image": "Assets/Themes/Cursors/qogir.png",
         "themes": {
             "Default": "Qogir",
             "Dark": "Qogir-dark"
@@ -39,7 +39,7 @@
     {
         "name": "Yaru",
         "package": "yaru-icon-theme",
-        "image": "GUI/Assets/Themes/Cursors/yaru.png",
+        "image": "Assets/Themes/Cursors/yaru.png",
         "themes": {
             "Default": "Yaru"
         }
@@ -47,7 +47,7 @@
     {
         "name": "Google Dot",
         "package": "googledot-cursor-theme",
-        "image": "GUI/Assets/Themes/Cursors/googledot.png",
+        "image": "Assets/Themes/Cursors/googledot.png",
         "themes": {
             "Black": "GoogleDot-Black",
             "White": "GoogleDot-White",

@@ -2,7 +2,7 @@
     {
         "name": "UbuntuMono Nerd Font Mono",
         "package": "ttf-ubuntu-mono-nerd",
-        "image": "GUI/Assets/Themes/Fonts/ubuntu.png",
+        "image": "Assets/Themes/Fonts/ubuntu.png",
         "themes": {
             "Set Terminal Font": "UbuntuMono Nerd Font Mono"
         }
@@ -10,7 +10,7 @@
     {
         "name": "Source Code Pro",
         "package": "ttf-sourcecodepro-nerd",
-        "image": "GUI/Assets/Themes/Fonts/sourcecodepro.png",
+        "image": "Assets/Themes/Fonts/sourcecodepro.png",
         "themes": {
             "Set Terminal Font": "Source Code Pro"
         }
@@ -18,7 +18,7 @@
     {
         "name": "RobotoMono Nerd Font Mono",
         "package": "ttf-roboto-mono-nerd",
-        "image": "GUI/Assets/Themes/Fonts/robotomono.png",
+        "image": "Assets/Themes/Fonts/robotomono.png",
         "themes": {
             "Set Terminal Font": "RobotoMono Nerd Font Mono"
         }
@@ -26,7 +26,7 @@
     {
         "name": "JetBrainsMono Nerd Font Mono",
         "package": "ttf-jetbrains-mono-nerd",
-        "image": "GUI/Assets/Themes/Fonts/jetbrainsmono.png",
+        "image": "Assets/Themes/Fonts/jetbrainsmono.png",
         "themes": {
             "Set Terminal Font": "JetBrainsMono Nerd Font Mono"
         }
@@ -34,7 +34,7 @@
     {
         "name": "FiraCode Nerd Font Mono",
         "package": "ttf-firacode-nerd",
-        "image": "GUI/Assets/Themes/Fonts/firacode.png",
+        "image": "Assets/Themes/Fonts/firacode.png",
         "themes": {
             "Set Terminal Font": "FiraCode Nerd Font Mono"
         }
@@ -42,7 +42,7 @@
     {
         "name": "DroidSansMono Nerd Font Mono",
         "package": "otf-droid-nerd",
-        "image": "GUI/Assets/Themes/Fonts/droidsansmono.png",
+        "image": "Assets/Themes/Fonts/droidsansmono.png",
         "themes": {
             "Set Terminal Font": "DroidSansMono Nerd Font Mono"
         }
@@ -50,7 +50,7 @@
     {
         "name": "DejaVuSansMono Nerd Font Mono",
         "package": "ttf-dejavu-nerd",
-        "image": "GUI/Assets/Themes/Fonts/dejavusansmono.png",
+        "image": "Assets/Themes/Fonts/dejavusansmono.png",
         "themes": {
             "Set Terminal Font": "DejaVuSansMono Nerd Font Mono"
         }
@@ -58,7 +58,7 @@
     {
         "name": "Hack Nerd Font Mono",
         "package": "ttf-hack-nerd",
-        "image": "GUI/Assets/Themes/Fonts/hack.png",
+        "image": "Assets/Themes/Fonts/hack.png",
         "themes": {
             "Set Terminal Font": "Hack Nerd Font Mono"
         }

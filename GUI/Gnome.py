@@ -10,25 +10,25 @@ class GnomeWin(QWidget):
 
         # Create Wayland section
         self.gbxWayland = \
-            ButtonBox("Wayland Settings", "GUI/Assets/Tweaks/wayland.png",
+            ButtonBox("Wayland Settings", "Assets/Tweaks/wayland.png",
                       "<p>Wayland is a new technology to replace Xorg display server. Its may be lighter and faster. Waydroid only works on Wayland but because of it is a new technology, some features are not compatible yet. I.e. global keyboard shourtcuts does not supported right now. Discord cannot share screen on.</p>\
                        <p>Wayland has its own <font color='green'>advantages</font> and <font color='red'>disadvantages</font>. So you may want to change this setting in the future depending on your needs. But for now using Xorg and ditching Wayland is more compatible.</p>", (
-                          CommandButton(QIcon("GUI/Assets/configure.png"), "Use Wayland",
+                          CommandButton(QIcon("Assets/configure.png"), "Use Wayland",
                                         "sudo sed -i \"s/^WaylandEnable=false/#WaylandEnable=false/\" /etc/gdm/custom.conf",
                                         self),
-                          CommandButton(QIcon("GUI/Assets/configure.png"), "Use XOrg",
+                          CommandButton(QIcon("Assets/configure.png"), "Use XOrg",
                                         "sudo sed -i \"s/^#WaylandEnable=false/WaylandEnable=false/\" /etc/gdm/custom.conf",
                                         self))
                       )
 
         # Create context menu section
         self.gbxContext = \
-            ButtonBox("Context Menu", "GUI/Assets/Tweaks/contextmenu.png",
+            ButtonBox("Context Menu", "Assets/Tweaks/contextmenu.png",
                       "Enable context (right click) menu icons.", (
-                          CommandButton(QIcon("GUI/Assets/enabled.png"), "Enable Icons",
+                          CommandButton(QIcon("Assets/enabled.png"), "Enable Icons",
                                         "gsettings set org.gnome.settings-daemon.plugins.xsettings overrides \"{\\\"Gtk/ButtonImages\\\": <1>, \\\"Gtk/MenuImages\\\": <1>}\"",
                                         self),
-                          CommandButton(QIcon("GUI/Assets/disabled.png"), "Disable Icons",
+                          CommandButton(QIcon("Assets/disabled.png"), "Disable Icons",
                                         "gsettings set org.gnome.settings-daemon.plugins.xsettings overrides \"{}\"", self))
                       )
 
@@ -36,9 +36,9 @@ class GnomeWin(QWidget):
         self.gbxTerm = GridBox("Gnome Terminal / Console")
         # Chose Gnome Terminal over Console
         self.appTerminal = \
-            ButtonBox("Gnome Terminal", "GUI/Assets/Tweaks/gnometerminal.png",
+            ButtonBox("Gnome Terminal", "Assets/Tweaks/gnometerminal.png",
                       "Gnome terminal is more compatible than console with Gnome desktop environment (open with terminal etc.). But may not be able to adapt dark/light theme.", (
-                          CommandButton(QIcon("GUI/Assets/configure.png"), "Use Gnome Terminal",
+                          CommandButton(QIcon("Assets/configure.png"), "Use Gnome Terminal",
                                         f"""if [ ! "$(pacman -Qqs gnome-terminal-transparency | grep ^gnome-terminal-transparency$)" = "gnome-terminal-transparency" ]
                                             then
                                             if [ "$(command -v {aur_helper()})" ]
@@ -54,9 +54,9 @@ class GnomeWin(QWidget):
                       )
         # Chose Gnome Console over Terminal
         self.appConsole = \
-            ButtonBox("Gnome Console", "GUI/Assets/Tweaks/gnomeconsole.png",
+            ButtonBox("Gnome Console", "Assets/Tweaks/gnomeconsole.png",
                       "Gnome Console is more compatible with dark/light theme but is not compatible with default terminal application configuration.", (
-                          CommandButton(QIcon("GUI/Assets/configure.png"), "Use Gnome Console",
+                          CommandButton(QIcon("Assets/configure.png"), "Use Gnome Console",
                                         """if [ ! -f /usr/bin/kgx ]
                                             then sudo pacman -S gnome-console
                                         fi &&
