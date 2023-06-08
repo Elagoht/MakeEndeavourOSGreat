@@ -60,7 +60,7 @@
         },
         {
             "name": "Prism Launcher",
-            "package": "prismlauncher-bin",
+            "package": "prismlauncher-qt5-bin",
             "image": "GUI/Assets/Apps/Games/prismlauncher.png",
             "description": "Third party Minecraft launcher with ability to manage multiple instances. Good for modpack management."
         },
