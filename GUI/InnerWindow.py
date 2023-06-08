@@ -117,8 +117,8 @@ class BottomBar(QWidget):
     # * To update command, update directly its command variable.
     def update_thread_command(self) -> None:
         self.btnApply.thread.command = \
-            f"""{aur_helper() + " -S " + (" ".join(self.to_install)) if self.to_install else ""}
-                {"/bin/pacman -R " + (" ".join(self.to_uninstall)) if self.to_uninstall else ""}
+            f"""{(aur_helper() + " -S " + " ".join(self.to_install)) if self.to_install else ""}
+                {(aur_helper() + " -R " + " ".join(self.to_uninstall)) if self.to_uninstall else ""}
                 """
 
     def clear_lists(self):

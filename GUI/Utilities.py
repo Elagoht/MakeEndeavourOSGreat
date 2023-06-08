@@ -70,6 +70,11 @@ class CommandThread(QThread):
         sh -c '{self.command}; echo $? > '$statusfile 2> /dev/null;
         cat $statusfile;
         rm $statusfile""".encode())
+        print(f"""statusfile=$(mktemp);
+        {"" if self.avoid_xterm else "xterm -xrm 'XTerm.vt100.allowTitleOps: false' -T 'Endeavour OS Tweaker Slave' -bg black -fg peru -e"}\
+        sh -c '{self.command}; echo $? > '$statusfile 2> /dev/null;
+        cat $statusfile;
+        rm $statusfile""")
         process.closeWriteChannel()
         # Wait until process is finished.
         process.waitForFinished(-1)
@@ -608,7 +613,7 @@ def aur_helper() -> str:
         elif [ "$(command -v yay)" ]; then
             aurhelper="sudo /bin/yay --noeditmenu --nodiffmenu --norebuild --noredownload --nopgpfetch"
         else
-            aurhelper="/bin/pacman"
+            aurhelper="/bin/sudo /bin/pacman"
         fi
         echo $aurhelper"""
     ).readline().strip()
@@ -616,7 +621,7 @@ def aur_helper() -> str:
 
 def has_aur_helper() -> bool:
     # Check if have aur helper
-    return aur_helper() != "/bin/pacman"
+    return aur_helper() != "/bin/sudo /bin/pacman"
 
 
 def install_if_doesnt_have(package: str) -> str:
