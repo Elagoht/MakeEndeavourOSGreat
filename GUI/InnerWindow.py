@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import QWidget, QScrollArea, QPushButton, QHBoxLayout, QLabel, QGridLayout, QMessageBox
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import Qt
+from Tasks import TasksModal
 from Utilities import has_aur_helper, aur_helper, CommandButton
 from typing import Iterable, Callable
 
@@ -57,11 +58,15 @@ class BottomBar(QWidget):
         # Install and uninstall lists
         self.to_install = []
         self.to_uninstall = []
-        self.tasks = "{} to install,\n{} to remove."
+        self.tasks = "{} to install, {} to remove."
 
         # Create "to install" and "to uninstall" lists
-        self.lblTask = QLabel(self.tasks, self)
+        self.lblTask = QLabel(self.tasks.format(0, 0), self)
 
+        # Create tasks window opener
+        self.btnTasks = QPushButton("Tasks", self)
+        # TODO: Add tasks window open code
+        self.btnTasks.clicked.connect(self.open_tasks_modal)
         # Create apply button
         self.btnApply = CommandButton(
             QIcon("GUI/Assets/install.png"),
@@ -73,17 +78,21 @@ class BottomBar(QWidget):
                     self, "AUR Helper Needed",
                     "To install all applications, you need an AUR helper. This program only supports paru and yay. You can install one with the help of this application."
                 ),
-                self.parent().close_window
             ],
             True
         )
         self.btnApply.setMaximumWidth(120)
+        self.btnTasks.setMaximumWidth(120)
 
         # Insert widgets to layout
         self.layout = QGridLayout(self)
         self.layout.setContentsMargins(0, 0, 0, 0)
         self.layout.addWidget(self.lblTask, 0, 0)
-        self.layout.addWidget(self.btnApply, 0, 1, 2, 1)
+        self.layout.addWidget(self.btnTasks, 0, 1)
+        self.layout.addWidget(self.btnApply, 0, 2)
+
+        # Initialize
+        self.update_button_availablity()
 
     # Handle installation list
     def to_install_list(self, package: str, checked: bool) -> None:
@@ -97,6 +106,7 @@ class BottomBar(QWidget):
             len(self.to_install),
             len(self.to_uninstall)
         ))
+        self.update_button_availablity()
         self.update_thread_command()
 
     # Handle uninstallation list
@@ -111,7 +121,13 @@ class BottomBar(QWidget):
             len(self.to_install),
             len(self.to_uninstall)
         ))
+        self.update_button_availablity()
         self.update_thread_command()
+
+    def update_button_availablity(self):
+        self.btnApply.setEnabled(
+            any([self.to_install, self.to_uninstall])
+        )
 
     # * CummandButton is already connected as empty lists.
     # * To update command, update directly its command variable.
@@ -128,3 +144,9 @@ class BottomBar(QWidget):
             len(self.to_install),
             len(self.to_uninstall)
         ))
+
+    def open_tasks_modal(self):
+        self.modal = TasksModal(self.to_install, self.to_uninstall)
+
+
+# TODO: Listeler boşsa buton iptal olsun

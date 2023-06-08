@@ -321,6 +321,12 @@
             "package": "dotnet-sdk",
             "image": "GUI/Assets/Apps/Development/dotnet.png",
             "description": "Software development kit to build and run .NET applications."
+        },
+        {
+            "name": "ASP.NET Runtime",
+            "package": "aspnet-runtime-bin",
+            "image": "GUI/Assets/Apps/Development/aspnet.png",
+            "description": "The ASP.NET Core runtime (binary)."
         }
     ],
     "C / C++": [
