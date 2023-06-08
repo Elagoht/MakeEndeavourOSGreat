@@ -17,7 +17,7 @@ class TasksModal(QWidget):
         self.lblInstall = QLabel("Apps marked for installation")
         self.lstInstall = QPlainTextEdit(self)
 
-        self.lblUninstall = QLabel("Apps marked for installation")
+        self.lblUninstall = QLabel("Apps unmarked for uninstallation")
         self.lstUninstall = QPlainTextEdit(self)
 
         self.btnClose = QPushButton("Close", self)
