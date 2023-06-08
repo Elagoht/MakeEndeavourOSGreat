@@ -1,7 +1,7 @@
 from PyQt5.QtWidgets import QWidget, QScrollArea, QPushButton, QHBoxLayout, QLabel, QGridLayout, QMessageBox
 from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import Qt
-from Utilities import has_aur_helper, install_if_doesnt_have, uninstall_if_have, CommandButton
+from Utilities import has_aur_helper, aur_helper, CommandButton
 from typing import Iterable, Callable
 
 
@@ -51,27 +51,22 @@ class TopBar(QWidget):
 
 
 class BottomBar(QWidget):
-    txtInstall = "To install: "
-    txtUninstall = "To uninstall: "
 
     def __init__(self, parent) -> None:
         super().__init__(parent=parent)
         # Install and uninstall lists
         self.to_install = []
         self.to_uninstall = []
+        self.tasks = "{} to install,\n{} to remove."
 
         # Create "to install" and "to uninstall" lists
-        self.lblInstall = QLabel(BottomBar.txtInstall, self)
-        self.lblInstall.setWordWrap(True)
-        self.lblUninstall = QLabel(BottomBar.txtUninstall, self)
-        self.lblUninstall.setWordWrap(True)
+        self.lblTask = QLabel(self.tasks, self)
 
         # Create apply button
         self.btnApply = CommandButton(
             QIcon("GUI/Assets/install.png"),
             "Apply",
-            f"""{install_if_doesnt_have(" ".join(self.to_install))};
-                {uninstall_if_have(" ".join(self.to_uninstall))}""",
+            "",
             self,
             [
                 lambda: self.clear_lists() if has_aur_helper() else QMessageBox.warning(
@@ -87,8 +82,7 @@ class BottomBar(QWidget):
         # Insert widgets to layout
         self.layout = QGridLayout(self)
         self.layout.setContentsMargins(0, 0, 0, 0)
-        self.layout.addWidget(self.lblInstall, 0, 0)
-        self.layout.addWidget(self.lblUninstall, 1, 0)
+        self.layout.addWidget(self.lblTask, 0, 0)
         self.layout.addWidget(self.btnApply, 0, 1, 2, 1)
 
     # Handle installation list
@@ -99,12 +93,10 @@ class BottomBar(QWidget):
         elif package in self.to_install:
             self.to_install.remove(package)
 
-        self.lblInstall.setText(
-            BottomBar.txtInstall +
-            "<font color=\"green\" face=\"monospace\">" +
-            ", ".join(self.to_install) +
-            "</font>"
-        )
+        self.lblTask.setText(self.tasks.format(
+            len(self.to_install),
+            len(self.to_uninstall)
+        ))
         self.update_thread_command()
 
     # Handle uninstallation list
@@ -115,24 +107,24 @@ class BottomBar(QWidget):
         elif package in self.to_uninstall:
             self.to_uninstall.remove(package)
 
-        self.lblUninstall.setText(
-            BottomBar.txtUninstall +
-            "<font color=\"red\" face=\"monospace\">" +
-            ", ".join(self.to_uninstall) +
-            "</font>"
-        )
+        self.lblTask.setText(self.tasks.format(
+            len(self.to_install),
+            len(self.to_uninstall)
+        ))
         self.update_thread_command()
 
     # * CummandButton is already connected as empty lists.
     # * To update command, update directly its command variable.
     def update_thread_command(self) -> None:
         self.btnApply.thread.command = \
-            f"""{install_if_doesnt_have(" ".join(self.to_install)) if self.to_install else ""}
-                {uninstall_if_have(" ".join(self.to_uninstall)) if self.to_uninstall else ""}
+            f"""{aur_helper() + " -S " + (" ".join(self.to_install)) if self.to_install else ""}
+                {"/bin/pacman -R " + (" ".join(self.to_uninstall)) if self.to_uninstall else ""}
                 """
 
     def clear_lists(self):
         self.to_install.clear()
         self.to_uninstall.clear()
-        self.lblInstall.setText(BottomBar.txtInstall)
-        self.lblUninstall.setText(BottomBar.txtUninstall)
+        self.lblTask.setText(self.tasks.format(
+            len(self.to_install),
+            len(self.to_uninstall)
+        ))

@@ -84,4 +84,4 @@ class SideBar(QWidget):
         self.btnAurHelper.setStyleSheet(
             "QPushButton { color: " + ("green" if installed else "red") + "; }")
         self.btnAurHelper.setText(
-            self.txtAurButton + ". Done!" if installed else ". Urgent!")
+            self.txtAurButton + (". Done!" if installed else ". Urgent!"))

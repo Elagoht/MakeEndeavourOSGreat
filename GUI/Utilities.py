@@ -98,9 +98,12 @@ class AppBox(QGroupBox):
         super().__init__(owner)
         self.owner = owner
         self.package = package
-        self.bar_bottom:BottomBar = bar_bottom
+        self.bar_bottom = bar_bottom
         self.is_installed: bool = False
-        self.is_checked: bool = False
+        self.is_checked: bool = self.package in (
+            *self.bar_bottom.to_install,
+            *self.bar_bottom.to_uninstall
+        )
 
         # Create layouts
         self.glyApp = QGridLayout(self)
@@ -116,7 +119,8 @@ class AppBox(QGroupBox):
         self.lblDescription.setTextFormat(Qt.RichText)
         self.lblDescription.setTextInteractionFlags(Qt.TextBrowserInteraction)
         self.lblDescription.setWordWrap(True)
-        self.btnInstall = AppInstallButton(False, False, self)
+        self.btnInstall = AppInstallButton(
+            self.is_installed, self.is_checked, self)
         self.btnInstall.setFixedSize(40, 40)
 
         # Description Box
@@ -172,7 +176,8 @@ class AppInstallButton(QPushButton):
                 )
                 self.setText("√")
             # Add to/Remove from "to uninstall" list
-            self.owner.bar_bottom.to_uninstall_list(self.owner.package, not self.action_state)
+            self.owner.bar_bottom.to_uninstall_list(
+                self.owner.package, not self.action_state)
         else:
             if self.action_state:
                 self.setStyleSheet(
@@ -193,7 +198,8 @@ class AppInstallButton(QPushButton):
                 )
                 self.setText("√")
             # Add to/Remove from "to install" list
-            self.owner.bar_bottom.to_install_list(self.owner.package, not self.action_state)
+            self.owner.bar_bottom.to_install_list(
+                self.owner.package, not self.action_state)
 
     def check_install_state(self):
         return self.owner.package in self.owner.owner.installed_apps
@@ -394,7 +400,7 @@ class ShellBox(AppBox):
         super().__init__(title, package, image, description, owner, bottom_bar)
 
         # If uninstallable remove install buttons
-        self.uninstallable=uninstallable
+        self.uninstallable = uninstallable
         if uninstallable:
             self.glyApp.removeWidget(self.btnInstall)
             del self.btnInstall
@@ -416,7 +422,8 @@ class ShellBox(AppBox):
         self.laySetButtons = QHBoxLayout()
         self.laySetButtons.addWidget(self.btnSet)
         self.laySetButtons.addWidget(self.btnSetRoot)
-        self.glyApp.addLayout(self.laySetButtons, 2, 0, 1, 2 if self.uninstallable else 3)
+        self.glyApp.addLayout(self.laySetButtons, 2, 0, 1,
+                              2 if self.uninstallable else 3)
 
 
 class AppsWin(QWidget):
@@ -601,7 +608,7 @@ def aur_helper() -> str:
         elif [ "$(command -v yay)" ]; then
             aurhelper="sudo /bin/yay --noeditmenu --nodiffmenu --norebuild --noredownload --nopgpfetch"
         else
-            aurhelper=""
+            aurhelper="/bin/pacman"
         fi
         echo $aurhelper"""
     ).readline().strip()
@@ -609,7 +616,7 @@ def aur_helper() -> str:
 
 def has_aur_helper() -> bool:
     # Check if have aur helper
-    return aur_helper() != ""
+    return aur_helper() != "/bin/pacman"
 
 
 def install_if_doesnt_have(package: str) -> str:
