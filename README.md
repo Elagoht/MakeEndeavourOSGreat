@@ -42,4 +42,21 @@ I'll create a GUI app to make it easier to use for newcomers.
 ## Contributors
 
 <!-- readme: contributors -start -->
+<table>
+<tr>
+    <td align="center">
+        <a href="https://github.com/Elagoht">
+            <img src="https://avatars.githubusercontent.com/u/48291303?v=4" width="100;" alt="Elagoht"/>
+            <br />
+            <sub><b>Furkan Baytekin</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/gobelman67">
+            <img src="https://avatars.githubusercontent.com/u/118717028?v=4" width="100;" alt="gobelman67"/>
+            <br />
+            <sub><b>Null</b></sub>
+        </a>
+    </td></tr>
+</table>
 <!-- readme: contributors -end -->
