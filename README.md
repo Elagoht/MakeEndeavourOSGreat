@@ -1,13 +1,13 @@
 # Make Endeavour OS Great
 
-<center>
+<div align="center">
 <img src="GUI/icon.png" alt="logo" width="128"/>
 
 ![Pyton GUI APP](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white&style=for-the-badge)
 ![QT5 APP](https://img.shields.io/badge/QT-41CD52?logo=qt&logoColor=white&style=for-the-badge)
 ![Endeavour OS](https://img.shields.io/badge/Endeavour_OS-7e3dbc?logo=linux&logoColor=white&style=for-the-badge)
 [![Codacity](https://img.shields.io/codacy/grade/bb3500c728344ef898cb6c66bc356f00?logo=codacy&logoColor=white&style=for-the-badge)](https://app.codacy.com/gh/Elagoht/MakeEndeavourOSGreat/)
-</center>
+</div>
 
 Endeaours OS is already a great OS. But it describe itself as a *"terminal centric"* distro. Noone can suggest a Arch-based distro to a newcomer. But Arch Linux has a great oppurtunity named AUR. Endeavour OS makes installing Arch easier. So I wanted to make Endeavour OS more suitable for newcomers.
 
