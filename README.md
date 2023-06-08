@@ -1,7 +1,7 @@
 # Make Endeavour OS Great
 
 <div align="center">
-<img src="GUI/icon.png" alt="logo" width="128"/>
+<img src="GUI/Assets/icon.png" alt="logo" width="128"/>
 
 ![Pyton GUI APP](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white&style=for-the-badge)
 ![QT5 APP](https://img.shields.io/badge/QT-41CD52?logo=qt&logoColor=white&style=for-the-badge)
