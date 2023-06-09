@@ -8,6 +8,7 @@ from GnomeExtensions import ExtensionsWin
 from Theming import AppearanceWin
 from Lure import LureWin
 from Shell import ShellWin
+from Variables import VariableWin
 
 
 class SideBar(QWidget):
@@ -29,6 +30,7 @@ class SideBar(QWidget):
         self.btnGnome = QPushButton("Gnome Settings")
         self.btnExtension = QPushButton("Gnome Extensions")
         self.btnTheming = QPushButton("Appearance")
+        self.btnVariables = QPushButton("Environment Variables")
         self.btnShell = QPushButton("Shell Program")
         self.btnGaming = QPushButton("Gaming Tools")
         self.btnGames = QPushButton("Recommended Games")
@@ -44,6 +46,7 @@ class SideBar(QWidget):
         self.layout.addWidget(self.btnGnome)
         self.layout.addWidget(self.btnExtension)
         self.layout.addWidget(self.btnTheming)
+        self.layout.addWidget(self.btnVariables)
         self.layout.addWidget(self.btnShell)
         self.layout.addWidget(self.btnEssentials)
         self.layout.addWidget(self.btnGaming)
@@ -62,6 +65,8 @@ class SideBar(QWidget):
             "AUR Helper", AurHelperWin, [self]))
         self.btnTheming.clicked.connect(lambda: parent.open_window(
             "Appearance", AppearanceWin, [self]))
+        self.btnVariables.clicked.connect(lambda: parent.open_window(
+            "Environment Variables", VariableWin, [self]))
         self.btnLure.clicked.connect(lambda: parent.open_window(
             "Linux User Repository", LureWin, [self]))
         self.btnShell.clicked.connect(lambda: parent.open_window(
