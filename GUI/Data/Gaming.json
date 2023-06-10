@@ -89,12 +89,6 @@
             "description": "Support for optimisations including CPU governor, I/O priority, process niceness, kernel scheduler (SCHED_ISO)."
         },
         {
-            "name": "Goverlay",
-            "package": "vkbasalt",
-            "image": "Assets/Apps/Gaming/goverlay.png",
-            "description": "Graphical tweaker for Mangohud and vkBasalt. Highly recommended to use."
-        },
-        {
             "name": "Mangohud",
             "package": "mangohud",
             "image": "Assets/Apps/Gaming/mangohud.png",
