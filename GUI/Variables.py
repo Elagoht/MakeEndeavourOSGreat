@@ -81,7 +81,7 @@ class VariableWin(QWidget):
         new = self.tblVariables.item(row, col).text()
 
         # Check if new data match with regex
-        if new != "":
+        if new != "" and col != 1:
             if not search("^[a-zA-Z_][a-zA-Z0-9_]*$", new):
                 self.tblVariables.setItem(
                     row, col, QTableWidgetItem(self.current_value))
