@@ -20,8 +20,10 @@ class VariableWin(QWidget):
         self.tblVariables.setSelectionMode(
             QAbstractItemView.SingleSelection)
         self.tblVariables.setHorizontalHeaderLabels(["Variable", "Value"])
+
         # Link functions to buttons
         self.btnAddNew.clicked.connect(self.add_variable)
+        self.btnDelete.clicked.connect(self.delete_variable)
 
         # Add widgets to layout
         self.layout = QGridLayout(self)
@@ -34,6 +36,7 @@ class VariableWin(QWidget):
         self.reload_table()
         self.tblVariables.cellChanged.connect(self.change_data)
         self.tblVariables.currentCellChanged.connect(self.get_current_value)
+        self.tblVariables.setCurrentCell(0, 0)
 
     def get_current_value(self, row, col):
         self.current_value = "" \
@@ -41,7 +44,6 @@ class VariableWin(QWidget):
             else self.tblVariables.item(row, col).text()
 
     # Get Environment Variables
-
     def get_environment_variables(self):
         with open("/etc/environment", "r") as file:
             lines = file.readlines()
@@ -134,3 +136,9 @@ class VariableWin(QWidget):
                 "Non-Unique Variable",
                 "Do not use same variable names. In terms of using same variables, only the last one will be used."
             )
+
+    def delete_variable(self):
+        current = self.tblVariables.currentRow()
+        if current:
+            del self.variables[list(self.variables.keys())[current]]
+            self.reload_table()
