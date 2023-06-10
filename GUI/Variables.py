@@ -1,4 +1,5 @@
 from PyQt5.QtWidgets import QWidget, QGridLayout, QTableWidget, QTableWidgetItem, QPushButton, QHeaderView, QAbstractItemView, QMessageBox
+from PyQt5.QtCore import Qt
 from re import search
 
 
@@ -11,8 +12,9 @@ class VariableWin(QWidget):
 
         # Create widgets
         self.tblVariables = QTableWidget()
-        self.btnDelete = QPushButton("Delete", self)
-        self.btnAddNew = QPushButton("Add", self)
+        self.btnAddNew = QPushButton("Add New", self)
+        self.btnDelete = QPushButton("Delete Selected", self)
+        self.btnSave = QPushButton("Save Changes", self)
 
         # Table settings
         self.tblVariables.setColumnCount(2)
@@ -24,12 +26,14 @@ class VariableWin(QWidget):
         # Link functions to buttons
         self.btnAddNew.clicked.connect(self.add_variable)
         self.btnDelete.clicked.connect(self.delete_variable)
+        self.btnSave.clicked.connect(self.save_variables)
 
         # Add widgets to layout
         self.layout = QGridLayout(self)
-        self.layout.addWidget(self.tblVariables, 0, 0, 1, 2)
+        self.layout.addWidget(self.tblVariables, 0, 0, 1, 3)
         self.layout.addWidget(self.btnAddNew, 1, 0)
         self.layout.addWidget(self.btnDelete, 1, 1)
+        self.layout.addWidget(self.btnSave, 1, 2)
 
         # Initialize
         self.get_environment_variables()
@@ -115,11 +119,6 @@ class VariableWin(QWidget):
         # Update current value
         self.get_current_value(row, col)
 
-        # DEBUG
-        print(self.variables)
-        for k, v in self.variables.items():
-            print(f"{k}={v}")
-
     def check_for_unique_keys(self):
         # Get variable list
         row_items = []
@@ -137,8 +136,37 @@ class VariableWin(QWidget):
                 "Do not use same variable names. In terms of using same variables, only the last one will be used."
             )
 
+    # Delete a variable
     def delete_variable(self):
         current = self.tblVariables.currentRow()
+        # Check if there is a selection
         if current:
             del self.variables[list(self.variables.keys())[current]]
             self.reload_table()
+
+    def save_variables(self) -> None:
+        result = ""
+        warn_for_empty = ""
+        for key, value in self.variables.items():
+            if all([len(key), len(value)]):
+                result += f"{key}={value}<br />"
+            else:
+                warn_for_empty = """
+    <p>
+        <b>Other variables will not be used because of empty fields!</b>
+    </p>"""
+        result = result[0:-6]
+
+        msgAgreement = QMessageBox(self)
+        msgAgreement.setTextFormat(Qt.RichText)
+        msgAgreement.information(
+            self, "Check Variables",
+            f"""<html>
+    <p>The following variables will be written to /etc/environments file:</p>
+    <p>
+        <font color="orange" face="monospace">
+            {result}
+        </font>
+    </p>{warn_for_empty}
+    <p>Do you agree this changes?</p>
+</html>""", QMessageBox.Ok | QMessageBox.Cancel)
