@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QWidget, QGridLayout, QTableWidget, QTableWidgetItem, QPushButton, QHeaderView, QAbstractItemView, QMessageBox
+from PyQt5.QtWidgets import QWidget, QGridLayout, QTableWidget, QTableWidgetItem, QPushButton, QHeaderView, QAbstractItemView, QMessageBox, QLabel
 from PyQt5.QtCore import Qt
 from re import search
 from os import system
@@ -12,10 +12,17 @@ class VariableWin(QWidget):
         self.current_value = ""
 
         # Create widgets
+        self.lblUnrecommended = QLabel(
+            """Unrecommended variables to set it here: <font face="monospace" color="red">BROWSER, PATH, LANG, LC_*, HOME, SHELL</font>.<br/>
+Do not set them here or at all.""", self)
         self.tblVariables = QTableWidget()
         self.btnAddNew = QPushButton("Add New", self)
         self.btnDelete = QPushButton("Delete Selected", self)
         self.btnSave = QPushButton("Save Changes", self)
+
+        # Label styling
+        self.lblUnrecommended.setWordWrap(True)
+        self.lblUnrecommended.setTextFormat(Qt.RichText)
 
         # Table settings
         self.tblVariables.setColumnCount(2)
@@ -31,10 +38,11 @@ class VariableWin(QWidget):
 
         # Add widgets to layout
         self.layout = QGridLayout(self)
-        self.layout.addWidget(self.tblVariables, 0, 0, 1, 3)
-        self.layout.addWidget(self.btnAddNew, 1, 0)
-        self.layout.addWidget(self.btnDelete, 1, 1)
-        self.layout.addWidget(self.btnSave, 1, 2)
+        self.layout.addWidget(self.lblUnrecommended, 0, 0, 1, 3)
+        self.layout.addWidget(self.tblVariables, 1, 0, 1, 3)
+        self.layout.addWidget(self.btnAddNew, 2, 0)
+        self.layout.addWidget(self.btnDelete, 2, 1)
+        self.layout.addWidget(self.btnSave, 2, 2)
 
         # Initialize
         self.get_environment_variables()
