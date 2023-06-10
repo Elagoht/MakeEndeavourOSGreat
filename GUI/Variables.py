@@ -91,6 +91,11 @@ class VariableWin(QWidget):
             if not search("^[a-zA-Z_][a-zA-Z0-9_]*$", new):
                 self.tblVariables.setItem(
                     row, col, QTableWidgetItem(self.current_value))
+                QMessageBox.information(
+                    self,
+                    "Disallowed format",
+                    "Variable names should be alphanumeric names with underscore separated words. Also cannot start with numbers."
+                )
                 return
 
         # Make changes
