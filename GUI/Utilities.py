@@ -70,11 +70,6 @@ class CommandThread(QThread):
         sh -c '{self.command}; echo $? > '$statusfile 2> /dev/null;
         cat $statusfile;
         rm $statusfile""".encode())
-        print(f"""statusfile=$(mktemp);
-        {"" if self.avoid_xterm else "xterm -xrm 'XTerm.vt100.allowTitleOps: false' -T 'Endeavour OS Tweaker Slave' -bg black -fg peru -e"}\
-        sh -c '{self.command}; echo $? > '$statusfile 2> /dev/null;
-        cat $statusfile;
-        rm $statusfile""")
         process.closeWriteChannel()
         # Wait until process is finished.
         process.waitForFinished(-1)

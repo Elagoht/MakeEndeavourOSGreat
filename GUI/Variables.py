@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import QWidget, QGridLayout, QTableWidget, QTableWidgetItem, QPushButton, QHeaderView, QAbstractItemView, QMessageBox
 from PyQt5.QtCore import Qt
 from re import search
+from os import system
 
 
 class VariableWin(QWidget):
@@ -70,7 +71,6 @@ class VariableWin(QWidget):
 
     def add_variable(self):
         length = self.tblVariables.rowCount()
-        print(length)
         # Check if not already have an empty variable
         for row in range(length):
             item = self.tblVariables.item(row, 0)
@@ -145,28 +145,37 @@ class VariableWin(QWidget):
             self.reload_table()
 
     def save_variables(self) -> None:
+        # Get valid variables
         result = ""
         warn_for_empty = ""
         for key, value in self.variables.items():
             if all([len(key), len(value)]):
-                result += f"{key}={value}<br />"
+                result += f"{key}={value}\n"
             else:
                 warn_for_empty = """
     <p>
         <b>Other variables will not be used because of empty fields!</b>
     </p>"""
-        result = result[0:-6]
+        result = result[:-1]
+        html_result = result.replace("\n", "<br />\n")
 
+        # Ask for changes
         msgAgreement = QMessageBox(self)
         msgAgreement.setTextFormat(Qt.RichText)
-        msgAgreement.information(
+        agree: bool = msgAgreement.information(
             self, "Check Variables",
             f"""<html>
     <p>The following variables will be written to /etc/environments file:</p>
     <p>
         <font color="orange" face="monospace">
-            {result}
+            {html_result}
         </font>
     </p>{warn_for_empty}
     <p>Do you agree this changes?</p>
-</html>""", QMessageBox.Ok | QMessageBox.Cancel)
+</html>""", QMessageBox.Ok | QMessageBox.Cancel) == QMessageBox.Ok
+
+        # Do changes if user agrees
+        if agree:
+            system(f"""echo "# This config file is edited with make-endeavouros-great application.
+
+{result}" | pkexec tee /etc/environment""")
