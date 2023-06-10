@@ -95,9 +95,9 @@
             "description": "Simply Riva Tuner Statistics Server for Linux. Shows FPS, CPU and GPU's usage and heat, RAM and Swap usage etc. To use add <font color=\"orange\" face=\"monospace\">mangohud</font> on terminal or write <font color=\"green\" face=\"monospace\">mangohud %command%</font> on Steam launch options."
         },
         {
-            "name": "vkBasalt",
-            "package": "vkbasalt",
-            "image": "Assets/Apps/Gaming/vkbasalt.png",
+            "name": "Goverlay",
+            "package": "goverlay-bin",
+            "image": "Assets/Apps/Gaming/goverlay.png",
             "description": "Vulkan post processing layer to enhance the visual graphics of games. To use add <font color=\"green\" face=\"monospace\">mangohud ENABLE_VKBASALT=1</font> on terminal or write <font color=\"green\" face=\"monospace\">mangohud ENABLE_VKBASALT=1 %command%</font> on Steam launch options."
         }
     ],
