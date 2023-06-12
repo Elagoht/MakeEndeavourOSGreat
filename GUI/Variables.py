@@ -77,8 +77,8 @@ Do not set them here or at all.""", self)
         length = len(self.keys)
         self.tblVariables.setRowCount(length)
         # Fill data
-        for row, variable in enumerate(self.keys):
-            self.tblVariables.setItem(row, 0, QTableWidgetItem(variable))
+        for row, key in enumerate(self.keys):
+            self.tblVariables.setItem(row, 0, QTableWidgetItem(key))
         for row, value in enumerate(self.values):
             self.tblVariables.setItem(row, 1, QTableWidgetItem(value))
 
@@ -97,24 +97,42 @@ Do not set them here or at all.""", self)
         self.tblVariables.setRowCount(length + 1)
 
     def change_data(self, row, col):
-        # Get rows as lists
-        keys = []
-        values = []
-        for row in range(self.tblVariables.rowCount()):
-            keys.append(
+        # Check for key format
+        if col == 0 and self.tblVariables.currentItem() is not None:
+            if self.tblVariables.currentItem().text() != "" and not search(
+                "^[a-zA-Z_][a-zA-Z0-9_]*$",
                 self.tblVariables.item(row, 0).text()
-                if self.tblVariables.item(row, 0) is not None
-                else ""
-            )
-        for row in range(self.tblVariables.rowCount()):
-            values.append(
-                self.tblVariables.item(row, 1).text()
-                if self.tblVariables.item(row, 1) is not None
-                else ""
-            )
-        # Assign new values
-        self.keys = keys
-        self.values = values
+            ):
+                # Re-assign old value
+                self.tblVariables.setItem(
+                    row, 0,
+                    QTableWidgetItem(self.current_value, 0)
+                )
+                # Warn user about formatting
+                QMessageBox.warning(
+                    self, "Disallowed Format",
+                    "Variables must start with letters and can only contain <font color='orange'>alphanumeric characters and underscore</font>."
+                )
+        # Get keys as lists
+        if col == 0:
+            keys = []
+            for row in range(self.tblVariables.rowCount()):
+                keys.append(
+                    self.tblVariables.item(row, 0).text()
+                    if self.tblVariables.item(row, 0) is not None
+                    else ""
+                )
+            self.keys = keys
+        # Get values as lists
+        else:
+            values = []
+            for row in range(self.tblVariables.rowCount()):
+                values.append(
+                    self.tblVariables.item(row, 1).text()
+                    if self.tblVariables.item(row, 1) is not None
+                    else ""
+                )
+            self.values = values
 
         # Update current value
         self.get_current_value(row, col)
@@ -132,6 +150,8 @@ Do not set them here or at all.""", self)
             if current > -1:
                 self.keys.pop(current)
                 self.values.pop(current)
+                print(self.keys)
+                print(self.values)
                 self.reload_table()
 
     def save_variables(self) -> None:
@@ -142,6 +162,11 @@ Do not set them here or at all.""", self)
             # Check if variable is valid
             if search("^[a-zA-Z_][a-zA-Z0-9_]*$", key)
         )
+        # Check for duplicate values
+        warn_for_nonunique = """
+<p>
+    Duplicated variables detected. The <b>last value</b> will be used.
+</p>""" if len(list(unique.keys())) != len(self.values) else ""
         keys = unique.keys()
         values = unique.values()
         # Get valid variables
@@ -166,7 +191,7 @@ Do not set them here or at all.""", self)
         <font color="orange" face="monospace">
             {html_result}
         </font>
-    </p>{warn_for_empty}
+    </p>{warn_for_empty}{warn_for_nonunique}
     <p>Do you agree this changes?</p>
 </html>"""
         # Ask for changes
