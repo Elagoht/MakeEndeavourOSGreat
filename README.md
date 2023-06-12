@@ -9,11 +9,9 @@
 [![Codacity](https://img.shields.io/codacy/grade/bb3500c728344ef898cb6c66bc356f00?logo=codacy&logoColor=white&style=for-the-badge)](https://app.codacy.com/gh/Elagoht/MakeEndeavourOSGreat/)
 </div>
 
-Endeaours OS is already a great OS. But it describe itself as a *"terminal centric"* distro. Noone can suggest a Arch-based distro to a newcomer. But Arch Linux has a great oppurtunity named AUR. Endeavour OS makes installing Arch easier. So I wanted to make Endeavour OS more suitable for newcomers.
+Endeavour OS is already a great OS, but it describes itself as a "terminal-centric" distro. No one can suggest an Arch-based distro to a newcomer. However, Arch Linux offers a great opportunity called AUR. Endeavour OS makes installing Arch easier, so I wanted to make it more suitable for newcomers.
 
-This application mostly targets Gnome DE users. You can always use other options than gnome ones. But my first aim is to make Gnome better for users. In close future, I *may* develop options for other DE or WM users (such as i3).
-
-I'll create a GUI app to make it easier to use for newcomers.
+This application mainly targets GNOME DE users, although you can always choose other options besides GNOME. However, my primary goal is to enhance the GNOME experience for users. In the near future, I *may* develop options for other DE or WM users, such as i3.
 
 ## ScreenShots
 
