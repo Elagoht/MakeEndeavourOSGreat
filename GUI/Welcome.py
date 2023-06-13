@@ -1,5 +1,4 @@
 from PyQt5.QtWidgets import QWidget, QVBoxLayout
-from PyQt5.QtGui import QPixmap
 from Utilities import QLabel
 
 
