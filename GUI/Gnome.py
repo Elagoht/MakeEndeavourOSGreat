@@ -160,3 +160,4 @@ class GnomeWin(QWidget):
         self.layout.addWidget(self.gbxContext)
         self.layout.addWidget(self.gbxTerm)
         self.layout.addWidget(self.gbxKeyBinds)
+        self.layout.addStretch()

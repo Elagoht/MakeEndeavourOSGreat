@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QWidget, QGridLayout
+from PyQt5.QtWidgets import QWidget, QGridLayout, QLabel
 from PyQt5.QtGui import QIcon
 from Utilities import ShellBox, ButtonBox, CommandButton, long_bash_script, get_installed_apps
 from os import system
@@ -94,6 +94,7 @@ class ShellWin(QWidget):
         self.layout.addWidget(self.appZsh)
         self.layout.addWidget(self.appFish)
         self.layout.addWidget(self.extOhMyZsh, 2, 0, 1, 2)
+        self.layout.setRowStretch(3, 1)
 
         # Initialize
         self.check_oh_my_zsh()

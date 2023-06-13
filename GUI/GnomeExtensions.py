@@ -25,6 +25,7 @@ class ExtensionsWin(QWidget):
         self.layout.addWidget(self.gbxConnector)
         self.layout.addWidget(self.gbxExtensions)
         self.load_extensions()
+        self.layout.addStretch()
 
     def load_extensions(self):
         with open("Data/Extensions.json", "r") as extensions_json:

@@ -67,6 +67,7 @@ class AurHelperWin(QWidget):
         self.layout.addWidget(self.gbxAur, 0, 0, 1, 2)
         self.layout.addWidget(self.appParu)
         self.layout.addWidget(self.appYay)
+        self.layout.setRowStretch(2, 1)
 
         # Initialize
         self.lblAurHelper.setText(self.get_aur_helpers())

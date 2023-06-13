@@ -73,6 +73,7 @@ EOF"
         self.layout.addWidget(self.gbxIcons)
         self.layout.addWidget(self.gbxCursor)
         self.layout.addWidget(self.gbxFont)
+        self.layout.addStretch()
 
     def load_themes(self, file: str, type: int, widget: GridBox):
         with open(file, "r") as themes_json:

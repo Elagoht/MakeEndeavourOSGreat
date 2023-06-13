@@ -30,3 +30,4 @@ class PamacWin(QWidget):
         self.layout = QVBoxLayout(self)
         self.layout.addWidget(self.appPamac)
         self.layout.addWidget(self.gbxAUR)
+        self.layout.addStretch()

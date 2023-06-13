@@ -45,3 +45,4 @@ class LureWin(QWidget):
         self.layout = QVBoxLayout(self)
         self.layout.addWidget(self.gbxLure)
         self.layout.addWidget(self.gbxUsage)
+        self.layout.addStretch(10)

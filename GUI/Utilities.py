@@ -463,6 +463,7 @@ class AppsWin(QWidget):
                                owner=self,
                                bar_bottom=self.parent().parent().parent().central_widget.barBottom))
             self.layout.addWidget(grid_box)
+        self.layout.addStretch()
 
 
 class DconfCheckBox(QCheckBox):
