@@ -1,4 +1,5 @@
 from PyQt5.QtWidgets import QWidget, QVBoxLayout
+from PyQt5.QtGui import QPixmap
 from Utilities import QLabel
 
 
@@ -7,8 +8,10 @@ class WelcomeWin(QWidget):
         super().__init__()
         self.setParent(parent)
 
-        self.lblWelcome = QLabel("""<h1>Welcome to Endeavour OS Tweaker</h1>
-            <p>Adapt your computer to your usage patterns by using this application. Click buttons on the left to start tweaking.</p>""")
+        with open("HTML/Welcome.html") as file:
+            content = file.read()
+
+        self.lblWelcome = QLabel(content)
         self.lblWelcome.setWordWrap(True)
 
         self.layout = QVBoxLayout(self)
