@@ -2,7 +2,7 @@
 pkgname=make-endeavouros-great-git
 pkgver=0.1
 pkgrel=1
-pkgdesc="Make Endeavour Os Great"
+pkgdesc="Endeavour OS is an operating system makes Arch Linux easier. I wanted to make it usable for new-comers."
 arch=("any")
 url="https://github.com/Elagoht/MakeEndeavourOSGreat"
 license=('GPL')
