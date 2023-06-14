@@ -18,7 +18,7 @@ prepare() {
 Name=EOS Tweaker
 GenericName=Tweaker Tool
 Description=Make Endeavour OS Great
-Icon=/usr/share/MakeEndeavourOSGreat/icon.png
+Icon=/usr/share/MakeEndeavourOSGreat/Assets/icon.png
 Path=/usr/share/MakeEndeavourOSGreat
 Exec=make-endeavouros-great
 Type=Application
