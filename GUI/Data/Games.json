@@ -1,4 +1,18 @@
 {
+    "Rhythm Games": [
+        {
+            "name": "Clone Hero",
+            "package": "clonehero",
+            "image": "Assets/Apps/Games/clonehero.png",
+            "description": "Clone Hero is a free rhythm game, which can be played with any 5 or 6 button guitar, controllers or computer keyboard."
+        },
+        {
+            "name": "Osu!",
+            "package": "osu",
+            "image": "Assets/Apps/Games/osu.png",
+            "description": "A free-to-win rhythm game."
+        }
+    ],
     "Strategy Games": [
         {
             "name": "Mindustry",
