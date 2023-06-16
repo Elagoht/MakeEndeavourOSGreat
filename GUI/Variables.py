@@ -202,6 +202,6 @@ Do not set them here or at all.""", self)
             message, QMessageBox.Ok | QMessageBox.Cancel) == QMessageBox.Ok
         # Do changes if user agrees
         if agree:
-            system(f"""echo "# This config file is edited with make-endeavouros-great application.
+            system(f"""echo '# This config file is edited with make-endeavouros-great application.
 
-{result}" | pkexec tee /etc/environment""")
+{result}' | pkexec tee /etc/environment""")
