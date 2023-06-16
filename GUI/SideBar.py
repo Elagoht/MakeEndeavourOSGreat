@@ -35,6 +35,7 @@ class SideBar(QWidget):
         self.btnGaming = QPushButton("Gaming Tools")
         self.btnGames = QPushButton("Recommended Games")
         self.btnDevelopment = QPushButton("Development")
+        self.btnTerminalApp = QPushButton("Terminal Tools")
 
         # Insert buttons to menu layout
         self.layout = QVBoxLayout(self)
@@ -52,6 +53,7 @@ class SideBar(QWidget):
         self.layout.addWidget(self.btnGaming)
         self.layout.addWidget(self.btnGames)
         self.layout.addWidget(self.btnDevelopment)
+        self.layout.addWidget(self.btnTerminalApp)
         self.layout.addStretch()
 
         # Connect buttons to functions
@@ -79,6 +81,8 @@ class SideBar(QWidget):
             "Recommended Games", AppsWin, ["Data/Games.json", self]))
         self.btnDevelopment.clicked.connect(lambda: parent.open_window(
             "Development", AppsWin, ["Data/Development.json", self]))
+        self.btnTerminalApp.clicked.connect(lambda: parent.open_window(
+            "Development", AppsWin, ["Data/Terminal.json", self]))
 
         # Initialization
         self.check_aur_helper()

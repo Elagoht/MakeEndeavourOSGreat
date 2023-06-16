@@ -1,0 +1,148 @@
+{
+    "Miscellaneous": [
+        {
+            "name": "Perl-rename",
+            "package": "perl-rename",
+            "image": "Assets/Apps/Terminal/perl-rename.png",
+            "description": "Renames multiple files using Perl regular expressions."
+        },
+        {
+            "name": "Bat",
+            "package": "bat",
+            "image": "Assets/Apps/Terminal/bat.png",
+            "description": "Cat clone with syntax highlighting and git integration."
+        },
+        {
+            "name": "Youtube-dl",
+            "package": "youtube-dl",
+            "image": "Assets/Apps/Terminal/youtube-dl.png",
+            "description": "A command-line program to download videos from YouTube.com and a few more sites."
+        }
+    ],
+    "Text Editors": [
+        {
+            "name": "Vim",
+            "package": "vim",
+            "image": "Assets/Apps/Terminal/vim.png",
+            "description": "Vi Improved, a highly configurable, improved version of the vi text editor."
+        },
+        {
+            "name": "NeoVim",
+            "package": "neovim",
+            "image": "Assets/Apps/Development/nvim.png",
+            "description": "Fork of Vim aiming to improve user experience, plugins, and GUIs."
+        },
+        {
+            "name": "Emacs",
+            "package": "emacs",
+            "image": "Assets/Apps/Development/emacs.png",
+            "description": "The extensible, customizable, self-documenting real-time display editor."
+        },
+        {
+            "name": "Nano",
+            "package": "nano",
+            "image": "Assets/Apps/Terminal/nano.png",
+            "description": "Pico editor clone with enhancements."
+        }
+    ],
+    "Visualization": [
+        {
+            "name": "Cava",
+            "package": "cava",
+            "image": "Assets/Apps/Terminal/cava.png",
+            "description": "Console-based Audio Visualizer for Alsa."
+        },
+        {
+            "name": "Cmatrix",
+            "package": "cmatrix",
+            "image": "Assets/Apps/Terminal/cmatrix.png",
+            "description": "A curses-based scrolling 'Matrix'-like screen."
+        },
+        {
+            "name": "Pipes.sh",
+            "package": "pipes.sh",
+            "image": "Assets/Apps/Terminal/pipes.sh.png",
+            "description": "Animated pipes terminal screensaver."
+        }
+    ],
+    "Music Players": [
+        {
+            "name": "Musikcube",
+            "package": "musikcube-bin",
+            "image": "Assets/Apps/Terminal/musikcube.png",
+            "description": "A terminal-based cross-platform music player, audio engine, metadata indexer, and server."
+        },
+        {
+            "name": "Cmus",
+            "package": "cmus",
+            "image": "Assets/Apps/Terminal/cmus.png",
+            "description": "Feature-rich ncurses-based music player."
+        }
+    ],
+    "Terminal Multiplexers": [
+        {
+            "name": "Tmux",
+            "package": "tmux",
+            "image": "Assets/Apps/Terminal/tmux.png",
+            "description": "Terminal multiplexer"
+        }
+    ],
+    "File Managers": [
+        {
+            "name": "Ranger",
+            "package": "ranger",
+            "image": "Assets/Apps/Terminal/ranger.png",
+            "description": "Simple, vim-like file manager."
+        },
+        {
+            "name": "Midnight Commander",
+            "package": "mc",
+            "image": "Assets/Apps/Terminal/midnightcommander.png",
+            "description": "A file manager that emulates Norton Commander."
+        }
+    ],
+    "Web Browsers": [
+        {
+            "name": "Browsh",
+            "package": "browsh-bin",
+            "image": "Assets/Apps/Terminal/browsh.png",
+            "description": "A fully-modern text-based browser, rendering to TTY and browsers"
+        }
+    ],
+    "Fetchers": [
+        {
+            "name": "Neofetch",
+            "package": "neofetch",
+            "image": "Assets/Apps/Terminal/neofetch.png",
+            "description": "A CLI system information tool written in BASH that supports displaying images."
+        },
+        {
+            "name": "Uwufetch",
+            "package": "uwufetch",
+            "image": "Assets/Apps/Terminal/uwufetch.png",
+            "description": "A meme system info tool for Linux, based on nyan/uwu trend on r/linuxmasterrace."
+        }
+    ],
+    "System Monitors": [
+        {
+            "name": "Htop",
+            "package": "htop",
+            "image": "Assets/Apps/Terminal/htop.png",
+            "description": "Interactive process viewer."
+        },
+        {
+            "name": "Btop",
+            "package": "btop",
+            "image": "Assets/Apps/Terminal/btop.png",
+            "description": "A monitor of system resources, bpytop ported to C++."
+        }
+    ],
+    "Calculators": [
+        {
+            "name": "BC",
+            "package": "bc",
+            "image": "Assets/Apps/Terminal/bc.png",
+            "description": "An arbitrary precision calculator language."
+        }
+    ]
+}
