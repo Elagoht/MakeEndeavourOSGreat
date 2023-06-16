@@ -116,9 +116,9 @@
     "Card Game": [
         {
             "name": "Aisleriot Solitaire",
-            "package": "supertuxkart",
+            "package": "aisleriot",
             "image": "Assets/Apps/Games/aisleriot.png",
-            "description": "Play lots of solitaire games."
+            "description": "A collection of patience games written in guile scheme."
         }
     ],
     "Space Shooter": [
@@ -180,7 +180,7 @@
         },
         {
             "name": "Gnome Robots",
-            "package": "iagno",
+            "package": "gnome-robots",
             "image": "Assets/Apps/Games/gnomerobots.png",
             "description": "Avoid the robots and make them crash into each other."
         }

@@ -128,7 +128,7 @@
         },
         {
             "name": "Wine Tricks",
-            "package": "wine-gecko",
+            "package": "winetricks",
             "image": "Assets/Apps/Gaming/winetricks.png",
             "description": "Graphical interface for script to install various redistributable runtime libraries in Wine."
         },

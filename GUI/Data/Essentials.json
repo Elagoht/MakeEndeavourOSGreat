@@ -134,7 +134,7 @@
         },
         {
             "name": "LMMS",
-            "package": "musescore3",
+            "package": "lmms",
             "image": "Assets/Apps/Essentials/lmms.png",
             "description": "The Linux MultiMedia Studio. Digital Audio Workstation."
         },
@@ -289,6 +289,12 @@
             "description": "Lightweight approach to removing Google web service dependency. Un-Googled version."
         },
         {
+            "name": "Thorium Browser",
+            "package": "thorium-browser-bin",
+            "image": "Assets/Apps/Essentials/thorium.png",
+            "description": "Chromium fork focused on high performance and security."
+        },
+        {
             "name": "Waterfox",
             "package": "waterfox",
             "image": "Assets/Apps/Essentials/waterfox.png",
@@ -329,12 +335,6 @@
     ],
     "PDF Viewer": [
         {
-            "name": "Evince",
-            "package": "evince sushi",
-            "image": "Assets/Apps/Essentials/evince.png",
-            "description": "Document viewer (PDF, PostScript, XPS, djvu, dvi, tiff, cbr, cbz, cb7, cbt)"
-        },
-        {
             "name": "Okular",
             "package": "okular",
             "image": "Assets/Apps/Essentials/okular.png",
@@ -356,7 +356,7 @@
         },
         {
             "name": "Libre Office Fresh (Bleeding Edge)",
-            "package": "libreoffice-still",
+            "package": "libreoffice-fresh",
             "image": "Assets/Apps/Essentials/libreoffice.png",
             "description": "LibreOffice branch which contains new features and program enhancements."
         },

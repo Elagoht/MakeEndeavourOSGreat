@@ -8,7 +8,7 @@
         },
         {
             "name": "VSCodium",
-            "package": "vscodium-bin vscodium-bin-features vscodium-bin-marketplace",
+            "package": "vscodium-bin",
             "image": "Assets/Apps/Development/vscodium.png",
             "description": "Community-driven, freely-licensed binary distribution of Microsoft's editor VS Code."
         },
@@ -281,8 +281,14 @@
         {
             "name": "Pip",
             "package": "python-pip",
-            "image": "Assets/Apps/Development/python.png",
+            "image": "Assets/Apps/Development/pip.png",
             "description": "[P]ip [I]nstalls [P]ackages, package manager for Python."
+        },
+        {
+            "name": "Pip X",
+            "package": "python-pipx",
+            "image": "Assets/Apps/Development/pipx.png",
+            "description": "Install and Run Python Applications in Isolated Environments"
         },
         {
             "name": "bPython",
@@ -299,13 +305,13 @@
         {
             "name": "IDLE",
             "package": "idle",
-            "image": "Assets/Apps/Development/python.png",
+            "image": "Assets/Apps/Development/python-idle.png",
             "description": "Integrated Development and Learning Environment for Python"
         },
         {
             "name": "IDLEX",
             "package": "idlex",
-            "image": "Assets/Apps/Development/python.png",
+            "image": "Assets/Apps/Development/python-idle.png",
             "description": "Basically IDLE, extended."
         },
         {
@@ -349,7 +355,7 @@
             "description": "NetBeans integrated development environment for C and C++ languages."
         },
         {
-            "name": ".h files)",
+            "name": "Linux Headers (.h files)",
             "package": "linux-headers",
             "image": "Assets/Apps/Development/header.png",
             "description": "Required header (*.h) files for Linux kernel."
