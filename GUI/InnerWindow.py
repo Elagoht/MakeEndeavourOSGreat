@@ -47,7 +47,7 @@ class TopBar(QWidget):
 
     # Back to main page functin
     def go_back(self) -> None:
-        self.parent().close_window()
+        self.parent().open_welcome_page()
         self.btnBack.hide()
 
 
@@ -77,7 +77,7 @@ class BottomBar(QWidget):
                     self, "AUR Helper Needed",
                     "To install all applications, you need an AUR helper. This program only supports paru and yay. You can install one with the help of this application."
                 ),
-                self.parent().close_window
+                self.parent().open_welcome_page
             ],
             True
         )

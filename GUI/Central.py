@@ -23,7 +23,7 @@ class Central(QWidget):
 
         # Initialize
         self.is_page_open = True
-        self.close_window()
+        self.open_welcome_page()
 
     # Close side window
     def close_window(self) -> None:
@@ -32,14 +32,7 @@ class Central(QWidget):
             del self.winWidget
         except AttributeError:
             pass
-
-        if self.is_page_open:
-            self.winWidget = SideWindow(WelcomeWin, [self], self)
-            self.layWindow.addWidget(self.winWidget, 1, 0)
-            self.barTop.set_title("Main Menu")
-
         self.is_page_open = not self.is_page_open
-        self.barSide.setVisible(not self.is_page_open)
         self.barTop.btnBack.hide()
 
     # Open side window
@@ -50,3 +43,8 @@ class Central(QWidget):
         self.layWindow.addWidget(self.winWidget, 1, 0)
         self.barTop.set_title(title)
         self.barTop.btnBack.show()
+
+    def open_welcome_page(self):
+        self.close_window()
+        self.open_window("Main Page", WelcomeWin, [self])
+        self.barTop.btnBack.hide()
