@@ -156,7 +156,7 @@
         },
         {
             "name": "DBeaver",
-            "package": "sqlitebrowser",
+            "package": "dbeaver",
             "image": "Assets/Apps/Development/dbeaver.png",
             "description": "High quality visual tool to create, design and edit SQLite database."
         },
@@ -324,7 +324,7 @@
         },
         {
             "name": "ASP.NET Runtime",
-            "package": "aspnet-runtime-bin",
+            "package": "aspnet-runtime",
             "image": "Assets/Apps/Development/aspnet.png",
             "description": "The ASP.NET Core runtime (binary)."
         }
