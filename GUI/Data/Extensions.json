@@ -10,6 +10,11 @@
         "Assets/Extensions/dashtodock.png"
     ],
     [
+        "Alphabetical App Grid",
+        "https://extensions.gnome.org/extension/4269/alphabetical-app-grid/",
+        "Assets/Extensions/alphabeticalgrid.png"
+    ],
+    [
         "NoAnnoyance v2",
         "https://extensions.gnome.org/extension/2182/noannoyance/",
         "Assets/Extensions/noannoyance.png"
@@ -40,6 +45,11 @@
         "Assets/Extensions/transparent.png"
     ],
     [
+        "Desktop Icons NG (DING)",
+        "https://extensions.gnome.org/extension/2087/desktop-icons-ng-ding/",
+        "Assets/Extensions/desktopiconsng.png"
+    ],
+    [
         "OpenWeather",
         "https://extensions.gnome.org/extension/750/openweather/",
         "Assets/Extensions/openweather.png"
@@ -63,5 +73,10 @@
         "Color Picker",
         "https://extensions.gnome.org/extension/3396/color-picker/",
         "Assets/Extensions/colorpicker.png"
+    ],
+    [
+        "Night Theme Switcher",
+        "https://extensions.gnome.org/extension/2236/night-theme-switcher/",
+        "Assets/Extensions/nightthemeswithcer.png"
     ]
 ]
