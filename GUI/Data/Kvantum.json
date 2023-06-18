@@ -29,7 +29,7 @@
     {
         "name": "White Sur",
         "package": "whitesur-kvantum-theme-git",
-        "image": "Assets/Themes/GTK/qogir.png",
+        "image": "Assets/Themes/GTK/whitesur.png",
         "themes": {
             "Dark": "YaruKde22Dark",
             "Light": "YaruKde22"
@@ -38,7 +38,7 @@
     {
         "name": "Nordic",
         "package": "kvantum-theme-nordic-git",
-        "image": "Assets/Themes/GTK/qogir.png",
+        "image": "Assets/Themes/GTK/nordic.png",
         "themes": {
             "Dark": "YaruKde22Dark",
             "Light": "YaruKde22"
