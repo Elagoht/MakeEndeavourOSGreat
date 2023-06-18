@@ -14,7 +14,7 @@ class AppearanceWin(QWidget):
             ButtonBox("Kvantum QT Theme Setter", "Assets/Tweaks/kvantum.png",
                       """<p>Qt applications does not follow GTK themes by default. You can use kvantum to manage Qt applications' (like this one) themes. There is an alternative to kvantum, named qt5ct. But updating that is a bit painful.</p>
                          <p>You can change Qt themes thanks to Kvantum Manager. You can set <font color="green">KvLibadwaita(Dark)</font> theme to uniform themes with Adw-gtk3 theme.</p>
-                         <p>Note that: <u>Enable/disable actions require restart.</u></p>""", (
+                         <p>Note that: <u>enabling or disabling actions may require a restart for the changes to take effect.</u></p>""", (
                           CommandButton(QIcon("Assets/enabled.png"), "Enable Kvantum",
                                         """sudo sed -i "s/^\#QT_STYLE_OVERRIDE=kvantum/QT_STYLE_OVERRIDE=kvantum/" /etc/environment;
                                 if [ ! "$(grep '^QT_STYLE_OVERRIDE=kvantum' /etc/environment)" ]
@@ -35,8 +35,7 @@ EOF"
         # Create GTK themes section
         self.gbxTheme = GridBox("GTK Themes")
         self.lblTheme = QLabel(
-            """<p>This is the primary theme for your interface and apps that use GTK framework.</p>
-            <p>You MUST use "Awd-gtk3" to unify the themes. There are other themes. GTK 4 apps does not properly adapt to other themes yet.</p>""", self.gbxTheme)
+            """This is the primary theme for your interface and applications that utilize the GTK framework. It is essential to use "Adw-gtk3" to ensure theme consistency. While there are other themes available, it's important to note that GTK 4 applications may not fully adapt to these themes yet.""", self.gbxTheme)
         self.lblTheme.setWordWrap(True)
         self.gbxTheme.addWidget(self.lblTheme, 0, 0, 1, 3)
         self.load_themes("Data/Themes.json", 0, self.gbxTheme)
@@ -52,7 +51,7 @@ EOF"
         # Create icons section
         self.gbxIcons = GridBox("Icons Themes")
         self.lblIcons = QLabel(
-            "Icons themes determines how your apps, mimetypes, folders, actions, categories, emblems, panel status will look.", self.gbxIcons)
+            "Icon themes determine the appearance of your applications, mimetypes, folders, actions, categories, emblems, and panel status. They play a significant role in defining the visual representation of various elements in your user interface.", self.gbxIcons)
         self.lblIcons.setWordWrap(True)
         self.gbxIcons.addWidget(self.lblIcons, 0, 0, 1, 3)
         self.load_themes("Data/Icons.json", 1, self.gbxIcons)
@@ -60,7 +59,7 @@ EOF"
         # Create cursor section
         self.gbxCursor = GridBox("Cursor Themes")
         self.lblCursor = QLabel(
-            "Cursor themes determines how your mouse pointer will look.", self.gbxCursor)
+            "Cursor themes determine how your mouse pointer will look.", self.gbxCursor)
         self.lblCursor.setWordWrap(True)
         self.gbxCursor.addWidget(self.lblCursor, 0, 0, 1, 3)
         self.load_themes("Data/Cursors.json", 2, self.gbxCursor)
@@ -68,7 +67,7 @@ EOF"
         # Create fonts section
         self.gbxFont = GridBox("Nerd Fonts")
         self.lblFont = QLabel(
-            "Nerd fonts are font collections formed by combining alphanumerical and symbolic characters. Includes lots of font-icon and have wide use area. To be able to see font-icons instead of empty rectangle, install and use one of the following.", self.gbxFont)
+            "Nerd fonts are collections of fonts that combine alphanumeric and symbolic characters. They include numerous font icons and have a wide range of applications. To see font icons instead of empty rectangles, you need to install and use one of the following fonts:", self.gbxFont)
         self.lblFont.setWordWrap(True)
         self.gbxFont.addWidget(self.lblFont, 0, 0, 1, 3)
         self.load_themes("Data/Fonts.json", 3, self.gbxFont)

@@ -3,8 +3,6 @@ from PyQt5.QtCore import Qt
 from re import search
 from os import system
 
-# ! REWRITE WHOLE SYSTEM WITH 2 LISTS INSTEAD OF A DICT
-
 
 class VariableWin(QWidget):
     def __init__(self, parent: QWidget):
@@ -16,8 +14,7 @@ class VariableWin(QWidget):
 
         # Create widgets
         self.lblUnrecommended = QLabel(
-            """Unrecommended variables to set it here: <font face="monospace" color="red">BROWSER, PATH, LANG, LC_*, HOME, SHELL</font>.<br/>
-Do not set them here or at all.""", self)
+            "It is not recommended to set the following variables here or at all: <font face='monospace' color='red'>BROWSER, PATH, LANG, LC_*, HOME, SHELL</font>.<br/> Avoid setting these variables in this context or in general.", self)
         self.tblVariables = QTableWidget()
         self.btnAddNew = QPushButton("Add New", self)
         self.btnDelete = QPushButton("Delete Selected", self)
@@ -111,7 +108,7 @@ Do not set them here or at all.""", self)
                 # Warn user about formatting
                 QMessageBox.warning(
                     self, "Disallowed Format",
-                    "Variables must start with letters and can only contain <font color='orange'>alphanumeric characters and underscore</font>."
+                    "Variables must begin with letters and can only consist of alphanumeric characters and underscores."
                 )
         # Get keys as lists
         if col == 0:
@@ -142,7 +139,7 @@ Do not set them here or at all.""", self)
         # Prompt for deletion
         if QMessageBox.warning(
             self, "Confirm Deletion",
-            "Do you really want to delete this variable?",
+            "Are you sure you want to delete this variable?",
             QMessageBox.Yes | QMessageBox.No
         ) == QMessageBox.Yes:
             current = self.tblVariables.currentRow()
@@ -165,7 +162,7 @@ Do not set them here or at all.""", self)
         # Check for duplicate values
         warn_for_nonunique = """
 <p>
-    Duplicated variables detected. The <b>last value</b> will be used.
+    Duplicated variables have been detected. The <b>last value</b> provided will be used.
 </p>""" if len(list(unique.keys())) != len(self.values) else ""
         keys = unique.keys()
         values = unique.values()
@@ -178,12 +175,12 @@ Do not set them here or at all.""", self)
             else:
                 warn_for_empty = """
     <p>
-        <b>Other variables will not be used because of empty fields!</b>
+        <b>Other variables will not be used due to empty fields!</b>
     </p>"""
         result = result[:-1]
         html_result = result.replace("\n", "<br />\n")
         # Set Message
-        message = """<html>There is no valid variable. Do you want to write an empty /etc/environment file?</html>""" \
+        message = """<html>There are no valid variables. Do you want to write an empty /etc/environment file?</html>""" \
             if len(self.keys) < 1 \
             else f"""<html>
     <p>The following variables will be written to /etc/environments file:</p>
@@ -192,7 +189,7 @@ Do not set them here or at all.""", self)
             {html_result}
         </font>
     </p>{warn_for_empty}{warn_for_nonunique}
-    <p>Do you agree this changes?</p>
+    <p>Do you agree with these changes?</p>
 </html>"""
         # Ask for changes
         msgAgreement = QMessageBox(self)
@@ -202,6 +199,6 @@ Do not set them here or at all.""", self)
             message, QMessageBox.Ok | QMessageBox.Cancel) == QMessageBox.Ok
         # Do changes if user agrees
         if agree:
-            system(f"""echo '# This config file is edited with make-endeavouros-great application.
+            system(f"""echo '# This configuration file has been edited using the "make-endeavouros-great" application.
 
 {result}' | pkexec tee /etc/environment""")

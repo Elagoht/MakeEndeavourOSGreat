@@ -11,13 +11,13 @@ class ExtensionsWin(QWidget):
         # Create connector section
         self.installed_apps = get_installed_apps()
         self.gbxConnector = AppBox("Browser Connector", "gnome-browser-connector", "Assets/Apps/gnomeextensions.png",
-                                   "You need to install a browser connector to be able to install extensions from your web browser.",
+                                   "To install extensions from your web browser, you will need to install a browser connector.",
                                    self, self.parent().parent().barBottom)
 
         # Create Extensions section
         self.gbxExtensions = GridBox("Suggested Extensions")
         self.lblExtensions = QLabel(
-            "Here are some suggested extensions to make Gnome better.", self.gbxExtensions)
+            "Here are some suggested extensions to enhance your GNOME experience:", self.gbxExtensions)
         self.gbxExtensions.addWidget(self.lblExtensions, 0, 0, 1, 3)
 
         # Insert groupboxes to layout

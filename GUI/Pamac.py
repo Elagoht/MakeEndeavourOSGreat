@@ -11,13 +11,13 @@ class PamacWin(QWidget):
         # Create install section
         self.installed_apps = get_installed_apps()
         self.appPamac = AppBox("Install Pamac", "pamac-aur", "Assets/Apps/pamac.png",
-                               "Pamac is a graphical software manager/application market created by Manjaro team. It makes installing, updating and removing apps easy.",
+                               "Pamac is a graphical software manager and application market developed by the Manjaro team. It simplifies the process of installing, updating, and removing applications, providing a user-friendly interface for these tasks.",
                                self, self.parent().parent().barBottom)
         # Create AUR section
         self.gbxAUR = \
             ButtonBox("AUR Support for Pamac",
                       "Assets/Apps/aur.png",
-                      "Arch User Repository is an additional package source. It's necessery for lots of package and application (like Spotify, Discord etc.). But be careful when installing unknown packages. Noone can guarantee that all of AUR packages is up to date and safe. You can use it but do not install packages you don't know or trust!", (
+                      "The Arch User Repository (AUR) is an extra source of packages for Arch Linux. It is often needed for installing applications like Spotify and Discord. However, it is important to be cautious when using the AUR. Not all packages in the AUR are regularly updated or guaranteed to be safe. Only install packages from the AUR that you know and trust.", (
                           CommandButton(QIcon("Assets/enabled.png"), "Enable AUR",
                                         "sudo sed -Ei '/EnableAUR/s/^#//' /etc/pamac.conf",
                                         self),

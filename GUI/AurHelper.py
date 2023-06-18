@@ -10,8 +10,8 @@ class AurHelperWin(QWidget):
         self.setParent(parent)
 
         # Create description section
-        self.gbxAur = GridBox("What is AUR Helper")
-        self.lblAurDesc = QLabel("Arch User Repository packages needs to be install manually by cloning git repositories (technically downloading files from internet but in a cooler way), and running some commands that creating packages from recipe file. That's usually a few step process. In this point, AUR helpers helps you to install, update and uninstall packages from AUR and official repositories.")
+        self.gbxAur = GridBox("What is an AUR Helper")
+        self.lblAurDesc = QLabel("Arch User Repository (AUR) packages need to be installed manually by cloning Git repositories (which essentially means downloading files from the internet in a cooler way) and running certain commands that create packages from a recipe file. This process typically involves a few steps. At this point, AUR helpers come in handy as they assist you in installing, updating, and uninstalling packages from both AUR and official repositories.")
         self.lblAurDesc.setWordWrap(True)
         self.btnAurCheck = CommandButton(
             QIcon("Assets/check.png"), "Check AUR Helpers", "true", self.gbxAur)
@@ -24,7 +24,7 @@ class AurHelperWin(QWidget):
 
         # Create paru section
         self.appParu = \
-            ButtonBox("Paru", "Assets/Apps/paru.png", "Paru is the most popular AUR helper written in Rust.", (
+            ButtonBox("Paru", "Assets/Apps/paru.png", "Paru, written in Rust, is the most popular AUR helper.", (
                 CommandButton(QIcon("Assets/install.png"), "Install",
                               """if [ ! -f /bin/paru ]
                                 then workdir=$(mktemp -d) &&
@@ -44,7 +44,7 @@ class AurHelperWin(QWidget):
 
         # Create yay section
         self.appYay = \
-            ButtonBox("Yay", "Assets/Apps/yay.png", "Yay is widely used AUR helper written in Go.", (
+            ButtonBox("Yay", "Assets/Apps/yay.png", "Yay, written in Go, is a widely used AUR helper.", (
                 CommandButton(QIcon("Assets/install.png"), "Install",
                               """if [ ! -f /bin/yay ]
                                 then workdir=$(mktemp -d) &&
@@ -88,4 +88,4 @@ class AurHelperWin(QWidget):
             helpers.append("yay")
         return f"Your installed AUR helper{'s' if len(helpers) > 1 else ''}: <font color=\"orange\">"\
             + " and ".join(helpers) + "</font>."\
-            if len(helpers) else "<font color=\"red\">You do not have any AUR helper.</font>"
+            if len(helpers) else "<font color=\"red\">You do not have any AUR helpers.</font>"

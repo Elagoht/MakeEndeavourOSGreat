@@ -34,7 +34,7 @@ class ShellWin(QWidget):
         self.appZsh = ShellBox("Zsh",
                                "zsh",
                                "Assets/Apps/Shells/zsh.png",
-                               "extended Bourne shell with many improvements, including some features of Bash, ksh, and tcsh.",
+                               "Extended Bourne Shell that offers numerous improvements, including features borrowed from Bash, ksh, and tcsh.",
                                self,
                                self.parent().parent().barBottom
                                )
@@ -43,7 +43,7 @@ class ShellWin(QWidget):
         self.appFish = ShellBox("Fish",
                                 "fish",
                                 "Assets/Apps/Shells/fish.png",
-                                "Friendly interactive shell. Smart and user-friendly command line shell",
+                                "Friendly interactive shell. Smart and user-friendly command line shell.",
                                 self,
                                 self.parent().parent().barBottom
                                 )
@@ -53,7 +53,7 @@ class ShellWin(QWidget):
             ButtonBox(
                 "Oh-My-Zsh",
                 "Assets/Apps/Shells/ohmyzsh.png",
-                "<font color=\"orange\">Requires zsh.</font> Delightful, open source, community-driven framework for managing your Zsh configuration. It comes bundled with thousands of helpful functions, helpers, plugins, themes, and a few things that make you shout...", []
+                "<font color=\"orange\">Requires zsh.</font> A delightful, open-source, community-driven framework for managing your Zsh configuration. It provides a wealth of helpful functions, plugins, themes, and other features that make you shout with joy.", []
             )
         # Add Oh-My-Zsh Theme Buttons
         self.layOhMyZsh = QGridLayout()

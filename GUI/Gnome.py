@@ -11,8 +11,7 @@ class GnomeWin(QWidget):
         # Create Wayland section
         self.gbxWayland = \
             ButtonBox("Wayland Settings", "Assets/Tweaks/wayland.png",
-                      "<p>Wayland is a new technology to replace Xorg display server. Its may be lighter and faster. Waydroid only works on Wayland but because of it is a new technology, some features are not compatible yet. I.e. global keyboard shourtcuts does not supported right now. Discord cannot share screen on.</p>\
-                       <p>Wayland has its own <font color='green'>advantages</font> and <font color='red'>disadvantages</font>. So you may want to change this setting in the future depending on your needs. But for now using Xorg and ditching Wayland is more compatible.</p>", (
+                      "<p>Wayland is a new technology designed to replace the Xorg display server. It is considered to be potentially lighter and faster. Waydroid, an Android Emulator, exclusively operates on Wayland. However, being a new technology, certain features are not yet fully compatible. For example, global keyboard shortcuts are not currently supported, and Discord is unable to share screens.</p><p>Wayland has its own set of <font color='green'>advantages</font> and <font color='red'>disadvantages</font>, so depending on your requirements, you may consider changing this setting in the future. However, for now, using Xorg instead of Wayland is more compatible.</p>", (
                           CommandButton(QIcon("Assets/configure.png"), "Use Wayland",
                                         "sudo sed -i \"s/^WaylandEnable=false/#WaylandEnable=false/\" /etc/gdm/custom.conf",
                                         self),
@@ -37,7 +36,7 @@ class GnomeWin(QWidget):
         # Chose Gnome Terminal over Console
         self.appTerminal = \
             ButtonBox("Gnome Terminal", "Assets/Tweaks/gnometerminal.png",
-                      "Gnome terminal is more compatible than console with Gnome desktop environment (open with terminal etc.). But may not be able to adapt dark/light theme.", (
+                      "The GNOME Terminal is <b>more compatible with the other desktop environments (i.e. Cinnamon)</b>, offering features like opening with a terminal and better integration. However, it may have limitations when it comes to adapting to dark or light themes.", (
                           CommandButton(QIcon("Assets/configure.png"), "Use Gnome Terminal",
                                         f"""if [ ! "$(pacman -Qqs gnome-terminal-transparency | grep ^gnome-terminal-transparency$)" = "gnome-terminal-transparency" ]
                                             then
@@ -55,7 +54,7 @@ class GnomeWin(QWidget):
         # Chose Gnome Console over Terminal
         self.appConsole = \
             ButtonBox("Gnome Console", "Assets/Tweaks/gnomeconsole.png",
-                      "Gnome Console is more compatible with dark/light theme but is not compatible with default terminal application configuration.", (
+                      "The GNOME Console is <b>more compatible with dark/light themes</b>, allowing for better adaptation. However, it may not be compatible with the default terminal application configuration used in the other desktop environments.", (
                           CommandButton(QIcon("Assets/configure.png"), "Use Gnome Console",
                                         """if [ ! -f /usr/bin/kgx ]
                                             then sudo pacman -S gnome-console
