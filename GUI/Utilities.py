@@ -296,15 +296,16 @@ class ExtensionBox(QGroupBox):
 
 class ThemeBox(QGroupBox):
     # Create a box for themes that have theme setter buttons unlike appbox
-    def __init__(self, name: str, package: str, image: str, themes: dict, type: int = 0) -> None:
+    def __init__(self, name: str, package: str, image: str, themes: dict, _type: int = 0) -> None:
         """
         type 0 = GTK Theme
         type 1 = Icon Theme
         type 2 = Cursor Theme
         type 3 = Monospace Font
+        type 4 = Kvantum Theme
         """
         # Determine theme type
-        match type:
+        match _type:
             case 1:
                 self.to_change = "icon-theme"
             case 2:
@@ -349,11 +350,20 @@ class ThemeBox(QGroupBox):
         self.glyTheme.addStretch()
 
         # Create list for theme-setter commandbuttons
-        self.buttons = [CommandButton(
-            QIcon("Assets/configure.png"), name,
-            f"""[ "$(pacman -Qqs {self.package} | grep ^{self.package}$)" = "{self.package}" ] && \
-            gsettings set org.gnome.desktop.interface {self.to_change} \"{theme + ("" if type != 3 else " 10")}\"""",
-            self)
+        self.buttons = [
+            CommandButton(
+                QIcon("Assets/configure.png"), name,
+                f'[ "$(pacman -Qqs {self.package} | grep ^{self.package}$)" = "{self.package}" ] && ' +
+                (f"gsettings set org.gnome.desktop.interface {self.to_change} '{theme + ('' if _type != 3 else ' 10')}'"
+                 if _type != 4  # If theme is kvantum, change kvantum config, which is not configured by gsettings
+                 else f"sed -i 's/theme=.*/theme={theme}/' ~/.config/Kvantum/kvantum.kvconfig"),
+                self,
+                [lambda:print(
+                    f'[ "$(pacman -Qqs {self.package} | grep ^{self.package}$)" = "{self.package}" ] && ' +
+                    (f"gsettings set org.gnome.desktop.interface {self.to_change} '{theme + ('' if _type != 3 else ' 10')}'"
+                     if _type != 4  # If theme is kvantum, change kvantum config, which is not configured by gsettings
+                     else f"sed -i 's/theme=.*/theme={theme}/' ~/.config/Kvantum/kvantum.kvconfig")
+                )])
             for name, theme in themes.items()
         ]
 

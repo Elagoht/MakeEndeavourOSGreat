@@ -13,7 +13,7 @@ class AppearanceWin(QWidget):
         self.gbxKvantumEnable = \
             ButtonBox("Kvantum QT Theme Setter", "Assets/Tweaks/kvantum.png",
                       """<p>Qt applications does not follow GTK themes by default. You can use kvantum to manage Qt applications' (like this one) themes. There is an alternative to kvantum, named qt5ct. But updating that is a bit painful.</p>
-                         <p>You can change Qt themes thanks to Kvantum Manager. You can set <font color="orange">KvLibadwaita(Dark)</font> theme to uniform themes with Adw-gtk3 theme.</p>
+                         <p>You can change Qt themes thanks to Kvantum Manager. You can set <font color="green">KvLibadwaita(Dark)</font> theme to uniform themes with Adw-gtk3 theme.</p>
                          <p>Note that: <u>Enable/disable actions require restart.</u></p>""", (
                           CommandButton(QIcon("Assets/enabled.png"), "Enable Kvantum",
                                         """sudo sed -i "s/^\#QT_STYLE_OVERRIDE=kvantum/QT_STYLE_OVERRIDE=kvantum/" /etc/environment;
@@ -41,13 +41,13 @@ EOF"
         self.gbxTheme.addWidget(self.lblTheme, 0, 0, 1, 3)
         self.load_themes("Data/Themes.json", 0, self.gbxTheme)
 
-        # Create GTK themes section
+        # Create Kvantum themes section
         self.gbxKvantum = GridBox("Kvantum Themes")
         self.lblKvantum = QLabel(
-            "<p>This is the primary Qt theme for your interface.", self.gbxKvantum)
+            "This is the primary Qt theme for your interface. <u>If you changed theme settings in Kvantum Manager, you may need to change theme by Kvantum Manager.</u> Changed themes stores separately.", self.gbxKvantum)
         self.lblKvantum.setWordWrap(True)
         self.gbxKvantum.addWidget(self.lblKvantum, 0, 0, 1, 3)
-        self.load_themes("Data/Kvantum.json", 0, self.gbxKvantum)
+        self.load_themes("Data/Kvantum.json", 4, self.gbxKvantum)
 
         # Create icons section
         self.gbxIcons = GridBox("Icons Themes")
