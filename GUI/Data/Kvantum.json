@@ -1,0 +1,55 @@
+[
+    {
+        "name": "Libadwaita",
+        "package": "kvantum-theme-libadwaita-git",
+        "image": "Assets/Themes/GTK/adw-gtk3.png",
+        "themes": {
+            "Dark": "KvLibadwaitaDark",
+            "Light": "KvLibadwaita"
+        }
+    },
+    {
+        "name": "Arc",
+        "package": "kvantum-theme-arc",
+        "image": "Assets/Themes/GTK/arc.png",
+        "themes": {
+            "Default": "Arc",
+            "Dark": "ArcDark",
+            "Darker": "ArcDarker"
+        }
+    },
+    {
+        "name": "Qogir",
+        "package": "kvantum-theme-qogir-git",
+        "image": "Assets/Themes/GTK/qogir.png",
+        "themes": {
+            "Default": "Qogir",
+            "Dark": "Qogir-dark",
+            "Light": "Qogir-light"
+        }
+    },
+    {
+        "name": "White Sur",
+        "package": "whitesur-kvantum-theme-git",
+        "image": "Assets/Themes/GTK/whitesur.png",
+        "themes": {
+            "Dark Solid": "WhiteSur-opaqueDark",
+            "Dark": "WhiteSurDark",
+            "Light Solid": "WhiteSur-opaque",
+            "Light": "WhiteSur"
+        }
+    },
+    {
+        "name": "Nordic",
+        "package": "kvantum-theme-nordic-git",
+        "image": "Assets/Themes/GTK/nordic.png",
+        "themes": {
+            "Default Solid": "Nordic-Solid",
+            "Default": "Nordic",
+            "Bluish Solid": "Nordic-bluish-solid",
+            "Blueish": "Nordic-bluish",
+            "Darker Solid": "Nordic-Darker-Solid",
+            "Darker": "Nordic-Darker"
+        }
+    }
+]
