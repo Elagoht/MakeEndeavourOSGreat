@@ -1,0 +1,47 @@
+[
+    {
+        "name": "Libadwaita",
+        "package": "kvantum-theme-libadwaita-git",
+        "image": "Assets/Themes/GTK/adw-gtk3.png",
+        "themes": {
+            "Dark": "KvLibadwaitaDark",
+            "Light": "KvLibadwaita"
+        }
+    },
+    {
+        "name": "Arc",
+        "package": "kvantum-theme-arc",
+        "image": "Assets/Themes/GTK/arc.png",
+        "themes": {
+            "Dark": "YaruKde22Dark",
+            "Light": "YaruKde22"
+        }
+    },
+    {
+        "name": "Qogir",
+        "package": "kvantum-theme-qogir-git",
+        "image": "Assets/Themes/GTK/qogir.png",
+        "themes": {
+            "Dark": "YaruKde22Dark",
+            "Light": "YaruKde22"
+        }
+    },
+    {
+        "name": "White Sur",
+        "package": "whitesur-kvantum-theme-git",
+        "image": "Assets/Themes/GTK/qogir.png",
+        "themes": {
+            "Dark": "YaruKde22Dark",
+            "Light": "YaruKde22"
+        }
+    },
+    {
+        "name": "Nordic",
+        "package": "kvantum-theme-nordic-git",
+        "image": "Assets/Themes/GTK/qogir.png",
+        "themes": {
+            "Dark": "YaruKde22Dark",
+            "Light": "YaruKde22"
+        }
+    }
+]
