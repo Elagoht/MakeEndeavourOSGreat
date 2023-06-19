@@ -19,11 +19,11 @@ class PamacWin(QWidget):
                       "Assets/Apps/aur.png",
                       "The Arch User Repository (AUR) is an extra source of packages for Arch Linux. It is often needed for installing applications like Spotify and Discord. However, it is important to be cautious when using the AUR. Not all packages in the AUR are regularly updated or guaranteed to be safe. Only install packages from the AUR that you know and trust.", (
                           CommandButton(QIcon("Assets/enabled.png"), "Enable AUR",
-                                        "sudo sed -Ei '/EnableAUR/s/^#//' /etc/pamac.conf",
-                                        self),
+                                        "pkexec sed -Ei '/EnableAUR/s/^#//' /etc/pamac.conf",
+                                        self, avoid_xterm=True),
                           CommandButton(QIcon("Assets/disabled.png"), "Disable AUR",
-                                        "sudo sed -Ei '/EnableAUR/s/^/#/' /etc/pamac.conf",
-                                        self))
+                                        "pkexec sed -Ei '/EnableAUR/s/^/#/' /etc/pamac.conf",
+                                        self, avoid_xterm=True))
                       )
 
         # Insert groupboxes to layout

@@ -420,13 +420,14 @@ class ShellBox(AppBox):
             QIcon("Assets/configure.png"), "Set Default",
             f"echo New shell will be {package}.;\
                 [ \"{package}\" = \"sh\" ] || [ \"$(pacman -Qqs {package} | grep ^{package}$)\" = \"{package}\" ] &&\
-                chsh -s /bin/{package}",
-            self)
+                pkexec chsh -s /bin/{package} $USER",
+            self, avoid_xterm=True)
         self.btnSetRoot = CommandButton(
             QIcon("Assets/configure.png"), "Set Default for Root",
             f"echo New shell will be {package}.;\
-                [ \"$(pacman -Qqs {package} | grep ^{package}$)\" = \"{package}\" ] && sudo chsh -s /bin/{package} root",
-            self)
+                [ \"$(pacman -Qqs {package} | grep ^{package}$)\" = \"{package}\" ] &&\
+                pkexec chsh -s /bin/{package} root",
+            self, avoid_xterm=True)
 
         # Add buttons to layout
         self.laySetButtons = QHBoxLayout()

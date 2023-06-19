@@ -13,11 +13,11 @@ class GnomeWin(QWidget):
             ButtonBox("Wayland Settings", "Assets/Tweaks/wayland.png",
                       "<p>Wayland is a new technology designed to replace the Xorg display server. It is considered to be potentially lighter and faster. Waydroid, an Android Emulator, exclusively operates on Wayland. However, being a new technology, certain features are not yet fully compatible. For example, global keyboard shortcuts are not currently supported, and Discord is unable to share screens.</p><p>Wayland has its own set of <font color='green'>advantages</font> and <font color='red'>disadvantages</font>, so depending on your requirements, you may consider changing this setting in the future. However, for now, using Xorg instead of Wayland is more compatible.</p>", (
                           CommandButton(QIcon("Assets/configure.png"), "Use Wayland",
-                                        "sudo sed -i \"s/^WaylandEnable=false/#WaylandEnable=false/\" /etc/gdm/custom.conf",
-                                        self),
+                                        "pkexec sed -i \"s/^WaylandEnable=false/#WaylandEnable=false/\" /etc/gdm/custom.conf",
+                                        self, avoid_xterm=True),
                           CommandButton(QIcon("Assets/configure.png"), "Use XOrg",
-                                        "sudo sed -i \"s/^#WaylandEnable=false/WaylandEnable=false/\" /etc/gdm/custom.conf",
-                                        self))
+                                        "pkexec sed -i \"s/^#WaylandEnable=false/WaylandEnable=false/\" /etc/gdm/custom.conf",
+                                        self, avoid_xterm=True))
                       )
 
         # Create context menu section

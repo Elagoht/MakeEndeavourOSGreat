@@ -77,12 +77,12 @@ class ShellWin(QWidget):
             self.extOhMyZsh, (self.check_oh_my_zsh,), True)
         self.btnOhMyZshUninstall = CommandButton(
             QIcon("Assets/uninstall.png"), "Uninstall",
-            """sudo rm -rf /root/.oh-my-zsh/
+            """pkexec rm -rf /root/.oh-my-zsh/
                 rm -rf $HOME/.oh-my-zsh/
-                sudo rm /root/.zshrc
+                pkexec rm /root/.zshrc
                 rm $HOME/.zshrc
             """,
-            self.extOhMyZsh, (self.check_oh_my_zsh,), True)
+            self.extOhMyZsh, (self.check_oh_my_zsh,), True, True)
 
         # Create SyntShell section
         # ! Looks like it's not working. Will be added when it's ready.
