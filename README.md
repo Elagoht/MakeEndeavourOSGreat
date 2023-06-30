@@ -31,6 +31,10 @@ This application mainly targets GNOME DE users, although you can always choose o
 
 ![Appearance](Screenshots/appearance.png)
 
+![Appearance 2](Screenshots/appearance2.png)
+
+![Variables](Screenshots/variables.png)
+
 ![Shell](Screenshots/shell.png)
 
 ![Essential Apps](Screenshots/essentials.png)
@@ -40,6 +44,8 @@ This application mainly targets GNOME DE users, although you can always choose o
 ![Recommended Games](Screenshots/games.png)
 
 ![Development](Screenshots/development.png)
+
+![Terminal](Screenshots/terminal.png)
 
 ![Tasks](Screenshots/tasks.png)
 
