@@ -65,6 +65,11 @@ class CommandThread(QThread):
         process = QProcess()
         process.start("bash")
         # Write command to execute to bash standard input.
+        print(f"""statusfile=$(mktemp);
+        {"" if self.avoid_xterm else "xterm -xrm 'XTerm.vt100.allowTitleOps: false' -T 'Endeavour OS Tweaker Slave' -bg black -fg peru -e"}\
+        sh -c '{self.command}; echo $? > '$statusfile 2> /dev/null;
+        cat $statusfile;
+        rm $statusfile""")
         process.write(f"""statusfile=$(mktemp);
         {"" if self.avoid_xterm else "xterm -xrm 'XTerm.vt100.allowTitleOps: false' -T 'Endeavour OS Tweaker Slave' -bg black -fg peru -e"}\
         sh -c '{self.command}; echo $? > '$statusfile 2> /dev/null;
@@ -352,18 +357,16 @@ class ThemeBox(QGroupBox):
         # Create list for theme-setter commandbuttons
         self.buttons = [
             CommandButton(
-                QIcon("Assets/configure.png"), name,
+                QIcon("Assets/configure.png"),
+                name,
                 f'[ "$(pacman -Qqs {self.package} | grep ^{self.package}$)" = "{self.package}" ] && ' +
-                (f"gsettings set org.gnome.desktop.interface {self.to_change} '{theme + ('' if _type != 3 else ' 10')}'"
-                 if _type != 4  # If theme is kvantum, change kvantum config, which is not configured by gsettings
-                 else f"sed -i 's/theme=.*/theme={theme}/' ~/.config/Kvantum/kvantum.kvconfig"),
-                self,
-                [lambda:print(
-                    f'[ "$(pacman -Qqs {self.package} | grep ^{self.package}$)" = "{self.package}" ] && ' +
-                    (f"gsettings set org.gnome.desktop.interface {self.to_change} '{theme + ('' if _type != 3 else ' 10')}'"
-                     if _type != 4  # If theme is kvantum, change kvantum config, which is not configured by gsettings
-                     else f"sed -i 's/theme=.*/theme={theme}/' ~/.config/Kvantum/kvantum.kvconfig")
-                )])
+                (
+                    f"gsettings set org.gnome.desktop.interface {self.to_change} \"{theme + ('' if _type != 3 else ' 10')}\""
+                    if _type != 4  # If theme is kvantum, change kvantum config, which is not configured by gsettings
+                    else f"sed -i \"s/theme=.*/theme={theme}/\" ~/.config/Kvantum/kvantum.kvconfig"
+                ),
+                self
+            )
             for name, theme in themes.items()
         ]
 
