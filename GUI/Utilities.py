@@ -359,11 +359,15 @@ class ThemeBox(QGroupBox):
             CommandButton(
                 QIcon("Assets/configure.png"),
                 name,
-                f'[ "$(pacman -Qqs {self.package} | grep ^{self.package}$)" = "{self.package}" ] && ' +
+                f'[ "$(pacman -Qqs {self.package} | grep ^{self.package}$)" = "{self.package}" ] || exit 1;' +
                 (
                     f"gsettings set org.gnome.desktop.interface {self.to_change} \"{theme + ('' if _type != 3 else ' 10')}\""
                     if _type != 4  # If theme is kvantum, change kvantum config, which is not configured by gsettings
-                    else f"sed -i \"s/theme=.*/theme={theme}/\" ~/.config/Kvantum/kvantum.kvconfig"
+                    else f"""if [ ! -f ~/.config/Kvantum/kvantum.kvconfig ]; then
+    echo "[General]
+theme=" > ~/.config/Kvantum/kvantum.kvconfig
+fi
+sed -i \"s/theme=.*/theme={theme}/\" ~/.config/Kvantum/kvantum.kvconfig"""
                 ),
                 self
             )
