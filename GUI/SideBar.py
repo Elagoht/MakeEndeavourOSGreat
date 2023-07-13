@@ -82,7 +82,7 @@ class SideBar(QWidget):
         self.btnDevelopment.clicked.connect(lambda: parent.open_window(
             "Development", AppsWin, ["Data/Development.json", self]))
         self.btnTerminalApp.clicked.connect(lambda: parent.open_window(
-            "Development", AppsWin, ["Data/Terminal.json", self]))
+            "Terminal Tools", AppsWin, ["Data/Terminal.json", self]))
 
         # Initialization
         self.check_aur_helper()
