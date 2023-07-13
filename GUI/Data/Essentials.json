@@ -278,7 +278,7 @@
         },
         {
             "name": "Librewolf",
-            "package": "librewolf",
+            "package": "librewolf-bin",
             "image": "Assets/Apps/Essentials/librewolf.png",
             "description": "List differences between sets of Firefox config files. This tool was used to compare different librewolf.cfg and user.js files."
         },
